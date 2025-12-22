@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events - Hayimi Movement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Navbar */
+    .navbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky; top: 0; z-index: 1000;
+    }
+    .logo-text { font-weight: bold; font-size: 1.5rem; color: #0077b6; }
+    .nav-links {
+      display: flex; gap: 1.5rem; list-style: none;
+    }
+    .nav-links a {
+      font-weight: 600; transition: color 0.3s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #0077b6; }
+    .donate-btn {
+      background-color: #0077b6; color: white;
+      padding: 0.5rem 1rem; border-radius: 5px;
+      font-weight: bold; transition: background-color 0.3s ease;
+    }
+    .donate-btn:hover { background-color: #0096c7; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; font-size: 1.8rem; cursor: pointer; color: #0077b6;
+    }
+    .nav-links.mobile {
+      display: none; flex-direction: column; background: #fff;
+      position: absolute; top: 70px; right: 20px;
+      padding: 1rem; border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .nav-links.mobile.active { display: flex; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(to right, #ff8800, #ffb347);
+      color: white; text-align: center; padding: 4rem 2rem;
+      position: relative;
+    }
+    .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem auto; }
+
+    /* Highlighted images */
+    .highlight-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .highlight-gallery img {
+      width: 280px; height: 180px; object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+    .highlight-gallery img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    /* Events */
+    .events-section {
+      max-width: 1000px; margin: 3rem auto; padding: 0 2rem;
+    }
+    article {
+      background-color: #fff; padding: 2rem;
+      border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 2rem; transition: transform 0.3s ease;
+    }
+    article:hover { transform: translateY(-5px); }
+    article h2 { color: #0077b6; margin-bottom: 1rem; }
+    article p { font-size: 1rem; line-height: 1.6; margin-bottom: 1rem; }
+    .learn-btn {
+      display: inline-block; background-color: #0077b6;
+      color: white; padding: 0.75rem 1.5rem;
+      border-radius: 5px; font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .learn-btn:hover { background-color: #023e8a; }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem; margin-top: 2rem;
+    }
+    .gallery-grid div { text-align: center; }
+    .gallery-grid img {
+      width: 100%; height: auto; border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .caption {
+      margin-top: 0.5rem; font-size: 0.9rem; color: #555;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #333; color: white;
+      text-align: center; padding: 1rem;
+    }
+    .social-icons a {
+      color: white; margin: 0 0.5rem; font-size: 1.2rem;
+    }
+
+    /* Responsive Fixes */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; padding: 0 1rem; }
+      .highlight-gallery img {
+        width: 100%; max-width: 320px; height: auto;
+      }
+      article { padding: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .highlight-gallery {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .highlight-gallery img {
+        width: 100%;
+        max-width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo-text">Hayimi Movement</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="donation.html" class="donate-btn">DONATE</a></li>
+    </ul>
+    <div class="hamburger"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links mobile">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="donation.html" class="donate-btn">DONATE</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Upcoming Events</h1>
+    <p>Join us in celebrating community, culture, and compassion. Every moment counts.</p>
+
+    <!-- Highlighted Images -->
+    <div class="highlight-gallery">
+      <img src="Photo_50.jpg" alt="Special Event Highlight 50">
+      <img src="Photo_51.jpg" alt="Special Event Highlight 51">
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section class="events-section">
+    <article>
+      <h2>Ashenda Revival</h2>
+      <p>Help us bring Ashenda back with fresh energy and dignity. This cultural celebration honors the strength of women and the resilience of Tigrayan families.</p>
+      <p><strong>Needs:</strong> Shelter, Food, Clothing, Medical Attention</p>
+      <a href="donation.html" class="learn-btn">Donate to Ashenda Revival</a>
+    </article>
+
+    <article>
+      <h2>Hi-Me Movement: Mobilizing Compassion</h2>
+      <p>The Hayimi Movement is more than a campaign—it's a lifeline. Born from the urgent need to support families in Tigray, our events channel hope, dignity, and solidarity through action. Whether it's reviving cultural traditions like Ashenda or organizing donation drives for basic necessities, each initiative is a call to uplift lives and restore humanity.</p>
+      <p><strong>How You Can Help:</strong> Join our events, spread the word, and donate through PayPal, Zelle, or CashApp at <em>himemovement@gmail.com</em>.</p>
+      <a href="donation.html" class="learn-btn">Support the Movement</a>
+    </article>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid">
+      <div><img src="photo_5.jpg" alt="Event photo 5"><div class="caption">A moment of care and connection.</div></div>
+      <div><img src="photo_6.jpg" alt="Event photo 6"><div class="caption">Community gathering in action.</div></div>
+      <div><img src="photo_8.jpg" alt="Event photo 8"><div class="caption">Together, we rise stronger.</div></div>
+      <div><img src="photo_9.jpg" alt="Event photo 9"><div class="caption">Sharing stories, building futures.</div></div>
+      <div><img src="photo_40.jpg" alt="Event photo 40"><div class="caption">Hands reaching out with love.</div></div>
+      <div><img src="photo_41.jpg" alt="Event photo 41"><div class="caption">Children gathering for shared meals.</div></div>
+      <div><img src="photo_42.jpg" alt="Event photo 42"><div class="caption">Volunteers distributing essentials.</div></div>
+      <div><img src="photo_43.jpg" alt="Event photo 43"><div class="caption">Community standing in solidarity.</div></div>
+      <div><img src="photo_44.jpg" alt="Event photo 44"><div class="caption">Ashenda celebration in full spirit.</div></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Hayimi Movement. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.nav-links.mobile');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>

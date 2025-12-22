@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HI-ME Movement - Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* ===== NAVIGATION BAR ===== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #0077b6;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-text {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: white;
+      font-weight: 600;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #6c757d;
+    }
+
+    .donate-btn {
+      background: #6c757d;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .donate-btn:hover {
+      background: #495057;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+        background: #0077b6;
+        padding: 1rem;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        border-radius: 8px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      background: url('hero-banner.jpg') no-repeat center center / cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .hero-content h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    section h2 {
+      color: #007acc;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    section p {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 122, 204, 0.8);
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .caption {
+      opacity: 1;
+    }
+
+    /* FOR AFTER SUPPORT TEXT ABOVE IMAGE */
+    .after-support {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #007acc;
+      font-size: 18px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 15px;
+    }
+
+    .video-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    footer {
+      background: #007acc;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .hero-content h2 {
+        font-size: 1.6em;
+      }
+      .hero-content p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo-text">HI-ME Movement</div>
+    <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="donation.html" class="donate-btn">DONATE</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Empowering Communities in Ethiopia</h2>
+      <p>HI-ME Movement is committed to education, health, and humanitarian support for local communities.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY SECTIONS -->
+
+  <section data-aos="fade-up">
+    <h2>Mekele Donation</h2>
+    <p>HI-ME provides humanitarian aid, child support, and women’s empowerment programs in Mekele, a city of resilience and heritage.</p>
+    <div class="gallery">
+      <div class="gallery-item"><img src="mekele-1.jpg" alt="Mekele 1"></div>
+      <div class="gallery-item"><img src="mekele-2.jpg" alt="Mekele 2"></div>
+      <div class="gallery-item"><img src="mekele-4.jpg" alt="Mekele 4"></div>
+      <div class="gallery-item"><img src="mekele-5.jpg" alt="Mekele 5"></div>
+      <div class="gallery-item"><img src="mekele-6.jpg" alt="Mekele 6"></div>
+      <div class="gallery-item"><img src="mekele-7.jpg" alt="Mekele 7"></div>
+    </div>
+  </section>
+
+  <section data-aos="fade-up">
+    <h2>Hawassa Donation</h2>
+    <p>HI-ME supports children’s education, environmental conservation, and youth skill development in Hawassa.</p>
+    <div class="gallery">
+      <div class="gallery-item"><img src="hawasa-1.jpg" alt="Hawassa 1"></div>
+      <div class="gallery-item"><img src="hawasa-3.jpg" alt="Hawassa 3"></div>
+      <div class="gallery-item"><img src="hawasa-4.jpg" alt="Hawassa 4"></div>
+      <div class="gallery-item"><img src="hawasa-6.jpg" alt="Hawassa 6"></div>
+    </div>
+  </section>
+
+  <section data-aos="fade-up">
+    <h2>Dire Dawa Donation</h2>
+    <p>HI-ME focuses on youth employment, small business support, and health outreach programs in Dire Dawa. The video shows before and after Donation.</p>
+    <div class="gallery">
+      <div class="gallery-item"><img src="Diredawa_One.jpg" alt="Dire Dawa"></div>
+    </div>
+    <div class="video-wrapper">
+      <video controls>
+        <source src="IMG_1209Before.MP4" type="video/mp4">
+        <source src="IMG_2950After.MP4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <section data-aos="fade-up">
+    <h2>Humera Donation</h2>
+    <p>In Humera, HI-ME supports displaced families, agricultural recovery, and trauma healing programs for war-affected communities.</p>
+    <div class="gallery">
+      <div class="gallery-item"><img src="humera-1.jpg" alt="Humera 1"></div>
+      <div class="gallery-item"><img src="humera-2.jpg" alt="Humera 2"></div>
+      <div class="gallery-item"><img src="humera-3.jpg" alt="Humera 3"></div>
+    </div>
+  </section>
+
+  <section data-aos="fade-up">
+    <h2>Axum Donation</h2>
+    <p>HI-ME supports children’s education, environmental conservation, and youth skill development in Axum.</p>
+    <div class="video-wrapper">
+      <video controls>
+        <source src="axum_one.MP4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <section data-aos="fade-up">
+    <h2>Lalibela Donation</h2>
+    <p>HI-ME supports children’s education, environmental conservation, and youth skill development in Lalibela.</p>
+    <div class="gallery">
+      <div class="gallery-item"><img src="Lalibela_One.jpg" alt="Lalibela One"></div>
+      <div class="gallery-item"><img src="Lalibela_Two.jpg" alt="Lalibela Two"></div>
+      <div class="gallery-item"><img src="Lalibela_Three.jpg" alt="Lalibela Three"></div>
+      <!-- AFTER SUPPORT TEXT BEFORE IMAGE -->
+      <div class="after-support">HI-ME After The Support</div>
+      <div class="gallery-item"><img src="Lalibela_Four.jpg" alt="Lalibela After Support"></div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 HI-ME Movement. All rights reserved.
+  </footer>
+
+  <!-- JS: MENU TOGGLE AND AOS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      toggle.addEventListener('click', () => nav.classList.toggle('show'));
+    });
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+</body>
+</html>
