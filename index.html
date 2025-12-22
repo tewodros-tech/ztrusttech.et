@@ -3,249 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cybersecurity & Risk Advisory</title>
+<title>Ztrust Tech | Cybersecurity & Risk Advisory</title>
 
-<!-- Fonts & Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ================= GLOBAL ================= */
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #ffffff;
-  color: #111;
-}
-a { text-decoration: none; color: inherit; }
+body{margin:0;font-family:Montserrat;background:#fff;color:#111}
+a{text-decoration:none;color:inherit}
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.logo-text{font-size:1.8rem;font-weight:800;color:#c1121f}
+.nav-links{list-style:none;display:flex;gap:1.6rem}
+.nav-links a{font-weight:600}
+.nav-links a:hover{color:#c1121f}
 
-/* ================= NAVBAR ================= */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2.5rem;
-  background: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-.logo-text {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #c1121f;
-}
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.6rem;
-}
-.nav-links a {
-  font-weight: 600;
-}
-.nav-links a:hover {
-  color: #c1121f;
-}
+.intro{background:#f8f9fa;padding:4rem 2.5rem}
+.intro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.intro-card{background:#fff;padding:2rem;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,0.08)}
+.intro-card i{font-size:2.8rem;color:#c1121f;margin-bottom:1rem}
+.intro-card h3{margin-bottom:0.8rem}
 
-/* ================= INTRO / OVERVIEW ================= */
-.intro {
-  background: #f8f9fa;
-  padding: 4rem 2.5rem;
-}
-.intro-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-.intro-card {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-}
-.intro-card i {
-  font-size: 2.8rem;
-  color: #c1121f;
-  margin-bottom: 1rem;
-}
-.intro-card h3 {
-  margin-bottom: 0.8rem;
-}
+.section{padding:4rem 2.5rem}
+.section h2{font-size:2.2rem;margin-bottom:2rem;border-left:6px solid #c1121f;padding-left:1rem}
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.service-card{border:1px solid #e0e0e0;border-radius:8px;overflow:hidden}
+.service-card img{width:100%;height:180px;object-fit:cover}
+.service-content{padding:1.2rem}
+.service-content h4{color:#c1121f;margin-bottom:0.6rem}
 
-/* ================= SECTION BASE ================= */
-.section {
-  padding: 4rem 2.5rem;
-}
-.section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 2rem;
-  border-left: 6px solid #c1121f;
-  padding-left: 1rem;
-}
+.trust{background:#f9f9f9}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem}
+.trust-card{background:#fff;padding:1.8rem;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.08)}
 
-/* ================= SERVICES ================= */
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-.service-card {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.service-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-.service-content {
-  padding: 1.2rem;
-}
-.service-content h4 {
-  color: #c1121f;
-  margin-bottom: 0.6rem;
-}
+.footer{background:#111;color:#ddd;text-align:center;padding:3rem 2rem}
+.footer h2{color:#fff}
+.social-links{display:flex;justify-content:center;gap:1.5rem;font-size:1.4rem;margin-top:1rem}
+.social-links a{color:#c1121f}
 
-/* ================= TRUST / CREDIBILITY ================= */
-.trust {
-  background: #f9f9f9;
-}
-.trust-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.6rem;
-}
-.trust-card {
-  background: #fff;
-  padding: 1.8rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
-
-/* ================= FOOTER ================= */
-.footer {
-  background: #111;
-  color: #ddd;
-  text-align: center;
-  padding: 3rem 2rem;
-}
-.footer h2 {
-  color: #fff;
-}
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  font-size: 1.4rem;
-  margin-top: 1rem;
-}
-.social-links a {
-  color: #c1121f;
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
-  .nav-links {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-}
+@media(max-width:768px){.nav-links{flex-wrap:wrap;gap:1rem}}
 </style>
 </head>
-
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- NAVBAR -->
 <nav class="navbar">
-  <div class="logo-text">Cybersecurity Advisory</div>
+  <div class="logo-text">Ztrust Tech</div>
   <ul class="nav-links">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Who We Are</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Resources</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">Who We Are</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
-<!-- ================= OVERVIEW (MATCHES DUCARA FLOW) ================= -->
+<!-- OVERVIEW -->
 <section class="intro">
   <div class="intro-grid">
     <div class="intro-card">
       <i class="fas fa-shield-halved"></i>
       <h3>Security Advisory</h3>
-      <p>Independent advisory services designed to protect organizations against evolving cyber threats.</p>
+      <p>Ztrust Tech provides independent cybersecurity advisory services to protect organizations from evolving digital threats.</p>
     </div>
     <div class="intro-card">
       <i class="fas fa-network-wired"></i>
       <h3>Risk & Compliance</h3>
-      <p>Risk assessments and compliance support aligned with global security standards.</p>
+      <p>Ztrust Tech supports risk management and compliance aligned with recognized security frameworks.</p>
     </div>
     <div class="intro-card">
       <i class="fas fa-user-shield"></i>
       <h3>Training & Awareness</h3>
-      <p>Professional training programs to build strong cyber awareness and resilience.</p>
+      <p>Ztrust Tech delivers professional cybersecurity training to strengthen organizational resilience.</p>
     </div>
   </div>
 </section>
 
-<!-- ================= SERVICES (SAME HIERARCHY AS DUCARA) ================= -->
+<!-- SERVICES -->
 <section class="section">
-  <h2>Our Services</h2>
-  <div class="service-grid">
-    <div class="service-card">
-      <img src="service1.jpg" alt="">
-      <div class="service-content">
-        <h4>Security Assessments</h4>
-        <p>Identifying vulnerabilities and providing actionable improvement recommendations.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <img src="service2.jpg" alt="">
-      <div class="service-content">
-        <h4>Privacy & Data Protection</h4>
-        <p>Advisory services supporting secure and compliant data management practices.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <img src="service3.jpg" alt="">
-      <div class="service-content">
-        <h4>Incident Readiness</h4>
-        <p>Preparedness planning and response guidance for cyber incidents.</p>
-      </div>
-    </div>
-  </div>
+<h2>Our Services</h2>
+<div class="service-grid">
+<div class="service-card">
+<img src="images/service1.jpg" alt="">
+<div class="service-content"><h4>Security Assessments</h4><p>Ztrust Tech identifies security gaps and delivers actionable improvement strategies.</p></div>
+</div>
+<div class="service-card">
+<img src="images/service2.jpg" alt="">
+<div class="service-content"><h4>Privacy & Data Protection</h4><p>Ztrust Tech advises organizations on secure and compliant data protection practices.</p></div>
+</div>
+<div class="service-card">
+<img src="images/service3.jpg" alt="">
+<div class="service-content"><h4>Incident Readiness</h4><p>Ztrust Tech helps organizations prepare for and respond effectively to cyber incidents.</p></div>
+</div>
+</div>
 </section>
 
-<!-- ================= TRUST / WHY US ================= -->
+<!-- TRUST -->
 <section class="section trust">
-  <h2>Why Organizations Choose Us</h2>
-  <div class="trust-grid">
-    <div class="trust-card">
-      <p>“Clear guidance, practical solutions, and deep technical expertise.”</p>
-      <strong>— Enterprise Client</strong>
-    </div>
-    <div class="trust-card">
-      <p>“Professional approach with measurable security improvements.”</p>
-      <strong>— Technology Partner</strong>
-    </div>
-    <div class="trust-card">
-      <p>“Trusted advisors with real-world cybersecurity experience.”</p>
-      <strong>— Corporate Organization</strong>
-    </div>
-  </div>
+<h2>Why Organizations Trust Ztrust Tech</h2>
+<div class="trust-grid">
+<div class="trust-card"><p>“Ztrust Tech delivers clear guidance and practical cybersecurity solutions.”</p><strong>— Enterprise Client</strong></div>
+<div class="trust-card"><p>“Professional advisory services with measurable security outcomes.”</p><strong>— Technology Partner</strong></div>
+<div class="trust-card"><p>“A trusted cybersecurity partner with real-world expertise.”</p><strong>— Corporate Organization</strong></div>
+</div>
 </section>
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 <footer class="footer">
-  <h2>Contact Information</h2>
-  <p>info@yourdomain.com</p>
-  <div class="social-links">
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-  </div>
+<h2>Ztrust Tech</h2>
+<p>info@ztrusttech.com</p>
+<div class="social-links">
+<a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+</div>
 </footer>
 
 </body>
