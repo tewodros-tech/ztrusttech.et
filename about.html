@@ -4,15 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Who We Are | Ztrust Tech</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
+/* === SAME CSS AS INDEX === */
 body{margin:0;font-family:Montserrat;background:#fff;color:#111}
-.section{padding:4rem 2.5rem;max-width:1100px;margin:auto}
-h1{border-left:6px solid #c1121f;padding-left:1rem;margin-bottom:2rem}
+a{text-decoration:none;color:inherit}
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.logo-text{font-size:1.8rem;font-weight:800;color:#c1121f}
+.nav-links{list-style:none;display:flex;gap:1.6rem}
+.nav-links a{font-weight:600}
+.nav-links a:hover{color:#c1121f}
+
+.section{padding:4rem 2.5rem}
+.section h2{font-size:2.2rem;margin-bottom:2rem;border-left:6px solid #c1121f;padding-left:1rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.card{background:#fff;padding:2rem;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,0.08)}
+
+.footer{background:#111;color:#ddd;text-align:center;padding:3rem 2rem}
+.footer h2{color:#fff}
+.social-links{display:flex;justify-content:center;gap:1.5rem;font-size:1.4rem;margin-top:1rem}
+.social-links a{color:#c1121f}
 </style>
 </head>
+
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo-text">Ztrust Tech</div>
   <ul class="nav-links">
@@ -24,20 +44,27 @@ h1{border-left:6px solid #c1121f;padding-left:1rem;margin-bottom:2rem}
   </ul>
 </nav>
 
+<!-- CONTENT -->
 <section class="section">
-<h1>Who We Are</h1>
-<p>Ztrust Tech is an independent cybersecurity and risk advisory company focused on helping organizations navigate complex digital threats. We work with public and private institutions to improve security posture, reduce risk, and build cyber resilience.</p>
-<p>Our approach is practical, standards-driven, and aligned with global best practices. We combine technical expertise with strategic insight to deliver measurable security outcomes.</p>
+<h2>Who We Are</h2>
 
-<h2>Our Principles</h2>
-<ul>
-<li>Integrity and independence</li>
-<li>Risk-based decision making</li>
-<li>Clear and actionable guidance</li>
-<li>Continuous improvement</li>
-</ul>
+<div class="card-grid">
+  <div class="card">
+    <h3>Our Identity</h3>
+    <p>Ztrust Tech is an independent cybersecurity and risk advisory organization supporting secure digital transformation.</p>
+  </div>
+  <div class="card">
+    <h3>Our Approach</h3>
+    <p>We apply practical, risk-based security principles aligned with global standards.</p>
+  </div>
+  <div class="card">
+    <h3>Our Values</h3>
+    <p>Integrity, independence, and measurable security outcomes.</p>
+  </div>
+</div>
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
 <h2>Ztrust Tech</h2>
 <p>info@ztrusttech.com</p>
@@ -47,5 +74,6 @@ h1{border-left:6px solid #c1121f;padding-left:1rem;margin-bottom:2rem}
 <a href="#"><i class="fab fa-facebook"></i></a>
 </div>
 </footer>
+
 </body>
 </html>
