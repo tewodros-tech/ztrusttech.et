@@ -1,59 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resources | Ztrust Tech</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-body{margin:0;font-family:Montserrat;background:#fff;color:#111}
-.section{padding:4rem 2.5rem;max-width:1100px;margin:auto}
-.article{border-bottom:1px solid #ddd;padding:1.5rem 0}
-h1{border-left:6px solid #c1121f;padding-left:1rem;margin-bottom:2rem}
-</style>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="logo-text">Ztrust Tech</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">Who We Are</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="resources.html">Resources</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+<nav>
+  <h2>ZTrust Tech</h2>
 </nav>
 
-<section class="section">
-<h1>Resources & Insights</h1>
-<div id="articles"></div>
+<section class="hero">
+  <h1>Resources</h1>
+  <ul id="resourceList"></ul>
 </section>
 
-<script>
-// Load articles dynamically
-fetch('resources.json')
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById('articles');
-    data.forEach(article => {
-      const div = document.createElement('div');
-      div.className = 'article';
-      div.innerHTML = `<h3>${article.title}</h3><p>${article.summary}</p>`;
-      container.appendChild(div);
-    });
-  })
-  .catch(err => console.error('Error loading articles:', err));
-</script>
+<script src="js/main.js"></script>
 
-<footer class="footer">
-<h2>Ztrust Tech</h2>
-<p>info@ztrusttech.com</p>
-<div class="social-links">
-<a href="#"><i class="fab fa-linkedin"></i></a>
-<a href="#"><i class="fab fa-twitter"></i></a>
-<a href="#"><i class="fab fa-facebook"></i></a>
-</div>
-</footer>
 </body>
 </html>
