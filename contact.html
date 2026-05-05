@@ -4,17 +4,169 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Ztrust Tech</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;font-family:Montserrat;background:#fff;color:#111}
-.section{padding:4rem 2.5rem;max-width:900px;margin:auto}
-input,textarea{width:100%;padding:0.8rem;margin-bottom:1rem}
-button{background:#c1121f;color:#fff;padding:0.8rem;border:none}
-h1{border-left:6px solid #c1121f;padding-left:1rem;margin-bottom:2rem}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Montserrat',sans-serif;
+}
+
+body{
+  background:#0b1120;
+  color:#e5e7eb;
+}
+
+/* NAVBAR */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 10%;
+  background:#020617;
+}
+
+.logo-text{
+  font-weight:700;
+  font-size:20px;
+  color:#00c3ff;
+}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+}
+
+.nav-links li{
+  margin-left:20px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#cbd5f5;
+}
+
+.nav-links a:hover{
+  color:#00c3ff;
+}
+
+/* SECTION */
+.section{
+  padding:60px 10%;
+}
+
+/* HEADER */
+.contact-header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.contact-header h1{
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+.contact-header p{
+  color:#94a3b8;
+}
+
+/* GRID */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+/* FORM */
+.form-box{
+  background:#111827;
+  padding:25px;
+  border-radius:10px;
+}
+
+.form-box input,
+.form-box textarea{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border:none;
+  border-radius:6px;
+  background:#020617;
+  color:#fff;
+}
+
+.form-box button{
+  width:100%;
+  background:#00c3ff;
+  color:#000;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.form-box button:hover{
+  background:#00a3d6;
+}
+
+/* INFO */
+.info-box{
+  background:#111827;
+  padding:25px;
+  border-radius:10px;
+}
+
+.info-box h3{
+  margin-bottom:15px;
+  color:#00c3ff;
+}
+
+.info-box p{
+  margin-bottom:10px;
+  color:#cbd5f5;
+}
+
+/* CTA */
+.cta{
+  margin-top:30px;
+  text-align:center;
+}
+
+.cta a{
+  display:inline-block;
+  background:#00c3ff;
+  color:#000;
+  padding:12px 25px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:20px;
+  background:#020617;
+  margin-top:40px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+}
 </style>
+
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="navbar">
   <div class="logo-text">Ztrust Tech</div>
   <ul class="nav-links">
@@ -26,26 +178,43 @@ h1{border-left:6px solid #c1121f;padding-left:1rem;margin-bottom:2rem}
   </ul>
 </nav>
 
+<!-- HEADER -->
 <section class="section">
-<h1>Contact Ztrust Tech</h1>
-<p>Reach out to discuss cybersecurity, risk, or advisory needs.</p>
+  <div class="contact-header">
+    <h1>Contact Ztrust Tech</h1>
+    <p>Discuss cybersecurity training, enterprise solutions, or request a proposal.</p>
+  </div>
 
-<form>
-<input type="text" placeholder="Your Name">
-<input type="email" placeholder="Email Address">
-<textarea rows="5" placeholder="Message"></textarea>
-<button type="submit">Send Message</button>
-</form>
+  <div class="contact-grid">
+
+    <!-- FORM -->
+    <div class="form-box">
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <textarea rows="5" placeholder="Tell us about your needs..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <!-- INFO -->
+    <div class="info-box">
+      <h3>Get in Touch</h3>
+      <p><strong>Email:</strong> info@ztrusttech.com</p>
+      <p><strong>Services:</strong> Cybersecurity, Training, Advisory</p>
+      <p><strong>Focus:</strong> Enterprise Security & Bids</p>
+
+      <div class="cta">
+        <a href="#">Request Proposal</a>
+      </div>
+    </div>
+
+  </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
-<h2>Ztrust Tech</h2>
-<p>info@ztrusttech.com</p>
-<div class="social-links">
-<a href="#"><i class="fab fa-linkedin"></i></a>
-<a href="#"><i class="fab fa-twitter"></i></a>
-<a href="#"><i class="fab fa-facebook"></i></a>
-</div>
+  <p>© 2026 Ztrust Tech. All rights reserved.</p>
 </footer>
 
 </body>
