@@ -39,12 +39,15 @@ body {
   text-align: center;
 }
 
-.loader-text {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #00a2b4;
-  font-family: 'Courier New', monospace;
+.loader-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 20px;
   animation: pulse 1.5s ease infinite;
+  border-radius: 12px;
+  background: transparent;
+  filter: drop-shadow(0 0 10px rgba(0, 162, 180, 0.3));
 }
 
 .loader-bar {
@@ -56,8 +59,8 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.95); }
 }
 
 @keyframes slide {
@@ -71,6 +74,60 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+/* Logo Styles - FIXED for transparent background */
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: transparent;
+  filter: brightness(1.1) contrast(1.1);
+  transition: all 0.3s ease;
+}
+
+.nav-logo:hover {
+  filter: brightness(1.2) drop-shadow(0 0 5px rgba(0, 162, 180, 0.5));
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #00a2b4;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 10px rgba(0, 162, 180, 0.3);
+  font-family: 'Courier New', monospace;
+  margin: 0;
+}
+
+/* Footer Logo */
+.footer-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: transparent;
+  filter: brightness(1.1);
+}
+
+.footer-about h3 {
+  color: #00a2b4;
+  margin: 0;
+  font-size: 1.3rem;
 }
 
 /* Mobile Menu Toggle */
@@ -97,22 +154,6 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 18px 24px;
-}
-
-.logo {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #00a2b4;
-  letter-spacing: -0.5px;
-  text-shadow: 0 0 10px rgba(0, 162, 180, 0.3);
-  font-family: 'Courier New', monospace;
-}
-
-.logo::before {
-  content: '</>';
-  font-size: 0.8rem;
-  color: #1a4a6f;
-  margin-right: 8px;
 }
 
 .links {
@@ -246,6 +287,7 @@ body {
   margin-bottom: 20px;
   position: relative;
   background: linear-gradient(135deg, #00a2b4, #fff, #00a2b4);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -538,69 +580,4 @@ body {
 }
 
 .feature h4 {
-  color: #e0e0e0;
-  margin-bottom: 5px;
-}
-
-.feature p {
-  color: #808080;
-  font-size: 0.9rem;
-}
-
-.why-image {
-  position: relative;
-}
-
-.image-wrapper {
-  background: linear-gradient(135deg, #1a2a3a, #0f1a2a);
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 162, 180, 0.3);
-}
-
-.image-wrapper img {
-  width: 100%;
-  height: auto;
-  display: block;
-  opacity: 0.8;
-}
-
-.floating-card {
-  position: absolute;
-  background: rgba(20, 25, 40, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 12px 20px;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 162, 180, 0.3);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  animation: float 3s infinite ease-in-out;
-}
-
-.floating-card i {
-  color: #00a2b4;
-  font-size: 1.2rem;
-}
-
-.card-1 {
-  top: -20px;
-  right: -20px;
-  animation-delay: 0s;
-}
-
-.card-2 {
-  bottom: 40px;
-  left: -30px;
-  animation-delay: 1s;
-}
-
-.card-3 {
-  bottom: -20px;
-  right: 20px;
-  animation-delay: 2s;
-}
-
-/* Testimonials */
-.testimonials {
-  padding
+ 
