@@ -4,143 +4,61 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services | Ztrust Tech</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Montserrat;}
-
-body{
-  background:#0a0f1c;
-  color:#fff;
-}
-
-/* NAVBAR */
-.navbar{
-  position:fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:1rem 3rem;
-  background:rgba(10,15,28,0.9);
-  backdrop-filter:blur(10px);
-  z-index:1000;
-}
-
-.logo span{
-  color:#00d4ff;
-  font-weight:700;
-}
-
-.nav-links{
-  list-style:none;
-  display:flex;
-  gap:2rem;
-}
-
-.nav-links a{
-  text-decoration:none;
-  color:#ccc;
-  transition:0.3s;
-}
-
-.nav-links a:hover,
-.nav-links .active{
-  color:#00d4ff;
-}
-
-/* CONTENT */
-.section{
-  padding:7rem 2rem 4rem;
-  max-width:1000px;
-  margin:auto;
-}
-
-h1{
-  color:#00d4ff;
-  margin-bottom:2rem;
-  font-size:2.5rem;
-}
-
-/* SERVICE BOX */
-.service{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  padding:1.8rem;
-  border-radius:15px;
-  margin-bottom:1.5rem;
-  transition:0.3s;
-}
-
-.service:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 25px rgba(0,212,255,0.2);
-}
-
-.service h2{
-  color:#00d4ff;
-  margin-bottom:0.5rem;
-}
-
-.service p{
-  color:#ccc;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:2rem;
-  background:#050810;
-  color:#777;
-  margin-top:3rem;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
-  <div class="logo">
-    <span>Ztrust Tech</span>
-  </div>
-
+  <div class="logo">Ztrust Tech</div>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a class="active" href="services.html">Services</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
-<!-- CONTENT -->
 <section class="section">
-<h1>Our Services</h1>
+<h2>Our IT Services</h2>
 
-<div class="service">
-<h2>Cybersecurity Assessments</h2>
-<p>We identify vulnerabilities across systems, networks, and applications to strengthen security posture.</p>
+<div class="grid">
+
+<div class="card">
+<h3>Network Engineering</h3>
+<p>Design, implementation, and management of secure enterprise networks.</p>
 </div>
 
-<div class="service">
-<h2>Risk & Compliance Advisory</h2>
-<p>Alignment with ISO, NIST, and global cybersecurity standards for compliance readiness.</p>
+<div class="card">
+<h3>Cybersecurity Solutions</h3>
+<p>Threat protection, SIEM integration, and security monitoring systems.</p>
 </div>
 
-<div class="service">
-<h2>Incident Readiness & Response</h2>
-<p>Preparation and structured response planning to minimize cyber incident impact.</p>
+<div class="card">
+<h3>System Development</h3>
+<p>Enterprise applications, internal systems, and automation tools.</p>
 </div>
 
-<div class="service">
-<h2>Security Awareness Training</h2>
-<p>Human-focused cybersecurity training to reduce organizational risk.</p>
+<div class="card">
+<h3>API Integration</h3>
+<p>Connecting systems, banks, vendors, and third-party platforms.</p>
 </div>
 
+<div class="card">
+<h3>IT Consulting</h3>
+<p>Technology planning, architecture design, and digital transformation.</p>
+</div>
+
+<div class="card">
+<h3>Vendor & Product Delivery</h3>
+<p>Managing IT vendors and delivering end-to-end technology solutions.</p>
+</div>
+
+</div>
 </section>
 
 <footer>
-  © 2026 Ztrust Tech | Cybersecurity Advisory
+  © 2026 Ztrust Tech
 </footer>
 
 </body>
