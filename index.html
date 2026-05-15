@@ -2,296 +2,765 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>ZTrust Tech | Enterprise IT Solutions</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #05070a;
+      color: #eef2ff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* ----- PREMIUM BACKGROUND: MOVING WAVES + PARTICLES (like PT Security dynamic feel) ----- */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      display: block;
+      background: radial-gradient(circle at 20% 30%, #0a0f1c, #030507);
+    }
+
+    .gradient-orb {
+      position: fixed;
+      width: 70vw;
+      height: 70vw;
+      background: radial-gradient(circle, rgba(0,162,180,0.2) 0%, rgba(2,15,27,0) 70%);
+      border-radius: 50%;
+      top: -20%;
+      right: -20%;
+      z-index: -1;
+      filter: blur(80px);
+      pointer-events: none;
+      animation: slowDrift 28s infinite alternate;
+    }
+
+    .gradient-orb-2 {
+      left: -20%;
+      bottom: -20%;
+      top: auto;
+      right: auto;
+      width: 80vw;
+      height: 80vw;
+      background: radial-gradient(circle, rgba(50,100,200,0.15) 0%, rgba(0,0,0,0) 70%);
+      filter: blur(100px);
+      animation: slowDrift 35s infinite alternate-reverse;
+    }
+
+    @keyframes slowDrift {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(8%, 8%) scale(1.2); }
+    }
+
+    /* preloader */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #05070a;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease, visibility 0.8s;
+    }
+    .preloader.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader {
+      text-align: center;
+    }
+    .loader-ring {
+      width: 70px;
+      height: 70px;
+      border: 3px solid rgba(0,162,180,0.2);
+      border-top: 3px solid #00a2b4;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loader-logo {
+      width: 60px;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+    .loader-text {
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #00a2b4;
+    }
+
+    /* navbar */
+    .nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 7, 12, 0.75);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,162,180,0.2);
+      transition: all 0.3s;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-logo {
+      height: 42px;
+      border-radius: 10px;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, #00a2b4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .links {
+      display: flex;
+      gap: 2.2rem;
+    }
+    .links a {
+      color: #eef2ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .links a:hover, .links a.active {
+      color: #00a2b4;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    @media (max-width: 900px) {
+      .links {
+        position: fixed;
+        top: 75px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 75px);
+        background: rgba(8, 12, 22, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: 0.3s;
+        border-right: 1px solid #00a2b4;
+      }
+      .links.active {
+        left: 0;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* hero section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 1rem 4rem;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 5;
+    }
+    .hero-badge {
+      background: rgba(0,162,180,0.15);
+      backdrop-filter: blur(4px);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(0,162,180,0.4);
+      margin-bottom: 1.8rem;
+    }
+    .glitch-text {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      position: relative;
+      color: #fff;
+    }
+    .hero-subtitle {
+      font-size: 1.2rem;
+      margin: 1.5rem 0;
+      opacity: 0.8;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary {
+      background: #00a2b4;
+      color: #0a0f1c;
+      box-shadow: 0 8px 20px rgba(0,162,180,0.3);
+    }
+    .btn-primary:hover {
+      background: #00c2d4;
+      transform: translateY(-3px);
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #00a2b4;
+      color: #00a2b4;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+    .stat {
+      font-weight: 600;
+    }
+    .stat .counter {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #00a2b4;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%,100%{ transform: translateX(-50%) translateY(0); }
+      50%{ transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* sections */
+    section {
+      padding: 5rem 0;
+      position: relative;
+      z-index: 2;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-tag {
+      display: inline-block;
+      background: rgba(0,162,180,0.2);
+      padding: 0.2rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      color: #00a2b4;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: rgba(15, 25, 40, 0.5);
+      backdrop-filter: blur(8px);
+      border-radius: 32px;
+      padding: 2rem;
+      border: 1px solid rgba(0,162,180,0.2);
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #00a2b4;
+      background: rgba(20, 30, 50, 0.7);
+    }
+    .card-icon {
+      font-size: 2.5rem;
+      color: #00a2b4;
+      margin-bottom: 1.2rem;
+    }
+    .card-link {
+      margin-top: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #00a2b4;
+      text-decoration: none;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .impact-card {
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+      border-radius: 32px;
+      text-align: center;
+      padding: 2rem;
+      border: 1px solid rgba(0,162,180,0.2);
+    }
+    .impact-counter {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #00a2b4;
+    }
+
+    .why-choose-us {
+      background: linear-gradient(145deg, #0a0f1a, #03060b);
+      border-radius: 2rem;
+      margin: 2rem 0;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
+    .features-list {
+      margin: 2rem 0;
+    }
+    .feature {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .feature i {
+      font-size: 1.5rem;
+      color: #00a2b4;
+    }
+    .why-image {
+      position: relative;
+    }
+    .floating-card {
+      position: absolute;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(12px);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      border: 1px solid #00a2b4;
+      animation: float 4s infinite;
+    }
+    .card-1 { top: 10%; left: -5%; }
+    .card-2 { bottom: 20%; right: -5%; animation-delay: 1s; }
+    .card-3 { top: 40%; right: 0%; animation-delay: 2s; }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+    .image-wrapper img {
+      width: 100%;
+      border-radius: 32px;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.4);
+    }
+
+    .testimonial-slider {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: rgba(10, 20, 30, 0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 28px;
+      padding: 2rem;
+    }
+    .quote-icon {
+      font-size: 2rem;
+      color: #00a2b4;
+      opacity: 0.5;
+    }
+    .client-info {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      align-items: center;
+    }
+    .client-avatar {
+      width: 48px;
+      height: 48px;
+      background: #00a2b4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .tech-item {
+      background: rgba(255,255,255,0.03);
+      border-radius: 80px;
+      padding: 0.8rem 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .tech-item i {
+      font-size: 2rem;
+    }
+
+    .cta-banner {
+      background: linear-gradient(120deg, #0b1a2a, #05121c);
+      border-radius: 2rem;
+      margin: 2rem auto;
+      text-align: center;
+    }
+    .cta-content {
+      padding: 3rem 2rem;
+    }
+
+    footer {
+      background: #020408;
+      padding: 3rem 0 1.5rem;
+      border-top: 1px solid rgba(0,162,180,0.2);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .footer-logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+    .footer-logo {
+      width: 40px;
+      border-radius: 8px;
+    }
+    .social-links a {
+      color: #ccc;
+      margin-right: 1rem;
+      font-size: 1.3rem;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #00a2b4;
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      color: #0a0f1c;
+      cursor: pointer;
+      opacity: 0;
+      transition: 0.2s;
+      z-index: 99;
+    }
+    .back-to-top.show {
+      opacity: 1;
+    }
+    hr {
+      border-color: rgba(0,162,180,0.2);
+      margin: 2rem 0;
+    }
+  </style>
 </head>
 <body>
 
-<!-- PRELOADER -->
+<canvas id="bg-canvas"></canvas>
+<div class="gradient-orb"></div>
+<div class="gradient-orb gradient-orb-2"></div>
+
 <div class="preloader">
   <div class="loader">
     <div class="loader-ring"></div>
-    <img src="Logo.jfif" alt="ZTrust Tech" class="loader-logo">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2300a2b4' rx='20'/%3E%3Ctext x='50' y='68' font-size='48' text-anchor='middle' fill='white' font-weight='bold'%3EZ%3C/text%3E%3C/svg%3E" alt="ZTrust Tech" class="loader-logo">
     <div class="loader-text">ZTrust Tech</div>
     <div class="loader-bar"></div>
   </div>
 </div>
 
-<!-- NAVBAR -->
 <nav class="nav">
   <div class="container nav-inner">
     <div class="logo-wrapper">
-      <img src="Logo.jfif" alt="ZTrust Tech Logo" class="nav-logo">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2300a2b4' rx='20'/%3E%3Ctext x='50' y='68' font-size='48' text-anchor='middle' fill='white' font-weight='bold'%3EZ%3C/text%3E%3C/svg%3E" alt="Logo" class="nav-logo">
       <h2 class="logo">ZTrust Tech</h2>
     </div>
     <div class="links">
-      <a href="index.html" class="active">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About</a>
-      <a href="resources.html">Resources</a>
-      <a href="contact.html">Contact</a>
+      <a href="#" class="active">Home</a>
+      <a href="#">Services</a>
+      <a href="#">About</a>
+      <a href="#">Resources</a>
+      <a href="#">Contact</a>
     </div>
-    <div class="menu-toggle" id="mobile-menu">
-      <i class="fas fa-bars"></i>
-    </div>
+    <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
   </div>
 </nav>
 
-<!-- HERO SECTION -->
 <header class="hero">
-  <canvas id="matrixCanvas"></canvas>
-  <div class="hero-overlay"></div>
   <div class="container hero-content">
-    <div class="hero-badge">
-      <i class="fas fa-shield-alt"></i> Trusted by 20+ Enterprise Clients
-    </div>
-    <h1 class="glitch-text" data-text="Enterprise IT Solutions">Enterprise IT Solutions</h1>
+    <div class="hero-badge"><i class="fas fa-shield-alt"></i> Trusted by 20+ Enterprise Clients</div>
+    <h1 class="glitch-text">Enterprise IT Solutions</h1>
     <p class="hero-subtitle">Networking • Development • Security • Integration • IT Operations</p>
     <div class="hero-buttons">
-      <a href="contact.html" class="btn btn-primary">
-        <i class="fas fa-rocket"></i> Get Started
-      </a>
-      <a href="services.html" class="btn btn-secondary">
-        <i class="fas fa-play"></i> Our Services
-      </a>
+      <a href="#" class="btn btn-primary"><i class="fas fa-rocket"></i> Get Started</a>
+      <a href="#" class="btn btn-secondary"><i class="fas fa-play"></i> Our Services</a>
     </div>
     <div class="hero-stats">
-      <div class="stat">
-        <span class="counter" data-target="150">0</span>+
-        <p>Projects Delivered</p>
-      </div>
-      <div class="stat">
-        <span class="counter" data-target="45">0</span>+
-        <p>Happy Clients</p>
-      </div>
-      <div class="stat">
-        <span class="counter" data-target="98">0</span>%
-        <p>Success Rate</p>
-      </div>
+      <div class="stat"><span class="counter" data-target="150">0</span>+<p>Projects Delivered</p></div>
+      <div class="stat"><span class="counter" data-target="45">0</span>+<p>Happy Clients</p></div>
+      <div class="stat"><span class="counter" data-target="98">0</span>%<p>Success Rate</p></div>
     </div>
   </div>
-  <div class="hero-scroll">
-    <a href="#services">
-      <i class="fas fa-chevron-down"></i>
-    </a>
-  </div>
+  <div class="hero-scroll"><a href="#services"><i class="fas fa-chevron-down"></i></a></div>
 </header>
 
-<!-- SERVICES SECTION -->
 <section id="services" class="services-preview">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">What We Do</span>
-      <h2 class="section-title">Core Services</h2>
-      <p class="section-subtitle">Comprehensive IT solutions tailored to your business needs</p>
-    </div>
+    <div class="section-header"><span class="section-tag">What We Do</span><h2 class="section-title">Core Services</h2><p class="section-subtitle">Comprehensive IT solutions tailored to your business needs</p></div>
     <div class="cards">
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-shield-haltered"></i></div>
-        <h3>Security Advisory</h3>
-        <p>Enterprise security architecture, gap assessments, and strategy implementation.</p>
-        <a href="services.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-        <h3>Risk & Compliance</h3>
-        <p>ISO 27001, NIST, GDPR, and regulatory alignment for your organization.</p>
-        <a href="services.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-users"></i></div>
-        <h3>Awareness & Training</h3>
-        <p>Human-centric defense programs to reduce cyber risk across your workforce.</p>
-        <a href="services.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
+      <div class="card"><div class="card-icon"><i class="fas fa-shield-haltered"></i></div><h3>Security Advisory</h3><p>Enterprise security architecture, gap assessments, and strategy implementation.</p><a href="#" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-chart-line"></i></div><h3>Risk & Compliance</h3><p>ISO 27001, NIST, GDPR, and regulatory alignment for your organization.</p><a href="#" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-users"></i></div><h3>Awareness & Training</h3><p>Human-centric defense programs to reduce cyber risk across your workforce.</p><a href="#" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
     </div>
   </div>
 </section>
 
-<!-- IMPACT SECTION -->
 <section class="impact">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Our Impact</span>
-      <h2 class="section-title">Making a Difference</h2>
-      <p class="section-subtitle">Numbers that speak for themselves</p>
-    </div>
+  <div class="container"><div class="section-header"><span class="section-tag">Our Impact</span><h2 class="section-title">Making a Difference</h2><p class="section-subtitle">Numbers that speak for themselves</p></div>
     <div class="impact-grid">
-      <div class="impact-card">
-        <div class="impact-icon"><i class="fas fa-project-diagram"></i></div>
-        <h1 class="impact-counter" data-target="150">0</h1>
-        <p>Projects Completed</p>
-      </div>
-      <div class="impact-card">
-        <div class="impact-icon"><i class="fas fa-building"></i></div>
-        <h1 class="impact-counter" data-target="45">0</h1>
-        <p>Happy Clients</p>
-      </div>
-      <div class="impact-card">
-        <div class="impact-icon"><i class="fas fa-trophy"></i></div>
-        <h1 class="impact-counter" data-target="98">0</h1>
-        <p>Success Rate (%)</p>
-      </div>
-      <div class="impact-card">
-        <div class="impact-icon"><i class="fas fa-code-branch"></i></div>
-        <h1 class="impact-counter" data-target="500">0</h1>
-        <p>Security Tests</p>
-      </div>
+      <div class="impact-card"><div class="impact-icon"><i class="fas fa-project-diagram"></i></div><h1 class="impact-counter" data-target="150">0</h1><p>Projects Completed</p></div>
+      <div class="impact-card"><div class="impact-icon"><i class="fas fa-building"></i></div><h1 class="impact-counter" data-target="45">0</h1><p>Happy Clients</p></div>
+      <div class="impact-card"><div class="impact-icon"><i class="fas fa-trophy"></i></div><h1 class="impact-counter" data-target="98">0</h1><p>Success Rate (%)</p></div>
+      <div class="impact-card"><div class="impact-icon"><i class="fas fa-code-branch"></i></div><h1 class="impact-counter" data-target="500">0</h1><p>Security Tests</p></div>
     </div>
   </div>
 </section>
 
-<!-- WHY CHOOSE US -->
 <section class="why-choose-us">
-  <div class="container">
-    <div class="why-grid">
-      <div class="why-content">
-        <span class="section-tag">Why ZTrust Tech</span>
-        <h2>We're Different. <span class="highlight">We're Better.</span></h2>
-        <p>With years of experience and a team of certified experts, we deliver solutions that exceed expectations.</p>
-        <div class="features-list">
-          <div class="feature"><i class="fas fa-check-circle"></i><div><h4>Independent Expertise</h4><p>Unbiased recommendations tailored to your needs</p></div></div>
-          <div class="feature"><i class="fas fa-microchip"></i><div><h4>Deep Technical Knowledge</h4><p>Certified experts in cutting-edge technologies</p></div></div>
-          <div class="feature"><i class="fas fa-chart-simple"></i><div><h4>Proven Methodology</h4><p>Structured approach with measurable results</p></div></div>
-        </div>
-        <a href="about.html" class="btn btn-primary">Learn More About Us <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="why-image">
-        <div class="floating-card card-1"><i class="fas fa-shield-alt"></i><span>24/7 Protection</span></div>
-        <div class="floating-card card-2"><i class="fas fa-cloud"></i><span>Cloud Ready</span></div>
-        <div class="floating-card card-3"><i class="fas fa-lock"></i><span>ISO Certified</span></div>
-        <div class="image-wrapper"><img src="https://placehold.co/500x400/1a2a3a/00a2b4?text=IT+Security" alt="IT Security"></div>
-      </div>
-    </div>
-  </div>
+  <div class="container"><div class="why-grid"><div class="why-content"><span class="section-tag">Why ZTrust Tech</span><h2>We're Different. <span style="color:#00a2b4;">We're Better.</span></h2><p>With years of experience and a team of certified experts, we deliver solutions that exceed expectations.</p><div class="features-list"><div class="feature"><i class="fas fa-check-circle"></i><div><h4>Independent Expertise</h4><p>Unbiased recommendations tailored to your needs</p></div></div><div class="feature"><i class="fas fa-microchip"></i><div><h4>Deep Technical Knowledge</h4><p>Certified experts in cutting-edge technologies</p></div></div><div class="feature"><i class="fas fa-chart-simple"></i><div><h4>Proven Methodology</h4><p>Structured approach with measurable results</p></div></div></div><a href="#" class="btn btn-primary">Learn More About Us <i class="fas fa-arrow-right"></i></a></div><div class="why-image"><div class="floating-card card-1"><i class="fas fa-shield-alt"></i><span>24/7 Protection</span></div><div class="floating-card card-2"><i class="fas fa-cloud"></i><span>Cloud Ready</span></div><div class="floating-card card-3"><i class="fas fa-lock"></i><span>ISO Certified</span></div><div class="image-wrapper"><img src="https://placehold.co/500x400/1a2a3a/00a2b4?text=IT+Security+Operations" alt="IT Security"></div></div></div></div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="testimonials">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Testimonials</span>
-      <h2 class="section-title">What Our Clients Say</h2>
-      <p class="section-subtitle">Trusted by leading enterprises worldwide</p>
-    </div>
-    <div class="testimonial-slider">
-      <div class="testimonial-card"><div class="quote-icon"><i class="fas fa-quote-left"></i></div><p>"ZTrust Tech transformed our security infrastructure. Their team is knowledgeable and truly cares about our success."</p><div class="client-info"><div class="client-avatar">JD</div><div><h4>John Doe</h4><span>CTO, TechCorp</span><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div></div>
-      <div class="testimonial-card"><div class="quote-icon"><i class="fas fa-quote-left"></i></div><p>"The risk assessment and compliance guidance helped us achieve ISO 27001 certification. Highly recommended!"</p><div class="client-info"><div class="client-avatar">JS</div><div><h4>Jane Smith</h4><span>CISO, GlobalBank</span><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div></div>
-      <div class="testimonial-card"><div class="quote-icon"><i class="fas fa-quote-left"></i></div><p>"Their 24/7 monitoring caught a potential breach before it became an issue. Worth every penny!"</p><div class="client-info"><div class="client-avatar">MR</div><div><h4>Mike Ross</h4><span>IT Director, HealthPlus</span><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div></div>
-    </div>
-  </div>
+  <div class="container"><div class="section-header"><span class="section-tag">Testimonials</span><h2 class="section-title">What Our Clients Say</h2><p class="section-subtitle">Trusted by leading enterprises worldwide</p></div><div class="testimonial-slider"><div class="testimonial-card"><div class="quote-icon"><i class="fas fa-quote-left"></i></div><p>"ZTrust Tech transformed our security infrastructure. Their team is knowledgeable and truly cares about our success."</p><div class="client-info"><div class="client-avatar">JD</div><div><h4>John Doe</h4><span>CTO, TechCorp</span><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div></div><div class="testimonial-card"><div class="quote-icon"><i class="fas fa-quote-left"></i></div><p>"The risk assessment and compliance guidance helped us achieve ISO 27001 certification. Highly recommended!"</p><div class="client-info"><div class="client-avatar">JS</div><div><h4>Jane Smith</h4><span>CISO, GlobalBank</span><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div></div><div class="testimonial-card"><div class="quote-icon"><i class="fas fa-quote-left"></i></div><p>"Their 24/7 monitoring caught a potential breach before it became an issue. Worth every penny!"</p><div class="client-info"><div class="client-avatar">MR</div><div><h4>Mike Ross</h4><span>IT Director, HealthPlus</span><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div></div></div></div>
 </section>
 
-<!-- TECH STACK -->
 <section class="tech-stack">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Technologies</span>
-      <h2 class="section-title">We Work With</h2>
-      <p class="section-subtitle">Industry-leading tools and platforms</p>
-    </div>
-    <div class="tech-grid">
-      <div class="tech-item"><i class="fab fa-aws"></i><span>AWS</span></div>
-      <div class="tech-item"><i class="fab fa-microsoft"></i><span>Azure</span></div>
-      <div class="tech-item"><i class="fab fa-google"></i><span>Google Cloud</span></div>
-      <div class="tech-item"><i class="fab fa-docker"></i><span>Docker</span></div>
-      <div class="tech-item"><i class="fab fa-kubernetes"></i><span>K8s</span></div>
-      <div class="tech-item"><i class="fab fa-python"></i><span>Python</span></div>
-      <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
-      <div class="tech-item"><i class="fas fa-database"></i><span>SQL</span></div>
-    </div>
-  </div>
+  <div class="container"><div class="section-header"><span class="section-tag">Technologies</span><h2 class="section-title">We Work With</h2><p class="section-subtitle">Industry-leading tools and platforms</p></div><div class="tech-grid"><div class="tech-item"><i class="fab fa-aws"></i><span>AWS</span></div><div class="tech-item"><i class="fab fa-microsoft"></i><span>Azure</span></div><div class="tech-item"><i class="fab fa-google"></i><span>Google Cloud</span></div><div class="tech-item"><i class="fab fa-docker"></i><span>Docker</span></div><div class="tech-item"><i class="fab fa-kubernetes"></i><span>K8s</span></div><div class="tech-item"><i class="fab fa-python"></i><span>Python</span></div><div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div><div class="tech-item"><i class="fas fa-database"></i><span>SQL</span></div></div></div>
 </section>
 
-<!-- CTA BANNER -->
-<section class="cta-banner">
-  <div class="container">
-    <div class="cta-content">
-      <h2>Ready to Secure Your Business?</h2>
-      <p>Join 45+ enterprises that trust ZTrust Tech for their IT security needs in Ethiopia and beyond.</p>
-      <div class="cta-buttons">
-        <a href="contact.html" class="btn btn-primary btn-large"><i class="fas fa-envelope"></i> Contact Us Today</a>
-        <a href="services.html" class="btn btn-secondary btn-large"><i class="fas fa-file-alt"></i> View Services</a>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="cta-banner"><div class="container"><div class="cta-content"><h2>Ready to Secure Your Business?</h2><p>Join 45+ enterprises that trust ZTrust Tech for their IT security needs in Ethiopia and beyond.</p><div class="cta-buttons"><a href="#" class="btn btn-primary btn-large"><i class="fas fa-envelope"></i> Contact Us Today</a><a href="#" class="btn btn-secondary btn-large"><i class="fas fa-file-alt"></i> View Services</a></div></div></div></section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-about"><div class="footer-logo-wrapper"><img src="Logo.jfif" alt="Logo" class="footer-logo"><h3>ZTrust Tech</h3></div><p>Enterprise IT solutions for modern businesses. Secure, reliable, and innovative.</p><div class="social-links"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-telegram"></i></a></div></div>
-      <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></div>
-      <div><h4>Services</h4><a href="services.html">Cybersecurity</a><a href="services.html">Cloud Solutions</a><a href="services.html">Compliance</a><a href="services.html">IT Training</a></div>
-      <div><h4>Contact Info</h4><p><i class="fas fa-map-marker-alt"></i> Bole, Addis Ababa, Ethiopia</p><p><i class="fas fa-phone"></i> +251 911 563 698</p><p><i class="fas fa-envelope"></i> info@ztrusttech.com</p></div>
-    </div>
-    <hr>
-    <p class="copyright">© 2026 ZTrust Tech. All rights reserved. | Based in Addis Ababa, Ethiopia</p>
-  </div>
-</footer>
+<footer><div class="container"><div class="footer-grid"><div class="footer-about"><div class="footer-logo-wrapper"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2300a2b4' rx='20'/%3E%3Ctext x='50' y='68' font-size='48' text-anchor='middle' fill='white' font-weight='bold'%3EZ%3C/text%3E%3C/svg%3E" alt="Logo" class="footer-logo"><h3>ZTrust Tech</h3></div><p>Enterprise IT solutions for modern businesses. Secure, reliable, and innovative.</p><div class="social-links"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-telegram"></i></a></div></div><div><h4>Quick Links</h4><a href="#">Home</a><a href="#">Services</a><a href="#">About</a><a href="#">Resources</a><a href="#">Contact</a></div><div><h4>Services</h4><a href="#">Cybersecurity</a><a href="#">Cloud Solutions</a><a href="#">Compliance</a><a href="#">IT Training</a></div><div><h4>Contact Info</h4><p><i class="fas fa-map-marker-alt"></i> Bole, Addis Ababa, Ethiopia</p><p><i class="fas fa-phone"></i> +251 911 563 698</p><p><i class="fas fa-envelope"></i> info@ztrusttech.com</p></div></div><hr><p class="copyright">© 2026 ZTrust Tech. All rights reserved. | Based in Addis Ababa, Ethiopia</p></div></footer>
 
 <button id="back-to-top" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
 <script>
-// Preloader
-window.addEventListener('load', function() { setTimeout(() => { document.querySelector('.preloader').classList.add('fade-out'); }, 1000); });
+  (function(){
+    // --- DYNAMIC MOVING BACKGROUND: WAVES + PARTICLES similar to PT Security dynamic motion ---
+    const canvas = document.getElementById('bg-canvas');
+    let ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+    let waveOffset = 0;
 
-// Mobile Menu
-const menuToggle = document.getElementById('mobile-menu');
-const navLinks = document.querySelector('.links');
-if(menuToggle){ menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); menuToggle.classList.toggle('active'); }); }
-
-// Counter Animation
-const counters = document.querySelectorAll('.counter, .impact-counter');
-const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ const counter = entry.target; const target = parseInt(counter.getAttribute('data-target')); let count = 0; const increment = target / 200; const updateCount = () => { if(count < target){ count += increment; counter.innerText = Math.ceil(count); setTimeout(updateCount, 10); } else { counter.innerText = target; } }; updateCount(); observer.unobserve(counter); } }); }, { threshold: 0.5 });
-counters.forEach(counter => observer.observe(counter));
-
-// Back to Top
-const backToTop = document.getElementById('back-to-top');
-window.addEventListener('scroll', () => { if(window.scrollY > 300) backToTop.classList.add('show'); else backToTop.classList.remove('show'); });
-backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-// Navbar Scroll Effect
-window.addEventListener('scroll', () => { const nav = document.querySelector('.nav'); if(window.scrollY > 50){ nav.style.background = 'rgba(10, 10, 15, 0.98)'; nav.style.backdropFilter = 'blur(15px)'; } else { nav.style.background = 'rgba(10, 10, 15, 0.95)'; nav.style.backdropFilter = 'blur(10px)'; } });
-
-// Matrix Canvas Effect
-const canvas = document.getElementById('matrixCanvas');
-if(canvas){
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
-  const charArray = chars.split('');
-  const fontSize = 14;
-  const columns = canvas.width / fontSize;
-  const drops = [];
-  for(let i = 0; i < columns; i++) drops[i] = 1;
-  function drawMatrix(){
-    ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#00a2b4';
-    ctx.font = fontSize + 'px monospace';
-    for(let i = 0; i < drops.length; i++){
-      const text = charArray[Math.floor(Math.random() * charArray.length)];
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-      if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-      drops[i]++;
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
     }
-  }
-  setInterval(drawMatrix, 50);
-  window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
-}
 
-// Animate on Scroll
-const animateElements = document.querySelectorAll('.card, .impact-card, .testimonial-card, .tech-item');
-animateElements.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(30px)'; el.style.transition = 'all 0.6s ease'; });
-const animateOnScroll = () => { animateElements.forEach(el => { const rect = el.getBoundingClientRect(); if(rect.top < window.innerHeight - 100){ el.style.opacity = '1'; el.style.transform = 'translateY(0)'; } }); };
-window.addEventListener('scroll', animateOnScroll);
-window.addEventListener('load', animateOnScroll);
+    function initParticles() {
+      const particleCount = 180;
+      for(let i=0; i<particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 2 + 1,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: (Math.random() - 0.5) * 0.2,
+          alpha: Math.random() * 0.5 + 0.2,
+          color: `rgba(0, 162, 180, ${Math.random() * 0.5 + 0.2})`
+        });
+      }
+    }
+
+    function drawDynamicBackground() {
+      if(!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+      // dark base
+      let grad = ctx.createLinearGradient(0, 0, width, height);
+      grad.addColorStop(0, '#050b12');
+      grad.addColorStop(1, '#020408');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, height);
+      
+      // moving sine waves (like PT security subtle wave lines)
+      waveOffset += 0.008;
+      ctx.beginPath();
+      for(let i = 0; i < 6; i++) {
+        ctx.beginPath();
+        let amplitude = 18 + i * 4;
+        let frequency = 0.005 + i * 0.001;
+        let yOffset = height * (0.2 + i * 0.12);
+        for(let x = 0; x < width; x += 15) {
+          let y = yOffset + Math.sin(x * frequency + waveOffset + i) * amplitude;
+          if(x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = `rgba(0, 162, 180, ${0.1 + i * 0.03})`;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+      
+      // floating glow dots
+      for(let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if(p.x < 0) p.x = width;
+        if(p.x > width) p.x = 0;
+        if(p.y < 0) p.y = height;
+        if(p.y > height) p.y = 0;
+      }
+      
+      // additional floating light streaks
+      ctx.fillStyle = 'rgba(0,162,180,0.02)';
+      for(let i=0;i<40;i++) {
+        ctx.fillRect( (Date.now() * 0.002 + i * 50) % width, (Date.now() * 0.001 + i * 70) % height, 2, 60);
+      }
+      requestAnimationFrame(drawDynamicBackground);
+    }
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      particles = [];
+      initParticles();
+    });
+    resizeCanvas();
+    initParticles();
+    drawDynamicBackground();
+    
+    // preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => { document.querySelector('.preloader').classList.add('fade-out'); }, 800);
+    });
+    
+    // mobile menu
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.links');
+    if(menuToggle) menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    
+    // counters
+    const counters = document.querySelectorAll('.counter, .impact-counter');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'));
+          let count = 0;
+          const update = () => {
+            if(count < target) { count += Math.ceil(target / 70); if(count>target) count=target; el.innerText = count; requestAnimationFrame(update); } 
+            else { el.innerText = target; }
+          };
+          update();
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+    counters.forEach(c => observer.observe(c));
+    
+    // back to top
+    const backBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 300) backBtn.classList.add('show');
+      else backBtn.classList.remove('show');
+    });
+    backBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    
+    // navbar scroll style
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 50) nav.style.background = 'rgba(5,7,12,0.9)';
+      else nav.style.background = 'rgba(5,7,12,0.75)';
+    });
+    
+    // fade on scroll animation
+    const faders = document.querySelectorAll('.card, .impact-card, .testimonial-card, .tech-item');
+    const appearOptions = { threshold: 0.1 };
+    const appearOnScroll = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.style.opacity = '1', entry.target.style.transform = 'translateY(0)';
+      });
+    }, appearOptions);
+    faders.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(30px)'; el.style.transition = 'all 0.6s cubic-bezier(0.2,0.9,0.4,1.1)'; appearOnScroll.observe(el); });
+  })();
 </script>
 </body>
 </html>
