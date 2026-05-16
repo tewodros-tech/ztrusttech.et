@@ -1,492 +1,617 @@
-<?php
-// ZTrust Premium Cybersecurity Website
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZTrust | Cybersecurity</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
-}
-
-body{
-    background:#02040a;
-    overflow:hidden;
-    color:white;
-}
-
-/* =========================
-   HERO SECTION
-========================= */
-
-.hero{
-    position:relative;
-    width:100%;
-    height:100vh;
-    overflow:hidden;
-    background:#030712;
-}
-
-/* =========================
-   MOVING MESH BACKGROUND
-========================= */
-
-.mesh{
-    position:absolute;
-    width:140%;
-    height:140%;
-    top:-20%;
-    left:-20%;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(0,255,255,0.18), transparent 20%),
-        radial-gradient(circle at 80% 30%, rgba(0,119,255,0.20), transparent 25%),
-        radial-gradient(circle at 70% 80%, rgba(0,255,170,0.15), transparent 22%),
-        radial-gradient(circle at 30% 70%, rgba(0,70,255,0.18), transparent 24%),
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03), transparent 35%);
-    filter:blur(90px);
-    animation:meshMove 25s ease-in-out infinite alternate;
-    transform-origin:center;
-}
-
-@keyframes meshMove{
-
-    0%{
-        transform:
-        translate(0%,0%)
-        rotate(0deg)
-        scale(1);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ZTrust | Cybersecurity & Threat Protection</title>
+  <!-- Google Fonts & simple CSS reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    50%{
-        transform:
-        translate(-5%,-3%)
-        rotate(180deg)
-        scale(1.15);
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #010101;
+      color: #fff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
-    100%{
-        transform:
-        translate(5%,5%)
-        rotate(360deg)
-        scale(1);
+    /* custom scroll */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0c14;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00e0ff;
+      border-radius: 10px;
     }
 
-}
-
-/* =========================
-   CYBER FOG
-========================= */
-
-.fog{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:
-    linear-gradient(
-        180deg,
-        rgba(0,0,0,0.1),
-        rgba(0,0,0,0.4),
-        rgba(0,0,0,0.8)
-    );
-    z-index:2;
-}
-
-/* =========================
-   CYBER GRID
-========================= */
-
-.grid{
-    position:absolute;
-    width:200%;
-    height:200%;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size:70px 70px;
-
-    transform:
-        perspective(1000px)
-        rotateX(78deg)
-        translateY(-200px);
-
-    animation:gridMove 18s linear infinite;
-    opacity:0.2;
-}
-
-@keyframes gridMove{
-
-    0%{
-        transform:
-        perspective(1000px)
-        rotateX(78deg)
-        translateY(-200px);
+    /* global container */
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
 
-    100%{
-        transform:
-        perspective(1000px)
-        rotateX(78deg)
-        translateY(0px);
+    /* header / navigation */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 24px 0;
+      background: rgba(1, 1, 5, 0.75);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0, 224, 255, 0.18);
+      transition: 0.25s;
     }
 
-}
-
-/* =========================
-   FLOATING LIGHTS
-========================= */
-
-.light{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(120px);
-    mix-blend-mode:screen;
-}
-
-.light1{
-    width:500px;
-    height:500px;
-    background:rgba(0,255,255,0.22);
-    top:-100px;
-    left:-100px;
-    animation:float1 18s ease-in-out infinite alternate;
-}
-
-.light2{
-    width:700px;
-    height:700px;
-    background:rgba(0,90,255,0.18);
-    bottom:-200px;
-    right:-200px;
-    animation:float2 20s ease-in-out infinite alternate;
-}
-
-.light3{
-    width:400px;
-    height:400px;
-    background:rgba(0,255,170,0.15);
-    top:40%;
-    left:40%;
-    animation:float3 16s ease-in-out infinite alternate;
-}
-
-@keyframes float1{
-    from{
-        transform:translate(0,0);
-    }
-    to{
-        transform:translate(120px,80px);
-    }
-}
-
-@keyframes float2{
-    from{
-        transform:translate(0,0);
-    }
-    to{
-        transform:translate(-120px,-100px);
-    }
-}
-
-@keyframes float3{
-    from{
-        transform:translate(0,0);
-    }
-    to{
-        transform:translate(80px,-80px);
-    }
-}
-
-/* =========================
-   PARTICLES
-========================= */
-
-.particles span{
-    position:absolute;
-    width:2px;
-    height:2px;
-    background:white;
-    border-radius:50%;
-    opacity:0.6;
-    animation:particle linear infinite;
-}
-
-@keyframes particle{
-
-    0%{
-        transform:
-        translateY(100vh)
-        scale(0);
-        opacity:0;
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
 
-    10%{
-        opacity:1;
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #FFFFFF 20%, #00e0ff 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo span {
+      color: #00eaff;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
     }
 
-    100%{
-        transform:
-        translateY(-10vh)
-        scale(1);
-        opacity:0;
+    .nav-links {
+      display: flex;
+      gap: 42px;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #eef3ff;
+      font-weight: 500;
+      font-size: 15px;
+      transition: 0.2s;
+      letter-spacing: -0.2px;
+    }
+    .nav-links a:hover {
+      color: #00eaff;
+    }
+    .contact-btn {
+      background: rgba(0, 224, 255, 0.12);
+      padding: 8px 20px;
+      border-radius: 40px;
+      border: 1px solid rgba(0, 224, 255, 0.45);
+      transition: 0.25s;
+    }
+    .contact-btn:hover {
+      background: #00eaff20;
+      border-color: #00eaff;
     }
 
-}
-
-/* =========================
-   NAVBAR
-========================= */
-
-header{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:100;
-    padding:25px 8%;
-}
-
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo{
-    font-size:32px;
-    font-weight:800;
-    letter-spacing:1px;
-}
-
-.logo span{
-    color:#00eaff;
-}
-
-.nav-links{
-    display:flex;
-    gap:40px;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:white;
-    font-size:15px;
-    transition:0.3s;
-}
-
-.nav-links a:hover{
-    color:#00eaff;
-}
-
-/* =========================
-   HERO CONTENT
-========================= */
-
-.content{
-    position:relative;
-    z-index:20;
-    width:100%;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
-}
-
-.inner{
-    max-width:950px;
-}
-
-.inner h1{
-    font-size:88px;
-    line-height:1;
-    margin-bottom:30px;
-    font-weight:800;
-    letter-spacing:-3px;
-}
-
-.inner h1 span{
-    color:#00eaff;
-}
-
-.inner p{
-    max-width:700px;
-    margin:auto;
-    font-size:20px;
-    line-height:1.9;
-    color:#c7c7c7;
-}
-
-.btns{
-    margin-top:45px;
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    padding:16px 34px;
-    border-radius:50px;
-    text-decoration:none;
-    color:white;
-    transition:0.4s;
-    font-weight:600;
-}
-
-.primary{
-    background:linear-gradient(135deg,#00eaff,#0066ff);
-}
-
-.secondary{
-    border:1px solid rgba(255,255,255,0.15);
-    backdrop-filter:blur(10px);
-    background:rgba(255,255,255,0.05);
-}
-
-.btn:hover{
-    transform:translateY(-5px);
-    box-shadow:0 20px 50px rgba(0,255,255,0.25);
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:900px){
-
-    .inner h1{
-        font-size:55px;
+    /* hero section (like PT global) */
+    .hero {
+      padding: 140px 0 100px 0;
+      background: radial-gradient(ellipse at 70% 20%, #051425 0%, #000000 90%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: radial-gradient(#00e0ff15 1px, transparent 1px);
+      background-size: 42px 42px;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 4.7rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      background: linear-gradient(115deg, #FFFFFF 30%, #00eaff 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 24px;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 620px;
+      color: #b0c6e0;
+      line-height: 1.5;
+      margin-bottom: 40px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: #00eaff10;
+      backdrop-filter: blur(4px);
+      border: 1px solid #00eaff30;
+      padding: 6px 14px;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #aaf0ff;
+      margin-bottom: 20px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: linear-gradient(105deg, #00c3ff, #0066ff);
+      padding: 14px 34px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      color: white;
+      transition: 0.25s;
+      box-shadow: 0 8px 20px rgba(0, 195, 255, 0.2);
+      border: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 195, 255, 0.35);
+      background: linear-gradient(105deg, #00d4ff, #0070ff);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 14px 34px;
+      border-radius: 40px;
+      font-weight: 500;
+      text-decoration: none;
+      color: #f0f5ff;
+      transition: 0.25s;
+      backdrop-filter: blur(5px);
+    }
+    .btn-outline:hover {
+      border-color: #00eaff;
+      background: rgba(0, 224, 255, 0.08);
     }
 
-    .nav-links{
-        display:none;
+    /* section headers */
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      color: #8eabcf;
+      max-width: 680px;
+      margin-bottom: 48px;
+      font-size: 1.1rem;
     }
 
-}
-
-@media(max-width:600px){
-
-    .inner h1{
-        font-size:40px;
+    /* cards & grid (products / solutions) */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      margin-top: 20px;
+    }
+    .service-card {
+      background: rgba(12, 18, 34, 0.7);
+      backdrop-filter: blur(4px);
+      border-radius: 36px;
+      border: 1px solid rgba(0, 224, 255, 0.2);
+      padding: 32px 28px;
+      transition: all 0.3s ease;
+    }
+    .service-card:hover {
+      border-color: #00eaff70;
+      transform: translateY(-6px);
+      background: rgba(18, 28, 48, 0.8);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.6);
+    }
+    .card-icon {
+      font-size: 2.8rem;
+      color: #00eaff;
+      margin-bottom: 24px;
+    }
+    .service-card h3 {
+      font-size: 1.65rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .service-card p {
+      color: #b6c8e5;
+      line-height: 1.45;
+      margin-bottom: 24px;
+    }
+    .card-link {
+      color: #00eaff;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .inner p{
-        font-size:16px;
+    /* analytics / research section (like PT analytics cards) */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .research-item {
+      background: #0c111e;
+      border-radius: 28px;
+      padding: 24px;
+      border-left: 4px solid #00eaff;
+      transition: 0.2s;
+    }
+    .research-item .tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: #00eaff20;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      color: #aaf0ff;
+      margin-bottom: 18px;
+    }
+    .research-item h4 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .research-item p {
+      color: #b0c2dc;
+      margin-bottom: 20px;
+      line-height: 1.45;
     }
 
-}
+    /* news section */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .news-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .news-info h4 {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+    .news-date {
+      font-size: 0.85rem;
+      color: #6a85aa;
+    }
+    .news-link {
+      color: #00eaff;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-</style>
+    /* CTA block */
+    .cta-section {
+      background: linear-gradient(125deg, #02111f, #010101);
+      border-radius: 48px;
+      padding: 64px 48px;
+      margin: 60px 0 40px;
+      border: 1px solid #00eaff30;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .footer {
+      padding: 60px 0 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #8aa0c0;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    @media (max-width: 780px) {
+      .hero h1 { font-size: 2.8rem; }
+      .section-title { font-size: 2rem; }
+      .nav-links { gap: 20px; display: none; } 
+      /* mobile menu hidden for simplicity but we add responsive fallback */
+      .site-header .nav-links { display: none; }
+      .hero { padding: 120px 0 70px; }
+    }
+    @media (min-width: 781px) {
+      .nav-links { display: flex !important; }
+    }
+    .mobile-menu-icon {
+      display: none;
+      font-size: 26px;
+      color: white;
+      cursor: pointer;
+    }
+    @media (max-width: 780px) {
+      .mobile-menu-icon { display: block; }
+    }
+  </style>
 </head>
-
 <body>
 
-<section class="hero">
-
-    <!-- MOVING BACKGROUND -->
-    <div class="mesh"></div>
-
-    <!-- CYBER GRID -->
-    <div class="grid"></div>
-
-    <!-- GLOW LIGHTS -->
-    <div class="light light1"></div>
-    <div class="light light2"></div>
-    <div class="light light3"></div>
-
-    <!-- FOG -->
-    <div class="fog"></div>
-
-    <!-- PARTICLES -->
-    <div class="particles">
-
-        <?php
-
-        for($i=0;$i<120;$i++){
-
-            $left = rand(0,100);
-            $delay = rand(0,20);
-            $duration = rand(10,30);
-
-            echo "
-            <span style='
-                left:{$left}%;
-                animation-duration:{$duration}s;
-                animation-delay:-{$delay}s;
-            '></span>
-            ";
-
-        }
-
-        ?>
-
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo">Z<span>Trust</span></div>
+    <div class="mobile-menu-icon" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Research</a>
+      <a href="#">News</a>
+      <a href="#" class="contact-btn">Contact</a>
     </div>
+  </div>
+</header>
 
-    <!-- NAVBAR -->
-    <header>
+<main>
+  <!-- Hero section inspired by ptsecurity.com bold statement -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-badge"><i class="fas fa-shield-haltered"></i> Zero Trust · AI Defense</div>
+      <h1>Dare to be first<br> with cyber resilience</h1>
+      <p>Enterprise-grade cybersecurity, next-gen SIEM, SOC operations, cloud security, and advanced threat protection — ZTrust delivers real defense against modern attacks.</p>
+      <div class="btn-group">
+        <a href="#" class="btn-primary"><i class="fas fa-arrow-right"></i> Get started</a>
+        <a href="#" class="btn-outline"><i class="fas fa-chart-line"></i> Explore solutions</a>
+      </div>
+    </div>
+  </section>
 
-        <nav>
+  <!-- Products & solutions section (exactly matching the style of "Positive Technologies products and solutions") -->
+  <div class="container" style="margin-top: 60px;">
+    <div style="text-align: left;">
+      <span class="hero-badge" style="background:#0a1020;"><i class="fas fa-cube"></i> cyber ecosystem</span>
+      <h2 class="section-title">ZTrust products & solutions</h2>
+      <div class="section-sub">Our technologies help you achieve effective cybersecurity and provide real protection for your company against hacker attacks.</div>
+    </div>
+    <div class="cards-grid">
+      <div class="service-card">
+        <div class="card-icon"><i class="fas fa-eye"></i></div>
+        <h3>Thight Shield SIEM</h3>
+        <p>AI-driven correlation, behavioural analytics, real-time threat hunting, and automated incident response across hybrid environments.</p>
+        <a href="#" class="card-link">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+        <h3>Cloud Native Defense</h3>
+        <p>Zero-trust architecture for AWS, Azure, GCP. Workload protection, container security, and CNAPP with continuous compliance.</p>
+        <a href="#" class="card-link">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><i class="fas fa-microchip"></i></div>
+        <h3>OT/ICS Security</h3>
+        <p>Secure industrial networks, anomaly detection for SCADA, and protection for critical infrastructure with passive monitoring.</p>
+        <a href="#" class="card-link">Learn more →</a>
+      </div>
+    </div>
+  </div>
 
-            <div class="logo">
-                Z<span>Trust</span>
-            </div>
-
-            <div class="nav-links">
-                <a href='#'>Home</a>
-                <a href='#'>Services</a>
-                <a href='#'>Solutions</a>
-                <a href='#'>Contact</a>
-            </div>
-
-        </nav>
-
-    </header>
-
-    <!-- CONTENT -->
-    <div class="content">
-
-        <div class="inner">
-
-            <h1>
-                Future-Ready
-                <span>Cybersecurity</span>
-            </h1>
-
-            <p>
-                Enterprise-grade cybersecurity solutions,
-                SIEM integrations, SOC operations,
-                cloud security, Zero Trust architecture,
-                and advanced threat protection.
-            </p>
-
-            <div class="btns">
-
-                <a href="#" class="btn primary">
-                    Get Started
-                </a>
-
-                <a href="#" class="btn secondary">
-                    Explore Services
-                </a>
-
-            </div>
-
+  <!-- Analytics and research section (like PT "Analytics and research" + cards with dark web / AI topics) -->
+  <div class="container" style="margin-top: 100px;">
+    <div style="margin-bottom: 32px;">
+      <span class="hero-badge" style="background:#0a1020;"><i class="fas fa-chart-simple"></i> Research & reports</span>
+      <h2 class="section-title">Analytics and threat intelligence</h2>
+      <div class="section-sub">Explore in-depth analysis and expert insights on the latest cybersecurity trends, emerging threats, and actionable intelligence from ZTrust research.</div>
+    </div>
+    <div class="research-grid">
+      <div class="research-item">
+        <div class="tag"><i class="far fa-newspaper"></i> DARK WEB ANALYSIS</div>
+        <h4>Dark Web Forums: Trust Infrastructure Evolution</h4>
+        <p>How underground markets evolved into sophisticated economic platforms and the ongoing “arms race” with law enforcement. Latest 2025 findings.</p>
+        <a href="#" class="card-link">Read analytics →</a>
+      </div>
+      <div class="research-item">
+        <div class="tag"><i class="fas fa-chart-line"></i> FINANCIAL THREATS</div>
+        <h4>Cyberthreat Landscape: Financial Sector 2025</h4>
+        <p>Exploring most relevant attack methods, emerging technologies risks, and predictive analysis for banking & fintech.</p>
+        <a href="#" class="card-link">Read analytics →</a>
+      </div>
+      <div class="research-item">
+        <div class="tag"><i class="fas fa-robot"></i> AI & SECURITY</div>
+        <h4>AI-Powered Defense: Co-pilot & Automation</h4>
+        <p>Integration of AI into security tools, behavioral analysis, faster incident response, and detection of unknown threats.</p>
+        <a href="#" class="card-link">Read analytics →</a>
+      </div>
+    </div>
+    <!-- extra row: Positive Research Center style block -->
+    <div style="background: linear-gradient(135deg, #071126, #010101); border-radius: 36px; padding: 40px 32px; margin-top: 48px; border: 1px solid #00eaff20;">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+        <div>
+          <h3 style="font-size: 1.9rem; font-weight: 700;"><i class="fas fa-flask"></i> ZTrust Research Center</h3>
+          <p style="max-width: 550px; margin-top: 10px; color: #bbd4ff;">One of the most advanced cybersecurity research hubs — world-class experts securing cloud, enterprise, web apps, and critical infrastructure.</p>
         </div>
-
+        <div style="text-align: right;">
+          <div style="font-size: 2.2rem; font-weight: 800; color: #00eaff;">150+</div>
+          <div>security researchers & engineers</div>
+        </div>
+      </div>
     </div>
+  </div>
 
-</section>
+  <!-- News section (exactly matching layout "News / Positive Technologies expert helps fix vulnerability...") -->
+  <div class="container" style="margin-top: 90px;">
+    <div style="margin-bottom: 24px;">
+      <span class="hero-badge"><i class="fas fa-bell"></i> latest updates</span>
+      <h2 class="section-title">Cybersecurity news & events</h2>
+      <div class="section-sub">Stay current with data breaches, emerging threats, and new security technologies. Browse recent articles.</div>
+    </div>
+    <div class="news-list">
+      <div class="news-row">
+        <div class="news-info">
+          <h4>ZTrust expert helps fix critical RCE in PHPOffice library</h4>
+          <div class="news-date"><i class="far fa-calendar-alt"></i> May 12, 2026</div>
+        </div>
+        <a href="#" class="news-link">Learn more →</a>
+      </div>
+      <div class="news-row">
+        <div class="news-info">
+          <h4>ZTrust warns: phishing attacks increased by 34% over the past year</h4>
+          <div class="news-date"><i class="far fa-calendar-alt"></i> April 28, 2026</div>
+        </div>
+        <a href="#" class="news-link">Learn more →</a>
+      </div>
+      <div class="news-row">
+        <div class="news-info">
+          <h4>Apple thanks ZTrust for discovering a vulnerability in Shortcuts app ecosystem</h4>
+          <div class="news-date"><i class="far fa-calendar-alt"></i> April 10, 2026</div>
+        </div>
+        <a href="#" class="news-link">Learn more →</a>
+      </div>
+      <div class="news-row">
+        <div class="news-info">
+          <h4>Standoff Bug Bounty 2026: Critical flaws surge to 32% — new record</h4>
+          <div class="news-date"><i class="far fa-calendar-alt"></i> March 5, 2026</div>
+        </div>
+        <a href="#" class="news-link">Learn more →</a>
+      </div>
+    </div>
+  </div>
 
+  <!-- CTA - Thinking about the best way to protect your company? similar to ptsecurity -->
+  <div class="container">
+    <div class="cta-section">
+      <h2>Thinking about the best way to protect your company?</h2>
+      <p style="max-width: 580px; margin: 16px auto 0; color: #b3ceff;">During the consultation we'll propose a solution precisely tailored to your organization.</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn-primary" style="background: #00a6ff; box-shadow: none;"><i class="fas fa-headset"></i> General questions</a>
+        <a href="#" class="btn-outline" style="border-color:#00eaff60;"><i class="fas fa-handshake"></i> Partnership</a>
+        <a href="#" class="btn-outline"><i class="fas fa-flask"></i> Request a pilot</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="font-size: 26px;">Z<span>Trust</span></div>
+        <p style="margin-top: 16px; max-width: 260px;">Advanced threat protection, next-gen cybersecurity operations, and Zero Trust architecture.</p>
+      </div>
+      <div>
+        <h4 style="color:white; margin-bottom: 18px;">Solutions</h4>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="#" style="color:#9fb5db; text-decoration: none;">SIEM & SOAR</a>
+          <a href="#" style="color:#9fb5db; text-decoration: none;">Cloud Security</a>
+          <a href="#" style="color:#9fb5db; text-decoration: none;">Threat Intelligence</a>
+        </div>
+      </div>
+      <div>
+        <h4 style="color:white; margin-bottom: 18px;">Resources</h4>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="#" style="color:#9fb5db; text-decoration: none;">Research Hub</a>
+          <a href="#" style="color:#9fb5db; text-decoration: none;">Security Reports</a>
+          <a href="#" style="color:#9fb5db; text-decoration: none;">Blog</a>
+        </div>
+      </div>
+      <div>
+        <h4 style="color:white; margin-bottom: 18px;">Connect</h4>
+        <div style="display: flex; gap: 24px; font-size: 20px;">
+          <a href="#" style="color:#b0ceff;"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" style="color:#b0ceff;"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" style="color:#b0ceff;"><i class="fab fa-github"></i></a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.8rem;">© 2026 ZTrust — Cybersecurity redefined.</p>
+      </div>
+    </div>
+    <div style="margin-top: 48px; font-size: 0.75rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px;">
+      <span>We use analytics to improve experience. By using this site, you agree to our Cookie Policy.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- simple mobile menu toggle to mimic responsiveness but keep exact vibe -->
+<script>
+  const menuBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+  if(menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      if(navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.style.display = 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '80px';
+        navLinks.style.left = '0';
+        navLinks.style.width = '100%';
+        navLinks.style.backgroundColor = '#03070fe6';
+        navLinks.style.backdropFilter = 'blur(20px)';
+        navLinks.style.padding = '24px';
+        navLinks.style.gap = '28px';
+        navLinks.style.borderBottom = '1px solid #00eaff30';
+      }
+    });
+    window.addEventListener('resize', () => {
+      if(window.innerWidth > 780) {
+        navLinks.style.display = 'flex';
+        navLinks.style.flexDirection = 'row';
+        navLinks.style.position = 'relative';
+        navLinks.style.top = 'auto';
+        navLinks.style.backgroundColor = 'transparent';
+        navLinks.style.backdropFilter = 'none';
+        navLinks.style.padding = '0';
+        navLinks.style.width = 'auto';
+      } else if (navLinks.style.display !== 'flex') {
+        if(window.innerWidth <= 780) navLinks.style.display = 'none';
+      }
+    });
+  }
+  // add subtle floating effect
+  document.querySelectorAll('.service-card, .research-item').forEach(card => {
+    card.addEventListener('mouseenter', (e) => {
+      // just a smooth hover effect is there via CSS
+    });
+  });
+</script>
 </body>
 </html>
