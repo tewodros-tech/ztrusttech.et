@@ -1,628 +1,757 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>ZTrust Tech | Enterprise IT & Security Solutions</title>
-  <!-- Google Fonts + Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ZTrust Tech | AI, Robotics & Cybersecurity Solutions</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #ffffff;
-      color: #1a1f2e;
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Consistent premium dark-tech gradient background used across "other pages" style */
+            background: radial-gradient(circle at 10% 20%, rgba(5, 20, 30, 1) 0%, rgba(2, 12, 22, 1) 100%);
+            color: #eef2ff;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
 
-    /* preloader (elegant) */
-    .preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #0a0c15;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-    .preloader.fade-out {
-      opacity: 0;
-      visibility: hidden;
-    }
-    .loader {
-      text-align: center;
-    }
-    .loader-ring {
-      width: 60px;
-      height: 60px;
-      border: 3px solid #e2e8f0;
-      border-top: 3px solid #2563eb;
-      border-radius: 50%;
-      animation: spin 0.9s linear infinite;
-      margin: 0 auto 16px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loader-text {
-      font-weight: 600;
-      letter-spacing: 2px;
-      color: #2563eb;
-    }
+        /* modern glassmorphic elements with unified dark theme */
+        :root {
+            --primary: #00e0ff;
+            --primary-dark: #0088aa;
+            --secondary: #00b4aa;
+            --accent-cyber: #2b6ef0;
+            --accent-ai: #c084fc;
+            --accent-robotics: #f472b6;
+            --glass-bg: rgba(15, 25, 35, 0.65);
+            --glass-card: rgba(20, 30, 40, 0.75);
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.4);
+            --border-light: rgba(0, 255, 255, 0.15);
+        }
 
-    /* navbar */
-    .nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      transition: all 0.2s ease;
-      border-bottom: 1px solid #eef2ff;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.02);
-    }
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 32px;
-    }
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-    }
-    .logo-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .nav-logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      object-fit: cover;
-      background: #1e293b;
-    }
-    .logo {
-      font-size: 1.7rem;
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.5px;
-    }
-    .logo span {
-      color: #2563eb;
-    }
-    .links {
-      display: flex;
-      gap: 2rem;
-    }
-    .links a {
-      text-decoration: none;
-      font-weight: 500;
-      color: #334155;
-      transition: 0.2s;
-      font-size: 1rem;
-    }
-    .links a:hover, .links a.active {
-      color: #2563eb;
-    }
-    .menu-toggle {
-      display: none;
-      font-size: 1.6rem;
-      cursor: pointer;
-      color: #1e293b;
-    }
-    @media (max-width: 820px) {
-      .links {
-        position: fixed;
-        top: 74px;
-        left: -100%;
-        width: 70%;
-        height: calc(100vh - 74px);
-        background: white;
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem;
-        transition: left 0.3s ease;
-        gap: 1.8rem;
-        box-shadow: 4px 0 20px rgba(0,0,0,0.05);
-        border-right: 1px solid #e2e8f0;
-      }
-      .links.active {
-        left: 0;
-      }
-      .menu-toggle {
-        display: block;
-      }
-    }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
 
-    /* hero section (modern & clean) */
-    .hero {
-      padding: 140px 0 90px;
-      background: linear-gradient(135deg, #f8fafd 0%, #ffffff 100%);
-      border-bottom: 1px solid #eef2ff;
-    }
-    .hero-grid {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 48px;
-    }
-    .hero-left {
-      flex: 1.2;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: #eef2ff;
-      border-radius: 40px;
-      padding: 6px 16px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #2563eb;
-      margin-bottom: 24px;
-    }
-    .hero-left h1 {
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1.2;
-      color: #0f172a;
-      margin-bottom: 24px;
-    }
-    .hero-left p {
-      font-size: 1.1rem;
-      color: #475569;
-      max-width: 550px;
-      margin-bottom: 32px;
-    }
-    .btn-group {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: #2563eb;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 600;
-      color: white;
-      text-decoration: none;
-      transition: 0.2s;
-      display: inline-block;
-      box-shadow: 0 2px 6px rgba(37,99,235,0.2);
-    }
-    .btn-primary:hover {
-      background: #1d4ed8;
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid #cbd5e1;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 500;
-      color: #1e293b;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .btn-outline:hover {
-      border-color: #2563eb;
-      color: #2563eb;
-    }
-    .hero-right {
-      flex: 1;
-      background: #f1f5f9;
-      border-radius: 32px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.03);
-    }
-    .hero-right img {
-      max-width: 100%;
-      border-radius: 24px;
-    }
-    @media (max-width: 900px) {
-      .hero-grid { flex-direction: column; }
-      .hero-left { text-align: center; }
-      .btn-group { justify-content: center; }
-      .hero-left p { margin-left: auto; margin-right: auto; }
-    }
+        /* header / nav - consistent glassmorphism with dark theme */
+        .navbar {
+            background: rgba(5, 15, 22, 0.85);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(0, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
 
-    /* section titles */
-    .section {
-      padding: 80px 0;
-    }
-    .section-light {
-      background: #ffffff;
-    }
-    .section-gray {
-      background: #f8fafc;
-    }
-    .section-title {
-      text-align: center;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #0f172a;
-      margin-bottom: 16px;
-    }
-    .section-sub {
-      text-align: center;
-      color: #475569;
-      max-width: 720px;
-      margin: 0 auto 56px;
-      font-size: 1.1rem;
-    }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 18px 0;
+        }
 
-    /* services grid (8 cards like reference) */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 32px;
-    }
-    .service-card {
-      background: #ffffff;
-      border-radius: 24px;
-      padding: 32px 24px;
-      border: 1px solid #eef2ff;
-      transition: all 0.25s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-      border-color: #cbdffc;
-      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
-    }
-    .service-icon {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #2563eb;
-    }
-    .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-    .service-card p {
-      color: #475569;
-      line-height: 1.5;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    /* stats row */
-    .stats-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 32px;
-      background: #0f172a;
-      border-radius: 48px;
-      padding: 48px 40px;
-      margin-top: 30px;
-      color: white;
-      text-align: center;
-    }
-    .stat-item h3 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-    .stat-item p {
-      color: #cbd5e1;
-      font-weight: 500;
-    }
+        .logo-icon {
+            font-size: 2.2rem;
+            filter: drop-shadow(0 0 6px #00e0ff);
+            background: linear-gradient(135deg, #a5f0ff, #00e0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
 
-    /* why choose us */
-    .why-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      margin-top: 20px;
-    }
-    .why-card {
-      background: #ffffff;
-      border-radius: 28px;
-      padding: 32px 28px;
-      flex: 1;
-      min-width: 200px;
-      text-align: center;
-      border: 1px solid #eef2ff;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
-    }
-    .why-card i {
-      font-size: 2.2rem;
-      color: #2563eb;
-      margin-bottom: 20px;
-    }
-    .why-card h4 {
-      font-size: 1.4rem;
-      margin-bottom: 12px;
-    }
+        .logo-text h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(125deg, #ffffff, #7dd3fc, #00e0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 8px rgba(0,224,255,0.3);
+        }
 
-    /* testimonials */
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-    }
-    .testimonial-card {
-      background: white;
-      border-radius: 28px;
-      padding: 28px;
-      border: 1px solid #eef2ff;
-    }
-    .testimonial-text {
-      font-style: normal;
-      color: #1e293b;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-    .client-name {
-      font-weight: 700;
-      color: #0f172a;
-      margin-top: 8px;
-    }
-    .client-title {
-      font-size: 0.8rem;
-      color: #2563eb;
-    }
+        .logo-text span {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #a0c4e2;
+            letter-spacing: 0.5px;
+            background: rgba(0, 224, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+        }
 
-    /* footer */
-    .footer {
-      background: #0f172a;
-      color: #e2e8f0;
-      padding: 60px 0 32px;
-      border-top: 1px solid #1e293b;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 48px;
-      margin-bottom: 48px;
-    }
-    .footer-logo-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    .footer-logo {
-      width: 42px;
-      border-radius: 10px;
-    }
-    .footer h4 {
-      color: white;
-      margin-bottom: 20px;
-      font-size: 1.2rem;
-    }
-    .footer a, .footer p {
-      color: #cbd5e1;
-      text-decoration: none;
-      display: block;
-      margin-bottom: 12px;
-      transition: 0.2s;
-    }
-    .footer a:hover {
-      color: white;
-      padding-left: 4px;
-    }
-    .social-links a {
-      display: inline-block;
-      margin-right: 18px;
-      font-size: 1.3rem;
-    }
-    .copyright {
-      text-align: center;
-      padding-top: 32px;
-      border-top: 1px solid #1e293b;
-      font-size: 0.85rem;
-    }
-    .back-to-top {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      background: #2563eb;
-      border: none;
-      width: 46px;
-      height: 46px;
-      border-radius: 30px;
-      color: white;
-      cursor: pointer;
-      opacity: 0;
-      transition: 0.2s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    .back-to-top.show {
-      opacity: 1;
-    }
-    hr {
-      border-color: #1e293b;
-      margin: 16px 0;
-    }
-    @media (max-width: 640px) {
-      .container { padding: 0 20px; }
-    }
-  </style>
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #e0f2fe;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #00e0ff;
+            text-shadow: 0 0 5px #00e0ff;
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            border: 1.5px solid #00e0ff;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: all 0.2s;
+            color: #e0f2fe;
+        }
+
+        .btn-outline-light:hover {
+            background: #00e0ff;
+            color: #0a0f1c !important;
+            box-shadow: 0 0 12px #00e0ff;
+            border-color: #00e0ff;
+        }
+
+        /* Hero Section with matching dark tech background */
+        .hero {
+            padding: 80px 0 90px;
+            background: radial-gradient(ellipse at 30% 40%, rgba(0, 40, 55, 0.4), rgba(2, 12, 22, 0.9));
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-badge {
+            background: rgba(0, 224, 255, 0.15);
+            backdrop-filter: blur(4px);
+            color: #b9f3ff;
+            display: inline-block;
+            border-radius: 100px;
+            padding: 5px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(0, 224, 255, 0.3);
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #ffffff, #7dd3fc, #00e0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 1.18rem;
+            color: #cbd5e6;
+            max-width: 550px;
+            margin-bottom: 32px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(95deg, #00b4aa, #0088aa);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,180,170,0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(95deg, #00d5cc, #00aacc);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,180,170,0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(20, 35, 50, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid #00e0ff;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #e0f2fe;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 224, 255, 0.2);
+            border-color: #7dd3fc;
+            color: white;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-card {
+            background: rgba(10, 25, 35, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 18px;
+            box-shadow: var(--shadow-md);
+            width: 150px;
+            text-align: center;
+            border: 1px solid rgba(0, 224, 255, 0.3);
+            transition: 0.2s;
+        }
+
+        .hero-card i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .fa-microchip { color: #2b6ef0; filter: drop-shadow(0 0 4px #2b6ef0);}
+        .fa-robot { color: #c084fc; filter: drop-shadow(0 0 4px #c084fc);}
+        .fa-shield-haltered { color: #10b981; filter: drop-shadow(0 0 4px #10b981);}
+
+        /* Services Section - glass cards dark theme */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+            background: linear-gradient(120deg, #ffffff, #7dd3fc, #00e0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #a3c2e0;
+            max-width: 700px;
+            margin: 0 auto 64px auto;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: var(--glass-card);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            padding: 32px 24px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 224, 255, 0.2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.5);
+            border-color: rgba(0, 224, 255, 0.6);
+            background: rgba(25, 40, 55, 0.85);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: rgba(0, 224, 255, 0.15);
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            color: #00e0ff;
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #f0f9ff;
+        }
+
+        .service-card p {
+            color: #cbd5e6;
+            margin-bottom: 20px;
+        }
+
+        /* showcase with consistent backdrop */
+        .showcase {
+            background: rgba(5, 20, 30, 0.6);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(0, 224, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 224, 255, 0.2);
+        }
+
+        .showcase-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .showcase-text {
+            flex: 1;
+        }
+
+        .showcase-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #e2f0ff;
+        }
+
+        .showcase-gallery {
+            flex: 1;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .img-card {
+            background: rgba(10, 25, 40, 0.7);
+            backdrop-filter: blur(6px);
+            border-radius: 32px;
+            padding: 20px;
+            text-align: center;
+            width: 160px;
+            transition: 0.2s;
+            border: 1px solid rgba(0, 200, 255, 0.25);
+        }
+
+        .img-card i {
+            font-size: 4rem;
+            margin-bottom: 12px;
+        }
+
+        .img-card span {
+            font-weight: 600;
+            color: #d9efff;
+        }
+
+        /* stats area - dark tech theme */
+        .stats-area {
+            background: linear-gradient(115deg, rgba(0, 30, 45, 0.85), rgba(2, 15, 25, 0.9)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSIjMDBjY2ZmIiBmaWxsLW9wYWNpdHk9IjAuMDMiIGQ9Ik0wIDBsNDAgNDBNMCA0MEw0MCAwIi8+PC9zdmc+');
+            border-radius: 48px;
+            margin: 80px auto;
+            padding: 48px 32px;
+            backdrop-filter: blur(4px);
+            color: white;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid rgba(0, 224, 255, 0.3);
+        }
+
+        .stats-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            text-align: center;
+            gap: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            text-shadow: 0 0 6px #00e0ff;
+        }
+
+        /* tech stack - dark glass */
+        .tech-stack {
+            background: rgba(5, 20, 28, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 60px;
+            margin: 20px 0;
+            border: 1px solid rgba(0, 224, 255, 0.2);
+        }
+
+        .marquee-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .tech-badge {
+            background: rgba(15, 35, 50, 0.8);
+            backdrop-filter: blur(4px);
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #c4e6ff;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+            border: 1px solid rgba(0, 224, 255, 0.4);
+            font-size: 1rem;
+        }
+
+        /* CTA - cyber gradient */
+        .cta-section {
+            background: linear-gradient(125deg, #05212b, #0a2f3f);
+            border-radius: 48px;
+            margin: 40px auto 80px;
+            padding: 64px 48px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(0, 224, 255, 0.5);
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-cta {
+            background: #00b4aa;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            color: #0a2b3e;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: 0.2s;
+            box-shadow: 0 5px 15px rgba(0,180,170,0.4);
+        }
+
+        .btn-cta:hover {
+            background: #15e0d3;
+            transform: scale(1.02);
+            box-shadow: 0 0 15px #00e0ff;
+        }
+
+        footer {
+            border-top: 1px solid rgba(0, 224, 255, 0.2);
+            padding: 48px 0 24px;
+            background: rgba(2, 10, 18, 0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-col p, .footer-col h4 {
+            color: #cbdff2;
+        }
+
+        .social-icons a {
+            color: #7dd3fc;
+            margin-right: 20px;
+            font-size: 1.4rem;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: #00e0ff;
+            text-shadow: 0 0 6px cyan;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 48px;
+            color: #8aaec0;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>ZTrust Tech</h1>
+                    <span>AI · Robotics · Cyber Defense</span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#services">Solutions</a>
+                <a href="#tech">Innovation</a>
+                <a href="#contact">Contact</a>
+                <a href="#" class="btn-outline-light">Portal</a>
+            </div>
+        </div>
+    </nav>
 
-<div class="preloader">
-  <div class="loader">
-    <div class="loader-ring"></div>
-    <div class="loader-text">ZTrust Tech</div>
-  </div>
-</div>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge"><i class="fas fa-robot"></i> Next-Gen IT · Zero Trust Ready</div>
+                    <h1>Secure, Intelligent, Autonomous Infrastructure</h1>
+                    <p>ZTrust Tech delivers integrated AI-driven robotics, zero-trust cybersecurity, and full-spectrum IT infrastructure — from app development to cloud & edge.</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn-primary">Explore services <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="btn-secondary">AI & Cyber demo</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <i class="fas fa-microchip fa-3x"></i>
+                        <p style="font-weight:600; margin-top:8px;">AI Core</p>
+                    </div>
+                    <div class="hero-card">
+                        <i class="fas fa-robot fa-3x"></i>
+                        <p style="font-weight:600; margin-top:8px;">Robotics</p>
+                    </div>
+                    <div class="hero-card">
+                        <i class="fas fa-shield-haltered fa-3x"></i>
+                        <p style="font-weight:600; margin-top:8px;">Cyber SOC</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<nav class="nav">
-  <div class="container nav-inner">
-    <div class="logo-wrapper">
-      <div class="nav-logo" style="background:#2563eb; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">ZT</div>
-      <h2 class="logo">ZTrust <span>Tech</span></h2>
-    </div>
-    <div class="links">
-      <a href="index.html" class="active">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About</a>
-      <a href="resources.html">Resources</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
-  </div>
-</nav>
+        <!-- Services -->
+        <div class="container" id="services">
+            <div class="section">
+                <h2 class="section-title">Full Spectrum IT Excellence</h2>
+                <p class="section-sub">From secure infrastructure to intelligent applications — we engineer future-proof digital ecosystems.</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+                        <h3>Infrastructure</h3>
+                        <p>Cloud, on-prem, hybrid networks & edge computing — high availability, SD-WAN, and Zero Trust architecture.</p>
+                        <span style="color:#00e0ff; font-weight:500;">→ 24/7 monitoring</span>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>App Development</h3>
+                        <p>Custom enterprise apps, AI-embedded platforms, mobile & web solutions built with modern stacks & DevSecOps.</p>
+                        <span style="color:#00e0ff; font-weight:500;">→ AI-native delivery</span>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-shield-virus"></i></div>
+                        <h3>Cybersecurity</h3>
+                        <p>Threat detection, pen-testing, zero-trust identity, SOAR, compliance (GDPR, SOC2) and 24/7 security operations.</p>
+                        <span style="color:#00e0ff; font-weight:500;">→ AI threat hunting</span>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-brain"></i></div>
+                        <h3>AI & Machine Learning</h3>
+                        <p>Predictive analytics, LLMs, computer vision & intelligent automation for business transformation.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-robot"></i></div>
+                        <h3>Robotics Process Automation</h3>
+                        <p>Intelligent robotics integration, autonomous agents, industrial IoT & smart factory solutions.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <h3>Cloud & DevOps</h3>
+                        <p>Multi-cloud orchestration, Kubernetes, Infrastructure-as-Code, CI/CD pipelines with security baked in.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<!-- Hero inspired by reference -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-left">
-      <div class="hero-badge"><i class="fas fa-shield-alt"></i>  Enterprise IT & Security Partner</div>
-      <h1>Leading to the right direction with secure innovation</h1>
-      <p>Modernize your infrastructure, protect your assets, and accelerate digital transformation with ZTrust Tech — your trusted ICT powerhouse in Ethiopia.</p>
-      <div class="btn-group">
-        <a href="contact.html" class="btn-primary">Let’s Connect →</a>
-        <a href="services.html" class="btn-outline">Explore Services</a>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div style="padding: 20px; background: white; border-radius: 28px;">
-        <i class="fas fa-chalkboard-user" style="font-size: 3rem; color:#2563eb;"></i>
-        <h3 style="margin: 15px 0 8px;">Secure & Scalable</h3>
-        <p style="color:#334155;">Zero-trust security • Cloud-native • 24/7 Support</p>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- Showcase -->
+        <div class="showcase">
+            <div class="container" style="padding: 80px 0;">
+                <div class="showcase-grid">
+                    <div class="showcase-text">
+                        <h2>Where AI meets Robotics & Cyber Resilience</h2>
+                        <p>Our visual intelligence suite: autonomous robotics secured by AI-driven threat detection. Next-generation protection for intelligent systems.</p>
+                        <ul style="margin-top: 20px; list-style: none;">
+                            <li><i class="fas fa-check-circle" style="color:#00e0ff;"></i> AI-powered security analytics</li>
+                            <li><i class="fas fa-check-circle" style="color:#00e0ff;"></i> Self-healing infrastructure</li>
+                            <li><i class="fas fa-check-circle" style="color:#00e0ff;"></i> Robotics fleets with edge AI</li>
+                        </ul>
+                    </div>
+                    <div class="showcase-gallery">
+                        <div class="img-card">
+                            <i class="fas fa-microchip" style="font-size:3.5rem; color:#2b6ef0;"></i>
+                            <span>Neural Edge</span>
+                        </div>
+                        <div class="img-card">
+                            <i class="fas fa-robot" style="font-size:3.5rem; color:#c084fc;"></i>
+                            <span>Autonomous Bots</span>
+                        </div>
+                        <div class="img-card">
+                            <i class="fas fa-fingerprint" style="font-size:3.5rem; color:#10b981;"></i>
+                            <span>Zero Trust ID</span>
+                        </div>
+                        <div class="img-card">
+                            <i class="fas fa-chart-line" style="font-size:3.5rem; color:#f97316;"></i>
+                            <span>Predictive Cyber</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<!-- About section (like reference) -->
-<section class="section section-gray">
-  <div class="container">
-    <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center;">
-      <div style="flex: 1.2;">
-        <span style="color:#2563eb; font-weight:600;">About ZTrust Tech</span>
-        <h2 style="font-size: 2rem; margin: 16px 0 20px;">Highly experienced IT & cybersecurity professionals</h2>
-        <p style="color: #334155; margin-bottom: 20px;">ZTrust Tech was founded by industry veterans with global accreditations. We believe in win-win partnerships with vendors, distributors, and clients to achieve mission-critical success.</p>
-        <p style="color: #334155;">We work closely with ICT experts across Ethiopia, delivering excellence in Security Solutions, Data Center Infrastructure, Cloud, Enterprise Networking, and Compliance.</p>
-      </div>
-      <div style="flex: 0.8; background:#eef2ff; border-radius: 32px; padding: 32px; text-align:center;">
-        <i class="fas fa-building" style="font-size: 3rem; color:#2563eb;"></i>
-        <h3>+5 Years Excellence</h3>
-        <p>Trusted by leading enterprises</p>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- Stats -->
+        <div class="container">
+            <div class="stats-area">
+                <div class="stats-flex">
+                    <div class="stat-item">
+                        <h3>99.99%</h3>
+                        <p>Infrastructure Uptime SLA</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3><i class="fas fa-shield-alt"></i> 24/7</h3>
+                        <p>AI Cyber Defense</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Robotics Deployments</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Zero-Trust</h3>
+                        <p>Native Architecture</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<!-- What we Do - 8 services exactly matching reference style -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">What We Do</h2>
-    <p class="section-sub">End-to-end ICT solutions tailored for modern enterprises — from core infrastructure to advanced security.</p>
-    <div class="services-grid">
-      <div class="service-card"><div class="service-icon"><i class="fas fa-database"></i></div><h3>Data Center Infrastructure & Cloud</h3><p>Design, deploy and manage resilient data centers & hybrid cloud environments ensuring high availability and performance.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-shield-haltered"></i></div><h3>Enterprise Network & Security</h3><p>Secure connectivity, next-gen firewalls, zero-trust architecture, and advanced threat protection for your entire perimeter.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-robot"></i></div><h3>Automation & Business Intelligence</h3><p>Reduce human intervention with AI-driven automation and actionable insights for smarter decision making.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-video"></i></div><h3>Physical Security</h3><p>Access control, surveillance systems, and integrated security solutions to safeguard facilities and assets.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-temperature-high"></i></div><h3>Data Center Facility</h3><p>Power, cooling, monitoring, and physical infrastructure to ensure non-stop operations for critical systems.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-users"></i></div><h3>Collaboration</h3><p>Unified communications, video conferencing, and teamwork platforms that enhance productivity and business continuity.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-traffic-light"></i></div><h3>Intelligent Transportation System</h3><p>Smart mobility, traffic management solutions, and telematics for safer and efficient transport networks.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-network-wired"></i></div><h3>Structured Cabling System</h3><p>High-performance copper/fiber cabling, certified design and installation for future-ready infrastructure.</p></div>
-    </div>
-  </div>
-</section>
+        <!-- Tech Stack -->
+        <div class="tech-stack" id="tech">
+            <div class="container" style="padding: 70px 0;">
+                <h2 class="section-title">Innovation Stack & Core Technologies</h2>
+                <p class="section-sub">Leveraging cutting-edge tools for scalable, secure, and intelligent systems.</p>
+                <div class="marquee-logos">
+                    <span class="tech-badge"><i class="fab fa-python"></i> Python/TensorFlow</span>
+                    <span class="tech-badge"><i class="fas fa-robot"></i> ROS2 / Robotics</span>
+                    <span class="tech-badge"><i class="fas fa-cloud"></i> AWS/Azure/GCP</span>
+                    <span class="tech-badge"><i class="fas fa-database"></i> Zero-Trust SASE</span>
+                    <span class="tech-badge"><i class="fas fa-code"></i> React/Node/Go</span>
+                    <span class="tech-badge"><i class="fas fa-shield-haltered"></i> SIEM/SOAR</span>
+                    <span class="tech-badge"><i class="fas fa-brain"></i> LLMs / GenAI</span>
+                    <span class="tech-badge"><i class="fas fa-microchip"></i> Edge AI</span>
+                </div>
+            </div>
+        </div>
 
-<!-- stats & numbers (modern) -->
-<section class="section-gray">
-  <div class="container">
-    <div class="stats-row">
-      <div class="stat-item"><h3>150+</h3><p>Happy Clients</p></div>
-      <div class="stat-item"><h3>320+</h3><p>Projects Completed</p></div>
-      <div class="stat-item"><h3>8+</h3><p>Years Experience</p></div>
-      <div class="stat-item"><h3>25+</h3><p>Technology Partners</p></div>
-    </div>
-  </div>
-</section>
+        <!-- CTA -->
+        <div class="container" id="contact">
+            <div class="cta-section">
+                <h2>Ready to transform your IT landscape?</h2>
+                <p style="opacity: 0.9; max-width: 600px; margin: 0 auto;">Let ZTrust Tech secure and evolve your infrastructure with AI, robotics, and zero-trust frameworks.</p>
+                <a href="#" class="btn-cta"><i class="fas fa-paper-plane"></i> Contact our team</a>
+                <div style="margin-top: 30px; font-size:0.9rem;"><i class="fas fa-envelope"></i> hello@ztrust.tech &nbsp; | &nbsp; <i class="fas fa-phone-alt"></i> +1 (888) 978-7789</div>
+            </div>
+        </div>
+    </main>
 
-<!-- Why Choose Us (Exactly as reference style) -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">Why Choose Us</h2>
-    <p class="section-sub">We demonstrate our care for your growth by providing a best end-to-end ICT solution.</p>
-    <div class="why-grid">
-      <div class="why-card"><i class="fas fa-briefcase"></i><h4>Professionalism</h4><p>Certified experts, global standards</p></div>
-      <div class="why-card"><i class="fas fa-heart"></i><h4>Customer-Focus</h4><p>Tailored solutions, local support</p></div>
-      <div class="why-card"><i class="fas fa-clock"></i><h4>Timeliness & Integrity</h4><p>On-time delivery, transparent partnerships</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section class="section-gray">
-  <div class="container">
-    <h2 class="section-title">What Our Customers Are Saying</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card"><div class="testimonial-text"><i class="fas fa-quote-left" style="color:#2563eb; opacity:0.5; margin-right:6px;"></i> ZTrust Tech is technically qualified for the service rendered — successful implementation of Video Surveillance, Data Center Infrastructure, and Enterprise Networking.</div><div class="client-name">MatIyas MOSHE</div><div class="client-title">IT Director</div></div>
-      <div class="testimonial-card"><div class="testimonial-text"><i class="fas fa-quote-left" style="color:#2563eb; opacity:0.5;"></i> During our business relation, we found ZTrust Tech capable of performing contractual obligations to our satisfaction. Highly professional team.</div><div class="client-name">Solomun</div><div class="client-title">Berhan Bank</div></div>
-      <div class="testimonial-card"><div class="testimonial-text"><i class="fas fa-quote-left" style="color:#2563eb;"></i> Impressed by technical and managerial skills. They concluded the work in a professional manner to our best satisfaction.</div><div class="client-name">Haileyesus</div><div class="client-title">FTA</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Meet us section (address + working hours) -->
-<section class="section">
-  <div class="container">
-    <div style="display: flex; flex-wrap: wrap; gap: 40px; background: #f1f5f9; border-radius: 40px; padding: 48px 32px;">
-      <div style="flex:1"><i class="fas fa-map-marker-alt" style="color:#2563eb; font-size:1.8rem;"></i><h3 style="margin: 12px 0 8px;">Meet us</h3><p>Addis Ababa, Bole Bras, Reality Plaza, 8th floor.</p><p><i class="fas fa-phone-alt"></i> +251115582626 <br>+251-911-258038 <br>+251-911-522449</p><p><i class="fas fa-envelope"></i> info@ztrusttech.com</p></div>
-      <div style="flex:1"><i class="fas fa-clock" style="color:#2563eb; font-size:1.8rem;"></i><h3 style="margin: 12px 0 8px;">working Hours</h3><p>Monday – Friday: 8:30 AM – 5:30 PM<br>Saturday: 9:00 AM – 1:00 PM</p><p style="margin-top:20px;"><i class="fas fa-headset"></i> 24/7 Emergency Support</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div><div class="footer-logo-wrapper"><div class="footer-logo" style="background:#2563eb; display:flex; align-items:center; justify-content:center; color:white;">ZT</div><h3 style="color:white;">ZTrust Tech</h3></div><p>Enterprise IT solutions, cybersecurity, and digital transformation. Trusted partner across Ethiopia and Africa.</p><div class="social-links"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-telegram"></i></a></div></div>
-      <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></div>
-      <div><h4>Services</h4><a href="services.html">Data Center & Cloud</a><a href="services.html">Network Security</a><a href="services.html">Automation & BI</a><a href="services.html">Physical Security</a><a href="services.html">Structured Cabling</a></div>
-      <div><h4>Support</h4><a href="#">Help Desk</a><a href="#">Security Advisory</a><a href="#">Compliance</a><a href="#">Partner Program</a></div>
-    </div>
-    <hr>
-    <div class="copyright">© 2026 ZTrust Tech. All rights reserved. | Based in Addis Ababa, Ethiopia | Leading ICT & Security Provider</div>
-  </div>
-</footer>
-
-<button id="back-to-top" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
-
-<script>
-  window.addEventListener('load', function() {
-    setTimeout(() => { document.querySelector('.preloader')?.classList.add('fade-out'); }, 800);
-  });
-  const menuToggle = document.getElementById('mobile-menu');
-  const navLinks = document.querySelector('.links');
-  if(menuToggle) {
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
-    document.querySelectorAll('.links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-  }
-  const backToTop = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 300) backToTop.classList.add('show');
-    else backToTop.classList.remove('show');
-  });
-  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('.nav');
-    if(window.scrollY > 50) nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
-    else nav.style.boxShadow = 'none';
-  });
-</script>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 style="margin-bottom: 16px; color:#e0f2fe;">ZTrust Tech</h3>
+                    <p>Secure tomorrow’s intelligence.<br>AI · Robotics · Cyber Resiliency</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <p>AI Security</p>
+                    <p>Robotics Integration</p>
+                    <p>IT Infrastructure</p>
+                    <p>App Dev & DevSecOps</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <p>About Us</p>
+                    <p>Careers</p>
+                    <p>Trust Center</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 ZTrust Tech — Leading the future of AI-driven cybersecurity & robotics infrastructure. All rights reserved.
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
