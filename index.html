@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>ZTrust Tech | AI, Robotics & Cybersecurity Solutions</title>
+    <title>NexusGuard | AI-Driven Cybersecurity & Robotics IT</title>
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -16,42 +16,66 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #0a0f1c;
+            background-color: #010314;
+            color: #eef5ff;
             line-height: 1.5;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
-        /* modern gradient and glass elements */
-        :root {
-            --primary: #0a2b3e;
-            --primary-dark: #05161f;
-            --secondary: #00b4aa;
-            --accent-cyber: #2b6ef0;
-            --accent-ai: #a855f7;
-            --accent-robotics: #ec489a;
-            --light-bg: #ffffff;
-            --dark-card: #ffffff;
-            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
-            --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
-            --border-light: rgba(0, 0, 0, 0.05);
+        /* animated gradient bg + robot grid pattern */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(0, 255, 255, 0.02) 0px, rgba(0, 255, 255, 0.02) 2px, transparent 2px, transparent 8px),
+                repeating-linear-gradient(135deg, rgba(255, 0, 255, 0.01) 0px, rgba(255, 0, 255, 0.01) 1px, transparent 1px, transparent 12px);
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        /* neon pulse animation */
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 2px cyan, 0 0 4px #0ff; }
+            100% { text-shadow: 0 0 8px cyan, 0 0 15px #0ff; }
+        }
+
+        @keyframes floatRobot {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-12px) rotate(1deg); }
+        }
+
+        @keyframes rotateCog {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes scanline {
+            0% { transform: translateX(-100%) skewX(-15deg); opacity: 0.3; }
+            100% { transform: translateX(200%) skewX(-15deg); opacity: 0; }
         }
 
         .container {
-            max-width: 1280px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 0 32px;
+            position: relative;
+            z-index: 2;
         }
 
-        /* header / nav */
+        /* glassmorphic navbar with robot elements */
         .navbar {
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(4px);
-            box-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 1px 6px rgba(0,0,0,0.05);
+            background: rgba(1, 3, 20, 0.75);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #eef2f6;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
         }
 
         .nav-container {
@@ -69,33 +93,31 @@
         }
 
         .logo-icon {
-            font-size: 2rem;
-            background: linear-gradient(135deg, #0f2b3d, #1f5e6e);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+            font-size: 2.2rem;
+            filter: drop-shadow(0 0 8px cyan);
+            animation: pulseGlow 1.5s infinite alternate;
         }
 
         .logo-text h1 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
-            background: linear-gradient(120deg, #0a2b3e, #1b5a6e);
+            background: linear-gradient(135deg, #fff, #0ff, #a855f7);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+            letter-spacing: -0.02em;
         }
 
         .logo-text span {
             font-size: 0.7rem;
-            font-weight: 500;
-            color: #4b5565;
-            letter-spacing: 0.3px;
+            font-weight: 400;
+            color: #8aaee0;
+            letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 36px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -103,42 +125,57 @@
         .nav-links a {
             text-decoration: none;
             font-weight: 600;
-            color: #1e293b;
-            transition: 0.2s;
+            color: #d1e3ff;
+            transition: 0.3s;
             font-size: 0.95rem;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: #00a896;
+            color: #0ff;
+            text-shadow: 0 0 5px cyan;
         }
 
-        .btn-outline-light {
+        .btn-outline-cyber {
             background: transparent;
-            border: 1.5px solid #0f2b3d;
-            padding: 8px 20px;
+            border: 1.5px solid #0ff;
+            padding: 8px 24px;
             border-radius: 40px;
             font-weight: 600;
-            transition: all 0.2s;
+            color: #0ff;
+            transition: all 0.3s;
+            box-shadow: 0 0 5px rgba(0,255,255,0.3);
         }
 
-        .btn-outline-light:hover {
-            background: #0f2b3d;
-            color: white !important;
+        .btn-outline-cyber:hover {
+            background: #0ff;
+            color: #010314;
+            box-shadow: 0 0 18px cyan;
         }
 
-        /* Hero Section */
+        /* HERO SECTION with robot 3d illusion */
         .hero {
-            padding: 80px 0 90px;
-            background: linear-gradient(105deg, #ffffff 0%, #f1f5f9 100%);
+            padding: 90px 0 110px;
             position: relative;
             overflow: hidden;
+        }
+
+        .hero::after {
+            content: "⚙️ 🤖 ⚡";
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+            font-size: 100px;
+            opacity: 0.03;
+            pointer-events: none;
+            white-space: pre;
         }
 
         .hero-grid {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 48px;
+            gap: 50px;
         }
 
         .hero-content {
@@ -146,121 +183,135 @@
         }
 
         .hero-badge {
-            background: #e2e8f0;
-            color: #0f2b3d;
+            background: rgba(0, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(0,255,255,0.4);
             display: inline-block;
             border-radius: 100px;
-            padding: 5px 16px;
+            padding: 6px 20px;
             font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
+            color: #0ff;
         }
 
         .hero-content h1 {
-            font-size: 3.2rem;
+            font-size: 3.4rem;
             font-weight: 800;
             line-height: 1.2;
-            letter-spacing: -0.02em;
-            background: linear-gradient(to right, #0a2b3e, #1f717d, #2563eb);
+            background: linear-gradient(125deg, #fff, #0ff, #c084fc);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .hero-content p {
-            font-size: 1.18rem;
-            color: #334155;
+            font-size: 1.2rem;
+            color: #b9d0f0;
             max-width: 550px;
-            margin-bottom: 32px;
+            margin-bottom: 36px;
         }
 
         .btn-group {
             display: flex;
-            gap: 16px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
-        .btn-primary {
-            background: #0a2b3e;
+        .btn-primary-neon {
+            background: linear-gradient(95deg, #0a1f3e, #0b3b5e);
+            border: 1px solid cyan;
             color: white;
-            padding: 12px 32px;
-            border-radius: 40px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-block;
+            padding: 14px 34px;
+            border-radius: 48px;
+            font-weight: 700;
+            transition: 0.25s;
             text-decoration: none;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0,255,255,0.4);
+            display: inline-block;
         }
 
-        .btn-primary:hover {
-            background: #144e64;
-            transform: translateY(-2px);
+        .btn-primary-neon:hover {
+            background: #0ff;
+            color: #010101;
+            box-shadow: 0 0 25px cyan;
+            border-color: white;
         }
 
-        .btn-secondary {
-            background: white;
-            border: 1px solid #cbd5e1;
-            padding: 12px 32px;
-            border-radius: 40px;
+        .btn-cyber-outline {
+            background: transparent;
+            border: 1px solid #a855f7;
+            padding: 14px 34px;
+            border-radius: 48px;
             font-weight: 600;
-            color: #1e293b;
+            color: #e2d9ff;
             text-decoration: none;
             transition: 0.2s;
         }
 
-        .btn-secondary:hover {
-            border-color: #0a2b3e;
-            background: #f8fafc;
+        .btn-cyber-outline:hover {
+            background: #a855f7;
+            color: black;
+            box-shadow: 0 0 18px #a855f7;
         }
 
         .hero-visual {
             flex: 1;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
+            perspective: 800px;
         }
 
-        .hero-card {
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(12px);
+        .robot-card {
+            background: rgba(12, 25, 55, 0.6);
+            backdrop-filter: blur(10px);
             border-radius: 2rem;
-            padding: 16px;
-            box-shadow: var(--shadow-md);
-            width: 150px;
+            padding: 20px;
+            width: 160px;
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.8);
+            border: 1px solid rgba(0, 255, 255, 0.5);
+            transform: rotateY(2deg);
+            transition: 0.3s;
+            animation: floatRobot 4s infinite ease-in-out alternate;
         }
 
-        .hero-card i {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            display: inline-block;
+        .robot-card i {
+            font-size: 3.8rem;
+            filter: drop-shadow(0 0 6px cyan);
         }
 
-        .fa-microchip { color: #2563eb; }
-        .fa-robot { color: #a855f7; }
-        .fa-shield-haltered { color: #10b981; }
+        .robot-card:nth-child(2) { animation-delay: 0.5s; }
+        .robot-card:nth-child(3) { animation-delay: 1s; }
 
-        /* Services Section */
+        .robot-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #0ff;
+            box-shadow: 0 0 25px rgba(0,255,255,0.4);
+        }
+
+        /* service cards cyber robotic */
         .section {
-            padding: 100px 0;
+            padding: 90px 0;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.3rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 16px;
             letter-spacing: -0.01em;
+            background: linear-gradient(135deg, #ffffff, #0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
         }
 
         .section-sub {
             text-align: center;
-            color: #475569;
+            color: #9ab3d5;
             max-width: 700px;
             margin: 0 auto 64px auto;
             font-size: 1.1rem;
@@ -269,106 +320,115 @@
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
+            gap: 35px;
         }
 
         .service-card {
-            background: var(--light-bg);
-            border-radius: 28px;
-            padding: 32px 24px;
-            transition: all 0.25s ease;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid #eef2ff;
+            background: rgba(7, 18, 40, 0.7);
+            backdrop-filter: blur(6px);
+            border-radius: 32px;
+            padding: 32px 28px;
+            transition: 0.25s;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.12);
-            border-color: #cbdff2;
+            border-color: #0ff;
+            transform: translateY(-6px);
+            box-shadow: 0 25px 40px -12px rgba(0, 255, 255, 0.2);
         }
 
         .service-icon {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            background: #eef2ff;
-            width: 64px;
-            height: 64px;
+            background: linear-gradient(145deg, #0a2b44, #021a2a);
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 20px;
+            border: 1px solid cyan;
+            color: #0ff;
         }
 
         .service-card h3 {
             font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 12px;
+            color: #f0f9ff;
         }
 
         .service-card p {
-            color: #475569;
+            color: #bfd6ff;
             margin-bottom: 20px;
         }
 
-        /* images+illustrations zone: Robotics/AI/Cyber visuals */
+        /* Showcase animated robotics lab */
         .showcase {
-            background: #ffffff;
-            border-top: 1px solid #eef2f6;
-            border-bottom: 1px solid #eef2f6;
+            background: radial-gradient(circle at 10% 20%, rgba(0,30,50,0.6), rgba(0,0,0,0.8));
+            border-top: 1px solid cyan;
+            border-bottom: 1px solid cyan;
         }
 
         .showcase-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 50px;
             align-items: center;
-            justify-content: space-between;
-        }
-
-        .showcase-text {
-            flex: 1;
         }
 
         .showcase-text h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 20px;
         }
 
-        .showcase-gallery {
-            flex: 1;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+        .glow-list li {
+            margin-bottom: 14px;
+            list-style: none;
         }
 
-        .img-card {
-            background: #f1f5f9;
-            border-radius: 32px;
+        .glow-list i {
+            color: #0ff;
+            margin-right: 12px;
+        }
+
+        .robo-gallery {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .robo-card-mini {
+            background: #07152e;
+            border-radius: 28px;
             padding: 20px;
             text-align: center;
-            width: 160px;
+            width: 150px;
             transition: 0.2s;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #2c5270;
         }
 
-        .img-card i {
-            font-size: 4rem;
+        .robo-card-mini i {
+            font-size: 3.8rem;
             margin-bottom: 12px;
+            transition: 0.2s;
         }
 
-        .img-card span {
-            font-weight: 600;
-            color: #1e293b;
+        .robo-card-mini:hover i {
+            text-shadow: 0 0 12px #0ff;
+            transform: scale(1.05);
         }
 
-        /* cybersecurity specific emphasis */
-        .stats-area {
-            background: linear-gradient(120deg, #0a2b3e 0%, #0f3b4a 100%);
-            color: white;
+        /* stats with HUD style */
+        .stats-hud {
+            background: linear-gradient(115deg, #021626, #000b17);
             border-radius: 48px;
-            margin: 80px auto;
-            padding: 48px 32px;
+            margin: 60px auto;
+            padding: 50px 30px;
+            border: 1px solid #0ff55a;
+            box-shadow: 0 0 25px rgba(0,255,255,0.2);
         }
 
         .stats-flex {
@@ -380,70 +440,90 @@
         }
 
         .stat-item h3 {
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             font-weight: 800;
+            color: #0ff;
         }
 
-        /* portfolio / tech stack */
+        /* tech stack animated */
         .tech-stack {
-            background: #fef9f0;
+            background: rgba(3, 12, 28, 0.7);
+            border-radius: 60px;
+            margin: 20px 0;
         }
 
         .marquee-logos {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 40px;
+            gap: 20px;
             margin-top: 40px;
         }
 
         .tech-badge {
-            background: white;
+            background: #0a142e;
             padding: 12px 28px;
             border-radius: 60px;
             font-weight: 600;
-            color: #0a2b3e;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            border: 1px solid #e9ecef;
-            font-size: 1rem;
-        }
-
-        /* CTA */
-        .cta-section {
-            background: #0a2b3e;
-            border-radius: 48px;
-            margin: 40px auto 80px;
-            padding: 64px 48px;
-            text-align: center;
-            color: white;
-        }
-
-        .cta-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
-
-        .btn-cta {
-            background: #00b4aa;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            color: #0a2b3e;
-            display: inline-block;
-            text-decoration: none;
-            margin-top: 20px;
+            color: #bbf0ff;
+            border: 1px solid #0ff;
             transition: 0.2s;
         }
 
-        .btn-cta:hover {
-            background: #15e0d3;
-            transform: scale(1.02);
+        .tech-badge:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 12px cyan;
+            cursor: default;
+        }
+
+        /* CTA Section with neon */
+        .cta-neon {
+            background: linear-gradient(145deg, #06202f, #010a12);
+            border-radius: 48px;
+            margin: 40px auto 80px;
+            padding: 70px 50px;
+            text-align: center;
+            border: 1px solid cyan;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-neon::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,255,255,0.2), transparent);
+            transform: skewX(-20deg);
+            animation: scanline 5s infinite;
+        }
+
+        .btn-cta-glitch {
+            background: #0ff;
+            color: #010314;
+            padding: 16px 44px;
+            border-radius: 60px;
+            font-weight: 800;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 25px;
+            transition: 0.2s;
+            font-size: 1.1rem;
+        }
+
+        .btn-cta-glitch:hover {
+            background: #ff00cc;
+            box-shadow: 0 0 30px #ff00cc;
+            color: white;
         }
 
         footer {
-            border-top: 1px solid #e2e8f0;
-            padding: 48px 0 24px;
-            background: #fafcff;
+            border-top: 1px solid rgba(0,255,255,0.3);
+            padding: 50px 0 30px;
+            background: #01000c;
         }
 
         .footer-grid {
@@ -453,38 +533,29 @@
             gap: 40px;
         }
 
-        .footer-col p {
-            color: #4a5568;
+        .social-icons a {
+            color: #0ff;
+            margin-right: 24px;
+            font-size: 1.6rem;
+            transition: 0.2s;
         }
 
-        .social-icons a {
-            color: #2d3e50;
-            margin-right: 20px;
-            font-size: 1.4rem;
-            transition: 0.2s;
+        .social-icons a:hover {
+            text-shadow: 0 0 12px cyan;
+            transform: scale(1.1);
+            display: inline-block;
         }
 
         .copyright {
             text-align: center;
             margin-top: 48px;
-            color: #6c757d;
-            font-size: 0.85rem;
+            color: #5c799e;
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 0 24px;
-            }
-            .hero-content h1 {
-                font-size: 2.3rem;
-            }
-            .nav-container {
-                flex-direction: column;
-                gap: 16px;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
+            .container { padding: 0 20px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.9rem; }
         }
     </style>
 </head>
@@ -493,180 +564,123 @@
         <div class="container nav-container">
             <div class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-shield-alt"></i>
+                    <i class="fas fa-microchip"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>ZTrust Tech</h1>
-                    <span>AI · Robotics · Cyber Defense</span>
+                    <h1>NexusGuard</h1>
+                    <span>AI · ROBOTICS · ZERO TRUST</span>
                 </div>
             </div>
             <div class="nav-links">
                 <a href="#">Home</a>
-                <a href="#services">Solutions</a>
-                <a href="#tech">Innovation</a>
-                <a href="#contact">Contact</a>
-                <a href="#" class="btn-outline-light">Portal</a>
+                <a href="#services">Cyber-Services</a>
+                <a href="#tech">RoboStack</a>
+                <a href="#contact">Neural Contact</a>
+                <a href="#" class="btn-outline-cyber">Secure Portal <i class="fas fa-shield-haltered"></i></a>
             </div>
         </div>
     </nav>
 
     <main>
-        <!-- Hero Section with Robotics + AI + Cybersecurity visual mix -->
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-content">
-                    <div class="hero-badge"><i class="fas fa-robot"></i> Next-Gen IT · Zero Trust Ready</div>
-                    <h1>Secure, Intelligent, Autonomous Infrastructure</h1>
-                    <p>ZTrust Tech delivers integrated AI-driven robotics, zero-trust cybersecurity, and full-spectrum IT infrastructure — from app development to cloud & edge.</p>
+                    <div class="hero-badge"><i class="fas fa-robot"></i> Autonomous Defense | AI Core v.9</div>
+                    <h1>Sentinel AI: Robotics + Cyber Immunity</h1>
+                    <p>Next-Gen IT infrastructure with autonomous robotics, predictive cybersecurity, and AI-driven automation — from core to edge.</p>
                     <div class="btn-group">
-                        <a href="#" class="btn-primary">Explore services <i class="fas fa-arrow-right"></i></a>
-                        <a href="#" class="btn-secondary">AI & Cyber demo</a>
+                        <a href="#" class="btn-primary-neon"><i class="fas fa-brain"></i> Activate AI Defense</a>
+                        <a href="#" class="btn-cyber-outline"><i class="fas fa-vr-cardboard"></i> Robotics Demo</a>
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <div class="hero-card">
-                        <i class="fas fa-microchip fa-3x"></i>
-                        <p style="font-weight:600; margin-top:8px;">AI Core</p>
+                    <div class="robot-card">
+                        <i class="fas fa-robot"></i>
+                        <p style="font-weight:bold; margin-top:10px;">Autonomous<br>Patrol</p>
                     </div>
-                    <div class="hero-card">
-                        <i class="fas fa-robot fa-3x"></i>
-                        <p style="font-weight:600; margin-top:8px;">Robotics</p>
+                    <div class="robot-card">
+                        <i class="fas fa-shield-haltered"></i>
+                        <p style="font-weight:bold; margin-top:10px;">Quantum<br>Encrypt</p>
                     </div>
-                    <div class="hero-card">
-                        <i class="fas fa-shield-haltered fa-3x"></i>
-                        <p style="font-weight:600; margin-top:8px;">Cyber SOC</p>
+                    <div class="robot-card">
+                        <i class="fas fa-microchip"></i>
+                        <p style="font-weight:bold; margin-top:10px;">Neuromorphic<br>Edge</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services - IT infrastructure, App development, Security etc -->
         <div class="container" id="services">
             <div class="section">
-                <h2 class="section-title">Full Spectrum IT Excellence</h2>
-                <p class="section-sub">From secure infrastructure to intelligent applications — we engineer future-proof digital ecosystems.</p>
+                <h2 class="section-title">⚡ Full-Stack IT & Cybernetic Armor ⚡</h2>
+                <p class="section-sub">Industrial-grade AI, Robotic process automation, and Zero-Trust security — engineered for resilience.</p>
                 <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-network-wired"></i></div>
-                        <h3>Infrastructure</h3>
-                        <p>Cloud, on-prem, hybrid networks & edge computing — high availability, SD-WAN, and Zero Trust architecture.</p>
-                        <span style="color:#0a2b3e; font-weight:500;">→ 24/7 monitoring</span>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-                        <h3>App Development</h3>
-                        <p>Custom enterprise apps, AI-embedded platforms, mobile & web solutions built with modern stacks & DevSecOps.</p>
-                        <span style="color:#0a2b3e; font-weight:500;">→ AI-native delivery</span>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-shield-virus"></i></div>
-                        <h3>Cybersecurity</h3>
-                        <p>Threat detection, pen-testing, zero-trust identity, SOAR, compliance (GDPR, SOC2) and 24/7 security operations.</p>
-                        <span style="color:#0a2b3e; font-weight:500;">→ AI threat hunting</span>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-brain"></i></div>
-                        <h3>AI & Machine Learning</h3>
-                        <p>Predictive analytics, LLMs, computer vision & intelligent automation for business transformation.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-robot"></i></div>
-                        <h3>Robotics Process Automation</h3>
-                        <p>Intelligent robotics integration, autonomous agents, industrial IoT & smart factory solutions.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                        <h3>Cloud & DevOps</h3>
-                        <p>Multi-cloud orchestration, Kubernetes, Infrastructure-as-Code, CI/CD pipelines with security baked in.</p>
-                    </div>
+                    <div class="service-card"><div class="service-icon"><i class="fas fa-network-wired"></i></div><h3>Autonomous Infrastructure</h3><p>Self-healing networks, edge computing, and 5G-ready mesh with AI orchestration.</p><span style="color:#0ff;">→ Predictive scaling</span></div>
+                    <div class="service-card"><div class="service-icon"><i class="fas fa-laptop-code"></i></div><h3>AI-Augmented Dev</h3><p>GenAI apps, smart contracts, and DevSecOps pipelines with robotic code assistants.</p><span style="color:#0ff;">→ Copilot X ready</span></div>
+                    <div class="service-card"><div class="service-icon"><i class="fas fa-shield-virus"></i></div><h3>Cybernetic Defense</h3><p>AI-SIEM, deception grids, zero-trust identity, and autonomous incident response.</p><span style="color:#0ff;">→ 24/7 Neural SOC</span></div>
+                    <div class="service-card"><div class="service-icon"><i class="fas fa-brain"></i></div><h3>Generative AI & LLMs</h3><p>Custom LLMs for threat intelligence, computer vision, and intelligent document processing.</p></div>
+                    <div class="service-card"><div class="service-icon"><i class="fas fa-robot"></i></div><h3>Robotics-as-a-Service</h3><p>Autonomous mobile robots, industrial cobots, drone fleets with AI vision.</p></div>
+                    <div class="service-card"><div class="service-icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>Zero-Trust Cloud</h3><p>Confidential computing, multi-cloud mesh, K8s security with real-time posture management.</p></div>
                 </div>
             </div>
         </div>
 
-        <!-- Showcase Robotics + AI + Cyber images (icon based but highly illustrative) -->
         <div class="showcase">
             <div class="container" style="padding: 80px 0;">
                 <div class="showcase-grid">
                     <div class="showcase-text">
-                        <h2>Where AI meets Robotics & Cyber Resilience</h2>
-                        <p>Our visual intelligence suite: autonomous robotics secured by AI-driven threat detection. Next-generation protection for intelligent systems.</p>
-                        <ul style="margin-top: 20px; list-style: none;">
-                            <li><i class="fas fa-check-circle" style="color:#00b4aa;"></i> AI-powered security analytics</li>
-                            <li><i class="fas fa-check-circle" style="color:#00b4aa;"></i> Self-healing infrastructure</li>
-                            <li><i class="fas fa-check-circle" style="color:#00b4aa;"></i> Robotics fleets with edge AI</li>
+                        <h2><i class="fas fa-robot"></i> Cognitive Robotics & <span style="color:#0ff;">Cyber Fusion</span></h2>
+                        <p>Our visual intelligence fuses robotic automation with AI-driven threat hunting. Real-time telemetry, self-healing agents, and autonomous defense drones.</p>
+                        <ul class="glow-list" style="margin-top: 20px;">
+                            <li><i class="fas fa-check-circle"></i> Swarm Robotics + Blockchain Integrity</li>
+                            <li><i class="fas fa-check-circle"></i> AI-based Anomaly Detection at Edge</li>
+                            <li><i class="fas fa-check-circle"></i> Digital Twin Security Simulations</li>
                         </ul>
                     </div>
-                    <div class="showcase-gallery">
-                        <div class="img-card">
-                            <i class="fas fa-microchip" style="font-size:3.5rem; color:#2563eb;"></i>
-                            <span>Neural Edge</span>
-                        </div>
-                        <div class="img-card">
-                            <i class="fas fa-robot" style="font-size:3.5rem; color:#a855f7;"></i>
-                            <span>Autonomous Bots</span>
-                        </div>
-                        <div class="img-card">
-                            <i class="fas fa-fingerprint" style="font-size:3.5rem; color:#10b981;"></i>
-                            <span>Zero Trust ID</span>
-                        </div>
-                        <div class="img-card">
-                            <i class="fas fa-chart-line" style="font-size:3.5rem; color:#f97316;"></i>
-                            <span>Predictive Cyber</span>
-                        </div>
+                    <div class="robo-gallery">
+                        <div class="robo-card-mini"><i class="fas fa-microchip"></i><span>Neuromorphic Chip</span></div>
+                        <div class="robo-card-mini"><i class="fas fa-robot"></i><span>Sentinel Drone</span></div>
+                        <div class="robo-card-mini"><i class="fas fa-fingerprint"></i><span>Bio-Metric AI</span></div>
+                        <div class="robo-card-mini"><i class="fas fa-chart-line"></i><span>Predictive Defense</span></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Cybersecurity & IT stats / Trust signals -->
         <div class="container">
-            <div class="stats-area">
+            <div class="stats-hud">
                 <div class="stats-flex">
-                    <div class="stat-item">
-                        <h3>99.99%</h3>
-                        <p>Infrastructure Uptime SLA</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3><i class="fas fa-shield-alt"></i> 24/7</h3>
-                        <p>AI Cyber Defense</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>500+</h3>
-                        <p>Robotics Deployments</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>Zero-Trust</h3>
-                        <p>Native Architecture</p>
-                    </div>
+                    <div class="stat-item"><h3>99.999%</h3><p>Cyber Resilience SLA</p></div>
+                    <div class="stat-item"><h3><i class="fas fa-shield-haltered"></i> 15ms</h3><p>Threat Response (AI)</p></div>
+                    <div class="stat-item"><h3>1.2k+</h3><p>Robotic Deployments</p></div>
+                    <div class="stat-item"><h3>Zero-Trust 360</h3><p>Continuous Verification</p></div>
                 </div>
             </div>
         </div>
 
-        <!-- Technology Stack / IT Capabilities -->
-        <div class="tech-stack" id="tech">
-            <div class="container" style="padding: 70px 0;">
-                <h2 class="section-title">Innovation Stack & Core Technologies</h2>
-                <p class="section-sub">Leveraging cutting-edge tools for scalable, secure, and intelligent systems.</p>
+        <div class="container" id="tech">
+            <div class="tech-stack" style="padding: 60px 20px;">
+                <h2 class="section-title">⚙️ Cyber-Robotics Core Stack ⚙️</h2>
+                <p class="section-sub">Cutting-edge frameworks for autonomous security and intelligent robotics.</p>
                 <div class="marquee-logos">
-                    <span class="tech-badge"><i class="fab fa-python"></i> Python/TensorFlow</span>
-                    <span class="tech-badge"><i class="fas fa-robot"></i> ROS2 / Robotics</span>
-                    <span class="tech-badge"><i class="fas fa-cloud"></i> AWS/Azure/GCP</span>
-                    <span class="tech-badge"><i class="fas fa-database"></i> Zero-Trust SASE</span>
-                    <span class="tech-badge"><i class="fas fa-code"></i> React/Node/Go</span>
-                    <span class="tech-badge"><i class="fas fa-shield-haltered"></i> SIEM/SOAR</span>
-                    <span class="tech-badge"><i class="fas fa-brain"></i> LLMs / GenAI</span>
-                    <span class="tech-badge"><i class="fas fa-microchip"></i> Edge AI</span>
+                    <span class="tech-badge"><i class="fab fa-python"></i> PyTorch / ROS2</span>
+                    <span class="tech-badge"><i class="fas fa-robot"></i> NVIDIA Isaac Sim</span>
+                    <span class="tech-badge"><i class="fas fa-cloud"></i> Azure Quantum / AWS</span>
+                    <span class="tech-badge"><i class="fas fa-dragon"></i> Rust / WASM Edge</span>
+                    <span class="tech-badge"><i class="fas fa-shield-haltered"></i> MITRE ATT&CK AI</span>
+                    <span class="tech-badge"><i class="fas fa-brain"></i> LLM Guardrails</span>
+                    <span class="tech-badge"><i class="fas fa-microchip"></i> Edge TPU / Jetson</span>
+                    <span class="tech-badge"><i class="fas fa-lock"></i> Zero-Trust SASE</span>
                 </div>
             </div>
         </div>
 
-        <!-- CTA + Contact  -->
         <div class="container" id="contact">
-            <div class="cta-section">
-                <h2>Ready to transform your IT landscape?</h2>
-                <p style="opacity: 0.9; max-width: 600px; margin: 0 auto;">Let ZTrust Tech secure and evolve your infrastructure with AI, robotics, and zero-trust frameworks.</p>
-                <a href="#" class="btn-cta"><i class="fas fa-paper-plane"></i> Contact our team</a>
-                <div style="margin-top: 30px; font-size:0.9rem;"><i class="fas fa-envelope"></i> hello@ztrust.tech &nbsp; | &nbsp; <i class="fas fa-phone-alt"></i> +1 (888) 978-7789</div>
+            <div class="cta-neon">
+                <h2 style="font-size: 2rem;">🔒 Fortify Your Digital Frontiers 🤖</h2>
+                <p style="opacity: 0.9; max-width: 600px; margin: 15px auto;">Join the elite ecosystem of AI-driven cybersecurity & autonomous robotics.</p>
+                <a href="#" class="btn-cta-glitch"><i class="fas fa-paper-plane"></i> Activate Neural Link</a>
+                <div style="margin-top: 35px; font-size:1rem;"><i class="fas fa-envelope"></i> nexus@guardian.tech &nbsp; | &nbsp; <i class="fas fa-phone-alt"></i> +1 (844) 771-2233</div>
             </div>
         </div>
     </main>
@@ -674,35 +688,12 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <h3 style="margin-bottom: 16px;">ZTrust Tech</h3>
-                    <p>Secure tomorrow’s intelligence.<br>AI · Robotics · Cyber Resiliency</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Solutions</h4>
-                    <p>AI Security</p>
-                    <p>Robotics Integration</p>
-                    <p>IT Infrastructure</p>
-                    <p>App Dev & DevSecOps</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <p>About Us</p>
-                    <p>Careers</p>
-                    <p>Trust Center</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Connect</h4>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
+                <div class="footer-col"><h3 style="margin-bottom: 16px;">NexusGuard<span style="color:#0ff;">_AI</span></h3><p>Hyperautomation & Cognitive Security</p></div>
+                <div class="footer-col"><h4>Cybernetic Ops</h4><p>Robotics Defense</p><p>AI Red Teaming</p><p>Cloud Hardening</p><p>Zero-Trust Fabric</p></div>
+                <div class="footer-col"><h4>Innovation</h4><p>AI Research</p><p>Robotics Lab</p><p>Threat Intelligence</p></div>
+                <div class="footer-col"><h4>Neural Connect</h4><div class="social-icons"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-discord"></i></a></div></div>
             </div>
-            <div class="copyright">
-                &copy; 2025 ZTrust Tech — Leading the future of AI-driven cybersecurity & robotics infrastructure. All rights reserved.
-            </div>
+            <div class="copyright">© 2025 NexusGuard — Redefining autonomous cybersecurity & AI robotics. All systems secure.</div>
         </div>
     </footer>
 </body>
