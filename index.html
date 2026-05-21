@@ -70,7 +70,6 @@
         opacity: 0;
       }
     }
-    /* Different animation speeds for variety */
     .moving-element:nth-child(odd) { animation-duration: 15s; }
     .moving-element:nth-child(even) { animation-duration: 20s; }
     .moving-element:nth-child(3n) { animation-duration: 25s; }
@@ -123,13 +122,24 @@
       .menu-toggle { display: block; }
       .container { padding: 0 20px; }
     }
+    
+    /* Hero Section with Video Background */
     .hero {
       min-height: 90vh;
       display: flex;
       align-items: center;
       padding: 100px 0 60px;
       position: relative;
-      background: url('1.jpg') no-repeat center center/cover;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
     }
     .hero::before {
       content: '';
@@ -138,10 +148,13 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(10,10,15,0.85), rgba(5,5,8,0.9));
-      z-index: 0;
+      background: linear-gradient(135deg, rgba(10,10,15,0.8), rgba(5,5,8,0.85));
+      z-index: 1;
     }
-    .hero .container { position: relative; z-index: 1; }
+    .hero .container { 
+      position: relative; 
+      z-index: 2; 
+    }
     .hero-content { max-width: 700px; }
     .hero-badge {
       display: inline-flex;
@@ -154,6 +167,7 @@
       color: #60a5fa;
       margin-bottom: 24px;
       border: 1px solid rgba(59,130,246,0.4);
+      backdrop-filter: blur(5px);
     }
     .hero h1 {
       font-size: 3rem;
@@ -165,7 +179,12 @@
       color: transparent;
       margin-bottom: 20px;
     }
-    .hero p { font-size: 1.1rem; color: #cbd5e6; margin-bottom: 32px; }
+    .hero p { 
+      font-size: 1.1rem; 
+      color: #e2e8f0; 
+      margin-bottom: 32px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
     .btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
     .btn-primary {
       background: linear-gradient(135deg, #2563eb, #1e40af);
@@ -192,8 +211,10 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      backdrop-filter: blur(5px);
     }
-    .btn-outline:hover { background: rgba(59,130,246,0.1); border-color: #60a5fa; }
+    .btn-outline:hover { background: rgba(59,130,246,0.2); border-color: #60a5fa; }
+    
     .section { padding: 70px 0; }
     .section-title {
       text-align: center;
@@ -398,8 +419,12 @@
   </div>
 </nav>
 
-<!-- Hero Section -->
-<section class="hero" style="background-image: url('1.jpg');">
+<!-- Hero Section with Video Background -->
+<section class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="ENGINEERING (2).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
   <div class="container">
     <div class="hero-content">
       <div class="hero-badge"><i class="fas fa-microchip"></i> 10+ Years of IT Excellence</div>
@@ -413,7 +438,7 @@
   </div>
 </section>
 
-<!-- Experience Section - Updated Stats (No GM, No Projects Delivered) -->
+<!-- Experience Section - Updated Stats -->
 <section class="section" style="background:#0a0c12;">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-chart-line"></i> Over 10 Years of IT Excellence</h2>
@@ -511,15 +536,10 @@
   for (let i = 0; i < 40; i++) {
     const element = document.createElement('div');
     element.className = 'moving-element';
-    // Random word from array
     const randomWord = movingWords[Math.floor(Math.random() * movingWords.length)];
-    // Random size between 0.8rem and 1.8rem
     const fontSize = 0.9 + Math.random() * 1;
-    // Random Y offset
     const yOffset = Math.random() * 100;
-    // Random delay
     const delay = Math.random() * 20;
-    // Random rotation variation
     const startY = Math.random() * 100;
     
     element.textContent = randomWord;
@@ -544,6 +564,12 @@
     numEl.style.animationDelay = Math.random() * 25 + 's';
     numEl.style.animationDuration = (12 + Math.random() * 18) + 's';
     movingBg.appendChild(numEl);
+  }
+
+  // Video play handling for mobile autoplay
+  const video = document.querySelector('.hero-video');
+  if (video) {
+    video.play().catch(e => console.log('Video autoplay prevented:', e));
   }
 
   // Mobile menu toggle
