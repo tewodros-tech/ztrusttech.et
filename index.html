@@ -351,7 +351,7 @@
     .infra-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: #fff; }
     .infra-card p { color: #94a3b8; }
     
-    /* SERVICES GRID - Image based cards with slide animations */
+    /* SERVICES GRID - Alternating Left/Right Slide Animations */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -365,10 +365,19 @@
       border: 1px solid rgba(59,130,246,0.25);
       transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       opacity: 0;
-      transform: translateX(-30px);
-      animation: slideInFromSide 0.6s forwards;
+      animation-duration: 0.6s;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
-    /* Different animation delays for staggered effect */
+    /* Odd cards slide from LEFT */
+    .service-card:nth-child(odd) {
+      animation-name: slideFromLeft;
+    }
+    /* Even cards slide from RIGHT */
+    .service-card:nth-child(even) {
+      animation-name: slideFromRight;
+    }
+    /* Staggered delays for smooth cascading effect */
     .service-card:nth-child(1) { animation-delay: 0.05s; }
     .service-card:nth-child(2) { animation-delay: 0.1s; }
     .service-card:nth-child(3) { animation-delay: 0.15s; }
@@ -378,16 +387,28 @@
     .service-card:nth-child(7) { animation-delay: 0.35s; }
     .service-card:nth-child(8) { animation-delay: 0.4s; }
     
-    @keyframes slideInFromSide {
+    @keyframes slideFromLeft {
       0% {
         opacity: 0;
-        transform: translateX(-40px);
+        transform: translateX(-60px);
       }
       100% {
         opacity: 1;
         transform: translateX(0);
       }
     }
+    
+    @keyframes slideFromRight {
+      0% {
+        opacity: 0;
+        transform: translateX(60px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
     .service-card:hover {
       transform: translateY(-8px) scale(1.02);
       border-color: #3b82f6;
@@ -697,27 +718,27 @@
   </div>
 </section>
 
-<!-- Core IT Services with Images (slide right/left animations) -->
+<!-- Core IT Services with Images - Alternating Left/Right Slide Animations -->
 <section class="section" style="background:#0a0c12;">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-cubes"></i> Our Core IT Services</h2>
     <p class="section-sub">End-to-end technology solutions covering every aspect of your IT landscape</p>
     <div class="services-grid">
-      <!-- Infrastructure -->
+      <!-- Infrastructure (odd - slides from left) -->
       <div class="service-card"><img src="infrastructure.jpg" alt="IT Infrastructure" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Infrastructure'"><div class="service-info"><h3>IT Infrastructure</h3><p>Complete infrastructure design, deployment, and management including servers and virtualization.</p></div></div>
-      <!-- Storage -->
+      <!-- Storage (even - slides from right) -->
       <div class="service-card"><img src="storage.jpeg" alt="Storage Solutions" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Storage'"><div class="service-info"><h3>Storage Solutions</h3><p>SAN, NAS, backup systems, disaster recovery, and data archiving solutions.</p></div></div>
-      <!-- Application Development / Programming -->
+      <!-- Application Development (odd - slides from left) -->
       <div class="service-card"><img src="programing.jpg" alt="Application Development" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=App+Development'"><div class="service-info"><h3>Application Development</h3><p>Custom web, mobile, and desktop applications tailored to your business processes.</p></div></div>
-      <!-- Database -->
+      <!-- Database (even - slides from right) -->
       <div class="service-card"><img src="database.jpg" alt="Database Management" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Database'"><div class="service-info"><h3>Database Management</h3><p>SQL, NoSQL, database design, optimization, migration, and administration.</p></div></div>
-      <!-- API Integration -->
+      <!-- API Integration (odd - slides from left) -->
       <div class="service-card"><img src="API.JPG" alt="API Integration" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=API'"><div class="service-info"><h3>API Integration</h3><p>Seamless third-party API integration, RESTful APIs, and microservices architecture.</p></div></div>
-      <!-- Network Connectivity -->
+      <!-- Network Connectivity (even - slides from right) -->
       <div class="service-card"><img src="Network.jfif" alt="Network Connectivity" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Network'"><div class="service-info"><h3>Network Connectivity</h3><p>Enterprise networking, SD-WAN, LAN/WAN, wireless solutions, and network security.</p></div></div>
-      <!-- Cybersecurity -->
+      <!-- Cybersecurity (odd - slides from left) -->
       <div class="service-card"><img src="Cybersecurity.jpg" alt="Cybersecurity Solutions" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Cybersecurity'"><div class="service-info"><h3>Cybersecurity Solutions</h3><p>Advanced threat protection, endpoint security, firewall management, risk assessment, and compliance solutions.</p></div></div>
-      <!-- Awareness Trainings -->
+      <!-- Awareness Trainings (even - slides from right) -->
       <div class="service-card"><img src="Awarness.jpg" alt="Awareness Trainings" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Awareness+Training'"><div class="service-info"><h3>Awareness Trainings</h3><p>Cybersecurity awareness programs, phishing simulations, data protection workshops, and IT security culture development.</p></div></div>
     </div>
   </div>
