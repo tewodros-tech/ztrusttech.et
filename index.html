@@ -70,35 +70,120 @@
     .moving-element:nth-child(5n) { animation-duration: 18s; }
     
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    
+    /* ===== REDESIGNED NAVBAR: Wider, more visible background, bigger logo, ZTrust Tech text prominent ===== */
     .nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(10, 10, 15, 0.95);
-      backdrop-filter: blur(16px);
+      background: rgba(8, 8, 14, 0.96);
+      backdrop-filter: blur(18px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(59,130,246,0.3);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      border-bottom: 1px solid rgba(59,130,246,0.5);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+      padding: 8px 0;
     }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
-    .logo-wrapper { display: flex; align-items: center; gap: 10px; }
-    .nav-logo { height: 44px; width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(59,130,246,0.4)); border-radius: 10px; }
-    .logo-text { font-size: 1.4rem; font-weight: 800; color: #fff; }
-    .logo-text span { color: #3b82f6; }
-    .links { display: flex; gap: 1.8rem; }
-    .links a { text-decoration: none; font-weight: 600; color: #cbd5e6; transition: 0.2s; font-size: 0.9rem; }
-    .links a:hover, .links a.active { color: #3b82f6; }
-    .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; }
+    .nav-inner { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 8px 0;
+    }
+    .logo-wrapper { 
+      display: flex; 
+      align-items: center; 
+      gap: 14px; 
+    }
+    /* Logo size increased and more visible */
+    .nav-logo { 
+      height: 52px; 
+      width: auto; 
+      object-fit: contain; 
+      filter: drop-shadow(0 0 12px rgba(59,130,246,0.6));
+      border-radius: 12px;
+      transition: transform 0.2s ease;
+    }
+    .nav-logo:hover {
+      transform: scale(1.02);
+    }
+    /* ZTrust Tech text bigger, bolder, more visible */
+    .logo-text { 
+      font-size: 1.7rem; 
+      font-weight: 800; 
+      color: #fff;
+      letter-spacing: -0.5px;
+      text-shadow: 0 0 8px rgba(59,130,246,0.3);
+    }
+    .logo-text span { 
+      color: #3b82f6;
+      text-shadow: 0 0 6px rgba(59,130,246,0.5);
+    }
+    .links { 
+      display: flex; 
+      gap: 2rem; 
+      align-items: center;
+    }
+    .links a { 
+      text-decoration: none; 
+      font-weight: 600; 
+      color: #e2e8f0; 
+      transition: 0.25s; 
+      font-size: 1rem;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+    }
+    .links a:hover, .links a.active { 
+      color: #3b82f6; 
+      border-bottom-color: #3b82f6;
+    }
+    .menu-toggle { 
+      display: none; 
+      font-size: 1.6rem; 
+      cursor: pointer; 
+      color: #fff;
+      background: rgba(59,130,246,0.15);
+      padding: 8px 12px;
+      border-radius: 12px;
+      transition: 0.2s;
+    }
+    .menu-toggle:hover {
+      background: rgba(59,130,246,0.3);
+    }
+    
+    @media (max-width: 820px) {
+      .links {
+        position: fixed;
+        top: 78px;
+        left: -100%;
+        width: 75%;
+        height: calc(100vh - 78px);
+        background: rgba(10,10,15,0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 2rem 1rem;
+        transition: left 0.3s ease;
+        gap: 2rem;
+        border-right: 2px solid #3b82f6;
+        backdrop-filter: blur(24px);
+        z-index: 1001;
+      }
+      .links.active { left: 0; }
+      .menu-toggle { display: block; }
+      .container { padding: 0 20px; }
+      .logo-text { font-size: 1.4rem; }
+      .nav-logo { height: 44px; }
+    }
     
     /* Top Right Corner Tagline Text - positioned absolutely */
     .top-right-tagline {
       position: fixed;
-      top: 85px;
+      top: 95px;
       right: 24px;
       z-index: 1002;
       max-width: 380px;
       text-align: right;
-      background: rgba(10, 10, 15, 0.7);
+      background: rgba(10, 10, 15, 0.75);
       backdrop-filter: blur(12px);
       padding: 12px 20px;
       border-radius: 20px;
@@ -128,12 +213,12 @@
     /* TOP LEFT CORNER CONTENT - New section for badge, title and description */
     .top-left-content {
       position: fixed;
-      top: 85px;
+      top: 95px;
       left: 24px;
       z-index: 1002;
       max-width: 480px;
       text-align: left;
-      background: rgba(10, 10, 15, 0.65);
+      background: rgba(10, 10, 15, 0.7);
       backdrop-filter: blur(12px);
       padding: 14px 22px;
       border-radius: 24px;
@@ -173,47 +258,19 @@
       opacity: 0.95;
     }
     @media (max-width: 900px) {
-      .top-left-content { max-width: 380px; top: 75px; left: 16px; padding: 10px 16px; }
+      .top-left-content { max-width: 380px; top: 85px; left: 16px; padding: 10px 16px; }
       .top-left-title { font-size: 1.3rem; }
       .top-left-desc { font-size: 0.7rem; }
+      .top-right-tagline { top: 85px; right: 16px; max-width: 300px; }
     }
     @media (max-width: 700px) {
       .top-left-content { display: none; }
-    }
-    @media (max-width: 820px) {
-      .links {
-        position: fixed;
-        top: 68px;
-        left: -100%;
-        width: 75%;
-        height: calc(100vh - 68px);
-        background: rgba(10,10,15,0.98);
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem;
-        transition: left 0.3s ease;
-        gap: 1.8rem;
-        border-right: 2px solid #3b82f6;
-        backdrop-filter: blur(20px);
-        z-index: 1001;
-      }
-      .links.active { left: 0; }
-      .menu-toggle { display: block; }
-      .container { padding: 0 20px; }
-      .top-right-tagline {
-        top: 75px;
-        right: 16px;
-        max-width: 280px;
-        padding: 8px 14px;
-      }
-      .top-right-tagline .main-tag { font-size: 0.8rem; }
-      .top-right-tagline .sub-tag { font-size: 0.6rem; }
     }
     @media (max-width: 550px) {
       .top-right-tagline { display: none; }
     }
     
-    /* Hero Section with Video Background - Adjusted for cleaner look since content moved to fixed corner */
+    /* Hero Section with Video Background */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -242,13 +299,13 @@
       z-index: 1;
     }
     .hero .container { position: relative; z-index: 2; }
-    /* Original hero content now hidden since we moved it to top-left fixed, but keep buttons visible and repositioned */
     .hero-content {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       margin-top: 60px;
     }
+    /* Hide original hero elements since they are in top-left corner */
     .hero-badge, .hero h1, .hero p {
       display: none;
     }
@@ -570,6 +627,11 @@
       .footer-tagline { font-size: 0.85rem; }
       .footer-social a { width: 42px; height: 42px; font-size: 1.3rem; }
       .footer-links-minimal { gap: 18px; }
+      .section-title { font-size: 1.8rem; }
+      .stats-row { flex-direction: column; text-align: center; gap: 30px; }
+      .infra-section { background-attachment: scroll; }
+      .infra-cards { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .footer-links-minimal { gap: 14px; flex-wrap: wrap; }
@@ -617,13 +679,6 @@
     .float-wa { background: #25D366; }
     .float-tg { background: #0088cc; }
     .float-wa:hover, .float-tg:hover { transform: scale(1.08); }
-    @media (max-width: 768px) {
-      .section-title { font-size: 1.8rem; }
-      .stats-row { flex-direction: column; text-align: center; gap: 30px; }
-      .infra-section { background-attachment: scroll; }
-      .infra-cards { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: 1fr; }
-    }
   </style>
 </head>
 <body>
@@ -636,23 +691,25 @@
   <a href="https://t.me/ZTrustTech" class="float-tg" target="_blank"><i class="fab fa-telegram-plane"></i></a>
 </div>
 
-<!-- Top Right Corner Tagline - Complete IT Solutions Provider text -->
+<!-- Top Right Corner Tagline -->
 <div class="top-right-tagline">
   <div class="main-tag">Complete IT Solutions Provider</div>
   <div class="sub-tag">Infrastructure • Storage • Application Development • Database • API Integration • Network Connectivity — One trusted partner for all your IT needs.</div>
 </div>
 
-<!-- TOP LEFT CORNER CONTENT: 10+ Years badge, ZTrust Tech title and description (hyphen removed) -->
+<!-- Top Left Corner Content -->
 <div class="top-left-content">
   <div class="top-left-badge"><i class="fas fa-microchip"></i> 10+ Years of IT Excellence</div>
   <div class="top-left-title">ZTrust Tech</div>
   <div class="top-left-desc">Enterprise-grade IT infrastructure, smart storage, custom applications, high-performance databases, seamless API integration, and robust network connectivity — all under one roof.</div>
 </div>
 
+<!-- REDESIGNED NAVIGATION: ZTrust Tech + Home, Services, About, Contact with wider visible bg and bigger logo -->
 <nav class="nav">
   <div class="container nav-inner">
     <div class="logo-wrapper">
-      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/44x44?text=ZT'">
+      <!-- Larger, more visible logo -->
+      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/52x52?text=ZT'">
       <div class="logo-text">ZTrust <span>Tech</span></div>
     </div>
     <div class="links" id="navLinks">
@@ -665,7 +722,7 @@
   </div>
 </nav>
 
-<!-- Hero Section with Video Background (original hero content hidden, buttons remain visible) -->
+<!-- Hero Section with Video Background -->
 <section class="hero">
   <video autoplay muted loop playsinline class="hero-video">
     <source src="ENGINEERING (2).mp4" type="video/mp4">
@@ -673,7 +730,6 @@
   </video>
   <div class="container">
     <div class="hero-content">
-      <!-- Original badge, h1, p are hidden via CSS, but buttons remain -->
       <div class="btn-group">
         <a href="contact.html" class="btn-primary"><i class="fas fa-headset"></i> Get IT Consultation →</a>
         <a href="services.html" class="btn-outline"><i class="fas fa-cogs"></i> Explore Services</a>
@@ -682,7 +738,7 @@
   </div>
 </section>
 
-<!-- Infrastructure Excellence Section with Background Image (2.jpg) -->
+<!-- Infrastructure Excellence Section -->
 <section class="infra-section">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-microchip"></i> Our Infrastructure Excellence</h2>
@@ -719,7 +775,7 @@
   </div>
 </section>
 
-<!-- Core IT Services Section (Expanded with Cybersecurity & Awareness Training) -->
+<!-- Core IT Services Section (with Cybersecurity & Awareness Training) -->
 <section class="section" style="background:#0a0c12;">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-cubes"></i> Our Core IT Services</h2>
@@ -752,7 +808,7 @@
   </div>
 </section>
 
-<!-- Footer with background logo watermark -->
+<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
@@ -816,13 +872,11 @@
     movingBg.appendChild(numEl);
   }
 
-  // Video play handling
   const video = document.querySelector('.hero-video');
   if (video) {
     video.play().catch(e => console.log('Video autoplay prevented:', e));
   }
 
-  // Mobile menu toggle
   const menuToggle = document.getElementById('mobileMenu');
   const navLinks = document.getElementById('navLinks');
   if(menuToggle) {
@@ -835,18 +889,16 @@
     });
   }
   
-  // Back to top button
   const backBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     if(window.scrollY > 300) backBtn.classList.add('show');
     else backBtn.classList.remove('show');
     const nav = document.querySelector('.nav');
-    if(window.scrollY > 50) nav.style.background = 'rgba(8, 8, 12, 0.96)';
-    else nav.style.background = 'rgba(10, 10, 15, 0.95)';
+    if(window.scrollY > 50) nav.style.background = 'rgba(6, 6, 12, 0.97)';
+    else nav.style.background = 'rgba(8, 8, 14, 0.96)';
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
-  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
