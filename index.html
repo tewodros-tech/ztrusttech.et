@@ -270,42 +270,40 @@
       .top-right-tagline { display: none; }
     }
     
-    /* Hero Section with Video Background */
+    /* CLEAN HERO SECTION - No video, clean gradient background */
     .hero {
       min-height: 90vh;
       display: flex;
       align-items: center;
       padding: 100px 0 60px;
       position: relative;
+      background: linear-gradient(125deg, #070a14 0%, #0b1020 50%, #0a0e1c 100%);
       overflow: hidden;
     }
-    .hero-video {
+    /* Subtle animated grid overlay for clean tech feel */
+    .hero::after {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      background-image: radial-gradient(circle at 25% 40%, rgba(59,130,246,0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
       z-index: 0;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(10,10,15,0.75), rgba(5,5,8,0.8));
-      z-index: 1;
+    .hero .container {
+      position: relative;
+      z-index: 2;
     }
-    .hero .container { position: relative; z-index: 2; }
     .hero-content {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       margin-top: 60px;
     }
-    /* Hide original hero elements since they are in top-left corner */
+    /* Hide original hero elements that are now in top-left corner */
     .hero-badge, .hero h1, .hero p {
       display: none;
     }
@@ -704,11 +702,10 @@
   <div class="top-left-desc">Enterprise-grade IT infrastructure, smart storage, custom applications, high-performance databases, seamless API integration, and robust network connectivity — all under one roof.</div>
 </div>
 
-<!-- REDESIGNED NAVIGATION: ZTrust Tech + Home, Services, About, Contact with wider visible bg and bigger logo -->
+<!-- REDESIGNED NAVIGATION: ZTrust Tech + Home, Services, About, Contact -->
 <nav class="nav">
   <div class="container nav-inner">
     <div class="logo-wrapper">
-      <!-- Larger, more visible logo -->
       <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/52x52?text=ZT'">
       <div class="logo-text">ZTrust <span>Tech</span></div>
     </div>
@@ -722,12 +719,8 @@
   </div>
 </nav>
 
-<!-- Hero Section with Video Background -->
+<!-- CLEAN HERO SECTION - No video, just a clean gradient background with subtle grid pattern -->
 <section class="hero">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="ENGINEERING (2).mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
   <div class="container">
     <div class="hero-content">
       <div class="btn-group">
@@ -872,11 +865,7 @@
     movingBg.appendChild(numEl);
   }
 
-  const video = document.querySelector('.hero-video');
-  if (video) {
-    video.play().catch(e => console.log('Video autoplay prevented:', e));
-  }
-
+  // Mobile menu toggle
   const menuToggle = document.getElementById('mobileMenu');
   const navLinks = document.getElementById('navLinks');
   if(menuToggle) {
@@ -889,6 +878,7 @@
     });
   }
   
+  // Back to top button
   const backBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     if(window.scrollY > 300) backBtn.classList.add('show');
@@ -899,6 +889,7 @@
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
+  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
