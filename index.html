@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -345,66 +345,167 @@
     .telegram-link { background: #0088cc; }
     .whatsapp-link:hover { background: #128C7E; transform: scale(1.02); }
     .telegram-link:hover { background: #006699; transform: scale(1.02); }
+    
+    /* NEW FOOTER STYLES - Clean, Modern, Logo as Background Design */
     .footer {
-      background: #05050a;
-      padding: 50px 0 30px;
-      border-top: 1px solid #1e293b;
+      position: relative;
+      background: linear-gradient(135deg, #030308 0%, #070b14 100%);
+      padding: 70px 0 40px;
+      border-top: 1px solid rgba(59,130,246,0.25);
+      overflow: hidden;
     }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    /* Footer logo styling - fitted and mobile compatible */
-    .footer-logo {
-      max-width: 180px;
+    /* Logo as background watermark in footer */
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 85%;
+      max-width: 750px;
       height: auto;
-      width: auto;
-      max-height: 55px;
-      object-fit: contain;
-      display: block;
-      margin-bottom: 15px;
-      filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(59,130,246,0.3));
+      background-image: url('Ztrust Logo 1 (2).png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0.045;
+      pointer-events: none;
+      aspect-ratio: 4/3;
+      z-index: 0;
     }
-    /* Ensure logo container handles responsive sizing */
-    .footer .footer-logo {
-      width: auto;
+    /* Additional glow behind watermark */
+    .footer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(59,130,246,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .footer .container {
+      position: relative;
+      z-index: 2;
+    }
+    /* Minimal footer content - only essential branding + socials + subtle links */
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .footer-logo-icon {
+      max-width: 160px;
       height: auto;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 12px rgba(59,130,246,0.4));
+      transition: transform 0.3s ease;
     }
-    @media (max-width: 640px) {
-      .footer-logo {
-        max-width: 140px;
-        max-height: 48px;
-        margin-bottom: 12px;
+    .footer-logo-icon:hover {
+      transform: scale(1.02);
+    }
+    .footer-tagline {
+      font-size: 1rem;
+      color: #a0afc7;
+      letter-spacing: 0.5px;
+      margin-bottom: 28px;
+      font-weight: 500;
+      background: rgba(59,130,246,0.12);
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 40px;
+      backdrop-filter: blur(4px);
+    }
+    .footer-social {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .footer-social a {
+      color: #cbd5e6;
+      font-size: 1.5rem;
+      transition: all 0.25s ease;
+      background: rgba(15, 25, 45, 0.5);
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+    .footer-social a:hover {
+      color: #fff;
+      background: #2563eb;
+      transform: translateY(-4px);
+      border-color: #60a5fa;
+      box-shadow: 0 5px 15px rgba(37,99,235,0.3);
+    }
+    .footer-links-minimal {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 35px;
+    }
+    .footer-links-minimal a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: 0.2s;
+      letter-spacing: 0.3px;
+    }
+    .footer-links-minimal a:hover {
+      color: #60a5fa;
+      transform: translateY(-1px);
+    }
+    .footer-copyright {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #6c7a96;
+      border-top: 1px solid rgba(59,130,246,0.2);
+      padding-top: 28px;
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+    }
+    /* Responsive adjustments for new footer */
+    @media (max-width: 768px) {
+      .footer::before {
+        width: 90%;
+        opacity: 0.035;
       }
-      .footer-grid {
-        gap: 30px;
-        text-align: center;
+      .footer-logo-icon {
+        max-width: 130px;
       }
-      .footer .social-links {
+      .footer-tagline {
+        font-size: 0.85rem;
+      }
+      .footer-social a {
+        width: 42px;
+        height: 42px;
+        font-size: 1.3rem;
+      }
+      .footer-links-minimal {
+        gap: 18px;
+      }
+      .footer-links-minimal a {
+        font-size: 0.8rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .footer-links-minimal {
+        gap: 14px;
+        flex-wrap: wrap;
         justify-content: center;
-        display: flex;
-      }
-      .footer h4 {
-        text-align: center;
-      }
-      .footer a, .footer p {
-        text-align: center;
-        justify-content: center;
       }
     }
-    .social-links a { 
-      font-size: 1.3rem; 
-      margin-right: 18px; 
-      color: #94a3b8; 
-      display: inline-block; 
-      transition: 0.2s; 
-    }
-    .social-links a:hover { color: #3b82f6; transform: translateY(-2px); }
-    .footer a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 10px; transition: 0.2s; }
-    .footer a:hover { color: #60a5fa; padding-left: 4px; }
-    .footer h4 { color: #fff; margin-bottom: 18px; }
     .back-to-top {
       position: fixed;
       bottom: 20px;
@@ -423,7 +524,6 @@
     }
     .back-to-top.show { opacity: 1; }
     hr { border-color: #1e293b; margin: 20px 0; }
-    .copyright { text-align: center; padding-top: 25px; border-top: 1px solid #1e293b; font-size: 0.8rem; color: #94a3b8; }
     .floating-wa-tg {
       position: fixed;
       bottom: 20px;
@@ -553,9 +653,7 @@
       <div class="service-card"><div class="service-icon">🗄️</div><h3>Database Management</h3><p>SQL, NoSQL, database design, optimization, migration, and administration.</p></div>
       <div class="service-card"><div class="service-icon">🔌</div><h3>API Integration</h3><p>Seamless third-party API integration, RESTful APIs, and microservices architecture.</p></div>
       <div class="service-card"><div class="service-icon">🌐</div><h3>Network Connectivity</h3><p>Enterprise networking, SD-WAN, LAN/WAN, wireless solutions, and network security.</p></div>
-      <!-- New Cybersecurity Solutions Card -->
       <div class="service-card"><div class="service-icon">🛡️</div><h3>Cybersecurity Solutions</h3><p>Advanced threat protection, endpoint security, firewall management, risk assessment, and compliance solutions.</p></div>
-      <!-- New Awareness Training Card -->
       <div class="service-card"><div class="service-icon">🎓</div><h3>Awareness Trainings</h3><p>Cybersecurity awareness programs, phishing simulations, data protection workshops, and IT security culture development.</p></div>
     </div>
   </div>
@@ -576,27 +674,32 @@
   </div>
 </section>
 
-<!-- Footer with optimized logo (fitted size, mobile compatible) -->
+<!-- REVAMPED FOOTER: background image as Ztrust Logo 1 (2).png watermark, clean minimal content -->
 <footer class="footer">
   <div class="container">
-    <div class="footer-grid">
-      <div>
-        <!-- Logo container with optimized display, proper scaling for mobile -->
-        <img src="Ztrust Logo 1 (2).png" class="footer-logo" alt="ZTrust Tech Logo" onerror="this.src='https://placehold.co/180x55?text=ZTrust+Tech'">
-        <p style="margin-top: 12px; color:#94a3b8;">Complete IT Solutions Provider<br>Infrastructure • Storage • Apps • Database • API • Networks</p>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="https://t.me/ZTrustTech" target="_blank"><i class="fab fa-telegram"></i></a>
-          <a href="https://wa.me/251911563698" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
+    <div class="footer-content">
+      <!-- subtle logo representation (doesn't clutter, enhances brand) -->
+      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="footer-logo-icon" onerror="this.src='https://placehold.co/160x55?text=ZTrust'">
+      <div class="footer-tagline">Complete IT Solutions Provider | Infrastructure • Storage • Apps • Database • API • Networks</div>
+      <div class="footer-social">
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://t.me/ZTrustTech" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://wa.me/251911563698" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
       </div>
-      <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-      <div><h4>Our Services</h4><a href="services.html">Infrastructure</a><a href="services.html">Storage</a><a href="services.html">App Development</a><a href="services.html">Database</a><a href="services.html">API Integration</a><a href="services.html">Network</a><a href="services.html">Cybersecurity</a><a href="services.html">Training</a></div>
-      <div><h4>Contact Info</h4><p style="color:#94a3b8;"><i class="fas fa-phone"></i> +251 911 563 698</p><p style="color:#94a3b8;"><i class="fas fa-envelope"></i> sales2@ztrust.et</p><p style="color:#94a3b8;"><i class="fas fa-map-marker-alt"></i> Bole TK Building, Addis Ababa</p></div>
+      <div class="footer-links-minimal">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="services.html">Infrastructure</a>
+        <a href="services.html">Cybersecurity</a>
+        <a href="services.html">Training</a>
+      </div>
+      <div class="footer-copyright">
+        © 2026 ZTrust Tech — 10+ Years of IT Excellence | All IT Solutions Under One Roof | Based in Addis Ababa, Ethiopia
+      </div>
     </div>
-    <hr>
-    <p class="copyright">© 2026 ZTrust Tech. 10+ Years of IT Excellence | All IT Solutions Under One Roof | Based in Addis Ababa, Ethiopia</p>
   </div>
 </footer>
 
