@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -356,8 +356,51 @@
       gap: 40px;
       margin-bottom: 40px;
     }
-    .footer-logo { height: 45px; width: auto; margin-bottom: 12px; }
-    .social-links a { font-size: 1.3rem; margin-right: 18px; color: #94a3b8; display: inline-block; transition: 0.2s; }
+    /* Footer logo styling - fitted and mobile compatible */
+    .footer-logo {
+      max-width: 180px;
+      height: auto;
+      width: auto;
+      max-height: 55px;
+      object-fit: contain;
+      display: block;
+      margin-bottom: 15px;
+      filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(59,130,246,0.3));
+    }
+    /* Ensure logo container handles responsive sizing */
+    .footer .footer-logo {
+      width: auto;
+      height: auto;
+    }
+    @media (max-width: 640px) {
+      .footer-logo {
+        max-width: 140px;
+        max-height: 48px;
+        margin-bottom: 12px;
+      }
+      .footer-grid {
+        gap: 30px;
+        text-align: center;
+      }
+      .footer .social-links {
+        justify-content: center;
+        display: flex;
+      }
+      .footer h4 {
+        text-align: center;
+      }
+      .footer a, .footer p {
+        text-align: center;
+        justify-content: center;
+      }
+    }
+    .social-links a { 
+      font-size: 1.3rem; 
+      margin-right: 18px; 
+      color: #94a3b8; 
+      display: inline-block; 
+      transition: 0.2s; 
+    }
     .social-links a:hover { color: #3b82f6; transform: translateY(-2px); }
     .footer a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 10px; transition: 0.2s; }
     .footer a:hover { color: #60a5fa; padding-left: 4px; }
@@ -412,6 +455,7 @@
       .stats-row { flex-direction: column; text-align: center; gap: 30px; }
       .infra-section { background-attachment: scroll; }
       .infra-cards { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -497,7 +541,7 @@
   </div>
 </section>
 
-<!-- Core IT Services Section -->
+<!-- Core IT Services Section (Expanded with Cybersecurity & Awareness Training) -->
 <section class="section" style="background:#0a0c12;">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-cubes"></i> Our Core IT Services</h2>
@@ -509,6 +553,10 @@
       <div class="service-card"><div class="service-icon">🗄️</div><h3>Database Management</h3><p>SQL, NoSQL, database design, optimization, migration, and administration.</p></div>
       <div class="service-card"><div class="service-icon">🔌</div><h3>API Integration</h3><p>Seamless third-party API integration, RESTful APIs, and microservices architecture.</p></div>
       <div class="service-card"><div class="service-icon">🌐</div><h3>Network Connectivity</h3><p>Enterprise networking, SD-WAN, LAN/WAN, wireless solutions, and network security.</p></div>
+      <!-- New Cybersecurity Solutions Card -->
+      <div class="service-card"><div class="service-icon">🛡️</div><h3>Cybersecurity Solutions</h3><p>Advanced threat protection, endpoint security, firewall management, risk assessment, and compliance solutions.</p></div>
+      <!-- New Awareness Training Card -->
+      <div class="service-card"><div class="service-icon">🎓</div><h3>Awareness Trainings</h3><p>Cybersecurity awareness programs, phishing simulations, data protection workshops, and IT security culture development.</p></div>
     </div>
   </div>
 </section>
@@ -528,12 +576,13 @@
   </div>
 </section>
 
-<!-- Footer -->
+<!-- Footer with optimized logo (fitted size, mobile compatible) -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div>
-        <img src="Ztrust Logo 1 (2).png" class="footer-logo" onerror="this.src='https://placehold.co/45x45?text=ZT'">
+        <!-- Logo container with optimized display, proper scaling for mobile -->
+        <img src="Ztrust Logo 1 (2).png" class="footer-logo" alt="ZTrust Tech Logo" onerror="this.src='https://placehold.co/180x55?text=ZTrust+Tech'">
         <p style="margin-top: 12px; color:#94a3b8;">Complete IT Solutions Provider<br>Infrastructure • Storage • Apps • Database • API • Networks</p>
         <div class="social-links">
           <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -543,7 +592,7 @@
         </div>
       </div>
       <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-      <div><h4>Our Services</h4><a href="services.html">Infrastructure</a><a href="services.html">Storage</a><a href="services.html">App Development</a><a href="services.html">Database</a><a href="services.html">API Integration</a><a href="services.html">Network</a></div>
+      <div><h4>Our Services</h4><a href="services.html">Infrastructure</a><a href="services.html">Storage</a><a href="services.html">App Development</a><a href="services.html">Database</a><a href="services.html">API Integration</a><a href="services.html">Network</a><a href="services.html">Cybersecurity</a><a href="services.html">Training</a></div>
       <div><h4>Contact Info</h4><p style="color:#94a3b8;"><i class="fas fa-phone"></i> +251 911 563 698</p><p style="color:#94a3b8;"><i class="fas fa-envelope"></i> sales2@ztrust.et</p><p style="color:#94a3b8;"><i class="fas fa-map-marker-alt"></i> Bole TK Building, Addis Ababa</p></div>
     </div>
     <hr>
@@ -559,7 +608,7 @@
   const movingWords = [
     '🔒 ZTrust Tech', '⚡ IT Solutions', '🔐 Secure', '💾 Storage', '🌐 Network', 
     '📱 Apps', '🗄️ Database', '🔌 API', '🏗️ Infrastructure', '☁️ Cloud',
-    '10+ Years', '100% Satisfied', '24/7 Support', '🔧 DevOps', '🖥️ Servers'
+    '10+ Years', '100% Satisfied', '24/7 Support', '🔧 DevOps', '🖥️ Servers', '🛡️ Cyber', '🎓 Training'
   ];
   
   for (let i = 0; i < 40; i++) {
@@ -574,7 +623,7 @@
     movingBg.appendChild(element);
   }
   
-  const numbers = ['0', '1', '0', '1', '100%', '24/7', '∞', '>10', '✓', '⚡', '🔒', '🔐', '🛡️'];
+  const numbers = ['0', '1', '0', '1', '100%', '24/7', '∞', '>10', '✓', '⚡', '🔒', '🔐', '🛡️', '🎯'];
   for (let i = 0; i < 25; i++) {
     const numEl = document.createElement('div');
     numEl.className = 'moving-element';
