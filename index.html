@@ -209,6 +209,70 @@
       max-width: 700px;
       margin: 0 auto 50px;
     }
+    
+    /* Infrastructure Excellence Section with Background Image */
+    .infra-section {
+      position: relative;
+      background: url('2.jpg') no-repeat center center/cover;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 100px 0;
+    }
+    .infra-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(10,10,15,0.85), rgba(5,5,8,0.9));
+      z-index: 0;
+    }
+    .infra-section .container {
+      position: relative;
+      z-index: 1;
+    }
+    .infra-section .section-title {
+      color: #fff;
+    }
+    .infra-section .section-sub {
+      color: #cbd5e6;
+    }
+    .infra-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .infra-card {
+      background: rgba(15, 17, 26, 0.8);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      padding: 32px 24px;
+      text-align: center;
+      border: 1px solid rgba(59,130,246,0.3);
+      transition: all 0.3s;
+    }
+    .infra-card:hover {
+      transform: translateY(-5px);
+      border-color: #3b82f6;
+      background: rgba(20, 25, 40, 0.9);
+    }
+    .infra-card i {
+      font-size: 3rem;
+      color: #3b82f6;
+      margin-bottom: 20px;
+    }
+    .infra-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .infra-card p {
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+    
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -249,21 +313,7 @@
       color: transparent;
     }
     .stat-item p { color: #94a3b8; font-weight: 500; font-size: 1.1rem; margin-top: 8px; }
-    .two-col-images {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-      margin: 50px 0;
-    }
-    .feature-img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 24px;
-      border: 1px solid #3b82f6;
-      transition: 0.3s;
-    }
-    .feature-img:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(59,130,246,0.2); }
+    
     .contact-bar {
       display: flex;
       flex-wrap: wrap;
@@ -360,8 +410,8 @@
       .hero h1 { font-size: 2rem; }
       .section-title { font-size: 1.8rem; }
       .stats-row { flex-direction: column; text-align: center; gap: 30px; }
-      .two-col-images { grid-template-columns: 1fr; }
-      .feature-img { height: 220px; }
+      .infra-section { background-attachment: scroll; }
+      .infra-cards { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -391,9 +441,11 @@
   </div>
 </nav>
 
+<!-- Hero Section with Video Background -->
 <section class="hero">
   <video autoplay muted loop playsinline class="hero-video">
     <source src="ENGINEERING (2).mp4" type="video/mp4">
+    Your browser does not support the video tag.
   </video>
   <div class="container">
     <div class="hero-content">
@@ -408,18 +460,32 @@
   </div>
 </section>
 
-<!-- 2 Images for Index Page -->
-<section class="section" style="background:#0a0c12;">
+<!-- Infrastructure Excellence Section with Background Image (2.jpg) -->
+<section class="infra-section">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-microchip"></i> Our Infrastructure Excellence</h2>
-    <div class="two-col-images">
-      <img src="2.jpg" alt="Data Center Infrastructure" class="feature-img" onerror="this.src='https://placehold.co/600x280?text=Infrastructure'">
-      <img src="3.jfif" alt="Enterprise Networking" class="feature-img" onerror="this.src='https://placehold.co/600x280?text=Networking'">
+    <p class="section-sub">State-of-the-art infrastructure and enterprise networking solutions deployed across Ethiopia's leading organizations</p>
+    <div class="infra-cards">
+      <div class="infra-card">
+        <i class="fas fa-database"></i>
+        <h3>Data Center Solutions</h3>
+        <p>Enterprise-grade data center design, deployment, and management with 99.99% uptime guarantee.</p>
+      </div>
+      <div class="infra-card">
+        <i class="fas fa-network-wired"></i>
+        <h3>Enterprise Networking</h3>
+        <p>High-performance network infrastructure with SD-WAN, LAN/WAN, and wireless solutions.</p>
+      </div>
+      <div class="infra-card">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <h3>Cloud Integration</h3>
+        <p>Seamless hybrid cloud solutions connecting on-premise infrastructure with major cloud providers.</p>
+      </div>
     </div>
-    <p style="text-align: center; color: #94a3b8; max-width: 800px; margin: 20px auto 0;">State-of-the-art infrastructure and enterprise networking solutions deployed across Ethiopia's leading organizations.</p>
   </div>
 </section>
 
+<!-- Stats Section -->
 <section class="section">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-chart-line"></i> Over 10 Years of IT Excellence</h2>
@@ -431,6 +497,7 @@
   </div>
 </section>
 
+<!-- Core IT Services Section -->
 <section class="section" style="background:#0a0c12;">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-cubes"></i> Our Core IT Services</h2>
@@ -446,6 +513,7 @@
   </div>
 </section>
 
+<!-- Contact Section -->
 <section class="section">
   <div class="container">
     <div class="contact-bar">
@@ -454,28 +522,46 @@
       <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Bole TK Building, Addis Ababa</div>
     </div>
     <div class="contact-bar">
-      <a href="https://wa.me/251911563698" class="whatsapp-link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      <a href="https://t.me/ZTrustTech" class="telegram-link" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+      <a href="https://wa.me/251911563698" class="whatsapp-link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp: +251 911 563 698</a>
+      <a href="https://t.me/ZTrustTech" class="telegram-link" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram: @ZTrustTech</a>
     </div>
   </div>
 </section>
 
+<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
-      <div><img src="Ztrust Logo 1 (2).png" class="footer-logo"><p style="margin-top:12px; color:#94a3b8;">Complete IT Solutions Provider</p><div class="social-links"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="https://t.me/ZTrustTech" target="_blank"><i class="fab fa-telegram"></i></a><a href="https://wa.me/251911563698" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+      <div>
+        <img src="Ztrust Logo 1 (2).png" class="footer-logo" onerror="this.src='https://placehold.co/45x45?text=ZT'">
+        <p style="margin-top: 12px; color:#94a3b8;">Complete IT Solutions Provider<br>Infrastructure • Storage • Apps • Database • API • Networks</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://t.me/ZTrustTech" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a href="https://wa.me/251911563698" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
       <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
       <div><h4>Our Services</h4><a href="services.html">Infrastructure</a><a href="services.html">Storage</a><a href="services.html">App Development</a><a href="services.html">Database</a><a href="services.html">API Integration</a><a href="services.html">Network</a></div>
-      <div><h4>Contact</h4><p style="color:#94a3b8;"><i class="fas fa-phone"></i> +251 911 563 698</p><p style="color:#94a3b8;"><i class="fas fa-envelope"></i> sales2@ztrust.et</p><p style="color:#94a3b8;"><i class="fas fa-map-marker-alt"></i> Bole TK Building</p></div>
+      <div><h4>Contact Info</h4><p style="color:#94a3b8;"><i class="fas fa-phone"></i> +251 911 563 698</p><p style="color:#94a3b8;"><i class="fas fa-envelope"></i> sales2@ztrust.et</p><p style="color:#94a3b8;"><i class="fas fa-map-marker-alt"></i> Bole TK Building, Addis Ababa</p></div>
     </div>
-    <hr><p class="copyright">© 2026 ZTrust Tech. 10+ Years of IT Excellence | All IT Solutions Under One Roof</p>
+    <hr>
+    <p class="copyright">© 2026 ZTrust Tech. 10+ Years of IT Excellence | All IT Solutions Under One Roof | Based in Addis Ababa, Ethiopia</p>
   </div>
 </footer>
+
 <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
 <script>
+  // Create animated moving background elements
   const movingBg = document.getElementById('movingBg');
-  const movingWords = ['🔒 ZTrust Tech', '⚡ IT Solutions', '🔐 Secure', '💾 Storage', '🌐 Network', '📱 Apps', '🗄️ Database', '🔌 API', '🏗️ Infrastructure', '10+ Years', '100% Satisfied', '24/7 Support'];
+  const movingWords = [
+    '🔒 ZTrust Tech', '⚡ IT Solutions', '🔐 Secure', '💾 Storage', '🌐 Network', 
+    '📱 Apps', '🗄️ Database', '🔌 API', '🏗️ Infrastructure', '☁️ Cloud',
+    '10+ Years', '100% Satisfied', '24/7 Support', '🔧 DevOps', '🖥️ Servers'
+  ];
+  
   for (let i = 0; i < 40; i++) {
     const element = document.createElement('div');
     element.className = 'moving-element';
@@ -484,16 +570,66 @@
     element.style.setProperty('--y-offset', (Math.random() * 80 - 40) + 'vh');
     element.style.top = Math.random() * 100 + '%';
     element.style.animationDelay = Math.random() * 20 + 's';
+    element.style.opacity = 0.06 + Math.random() * 0.08;
     movingBg.appendChild(element);
   }
+  
+  const numbers = ['0', '1', '0', '1', '100%', '24/7', '∞', '>10', '✓', '⚡', '🔒', '🔐', '🛡️'];
+  for (let i = 0; i < 25; i++) {
+    const numEl = document.createElement('div');
+    numEl.className = 'moving-element';
+    numEl.textContent = numbers[Math.floor(Math.random() * numbers.length)];
+    numEl.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+    numEl.style.setProperty('--y-offset', (Math.random() * 80 - 40) + 'vh');
+    numEl.style.top = Math.random() * 100 + '%';
+    numEl.style.animationDelay = Math.random() * 25 + 's';
+    numEl.style.animationDuration = (12 + Math.random() * 18) + 's';
+    movingBg.appendChild(numEl);
+  }
+
+  // Video play handling
   const video = document.querySelector('.hero-video');
-  if(video) video.play().catch(e => console.log('Video autoplay prevented'));
+  if (video) {
+    video.play().catch(e => console.log('Video autoplay prevented:', e));
+  }
+
+  // Mobile menu toggle
   const menuToggle = document.getElementById('mobileMenu');
   const navLinks = document.getElementById('navLinks');
-  if(menuToggle) menuToggle.addEventListener('click', (e) => { e.stopPropagation(); navLinks.classList.toggle('active'); });
+  if(menuToggle) {
+    menuToggle.addEventListener('click', (e) => { e.stopPropagation(); navLinks.classList.toggle('active'); });
+    document.querySelectorAll('.links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+    document.addEventListener('click', (event) => {
+      if (navLinks.classList.contains('active') && !navLinks.contains(event.target) && event.target !== menuToggle && !menuToggle.contains(event.target)) {
+        navLinks.classList.remove('active');
+      }
+    });
+  }
+  
+  // Back to top button
   const backBtn = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => { if(window.scrollY > 300) backBtn.classList.add('show'); else backBtn.classList.remove('show'); });
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 300) backBtn.classList.add('show');
+    else backBtn.classList.remove('show');
+    const nav = document.querySelector('.nav');
+    if(window.scrollY > 50) nav.style.background = 'rgba(8, 8, 12, 0.96)';
+    else nav.style.background = 'rgba(10, 10, 15, 0.95)';
+  });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === "#") return;
+      const targetElem = document.querySelector(targetId);
+      if(targetElem) {
+        e.preventDefault();
+        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if(navLinks.classList.contains('active')) navLinks.classList.remove('active');
+      }
+    });
+  });
 </script>
 </body>
 </html>
