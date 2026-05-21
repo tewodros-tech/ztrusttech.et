@@ -71,12 +71,12 @@
     
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     
-    /* ===== REDESIGNED NAVBAR: Wider, more visible background, bigger logo, ZTrust Tech text prominent ===== */
+    /* ===== REDESIGNED NAVBAR: Logo only, no text, very visible ===== */
     .nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(8, 8, 14, 0.96);
+      background: rgba(8, 8, 14, 0.92);
       backdrop-filter: blur(18px);
       z-index: 1000;
       border-bottom: 1px solid rgba(59,130,246,0.5);
@@ -92,31 +92,22 @@
     .logo-wrapper { 
       display: flex; 
       align-items: center; 
-      gap: 14px; 
     }
-    /* Logo size increased and more visible */
+    /* Logo size increased and very visible */
     .nav-logo { 
-      height: 52px; 
+      height: 58px; 
       width: auto; 
       object-fit: contain; 
-      filter: drop-shadow(0 0 12px rgba(59,130,246,0.6));
-      border-radius: 12px;
+      filter: drop-shadow(0 0 14px rgba(59,130,246,0.7));
+      border-radius: 14px;
       transition: transform 0.2s ease;
     }
     .nav-logo:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
-    /* ZTrust Tech text bigger, bolder, more visible */
+    /* Hide the text completely */
     .logo-text { 
-      font-size: 1.7rem; 
-      font-weight: 800; 
-      color: #fff;
-      letter-spacing: -0.5px;
-      text-shadow: 0 0 8px rgba(59,130,246,0.3);
-    }
-    .logo-text span { 
-      color: #3b82f6;
-      text-shadow: 0 0 6px rgba(59,130,246,0.5);
+      display: none;
     }
     .links { 
       display: flex; 
@@ -171,8 +162,7 @@
       .links.active { left: 0; }
       .menu-toggle { display: block; }
       .container { padding: 0 20px; }
-      .logo-text { font-size: 1.4rem; }
-      .nav-logo { height: 44px; }
+      .nav-logo { height: 48px; }
     }
     
     /* Top Right Corner Tagline Text - positioned absolutely */
@@ -210,7 +200,7 @@
       opacity: 0.9;
     }
     
-    /* TOP LEFT CORNER CONTENT - New section for badge, title and description */
+    /* TOP LEFT CORNER CONTENT - Badge and description without title repetition */
     .top-left-content {
       position: fixed;
       top: 95px;
@@ -270,40 +260,46 @@
       .top-right-tagline { display: none; }
     }
     
-    /* CLEAN HERO SECTION - No video, clean gradient background */
+    /* HERO SECTION WITH VIDEO - Full visibility, no overlay text on video */
     .hero {
       min-height: 90vh;
       display: flex;
       align-items: center;
-      padding: 100px 0 60px;
       position: relative;
-      background: linear-gradient(125deg, #070a14 0%, #0b1020 50%, #0a0e1c 100%);
       overflow: hidden;
     }
-    /* Subtle animated grid overlay for clean tech feel */
-    .hero::after {
-      content: '';
+    .hero-video {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: radial-gradient(circle at 25% 40%, rgba(59,130,246,0.08) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
+      object-fit: cover;
       z-index: 0;
+    }
+    /* Lighter overlay so video remains clearly visible */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(5,5,10,0.5) 0%, rgba(2,2,5,0.4) 100%);
+      z-index: 1;
     }
     .hero .container {
       position: relative;
       z-index: 2;
+      width: 100%;
     }
+    /* Hide any text content in hero, only buttons visible */
     .hero-content {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin-top: 60px;
+      margin-top: 80px;
     }
-    /* Hide original hero elements that are now in top-left corner */
     .hero-badge, .hero h1, .hero p {
       display: none;
     }
@@ -702,12 +698,12 @@
   <div class="top-left-desc">Enterprise-grade IT infrastructure, smart storage, custom applications, high-performance databases, seamless API integration, and robust network connectivity — all under one roof.</div>
 </div>
 
-<!-- REDESIGNED NAVIGATION: ZTrust Tech + Home, Services, About, Contact -->
+<!-- NAVIGATION: Only Logo visible, no text -->
 <nav class="nav">
   <div class="container nav-inner">
     <div class="logo-wrapper">
-      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/52x52?text=ZT'">
-      <div class="logo-text">ZTrust <span>Tech</span></div>
+      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/58x58?text=ZT'">
+      <div class="logo-text"></div>
     </div>
     <div class="links" id="navLinks">
       <a href="index.html" class="active">Home</a>
@@ -719,8 +715,12 @@
   </div>
 </nav>
 
-<!-- CLEAN HERO SECTION - No video, just a clean gradient background with subtle grid pattern -->
+<!-- HERO SECTION WITH FULLY VISIBLE VIDEO BACKGROUND (no text overlay on video) -->
 <section class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="ENGINEERING (2).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
   <div class="container">
     <div class="hero-content">
       <div class="btn-group">
@@ -863,6 +863,12 @@
     numEl.style.animationDelay = Math.random() * 25 + 's';
     numEl.style.animationDuration = (12 + Math.random() * 18) + 's';
     movingBg.appendChild(numEl);
+  }
+
+  // Video play handling
+  const video = document.querySelector('.hero-video');
+  if (video) {
+    video.play().catch(e => console.log('Video autoplay prevented:', e));
   }
 
   // Mobile menu toggle
