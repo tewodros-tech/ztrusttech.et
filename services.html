@@ -29,7 +29,7 @@
       background: linear-gradient(135deg, #0a0a0f 0%, #0a0a0f 50%, #050508 100%);
     }
     
-    /* Matrix-style falling code background */
+    /* Matrix-style falling code background - Changed to Blue */
     .matrix-bg {
       position: fixed;
       top: 0;
@@ -46,8 +46,8 @@
       position: absolute;
       top: -20%;
       animation: matrixFall linear infinite;
-      color: #0f0;
-      text-shadow: 0 0 5px #0f0;
+      color: #3b82f6;
+      text-shadow: 0 0 5px #3b82f6;
       opacity: 0.15;
       font-size: 1.2rem;
       white-space: nowrap;
@@ -72,7 +72,7 @@
       }
     }
     
-    /* Floating hacker-style numbers */
+    /* Floating hacker-style numbers - Changed to Blue */
     .hacker-numbers {
       position: fixed;
       top: 0;
@@ -112,7 +112,7 @@
     
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     
-    /* Navigation */
+    /* Navigation - Changed to Blue */
     .nav {
       position: fixed;
       top: 0;
@@ -120,14 +120,14 @@
       background: rgba(10, 10, 15, 0.95);
       backdrop-filter: blur(16px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+      border-bottom: 1px solid rgba(59,130,246,0.3);
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
     .logo-wrapper { display: flex; align-items: center; gap: 10px; }
-    .nav-logo { height: 44px; width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(0,255,0,0.4)); border-radius: 10px; }
+    .nav-logo { height: 44px; width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(59,130,246,0.4)); border-radius: 10px; }
     .logo-text { font-size: 1.4rem; font-weight: 800; color: #fff; }
-    .logo-text span { color: #00ff00; }
+    .logo-text span { color: #3b82f6; }
     .links { display: flex; gap: 1.8rem; }
     .links a {
       text-decoration: none;
@@ -136,7 +136,7 @@
       transition: 0.2s;
       font-size: 0.9rem;
     }
-    .links a:hover, .links a.active { color: #00ff00; text-shadow: 0 0 5px #00ff00; }
+    .links a:hover, .links a.active { color: #3b82f6; text-shadow: 0 0 5px #3b82f6; }
     .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; }
     @media (max-width: 820px) {
       .links {
@@ -151,7 +151,7 @@
         padding: 2rem;
         transition: left 0.3s ease;
         gap: 1.8rem;
-        border-right: 2px solid #00ff00;
+        border-right: 2px solid #3b82f6;
         backdrop-filter: blur(20px);
         z-index: 1001;
       }
@@ -160,7 +160,7 @@
       .container { padding: 0 20px; }
     }
     
-    /* Hero Section */
+    /* Hero Section - Changed to Blue */
     .hero {
       min-height: 45vh;
       display: flex;
@@ -171,7 +171,7 @@
     .hero h1 {
       font-size: 3rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #fff, #00ff00, #0f0);
+      background: linear-gradient(135deg, #fff, #3b82f6, #60a5fa);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -182,13 +182,13 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0,255,0,0.1);
+      background: rgba(59,130,246,0.1);
       padding: 6px 16px;
       border-radius: 40px;
       font-size: 0.8rem;
-      color: #00ff00;
+      color: #3b82f6;
       margin-bottom: 24px;
-      border: 1px solid rgba(0,255,0,0.3);
+      border: 1px solid rgba(59,130,246,0.3);
     }
     
     /* Services Section with Image Backgrounds */
@@ -199,7 +199,7 @@
       font-weight: 800;
       margin-bottom: 16px;
     }
-    .section-title i { color: #00ff00; margin-right: 12px; }
+    .section-title i { color: #3b82f6; margin-right: 12px; }
     .section-sub {
       text-align: center;
       color: #94a3b8;
@@ -239,7 +239,7 @@
     
     .service-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,255,0,0.15);
+      box-shadow: 0 20px 40px rgba(59,130,246,0.15);
     }
     
     .service-bg {
@@ -265,7 +265,7 @@
     .service-icon {
       font-size: 2.8rem;
       margin-bottom: 18px;
-      color: #00ff00;
+      color: #3b82f6;
     }
     
     .service-card h3 {
@@ -283,8 +283,8 @@
     
     .service-tag {
       display: inline-block;
-      background: rgba(0,255,0,0.15);
-      color: #00ff00;
+      background: rgba(59,130,246,0.15);
+      color: #3b82f6;
       font-size: 0.7rem;
       padding: 5px 14px;
       border-radius: 30px;
@@ -292,7 +292,7 @@
       align-self: flex-start;
     }
     
-    /* Footer */
+    /* Footer - Changed to Blue */
     .footer {
       background: #05050a;
       padding: 50px 0 30px;
@@ -306,19 +306,19 @@
     }
     .footer-logo { height: 45px; width: auto; margin-bottom: 12px; }
     .social-links a { font-size: 1.3rem; margin-right: 18px; color: #94a3b8; display: inline-block; transition: 0.2s; }
-    .social-links a:hover { color: #00ff00; transform: translateY(-2px); }
+    .social-links a:hover { color: #3b82f6; transform: translateY(-2px); }
     .footer a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 10px; transition: 0.2s; }
-    .footer a:hover { color: #00ff00; padding-left: 4px; }
+    .footer a:hover { color: #3b82f6; padding-left: 4px; }
     .footer h4 { color: #fff; margin-bottom: 18px; }
     .back-to-top {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #00ff00;
+      background: #3b82f6;
       width: 45px;
       height: 45px;
       border-radius: 30px;
-      color: #0a0a0f;
+      color: white;
       cursor: pointer;
       opacity: 0;
       transition: 0.2s;
@@ -385,7 +385,7 @@
     }
     .telegram-link { background: #0088cc; }
     .btn-primary {
-      background: linear-gradient(135deg, #00aa00, #008800);
+      background: linear-gradient(135deg, #2563eb, #1e40af);
       padding: 12px 32px;
       border-radius: 40px;
       font-weight: 600;
@@ -404,7 +404,7 @@
 </head>
 <body>
 
-<!-- Cyber Background with Matrix-style falling codes -->
+<!-- Cyber Background with Matrix-style falling codes - Changed to Blue -->
 <div class="cyber-bg"></div>
 <div class="matrix-bg" id="matrixBg"></div>
 <div class="hacker-numbers" id="hackerNumbers"></div>
@@ -434,7 +434,7 @@
 <!-- Hero Section -->
 <section class="hero">
   <div class="container">
-    <div class="hero-badge"><i class="fas fa-code"></i> 10+ Years of IT Excellence | Hacker-Proof Security</div>
+    <div class="hero-badge"><i class="fas fa-code"></i> 10+ Years of IT Excellence | Enterprise Security</div>
     <h1><i class="fas fa-cogs"></i> Our Comprehensive IT Services</h1>
     <p>End-to-end technology solutions delivered with enterprise-grade security and 24/7 support</p>
   </div>
@@ -561,7 +561,7 @@
 <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
 <script>
-  // Create Matrix-style falling code columns
+  // Create Matrix-style falling code columns - Changed to Blue
   const matrixBg = document.getElementById('matrixBg');
   const matrixChars = ['0', '1', '⚡', '#', '$', '%', '&', '*', '@', '!', '?', '🔒', '🔐', '>', '<', '/', '\\', '|', '~'];
   
@@ -577,11 +577,11 @@
     column.style.animationDuration = (8 + Math.random() * 15) + 's';
     column.style.animationDelay = (Math.random() * 10) + 's';
     column.style.fontSize = (0.8 + Math.random() * 0.8) + 'rem';
-    column.style.color = `rgba(0, ${150 + Math.random() * 105}, 0, ${0.1 + Math.random() * 0.1})`;
+    column.style.color = `rgba(59, 130, 246, ${0.08 + Math.random() * 0.12})`;
     matrixBg.appendChild(column);
   }
   
-  // Create floating hacker numbers
+  // Create floating hacker numbers - Changed to Blue
   const hackerNumbersDiv = document.getElementById('hackerNumbers');
   const hackerTexts = [
     '01001001', '01110100', '01010011', '01100101', '01100011', '01110101', '01110010', '01100101', 
@@ -599,7 +599,7 @@
     num.style.left = Math.random() * 100 + '%';
     num.style.animationDuration = (10 + Math.random() * 20) + 's';
     num.style.animationDelay = (Math.random() * 15) + 's';
-    num.style.color = `rgba(0, ${180 + Math.random() * 75}, 0, ${0.06 + Math.random() * 0.08})`;
+    num.style.color = `rgba(59, 130, 246, ${0.05 + Math.random() * 0.08})`;
     num.style.fontFamily = 'monospace';
     hackerNumbersDiv.appendChild(num);
   }
