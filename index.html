@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>ZTrust Tech | Enterprise IT & Security Solutions</title>
+  <!-- Favicon (browser tab icon) -->
+  <link rel="icon" type="image/png" href="ICON Final 1 (1).png">
+  <link rel="shortcut icon" href="ICON Final 1 (1).png">
   <!-- Google Fonts + Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -53,6 +56,16 @@
       margin: 0 auto 16px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
+    .loader-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 16px;
+      margin: 0 auto 12px;
+      display: block;
+      background: #0f172a;
+      padding: 6px;
+    }
     .loader-text {
       font-weight: 600;
       letter-spacing: 2px;
@@ -108,23 +121,20 @@
       gap: 12px;
       cursor: pointer;
     }
-    /* Actual logo image styling - fits perfectly */
-    .nav-logo-img {
-      height: 42px;
+    .nav-logo {
+      height: 44px;
       width: auto;
-      max-width: 180px;
       object-fit: contain;
-      display: block;
       filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+      border-radius: 12px;
     }
-    /* for fallback if image fails, keep ZT text subtle */
-    .logo-text {
+    .logo {
       font-size: 1.6rem;
       font-weight: 800;
       color: #ffffff;
       letter-spacing: -0.5px;
     }
-    .logo-text span {
+    .logo span {
       color: #3b82f6;
     }
     .links {
@@ -170,21 +180,24 @@
       .menu-toggle {
         display: block;
       }
-      .nav-logo-img {
-        height: 36px;
+      .nav-logo {
+        height: 38px;
       }
-      .logo-text {
+      .logo {
         font-size: 1.3rem;
       }
     }
 
-    /* page hero */
+    /* page hero generic */
     .page-hero {
       background: linear-gradient(145deg, #0a0a10 0%, #0f111a 100%);
       padding: 140px 0 80px;
       text-align: center;
       border-bottom: 1px solid rgba(59,130,246,0.2);
       position: relative;
+    }
+    .services-hero {
+      padding: 130px 0 70px;
     }
     .hero-overlay {
       position: absolute;
@@ -236,11 +249,12 @@
       font-size: 1.1rem;
     }
 
-    /* services grid */
+    /* services grid (unified) */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 32px;
+      margin-top: 20px;
     }
     .service-card {
       background: #0f111a;
@@ -249,6 +263,7 @@
       border: 1px solid #1e293b;
       transition: all 0.3s ease;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      position: relative;
     }
     .service-card:hover {
       transform: translateY(-6px);
@@ -257,9 +272,8 @@
       background: #11141f;
     }
     .service-icon {
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       margin-bottom: 20px;
-      color: #3b82f6;
     }
     .service-card h3 {
       font-size: 1.5rem;
@@ -270,6 +284,17 @@
     .service-card p {
       color: #94a3b8;
       line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .service-tag {
+      display: inline-block;
+      background: rgba(59,130,246,0.15);
+      color: #60a5fa;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
     }
 
     /* stats row */
@@ -374,12 +399,43 @@
     }
 
     /* cta section */
-    .cta-card {
+    .cta-card, .cta-section {
       background: linear-gradient(135deg, #0f172a, #0a0f1c);
       border-radius: 48px;
       padding: 60px 32px;
       border: 1px solid #1e293b;
       text-align: center;
+    }
+    .btn-primary, .btn {
+      background: #2563eb;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+      transition: 0.2s;
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+      cursor: pointer;
+    }
+    .btn-primary:hover, .btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #334155;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 500;
+      color: #e2e8f0;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: #3b82f6;
+      color: #3b82f6;
     }
 
     /* footer */
@@ -401,10 +457,11 @@
       gap: 12px;
       margin-bottom: 20px;
     }
-    .footer-logo-img {
-      height: 40px;
+    .footer-logo {
+      height: 44px;
       width: auto;
       object-fit: contain;
+      border-radius: 12px;
     }
     .footer h4 {
       color: #ffffff;
@@ -456,42 +513,11 @@
       border-color: #1e293b;
       margin: 16px 0;
     }
-    .btn-primary {
-      background: #2563eb;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 600;
-      color: white;
-      text-decoration: none;
-      transition: 0.2s;
-      display: inline-block;
-      box-shadow: 0 2px 8px rgba(37,99,235,0.3);
-    }
-    .btn-primary:hover {
-      background: #1d4ed8;
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid #334155;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 500;
-      color: #e2e8f0;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .btn-outline:hover {
-      border-color: #3b82f6;
-      color: #3b82f6;
-    }
-
     @media (max-width: 640px) {
       .container { padding: 0 20px; }
       .hero-content h1 { font-size: 2.3rem; }
       .stats-row { flex-direction: column; text-align: center; gap: 28px; }
-      .stat-item h3 { font-size: 2rem; }
+      .section-title { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -500,6 +526,7 @@
 <div class="preloader">
   <div class="loader">
     <div class="loader-ring"></div>
+    <img src="Logo.jfif" alt="ZTrust Tech" class="loader-logo" onerror="this.src='https://placehold.co/56x56?text=ZT'">
     <div class="loader-text">ZTrust Tech</div>
     <div class="loader-bar"></div>
   </div>
@@ -508,14 +535,12 @@
 <nav class="nav">
   <div class="container nav-inner">
     <div class="logo-wrapper">
-      <!-- INTEGRATED LOGO: Logo.jfif is used here with proper scaling -->
-      <img src="Logo.jfif" alt="ZTrust Tech Logo" class="nav-logo-img" onerror="this.onerror=null; this.style.display='none'; document.querySelector('.logo-fallback').style.display='flex';">
-      <div class="logo-fallback" style="display: none; width:42px; height:42px; background:linear-gradient(135deg,#2563eb,#1e40af); border-radius:12px; align-items:center; justify-content:center; font-weight:800; color:white;">ZT</div>
-      <h2 class="logo-text">ZTrust <span>Tech</span></h2>
+      <img src="Logo.jfif" alt="ZTrust Tech Logo" class="nav-logo" onerror="this.src='https://placehold.co/44x44?text=ZT'">
+      <h2 class="logo">ZTrust <span>Tech</span></h2>
     </div>
     <div class="links">
-      <a href="#" class="active">Home</a>
-      <a href="#services">Services</a>
+      <a href="#home" class="active">Home</a>
+      <a href="#services-section">Services</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
@@ -523,20 +548,20 @@
   </div>
 </nav>
 
-<!-- Hero Section -->
-<header class="page-hero">
+<!-- HOME Hero Section -->
+<header id="home" class="page-hero">
   <div class="hero-overlay"></div>
   <div class="container hero-content">
     <h1>Leading to the right direction with secure innovation</h1>
     <p>Enterprise IT & Security Partner — modernize your infrastructure with ZTrust Tech</p>
     <div class="btn-group" style="margin-top: 32px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;">
       <a href="#contact" class="btn-primary">Let's Connect →</a>
-      <a href="#services" class="btn-outline">Explore Services</a>
+      <a href="#services-section" class="btn-outline">Explore Services</a>
     </div>
   </div>
 </header>
 
-<!-- About Section with logo prominence -->
+<!-- About Section -->
 <section id="about" class="section section-gray">
   <div class="container">
     <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center;">
@@ -547,29 +572,30 @@
         <p style="color: #94a3b8;">We work closely with ICT experts across Ethiopia, delivering excellence in Security Solutions, Data Center Infrastructure, Cloud, Enterprise Networking, and Compliance.</p>
       </div>
       <div style="flex: 0.8; background:#0f172a; border-radius: 32px; padding: 32px; text-align:center; border:1px solid #1e293b;">
-        <!-- Show logo here again to reinforce brand -->
         <img src="Logo.jfif" alt="ZTrust Logo" style="height:70px; width:auto; margin-bottom:16px; border-radius:16px;" onerror="this.src='https://placehold.co/70x70?text=ZT'">
-        <h3 style="color:#ffffff;">+5 Years Excellence</h3>
+        <h3 style="color:#ffffff;">+6 Years Excellence</h3>
         <p style="color:#94a3b8;">Trusted by leading enterprises</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- What We Do - 8 Services -->
-<section id="services" class="section">
+<!-- SERVICES SECTION (Integrated services page content) -->
+<section id="services-section" class="section">
   <div class="container">
-    <h2 class="section-title">What We Do</h2>
-    <p class="section-sub">End-to-end ICT solutions tailored for modern enterprises — from core infrastructure to advanced security.</p>
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-sub">Comprehensive IT solutions tailored to your business needs — from cybersecurity to cloud innovation.</p>
     <div class="services-grid">
-      <div class="service-card"><div class="service-icon"><i class="fas fa-database"></i></div><h3>Data Center Infrastructure & Cloud</h3><p>Design, deploy and manage resilient data centers & hybrid cloud environments ensuring high availability and performance.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-shield-haltered"></i></div><h3>Enterprise Network & Security</h3><p>Secure connectivity, next-gen firewalls, zero-trust architecture, and advanced threat protection for your entire perimeter.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-robot"></i></div><h3>Automation & Business Intelligence</h3><p>Reduce human intervention with AI-driven automation and actionable insights for smarter decision making.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-video"></i></div><h3>Physical Security</h3><p>Access control, surveillance systems, and integrated security solutions to safeguard facilities and assets.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-temperature-high"></i></div><h3>Data Center Facility</h3><p>Power, cooling, monitoring, and physical infrastructure to ensure non-stop operations for critical systems.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-users"></i></div><h3>Collaboration</h3><p>Unified communications, video conferencing, and teamwork platforms that enhance productivity and business continuity.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-traffic-light"></i></div><h3>Intelligent Transportation System</h3><p>Smart mobility, traffic management solutions, and telematics for safer and efficient transport networks.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="fas fa-network-wired"></i></div><h3>Structured Cabling System</h3><p>High-performance copper/fiber cabling, certified design and installation for future-ready infrastructure.</p></div>
+      <div class="service-card"><div class="service-icon">🔒</div><h3>Cybersecurity</h3><p>Advanced threat protection, penetration testing, and 24/7 security monitoring.</p><span class="service-tag">Security</span></div>
+      <div class="service-card"><div class="service-icon">🌐</div><h3>Enterprise Networking</h3><p>Enterprise network design, configuration, and optimization for maximum performance and zero-trust architecture.</p><span class="service-tag">Infrastructure</span></div>
+      <div class="service-card"><div class="service-icon">💻</div><h3>System Development</h3><p>Custom software development, legacy modernization, and DevOps integration for scalable growth.</p><span class="service-tag">Development</span></div>
+      <div class="service-card"><div class="service-icon">🔌</div><h3>API Integration</h3><p>Seamless third-party API integration and microservices architecture to unify ecosystems.</p><span class="service-tag">Integration</span></div>
+      <div class="service-card"><div class="service-icon">☁️</div><h3>Cloud Solutions</h3><p>AWS, Azure, and Google Cloud architecture, migration, and optimization for hybrid environments.</p><span class="service-tag">Cloud</span></div>
+      <div class="service-card"><div class="service-icon">📊</div><h3>Data Analytics & BI</h3><p>Business intelligence, big data processing, and predictive analytics to drive decisions.</p><span class="service-tag">Analytics</span></div>
+      <div class="service-card"><div class="service-icon">🛡️</div><h3>Risk & Compliance</h3><p>ISO 27001, GDPR, HIPAA, and SOC 2 compliance assessments.</p><span class="service-tag">Compliance</span></div>
+      <div class="service-card"><div class="service-icon">🎓</div><h3>IT Training</h3><p>Customized training programs for security awareness and best practices.</p><span class="service-tag">Training</span></div>
+      <div class="service-card"><div class="service-icon">🏭</div><h3>Data Center Facility</h3><p>Power, cooling, monitoring, and physical infrastructure for non-stop operations.</p><span class="service-tag">Infrastructure</span></div>
+      <div class="service-card"><div class="service-icon">🖥️</div><h3>IT Operations</h3><p>Infrastructure management, help desk support, and ITIL-based delivery services.</p><span class="service-tag">Operations</span></div>
     </div>
   </div>
 </section>
@@ -638,8 +664,7 @@
     <div class="footer-grid">
       <div class="footer-about">
         <div class="footer-logo-wrapper">
-          <!-- Logo in footer again for consistency, responsive -->
-          <img src="Logo.jfif" alt="ZTrust Tech Logo" class="footer-logo-img" style="height:44px; width:auto; border-radius:12px;" onerror="this.src='https://placehold.co/44x44?text=ZT'">
+          <img src="Logo.jfif" alt="ZTrust Tech Logo" class="footer-logo" onerror="this.src='https://placehold.co/44x44?text=ZT'">
           <h3 style="color:white;">ZTrust Tech</h3>
         </div>
         <p style="color:#94a3b8;">Enterprise IT solutions, cybersecurity, and digital transformation. Trusted partner across Ethiopia and Africa.</p>
@@ -651,25 +676,23 @@
       </div>
       <div>
         <h4>Quick Links</h4>
-        <a href="#">Home</a>
-        <a href="#services">Services</a>
+        <a href="#home">Home</a>
+        <a href="#services-section">Services</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </div>
       <div>
         <h4>Services</h4>
-        <a href="#services">Data Center & Cloud</a>
-        <a href="#services">Network Security</a>
-        <a href="#services">Automation & BI</a>
-        <a href="#services">Physical Security</a>
-        <a href="#services">Structured Cabling</a>
+        <a href="#services-section">Cybersecurity</a>
+        <a href="#services-section">Cloud Solutions</a>
+        <a href="#services-section">Compliance</a>
+        <a href="#services-section">IT Training</a>
       </div>
       <div>
-        <h4>Support</h4>
-        <a href="#">Help Desk</a>
-        <a href="#">Security Advisory</a>
-        <a href="#">Compliance</a>
-        <a href="#">Partner Program</a>
+        <h4>Contact Info</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Bole, Addis Ababa, Ethiopia</p>
+        <p><i class="fas fa-phone"></i> +251 911 563 698</p>
+        <p><i class="fas fa-envelope"></i> info@ztrusttech.com</p>
       </div>
     </div>
     <hr>
@@ -682,11 +705,15 @@
 <script>
   window.addEventListener('load', function() {
     setTimeout(() => { document.querySelector('.preloader')?.classList.add('fade-out'); }, 1000);
-    // handle fallback for logo display if image doesn't load (graceful)
-    const mainLogo = document.querySelector('.nav-logo-img');
+    // fallback check for logo consistency
+    const mainLogo = document.querySelector('.nav-logo');
     if(mainLogo && mainLogo.complete && mainLogo.naturalWidth === 0) {
-      document.querySelector('.logo-fallback').style.display = 'flex';
-      mainLogo.style.display = 'none';
+      mainLogo.src = 'https://placehold.co/44x44?text=ZT';
+    }
+    // favicon backup check (just in case)
+    const favicon = document.querySelector("link[rel='icon']");
+    if(favicon) {
+      // no action needed, just ensure it exists
     }
   });
   
@@ -697,6 +724,7 @@
     menuToggle.addEventListener('click', (e) => {
       e.stopPropagation();
       navLinks.classList.toggle('active');
+      menuToggle.classList.toggle('active');
     });
     document.querySelectorAll('.links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
     document.addEventListener('click', (event) => {
