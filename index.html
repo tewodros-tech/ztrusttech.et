@@ -71,7 +71,7 @@
     
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     
-    /* ===== NAVBAR: Logo only ===== */
+    /* ===== NAVBAR: Logo only (NO CHANGE) ===== */
     .nav {
       position: fixed;
       top: 0;
@@ -163,63 +163,12 @@
       display: none;
     }
     
-    /* Top Left Corner Content (Dark Area) - FULL BLEED LOGO BACKGROUND, NO BUTTONS, TEXT REMOVED */
+    /* Top Left Content - KEPT AS IS (empty) */
     .top-left-content {
-      position: fixed;
-      top: 95px;
-      left: 24px;
-      z-index: 1002;
-      max-width: 540px;
-      width: auto;
-      min-height: 220px;
-      background: transparent;
-      backdrop-filter: blur(0px);
-      padding: 0;
-      border-radius: 28px;
-      border-left: 3px solid #3b82f6;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-      pointer-events: none;
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: none;
     }
-    /* Full background image covering entire dark area, fitted perfectly */
-    .top-left-content::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('Ztrust Color 2.png');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;  /* Makes the image cover the entire area, wide and fitted */
-      opacity: 1;              /* Full visibility for vibrant brand presence */
-      pointer-events: none;
-      z-index: 0;
-      border-radius: 28px;
-      transition: opacity 0.3s ease;
-    }
-    /* Subtle overlay glow for depth */
-    .top-left-content::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 28px;
-      box-shadow: inset 0 0 30px rgba(0,0,0,0.3), inset 0 0 15px rgba(59,130,246,0.3);
-      pointer-events: none;
-      z-index: 1;
-    }
-    /* No text, no buttons */
-    @media (max-width: 900px) {
-      .top-left-content { max-width: 380px; top: 85px; left: 16px; min-height: 160px; }
-    }
-    @media (max-width: 700px) { .top-left-content { display: none; } }
     
-    /* Hero Section with GIF - BUTTONS REMOVED ENTIRELY */
+    /* Hero Section with GIF - NO BUTTONS */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -254,7 +203,6 @@
       align-items: flex-start; 
       margin-top: 80px;
     }
-    /* No buttons or CTA text in hero */
     .btn-group {
       display: none;
     }
@@ -312,7 +260,7 @@
     .infra-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: #fff; }
     .infra-card p { color: #94a3b8; }
     
-    /* SERVICES GRID - Alternating Left/Right Slide Animations */
+    /* SERVICES GRID */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -432,7 +380,7 @@
     .whatsapp-link:hover { background: #128C7E; }
     .telegram-link:hover { background: #006699; }
     
-    /* Footer */
+    /* Footer with Ztrust Color 2.png as background around social media links area */
     .footer {
       position: relative;
       background: linear-gradient(135deg, #030308 0%, #070b14 100%);
@@ -440,24 +388,23 @@
       border-top: 1px solid rgba(59,130,246,0.25);
       overflow: hidden;
     }
+    /* Background image overlay for the entire footer */
     .footer::before {
       content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 85%;
-      max-width: 750px;
-      height: auto;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-image: url('Ztrust Color 2.png');
       background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      opacity: 0.045;
+      background-position: center 40%;
+      background-size: 55%;
+      opacity: 0.08;
       pointer-events: none;
-      aspect-ratio: 4/3;
       z-index: 0;
     }
+    /* Additional gradient to ensure readability */
     .footer .container { position: relative; z-index: 2; }
     .footer-content {
       display: flex;
@@ -466,6 +413,8 @@
       text-align: center;
       max-width: 900px;
       margin: 0 auto;
+      position: relative;
+      z-index: 2;
     }
     .footer-logo-icon {
       max-width: 160px;
@@ -478,34 +427,45 @@
     }
     .footer-tagline {
       font-size: 1rem;
-      color: #a0afc7;
+      color: #e2e8f0;
       margin-bottom: 28px;
-      background: rgba(59,130,246,0.12);
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
       padding: 6px 20px;
       border-radius: 40px;
+      border: 1px solid rgba(59,130,246,0.3);
     }
+    /* Social links area with enhanced background glow (image is behind) */
     .footer-social {
       display: flex;
       gap: 24px;
       margin-bottom: 32px;
+      background: rgba(10, 12, 18, 0.4);
+      backdrop-filter: blur(8px);
+      padding: 12px 24px;
+      border-radius: 60px;
+      border: 1px solid rgba(59,130,246,0.4);
+      box-shadow: 0 0 20px rgba(59,130,246,0.2);
     }
     .footer-social a {
       color: #cbd5e6;
-      font-size: 1.5rem;
-      background: rgba(15, 25, 45, 0.5);
-      width: 48px;
-      height: 48px;
+      font-size: 1.6rem;
+      background: rgba(15, 25, 45, 0.7);
+      width: 52px;
+      height: 52px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      border: 1px solid rgba(59,130,246,0.3);
+      border: 1px solid rgba(59,130,246,0.5);
       transition: 0.25s;
+      text-decoration: none;
     }
     .footer-social a:hover {
       color: #fff;
       background: #2563eb;
       transform: translateY(-4px);
+      border-color: #60a5fa;
     }
     .footer-links-minimal {
       display: flex;
@@ -576,6 +536,8 @@
       .infra-section { background-attachment: scroll; }
       .services-grid { grid-template-columns: 1fr; }
       .footer-logo-icon { max-width: 130px; }
+      .footer-social { gap: 16px; padding: 8px 16px; }
+      .footer-social a { width: 42px; height: 42px; font-size: 1.3rem; }
     }
   </style>
 </head>
@@ -589,12 +551,7 @@
   <a href="https://t.me/ZTrustTech" class="float-tg" target="_blank"><i class="fab fa-telegram-plane"></i></a>
 </div>
 
-<!-- Top Left Content (Dark Area) - FULL WIDTH BACKGROUND IMAGE, NO BUTTONS, NO TEXT, FITTED PERFECTLY -->
-<div class="top-left-content">
-  <!-- Absolutely no text or buttons. Only the full background image of Ztrust Color 2.png covering entire dark area -->
-</div>
-
-<!-- Navigation -->
+<!-- Navigation (Logo icon at top remains unchanged) -->
 <nav class="nav">
   <div class="container nav-inner">
     <div class="logo-wrapper">
@@ -610,12 +567,12 @@
   </div>
 </nav>
 
-<!-- Hero Section with GIF - BUTTONS COMPLETELY REMOVED -->
+<!-- Hero Section with GIF (No Buttons) -->
 <section class="hero">
   <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
     <div class="hero-content">
-      <!-- No buttons or CTA elements here -->
+      <!-- No buttons or CTA -->
     </div>
   </div>
 </section>
@@ -645,7 +602,7 @@
   </div>
 </section>
 
-<!-- Core IT Services with Images - Alternating Left/Right Slide Animations -->
+<!-- Core IT Services -->
 <section class="section" style="background:#0a0c12;">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-cubes"></i> Our Core IT Services</h2>
@@ -678,7 +635,7 @@
   </div>
 </section>
 
-<!-- Footer -->
+<!-- Footer with Ztrust Color 2.png image placed decoratively around social media links area -->
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
@@ -748,6 +705,7 @@
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
+  // Ensure top logo icon remains unchanged and loads properly
   document.querySelectorAll('.nav-logo, .footer-logo-icon').forEach(img => {
     if(img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
       img.onerror = null;
