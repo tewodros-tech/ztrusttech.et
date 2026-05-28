@@ -158,91 +158,9 @@
       .nav-logo { height: 48px; }
     }
     
-    /* Top Right Corner Tagline */
-    .top-right-tagline {
-      position: fixed;
-      top: 95px;
-      right: 24px;
-      z-index: 1002;
-      max-width: 380px;
-      text-align: right;
-      background: rgba(10, 10, 15, 0.75);
-      backdrop-filter: blur(12px);
-      padding: 12px 20px;
-      border-radius: 20px;
-      border-right: 3px solid #3b82f6;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      pointer-events: none;
-    }
-    .top-right-tagline .main-tag {
-      font-weight: 800;
-      font-size: 1rem;
-      background: linear-gradient(135deg, #fff, #94a3f8, #60a5fa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 5px;
-    }
-    .top-right-tagline .sub-tag {
-      font-size: 0.7rem;
-      color: #cbd5e6;
-      line-height: 1.3;
-      opacity: 0.9;
-    }
-    
-    /* Top Left Corner Content */
-    .top-left-content {
-      position: fixed;
-      top: 95px;
-      left: 24px;
-      z-index: 1002;
-      max-width: 480px;
-      text-align: left;
-      background: rgba(10, 10, 15, 0.7);
-      backdrop-filter: blur(12px);
-      padding: 14px 22px;
-      border-radius: 24px;
-      border-left: 3px solid #3b82f6;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      pointer-events: none;
-    }
-    .top-left-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(59,130,246,0.2);
-      padding: 4px 14px;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      color: #60a5fa;
-      margin-bottom: 10px;
-      border: 1px solid rgba(59,130,246,0.4);
-    }
-    .top-left-title {
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #fff, #94a3f8, #60a5fa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 8px;
-    }
-    .top-left-desc {
-      font-size: 0.8rem;
-      color: #e2e8f0;
-      line-height: 1.4;
-    }
-    @media (max-width: 900px) {
-      .top-left-content { max-width: 380px; top: 85px; left: 16px; padding: 10px 16px; }
-      .top-left-title { font-size: 1.3rem; }
-      .top-right-tagline { top: 85px; right: 16px; max-width: 300px; }
-    }
-    @media (max-width: 700px) { .top-left-content { display: none; } }
-    @media (max-width: 550px) { .top-right-tagline { display: none; } }
-    
-    /* Hero Section - No buttons here anymore, just visual */
+    /* Hero Redesign: Dark area with integrated logo image right below title and description */
     .hero {
-      min-height: 85vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       position: relative;
@@ -265,19 +183,76 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(5,5,10,0.65) 0%, rgba(2,2,5,0.55) 100%);
+      background: linear-gradient(135deg, rgba(5,5,10,0.75) 0%, rgba(2,2,5,0.65) 100%);
       z-index: 1;
     }
     .hero .container { position: relative; z-index: 2; width: 100%; }
-    .hero-content { 
-      display: flex; 
-      flex-direction: column; 
-      align-items: flex-start; 
-      margin-top: 80px;
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 140px 0 80px;
     }
-    /* No buttons in hero */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(59,130,246,0.2);
+      backdrop-filter: blur(8px);
+      padding: 6px 18px;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #60a5fa;
+      border: 1px solid rgba(59,130,246,0.4);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff, #94a3f8, #60a5fa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #cbd5e6;
+      max-width: 720px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+    /* Logo image placed inside hero dark area */
+    .hero-logo-wrapper {
+      margin: 32px auto 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-center-logo {
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 20px rgba(59,130,246,0.5));
+      transition: transform 0.3s ease;
+      opacity: 0.95;
+    }
+    .hero-center-logo:hover {
+      transform: scale(1.02);
+    }
+    .hero-tagline {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 20px auto 0;
+      border-top: 1px dashed rgba(59,130,246,0.3);
+      padding-top: 20px;
+      display: inline-block;
+    }
     
-    /* Button styles for the new CTA section (below infrastructure) */
+    /* CTA Buttons section (below infrastructure) */
     .cta-section {
       background: linear-gradient(135deg, #0a0c15 0%, #0b0e1a 100%);
       padding: 60px 0;
@@ -357,7 +332,6 @@
       box-shadow: 0 12px 28px rgba(37,99,235,0.5);
     }
     
-    /* Outline Button with full ZTrust Logo background image */
     .btn-outline {
       background: rgba(8, 12, 25, 0.7);
       backdrop-filter: blur(8px);
@@ -455,7 +429,7 @@
     .infra-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: #fff; }
     .infra-card p { color: #94a3b8; }
     
-    /* SERVICES GRID - Alternating Left/Right Slide Animations */
+    /* SERVICES GRID */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -718,8 +692,9 @@
       .services-grid { grid-template-columns: 1fr; }
       .footer-logo-icon { max-width: 130px; }
       .btn-primary, .btn-outline { padding: 10px 22px; font-size: 0.85rem; }
-      .btn-primary::before, .btn-outline::before { background-size: 32px; }
-      .cta-title { font-size: 1.6rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero-desc { font-size: 1rem; }
+      .hero-center-logo { max-width: 160px; }
     }
   </style>
 </head>
@@ -731,19 +706,6 @@
 <div class="floating-wa-tg">
   <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
   <a href="https://t.me/ZTrustTech" class="float-tg" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-</div>
-
-<!-- Top Right Tagline -->
-<div class="top-right-tagline">
-  <div class="main-tag">Complete IT Solutions Provider</div>
-  <div class="sub-tag">Infrastructure • Storage • Application Development • Database • API Integration • Network Connectivity — One trusted partner for all your IT needs.</div>
-</div>
-
-<!-- Top Left Content -->
-<div class="top-left-content">
-  <div class="top-left-badge"><i class="fas fa-microchip"></i> 10+ Years of IT Excellence</div>
-  <div class="top-left-title">ZTrust Tech</div>
-  <div class="top-left-desc">Enterprise-grade IT infrastructure, smart storage, custom applications, high-performance databases, seamless API integration, and robust network connectivity — all under one roof.</div>
 </div>
 
 <!-- Navigation -->
@@ -762,12 +724,21 @@
   </div>
 </nav>
 
-<!-- Hero Section (Buttons Removed from here) -->
+<!-- Hero Section with Integrated Logo Image below title/description (dark area) -->
 <section class="hero">
   <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
     <div class="hero-content">
-      <!-- No buttons here anymore -->
+      <div class="hero-badge"><i class="fas fa-microchip"></i> 10+ Years of IT Excellence</div>
+      <h1>ZTrust Tech</h1>
+      <p class="hero-desc">Enterprise-grade IT infrastructure, smart storage, custom applications, high-performance databases, seamless API integration, and robust network connectivity — all under one roof.</p>
+      <!-- ZTrust Logo Image placed right below description in hero dark area -->
+      <div class="hero-logo-wrapper">
+        <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech Logo" class="hero-center-logo" onerror="this.src='https://placehold.co/220x80?text=ZTrust'">
+      </div>
+      <div class="hero-tagline">
+        <i class="fas fa-check-circle" style="color:#3b82f6; margin-right:6px;"></i> Complete IT Solutions Provider — Infrastructure • Storage • Application Development • Database • API Integration • Network Connectivity
+      </div>
     </div>
   </div>
 </section>
@@ -785,7 +756,7 @@
   </div>
 </section>
 
-<!-- NEW CTA SECTION: Get IT Consultation & Explore Services placed right after infrastructure (around the infrastructure part) -->
+<!-- CTA SECTION: Get IT Consultation & Explore Services placed around infrastructure part -->
 <section class="cta-section">
   <div class="container cta-container">
     <div class="cta-title">Ready to Transform Your IT Landscape?</div>
@@ -813,7 +784,7 @@
   </div>
 </section>
 
-<!-- Core IT Services with Images - Alternating Left/Right Slide Animations -->
+<!-- Core IT Services -->
 <section class="section" style="background:#0a0c12;">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-cubes"></i> Our Core IT Services</h2>
@@ -917,11 +888,11 @@
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
-  // Fallback for images
-  document.querySelectorAll('.nav-logo, .footer-logo-icon').forEach(img => {
+  // Fallback images
+  document.querySelectorAll('.nav-logo, .footer-logo-icon, .hero-center-logo').forEach(img => {
     if(img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
       img.onerror = null;
-      img.src = 'https://placehold.co/160x55?text=ZTrust';
+      img.src = 'https://placehold.co/220x80?text=ZTrust';
     }
   });
 </script>
