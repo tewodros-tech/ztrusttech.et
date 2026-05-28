@@ -216,7 +216,7 @@
     }
     @media (max-width: 700px) { .top-left-content { display: none; } }
     
-    /* Hero Section with GIF - NO BUTTONS */
+    /* Hero Section with GIF - NO BUTTONS, NO NETWORK PANEL */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -254,121 +254,7 @@
       margin-top: 80px;
       gap: 30px;
     }
-    /* Right side: Terminal-style network data panel with Z.JPG background */
-    .hero-right {
-      flex: 0 0 auto;
-      width: 100%;
-      max-width: 520px;
-      margin-left: auto;
-      background: rgba(8, 12, 20, 0.75);
-      backdrop-filter: blur(8px);
-      border-radius: 28px;
-      border: 1px solid rgba(59,130,246,0.6);
-      box-shadow: 0 20px 35px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.2) inset;
-      padding: 0;
-      overflow: hidden;
-      position: relative;
-      transition: all 0.3s;
-    }
-    .hero-right::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('Z.JPG');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      opacity: 0.35;
-      pointer-events: none;
-      z-index: 0;
-      transition: opacity 0.3s;
-    }
-    .hero-right:hover::before {
-      opacity: 0.5;
-    }
-    .network-panel-content {
-      position: relative;
-      z-index: 2;
-      padding: 22px 24px;
-    }
-    .network-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 1px solid rgba(59,130,246,0.6);
-      padding-bottom: 12px;
-      margin-bottom: 18px;
-    }
-    .network-header i {
-      font-size: 1.3rem;
-      color: #3b82f6;
-    }
-    .network-header span {
-      font-weight: 800;
-      letter-spacing: 1px;
-      background: linear-gradient(135deg, #ffffff, #94a3f8, #60a5fa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-size: 1rem;
-    }
-    .network-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .stat-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 15px;
-      font-size: 0.75rem;
-      border-left: 2px solid #3b82f6;
-      padding-left: 14px;
-      background: rgba(0,0,0,0.3);
-      border-radius: 0 8px 8px 0;
-    }
-    .stat-label {
-      color: #9ca8c9;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-    }
-    .stat-value {
-      color: #e2e8f0;
-      font-family: 'Monaco', 'Menlo', monospace;
-      font-weight: 500;
-      word-break: break-all;
-    }
-    .zone-tag {
-      background: rgba(59,130,246,0.25);
-      padding: 2px 10px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      display: inline-block;
-      margin-right: 6px;
-      margin-bottom: 4px;
-      border: 0.5px solid rgba(59,130,246,0.5);
-      font-weight: 500;
-    }
-    .dns-badge {
-      color: #60a5fa;
-      font-weight: bold;
-    }
-    .blink-cursor {
-      display: inline-block;
-      width: 8px;
-      height: 12px;
-      background-color: #3b82f6;
-      vertical-align: middle;
-      margin-left: 6px;
-      animation: blink 1s step-end infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
+    /* Network panel removed - no hero-right element */
     
     .btn-group { display: none; }
     
@@ -669,9 +555,6 @@
       .infra-section { background-attachment: scroll; }
       .services-grid { grid-template-columns: 1fr; }
       .footer-logo-icon { max-width: 130px; }
-      .hero-content { justify-content: center; }
-      .hero-right { max-width: 100%; }
-      .network-panel-content { padding: 16px; }
     }
   </style>
 </head>
@@ -706,46 +589,12 @@
   </div>
 </nav>
 
-<!-- Hero Section with GIF and Network Data Panel (No Buttons) -->
+<!-- Hero Section with GIF - Network Panel Removed -->
 <section class="hero">
   <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
     <div class="hero-content">
-      <div class="hero-right">
-        <div class="network-panel-content">
-          <div class="network-header">
-            <i class="fas fa-network-wired"></i>
-            <span>ZTRUST NETWORK ZONE</span>
-            <i class="fas fa-shield-alt" style="margin-left: auto; font-size: 0.9rem;"></i>
-          </div>
-          <div class="network-stats">
-            <div class="stat-row">
-              <span class="stat-label">▼ ZONES:</span>
-              <div class="stat-value">
-                <span class="zone-tag">Stati</span>
-                <span class="zone-tag">INT_DMZ_ig</span>
-                <span class="zone-tag">OUTSIDE_ig</span>
-                <span class="zone-tag">MobApptest</span>
-                <span class="zone-tag">ET_flight3</span>
-                <span class="zone-tag">ET_FLIGHT_NAT_2</span>
-                <span class="zone-tag">ET_flight3</span>
-              </div>
-            </div>
-            <div class="stat-row">
-              <span class="stat-label">DNS:</span>
-              <span class="stat-value dns-badge">false</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-label">PROXY:</span>
-              <span class="stat-value">no-proxy-</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-label">STATUS:</span>
-              <span class="stat-value">ACTIVE <span class="blink-cursor"></span></span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Network panel completely removed -->
     </div>
   </div>
 </section>
