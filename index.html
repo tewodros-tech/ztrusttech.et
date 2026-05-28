@@ -240,7 +240,7 @@
     @media (max-width: 700px) { .top-left-content { display: none; } }
     @media (max-width: 550px) { .top-right-tagline { display: none; } }
     
-    /* Hero Section with GIF (replaced video) + enhanced button styling with logo background integration */
+    /* Hero Section with GIF - Buttons now have ZTrust logo as full background image (not just icon) */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -270,28 +270,28 @@
     }
     .hero .container { position: relative; z-index: 2; width: 100%; }
     .hero-content { display: flex; flex-direction: column; align-items: flex-start; margin-top: 80px; }
-    .hero-badge, .hero h1, .hero p { display: none; }
     .btn-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
     
-    /* Button Primary: ZTrust Logo embedded as background element and inline image for rich visual */
+    /* Button Primary: Full ZTrust Logo as background image (repeating pattern) */
     .btn-primary {
-      background: linear-gradient(135deg, #1e2a4f, #0f172a);
-      padding: 12px 28px;
-      border-radius: 48px;
+      background: linear-gradient(135deg, #0f172a, #020617);
+      padding: 14px 32px;
+      border-radius: 56px;
       font-weight: 700;
+      font-size: 1rem;
       color: white;
       text-decoration: none;
-      transition: 0.25s ease;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.4) inset;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(59,130,246,0.5) inset;
       display: inline-flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(2px);
       z-index: 1;
     }
-    /* Logo background pattern inside button */
+    /* Full logo as background image (repeating pattern) */
     .btn-primary::before {
       content: '';
       position: absolute;
@@ -301,44 +301,37 @@
       height: 100%;
       background-image: url('Ztrust Logo 1 (2).png');
       background-repeat: repeat;
-      background-size: 28px;
-      opacity: 0.1;
+      background-size: 40px;
+      background-position: center;
+      opacity: 0.15;
       pointer-events: none;
       z-index: -1;
-      transition: opacity 0.2s;
+      transition: opacity 0.3s ease;
     }
-    .btn-primary-logo {
-      height: 32px;
-      width: auto;
-      filter: drop-shadow(0 0 6px rgba(59,130,246,0.8));
-      border-radius: 8px;
-      display: inline-block;
-      object-fit: contain;
-      background: transparent;
+    .btn-primary:hover::before {
+      opacity: 0.3;
     }
     .btn-primary:hover {
       transform: translateY(-3px);
-      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      background: linear-gradient(135deg, #1e2a5e, #0f172a);
       box-shadow: 0 12px 28px rgba(37,99,235,0.5);
     }
-    .btn-primary:hover::before {
-      opacity: 0.2;
-    }
     
-    /* Enhanced Outline button also with subtle logo background effect */
+    /* Outline Button also gets full ZTrust Logo background image */
     .btn-outline {
-      background: rgba(10, 15, 27, 0.65);
+      background: rgba(8, 12, 25, 0.7);
       backdrop-filter: blur(8px);
       border: 1.5px solid #3b82f6;
-      padding: 12px 28px;
-      border-radius: 48px;
+      padding: 14px 32px;
+      border-radius: 56px;
       font-weight: 600;
+      font-size: 1rem;
       color: #e2e8f0;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      transition: 0.25s;
+      transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
       z-index: 1;
@@ -352,19 +345,21 @@
       height: 100%;
       background-image: url('Ztrust Logo 1 (2).png');
       background-repeat: repeat;
-      background-size: 24px;
-      opacity: 0.08;
+      background-size: 38px;
+      background-position: center;
+      opacity: 0.12;
       pointer-events: none;
       z-index: -1;
+      transition: opacity 0.3s;
+    }
+    .btn-outline:hover::before {
+      opacity: 0.25;
     }
     .btn-outline:hover {
-      background: rgba(59,130,246,0.25);
+      background: rgba(59,130,246,0.3);
       border-color: #60a5fa;
       color: white;
       transform: translateY(-2px);
-    }
-    .btn-outline:hover::before {
-      opacity: 0.15;
     }
     
     .section { padding: 70px 0; }
@@ -438,15 +433,8 @@
       animation-fill-mode: forwards;
       animation-timing-function: cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
-    /* Odd cards slide from LEFT */
-    .service-card:nth-child(odd) {
-      animation-name: slideFromLeft;
-    }
-    /* Even cards slide from RIGHT */
-    .service-card:nth-child(even) {
-      animation-name: slideFromRight;
-    }
-    /* Staggered delays for smooth cascading effect */
+    .service-card:nth-child(odd) { animation-name: slideFromLeft; }
+    .service-card:nth-child(even) { animation-name: slideFromRight; }
     .service-card:nth-child(1) { animation-delay: 0.05s; }
     .service-card:nth-child(2) { animation-delay: 0.1s; }
     .service-card:nth-child(3) { animation-delay: 0.15s; }
@@ -457,25 +445,12 @@
     .service-card:nth-child(8) { animation-delay: 0.4s; }
     
     @keyframes slideFromLeft {
-      0% {
-        opacity: 0;
-        transform: translateX(-60px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      0% { opacity: 0; transform: translateX(-60px); }
+      100% { opacity: 1; transform: translateX(0); }
     }
-    
     @keyframes slideFromRight {
-      0% {
-        opacity: 0;
-        transform: translateX(60px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      0% { opacity: 0; transform: translateX(60px); }
+      100% { opacity: 1; transform: translateX(0); }
     }
     
     .service-card:hover {
@@ -484,7 +459,6 @@
       box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
       background: rgba(20, 25, 45, 0.95);
     }
-    /* Service image styling */
     .service-img {
       width: 100%;
       height: 200px;
@@ -492,9 +466,7 @@
       display: block;
       transition: transform 0.5s ease;
     }
-    .service-card:hover .service-img {
-      transform: scale(1.05);
-    }
+    .service-card:hover .service-img { transform: scale(1.05); }
     .service-info {
       padding: 22px 20px 26px;
     }
@@ -604,8 +576,6 @@
       margin-bottom: 20px;
       filter: drop-shadow(0 0 12px rgba(59,130,246,0.4));
       display: block;
-      visibility: visible;
-      opacity: 1;
     }
     .footer-tagline {
       font-size: 1rem;
@@ -707,8 +677,8 @@
       .infra-section { background-attachment: scroll; }
       .services-grid { grid-template-columns: 1fr; }
       .footer-logo-icon { max-width: 130px; }
-      .btn-primary, .btn-outline { padding: 10px 20px; font-size: 0.9rem; }
-      .btn-primary-logo { height: 26px; }
+      .btn-primary, .btn-outline { padding: 10px 20px; font-size: 0.85rem; }
+      .btn-primary::before, .btn-outline::before { background-size: 30px; }
     }
   </style>
 </head>
@@ -751,18 +721,20 @@
   </div>
 </nav>
 
-<!-- Hero Section with GIF and Buttons with Logo Background Integration -->
+<!-- Hero Section with GIF & Buttons (ZTrust logo as full background image on both buttons) -->
 <section class="hero">
   <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
     <div class="hero-content">
       <div class="btn-group">
-        <!-- Enhanced Get IT Consultation button: includes embedded ZTrust logo and background pattern -->
+        <!-- Get IT Consultation Button: Background image is ZTrust logo (repeating pattern) -->
         <a href="contact.html" class="btn-primary">
-          <img src="Ztrust Logo 1 (2).png" alt="ZTrust Logo" class="btn-primary-logo" onerror="this.style.display='none'">
-          Get IT Consultation →
+          <i class="fas fa-rocket"></i> Get IT Consultation →
         </a>
-        <a href="services.html" class="btn-outline"><i class="fas fa-cogs"></i> Explore Services</a>
+        <!-- Explore Services Button: Also uses ZTrust Logo as background image -->
+        <a href="services.html" class="btn-outline">
+          <i class="fas fa-cogs"></i> Explore Services
+        </a>
       </div>
     </div>
   </div>
@@ -877,7 +849,7 @@
     movingBg.appendChild(numEl);
   }
 
-  // Menu toggle logic
+  // Mobile menu toggle
   const menuToggle = document.getElementById('mobileMenu');
   const navLinks = document.getElementById('navLinks');
   if(menuToggle) {
@@ -897,12 +869,11 @@
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
-  // Ensure logos are fully visible and fallback
-  document.querySelectorAll('.nav-logo, .footer-logo-icon, .btn-primary-logo').forEach(img => {
+  // Fallback for images
+  document.querySelectorAll('.nav-logo, .footer-logo-icon').forEach(img => {
     if(img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
       img.onerror = null;
-      if(img.classList.contains('btn-primary-logo')) img.style.display = 'none';
-      else img.src = 'https://placehold.co/160x55?text=ZTrust';
+      img.src = 'https://placehold.co/160x55?text=ZTrust';
     }
   });
 </script>
