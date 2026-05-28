@@ -190,84 +190,96 @@
       opacity: 0.9;
     }
     
-    /* Top Left Corner Content (Dark Area) - UPDATED with wider logo */
+    /* Top Left Corner Content (Dark Area) - LOGO NOW AS WIDE BACKGROUND INSIDE THE DARK PANEL */
     .top-left-content {
       position: fixed;
       top: 95px;
       left: 24px;
       z-index: 1002;
-      max-width: 520px;  /* Slightly wider to accommodate larger logo */
+      max-width: 540px;
       width: auto;
       text-align: left;
-      background: rgba(10, 10, 15, 0.75);
+      background: rgba(10, 10, 15, 0.82);
       backdrop-filter: blur(12px);
-      padding: 16px 24px;
+      padding: 18px 26px;
       border-radius: 28px;
       border-left: 3px solid #3b82f6;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
       pointer-events: none;
+      overflow: hidden;
+      position: relative;
+    }
+    /* NEW: Logo as full background image (wider, fitted, covering the dark area background) */
+    .top-left-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('Ztrust Color (2).png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;  /* Makes the image cover the entire dark area, wider and fitted */
+      opacity: 0.22;          /* Subtle but visible background effect */
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 28px;
+      transition: opacity 0.3s ease;
+    }
+    /* Content sits above the background image */
+    .top-left-badge, .top-left-title, .top-left-desc, .dark-area-logo-enhanced {
+      position: relative;
+      z-index: 2;
     }
     .top-left-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(59,130,246,0.2);
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
       padding: 4px 14px;
       border-radius: 40px;
       font-size: 0.7rem;
-      color: #60a5fa;
+      color: #a5f0ff;
       margin-bottom: 10px;
-      border: 1px solid rgba(59,130,246,0.4);
+      border: 1px solid rgba(59,130,246,0.5);
     }
     .top-left-title {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #fff, #94a3f8, #60a5fa);
+      background: linear-gradient(135deg, #fff, #b0c4ff, #7aa2f7);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       margin-bottom: 8px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
     .top-left-desc {
-      font-size: 0.8rem;
-      color: #e2e8f0;
-      line-height: 1.4;
-      margin-bottom: 12px;
+      font-size: 0.85rem;
+      color: #f0f4ff;
+      line-height: 1.45;
+      margin-bottom: 8px;
+      font-weight: 500;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
-    /* Dark area logo styling - WIDER and fitted to container */
-    .dark-area-logo {
-      display: block;
-      margin-top: 12px;
-      text-align: center;
-      width: 100%;
-      background: rgba(0,0,0,0.2);
-      border-radius: 20px;
-      padding: 8px 12px;
-      transition: all 0.2s;
+    /* Enhanced logo area - additional visual but main background already covers widely */
+    .dark-area-logo-enhanced {
+      display: none; /* hide separate img since background covers everything perfectly */
     }
-    .dark-area-logo img {
-      max-width: 100%;
-      width: auto;
-      height: auto;
-      max-height: 85px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 12px rgba(59,130,246,0.4));
-      border-radius: 12px;
-      transition: transform 0.2s ease;
-    }
-    .dark-area-logo img:hover {
-      transform: scale(1.02);
+    /* Hover effect for background logo */
+    .top-left-content:hover::before {
+      opacity: 0.32;
     }
     @media (max-width: 900px) {
-      .top-left-content { max-width: 420px; top: 85px; left: 16px; padding: 12px 18px; }
-      .dark-area-logo img { max-height: 70px; }
-      .top-left-title { font-size: 1.3rem; }
+      .top-left-content { max-width: 420px; top: 85px; left: 16px; padding: 14px 20px; }
+      .top-left-title { font-size: 1.4rem; }
       .top-right-tagline { top: 85px; right: 16px; max-width: 300px; }
     }
     @media (max-width: 700px) { .top-left-content { display: none; } }
     @media (max-width: 550px) { .top-right-tagline { display: none; } }
     
-    /* Hero Section with GIF (replaced video) + integrated logo on consultation button */
+    /* Hero Section with GIF */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -410,15 +422,8 @@
       animation-fill-mode: forwards;
       animation-timing-function: cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
-    /* Odd cards slide from LEFT */
-    .service-card:nth-child(odd) {
-      animation-name: slideFromLeft;
-    }
-    /* Even cards slide from RIGHT */
-    .service-card:nth-child(even) {
-      animation-name: slideFromRight;
-    }
-    /* Staggered delays for smooth cascading effect */
+    .service-card:nth-child(odd) { animation-name: slideFromLeft; }
+    .service-card:nth-child(even) { animation-name: slideFromRight; }
     .service-card:nth-child(1) { animation-delay: 0.05s; }
     .service-card:nth-child(2) { animation-delay: 0.1s; }
     .service-card:nth-child(3) { animation-delay: 0.15s; }
@@ -429,25 +434,12 @@
     .service-card:nth-child(8) { animation-delay: 0.4s; }
     
     @keyframes slideFromLeft {
-      0% {
-        opacity: 0;
-        transform: translateX(-60px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      0% { opacity: 0; transform: translateX(-60px); }
+      100% { opacity: 1; transform: translateX(0); }
     }
-    
     @keyframes slideFromRight {
-      0% {
-        opacity: 0;
-        transform: translateX(60px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      0% { opacity: 0; transform: translateX(60px); }
+      100% { opacity: 1; transform: translateX(0); }
     }
     
     .service-card:hover {
@@ -456,7 +448,6 @@
       box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
       background: rgba(20, 25, 45, 0.95);
     }
-    /* Service image styling */
     .service-img {
       width: 100%;
       height: 200px;
@@ -464,9 +455,7 @@
       display: block;
       transition: transform 0.5s ease;
     }
-    .service-card:hover .service-img {
-      transform: scale(1.05);
-    }
+    .service-card:hover .service-img { transform: scale(1.05); }
     .service-info {
       padding: 22px 20px 26px;
     }
@@ -672,6 +661,14 @@
     }
     .float-wa { background: #25D366; }
     .float-tg { background: #0088cc; }
+    
+    @media (max-width: 768px) {
+      .section-title { font-size: 1.8rem; }
+      .stats-row { flex-direction: column; gap: 30px; }
+      .infra-section { background-attachment: scroll; }
+      .services-grid { grid-template-columns: 1fr; }
+      .footer-logo-icon { max-width: 130px; }
+    }
   </style>
 </head>
 <body>
@@ -690,15 +687,12 @@
   <div class="sub-tag">Infrastructure • Storage • Application Development • Database • API Integration • Network Connectivity — One trusted partner for all your IT needs.</div>
 </div>
 
-<!-- Top Left Content (Dark Area) - Updated with wider Ztrust Color (2).png logo -->
+<!-- Top Left Content (Dark Area) - Ztrust Color (2).png now fitted as FULL BACKGROUND IMAGE (wider, covering entire dark panel) -->
 <div class="top-left-content">
   <div class="top-left-badge"><i class="fas fa-microchip"></i> 10+ Years of IT Excellence</div>
   <div class="top-left-title">ZTrust Tech</div>
   <div class="top-left-desc">Enterprise-grade IT infrastructure, smart storage, custom applications, high-performance databases, seamless API integration, and robust network connectivity — all under one roof.</div>
-  <!-- DARK AREA LOGO: Ztrust Color (2).png, made wider and fitted responsively -->
-  <div class="dark-area-logo">
-    <img src="Ztrust Color (2).png" alt="ZTrust Tech Color Logo" onerror="this.src='https://placehold.co/400x80?text=ZTrust+Tech'">
-  </div>
+  <!-- No separate image tag needed; background image covers whole area widely -->
 </div>
 
 <!-- Navigation -->
@@ -723,7 +717,6 @@
   <div class="container">
     <div class="hero-content">
       <div class="btn-group">
-        <!-- Enhanced Get IT Consultation button with embedded Ztrust Color logo -->
         <a href="contact.html" class="btn-primary">
           <img src="Ztrust Color (2).png" alt="ZTrust Logo" class="btn-primary-logo" onerror="this.style.display='none'">
           Get IT Consultation →
@@ -843,7 +836,6 @@
     movingBg.appendChild(numEl);
   }
 
-  // Menu toggle logic
   const menuToggle = document.getElementById('mobileMenu');
   const navLinks = document.getElementById('navLinks');
   if(menuToggle) {
@@ -863,12 +855,11 @@
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
-  // Ensure logos are fully visible with fallback for new color logo
-  document.querySelectorAll('.nav-logo, .footer-logo-icon, .btn-primary-logo, .dark-area-logo img').forEach(img => {
+  // Fallback images for nav and footer logos
+  document.querySelectorAll('.nav-logo, .footer-logo-icon, .btn-primary-logo').forEach(img => {
     if(img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
       img.onerror = null;
       if(img.classList.contains('btn-primary-logo')) img.style.display = 'none';
-      else if(img.closest('.dark-area-logo')) img.src = 'https://placehold.co/400x80?text=ZTrust+Tech';
       else img.src = 'https://placehold.co/160x55?text=ZTrust';
     }
   });
