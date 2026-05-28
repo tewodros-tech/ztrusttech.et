@@ -120,23 +120,29 @@
       .container { padding: 0 20px; }
     }
     
-    /* Hero Section with AI Video Background */
+    /* Hero Section - ONLY Ztrust Color 2.png BACKGROUND, NO VIDEO, NO TEXT */
     .hero {
-      min-height: 85vh;
+      min-height: 70vh;
       display: flex;
       align-items: center;
-      padding: 100px 0 80px;
       position: relative;
       overflow: hidden;
     }
-    .hero-video {
+    /* Ztrust Color 2.png as full background image - covering entire hero */
+    .hero::after {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      background-image: url('Ztrust Color 2.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      opacity: 0.4;
       z-index: 0;
+      pointer-events: none;
     }
     .hero::before {
       content: '';
@@ -145,65 +151,16 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(10,10,15,0.75), rgba(5,5,8,0.85));
+      background: linear-gradient(135deg, rgba(10,10,15,0.65), rgba(5,5,8,0.75));
       z-index: 1;
     }
     .hero .container { 
       position: relative; 
       z-index: 2; 
     }
-    .hero-content { max-width: 800px; }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(59,130,246,0.2);
-      backdrop-filter: blur(10px);
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      color: #60a5fa;
-      margin-bottom: 30px;
-      border: 1px solid rgba(59,130,246,0.4);
-    }
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1.2;
-      background: linear-gradient(135deg, #fff, #94a3f8, #60a5fa, #3b82f6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 20px;
-    }
-    .hero p { 
-      font-size: 1.2rem; 
-      color: #e2e8f0; 
-      margin-bottom: 40px;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-    }
-    .hero-stats {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    .hero-stat {
-      text-align: center;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(8px);
-      padding: 12px 24px;
-      border-radius: 24px;
-      border: 1px solid rgba(59,130,246,0.3);
-    }
-    .hero-stat h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #3b82f6;
-    }
-    .hero-stat p {
-      font-size: 0.85rem;
-      color: #cbd5e6;
-      margin-bottom: 0;
+    /* Hide all text content in hero */
+    .hero-content {
+      display: none;
     }
     
     .section { padding: 70px 0; }
@@ -214,6 +171,11 @@
       margin-bottom: 16px;
     }
     .section-title i { color: #3b82f6; margin-right: 12px; }
+    
+    /* Add top padding to first section since hero has no visible content */
+    .first-section {
+      padding-top: 100px;
+    }
     
     .about-content {
       display: flex;
@@ -339,11 +301,10 @@
     .float-wa:hover, .float-tg:hover { transform: scale(1.08); }
     
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2rem; }
       .section-title { font-size: 1.8rem; }
-      .hero-stats { justify-content: center; }
-      .hero-stat h2 { font-size: 1.5rem; }
-      .hero-stat { padding: 8px 16px; }
+      .hero { min-height: 50vh; }
+      .first-section { padding-top: 80px; }
+      .hero::after { opacity: 0.5; background-size: contain; }
     }
   </style>
 </head>
@@ -375,31 +336,17 @@
   </div>
 </nav>
 
-<!-- Hero Section with AI Video Background -->
+<!-- Hero Section - ONLY Ztrust Color 2.png BACKGROUND, NO VIDEO, NO TEXT -->
 <section class="hero">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="AI.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
   <div class="container">
     <div class="hero-content">
-      <div class="hero-badge">
-        <i class="fas fa-robot"></i> AI-Powered Solutions | 10+ Years Excellence
-      </div>
-      <h1>About ZTrust Tech</h1>
-      <p>Your trusted IT partner with over 10 years of excellence in delivering complete technology solutions — from infrastructure and storage to application development, database management, API integration, and network connectivity.</p>
-      <div class="hero-stats">
-        <div class="hero-stat"><h2>10+</h2><p>Years Experience</p></div>
-        <div class="hero-stat"><h2>350+</h2><p>Projects Delivered</p></div>
-        <div class="hero-stat"><h2>98%</h2><p>Client Satisfaction</p></div>
-        <div class="hero-stat"><h2>24/7</h2><p>Support Available</p></div>
-      </div>
+      <!-- All text content removed - only the Ztrust Color 2.png background remains -->
     </div>
   </div>
 </section>
 
-<!-- About Content Section -->
-<section class="section">
+<!-- About Content Section - now first visible section with top padding -->
+<section class="section first-section">
   <div class="container">
     <div class="about-content">
       <div class="about-text">
@@ -491,12 +438,6 @@
     item.style.animationDelay = (Math.random() * 15) + 's';
     item.style.opacity = 0.04 + Math.random() * 0.06;
     floatingContainer.appendChild(item);
-  }
-  
-  // Video play handling
-  const video = document.querySelector('.hero-video');
-  if(video) {
-    video.play().catch(e => console.log('Video autoplay prevented:', e));
   }
   
   // Mobile menu toggle
