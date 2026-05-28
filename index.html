@@ -107,7 +107,6 @@
     .nav-logo:hover {
       transform: scale(1.03);
     }
-    .logo-text { display: none; }
     .links { 
       display: flex; 
       gap: 2rem; 
@@ -241,7 +240,7 @@
     @media (max-width: 700px) { .top-left-content { display: none; } }
     @media (max-width: 550px) { .top-right-tagline { display: none; } }
     
-    /* Hero Section with GIF (replaced video) */
+    /* Hero Section with GIF (replaced video) + integrated logo on consultation button */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -273,6 +272,8 @@
     .hero-content { display: flex; flex-direction: column; align-items: flex-start; margin-top: 80px; }
     .hero-badge, .hero h1, .hero p { display: none; }
     .btn-group { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+    
+    /* Enhanced consultation button with logo inside */
     .btn-primary {
       background: linear-gradient(135deg, #2563eb, #1e40af);
       padding: 12px 28px;
@@ -284,9 +285,18 @@
       box-shadow: 0 4px 15px rgba(37,99,235,0.4);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
     }
-    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-primary-logo {
+      height: 28px;
+      width: auto;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.5));
+      border-radius: 6px;
+      background: transparent;
+      display: inline-block;
+      object-fit: contain;
+    }
+    .btn-primary:hover { transform: translateY(-2px); background: linear-gradient(135deg, #3b82f6, #1e3a8a); }
     .btn-outline {
       background: transparent;
       border: 1.5px solid #3b82f6;
@@ -684,13 +694,17 @@
   </div>
 </nav>
 
-<!-- Hero Section with GIF (replaced video) -->
+<!-- Hero Section with GIF (replaced video) and Consultation Button including ZTrust Logo -->
 <section class="hero">
   <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
     <div class="hero-content">
       <div class="btn-group">
-        <a href="contact.html" class="btn-primary"><i class="fas fa-headset"></i> Get IT Consultation →</a>
+        <!-- Enhanced Get IT Consultation button with embedded ZTrust logo -->
+        <a href="contact.html" class="btn-primary">
+          <img src="Ztrust Logo 1 (2).png" alt="ZTrust Logo" class="btn-primary-logo" onerror="this.style.display='none'">
+          Get IT Consultation →
+        </a>
         <a href="services.html" class="btn-outline"><i class="fas fa-cogs"></i> Explore Services</a>
       </div>
     </div>
@@ -728,21 +742,13 @@
     <h2 class="section-title"><i class="fas fa-cubes"></i> Our Core IT Services</h2>
     <p class="section-sub">End-to-end technology solutions covering every aspect of your IT landscape</p>
     <div class="services-grid">
-      <!-- Infrastructure (odd - slides from left) -->
       <div class="service-card"><img src="infrastructure.jpg" alt="IT Infrastructure" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Infrastructure'"><div class="service-info"><h3>IT Infrastructure</h3><p>Complete infrastructure design, deployment, and management including servers and virtualization.</p></div></div>
-      <!-- Storage (even - slides from right) -->
       <div class="service-card"><img src="storage.jpeg" alt="Storage Solutions" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Storage'"><div class="service-info"><h3>Storage Solutions</h3><p>SAN, NAS, backup systems, disaster recovery, and data archiving solutions.</p></div></div>
-      <!-- Application Development (odd - slides from left) -->
       <div class="service-card"><img src="programing.jpg" alt="Application Development" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=App+Development'"><div class="service-info"><h3>Application Development</h3><p>Custom web, mobile, and desktop applications tailored to your business processes.</p></div></div>
-      <!-- Database (even - slides from right) -->
       <div class="service-card"><img src="database.jpg" alt="Database Management" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Database'"><div class="service-info"><h3>Database Management</h3><p>SQL, NoSQL, database design, optimization, migration, and administration.</p></div></div>
-      <!-- API Integration (odd - slides from left) -->
       <div class="service-card"><img src="API.JPG" alt="API Integration" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=API'"><div class="service-info"><h3>API Integration</h3><p>Seamless third-party API integration, RESTful APIs, and microservices architecture.</p></div></div>
-      <!-- Network Connectivity (even - slides from right) -->
       <div class="service-card"><img src="Network.jfif" alt="Network Connectivity" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Network'"><div class="service-info"><h3>Network Connectivity</h3><p>Enterprise networking, SD-WAN, LAN/WAN, wireless solutions, and network security.</p></div></div>
-      <!-- Cybersecurity (odd - slides from left) -->
       <div class="service-card"><img src="Cybersecurity.jpg" alt="Cybersecurity Solutions" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Cybersecurity'"><div class="service-info"><h3>Cybersecurity Solutions</h3><p>Advanced threat protection, endpoint security, firewall management, risk assessment, and compliance solutions.</p></div></div>
-      <!-- Awareness Trainings (even - slides from right) -->
       <div class="service-card"><img src="Awarness.jpg" alt="Awareness Trainings" class="service-img" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Awareness+Training'"><div class="service-info"><h3>Awareness Trainings</h3><p>Cybersecurity awareness programs, phishing simulations, data protection workshops, and IT security culture development.</p></div></div>
     </div>
   </div>
@@ -814,7 +820,6 @@
     movingBg.appendChild(numEl);
   }
 
-  // Hero GIF is now static image, no autoplay needed
   // Menu toggle logic
   const menuToggle = document.getElementById('mobileMenu');
   const navLinks = document.getElementById('navLinks');
@@ -836,10 +841,11 @@
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
   // Ensure logos are fully visible (any additional hidden class removal)
-  document.querySelectorAll('.nav-logo, .footer-logo-icon').forEach(img => {
+  document.querySelectorAll('.nav-logo, .footer-logo-icon, .btn-primary-logo').forEach(img => {
     if(img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
       img.onerror = null;
-      img.src = 'https://placehold.co/160x55?text=ZTrust';
+      if(img.classList.contains('btn-primary-logo')) img.style.display = 'none';
+      else img.src = 'https://placehold.co/160x55?text=ZTrust';
     }
   });
 </script>
