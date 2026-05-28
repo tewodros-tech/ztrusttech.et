@@ -158,7 +158,7 @@
       .nav-logo { height: 48px; }
     }
     
-    /* Hero Section with GIF - No Buttons */
+    /* Hero Section with GIF + Network Data Panel on Right Side */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -187,7 +187,110 @@
       z-index: 1;
     }
     .hero .container { position: relative; z-index: 2; width: 100%; }
-    .hero-content { margin-top: 80px; }
+    .hero-content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 80px;
+      gap: 30px;
+    }
+    /* Left side: empty or can be used for future content, keeping right panel visible */
+    .hero-left {
+      flex: 1;
+      min-width: 200px;
+    }
+    /* Right side: Terminal-style network data panel */
+    .hero-right {
+      flex: 1;
+      min-width: 320px;
+      max-width: 480px;
+      background: rgba(8, 12, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      border: 1px solid rgba(59,130,246,0.5);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.2) inset;
+      padding: 18px 20px;
+      font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+      transition: all 0.3s;
+    }
+    .hero-right:hover {
+      border-color: #3b82f6;
+      box-shadow: 0 0 20px rgba(59,130,246,0.3);
+    }
+    .network-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(59,130,246,0.5);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+    .network-header i {
+      font-size: 1.2rem;
+      color: #3b82f6;
+    }
+    .network-header span {
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #a5f0ff, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .network-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 15px;
+      font-size: 0.75rem;
+      border-left: 2px solid #3b82f6;
+      padding-left: 12px;
+    }
+    .stat-label {
+      color: #7e8aa8;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+    .stat-value {
+      color: #b9c7e6;
+      font-family: monospace;
+      font-weight: 600;
+      word-break: break-all;
+    }
+    .zone-tag {
+      background: rgba(59,130,246,0.2);
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 4px;
+      border: 0.5px solid rgba(59,130,246,0.4);
+    }
+    .dns-badge {
+      color: #60a5fa;
+      font-weight: bold;
+    }
+    .blink-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 12px;
+      background-color: #3b82f6;
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    
     .btn-group { display: none; }
     
     .section { padding: 70px 0; }
@@ -331,7 +434,7 @@
     }
     .stat-item p { color: #94a3b8; font-weight: 500; font-size: 1.1rem; margin-top: 8px; }
     
-    /* NEW: Dark Area Section on top of WhatsApp/Telegram Icons - Large Ztrust Color 2.png background combined with network */
+    /* Social Dark Area */
     .social-dark-area {
       position: relative;
       background: linear-gradient(135deg, #0a0c18 0%, #060814 100%);
@@ -342,7 +445,6 @@
       border: 1px solid rgba(59,130,246,0.3);
       box-shadow: 0 20px 35px -12px rgba(0,0,0,0.6);
     }
-    /* Large Ztrust Color 2.png as background overlay */
     .social-dark-area::before {
       content: '';
       position: absolute;
@@ -355,20 +457,6 @@
       background-position: center center;
       background-size: 75%;
       opacity: 0.22;
-      pointer-events: none;
-      z-index: 0;
-      transition: opacity 0.3s;
-    }
-    /* Network pattern overlay for tech feel */
-    .social-dark-area::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(circle at 25% 40%, rgba(59,130,246,0.08) 1px, transparent 1px);
-      background-size: 28px 28px;
       pointer-events: none;
       z-index: 0;
     }
@@ -408,7 +496,6 @@
       gap: 12px;
       border: 1px solid rgba(59,130,246,0.5);
       font-weight: 500;
-      transition: all 0.2s;
     }
     .contact-item-large i { font-size: 1.3rem; color: #3b82f6; }
     .whatsapp-link-large, .telegram-link-large {
@@ -428,14 +515,6 @@
     .telegram-link-large { background: linear-gradient(95deg, #0088cc, #006699); box-shadow: 0 5px 15px rgba(0,136,204,0.3); }
     .whatsapp-link-large:hover { transform: translateY(-2px); background: #128C7E; }
     .telegram-link-large:hover { transform: translateY(-2px); background: #005580; }
-    
-    @media (max-width: 700px) {
-      .social-dark-area { padding: 30px 20px; margin: 20px 0; }
-      .dark-title { font-size: 1.3rem; }
-      .contact-item-large { padding: 10px 18px; font-size: 0.8rem; }
-      .whatsapp-link-large, .telegram-link-large { padding: 10px 22px; font-size: 0.85rem; }
-      .social-dark-area::before { background-size: 90%; opacity: 0.18; }
-    }
     
     .contact-bar {
       display: flex;
@@ -578,6 +657,8 @@
       .infra-section { background-attachment: scroll; }
       .services-grid { grid-template-columns: 1fr; }
       .footer-logo-icon { max-width: 130px; }
+      .hero-content { flex-direction: column; align-items: stretch; }
+      .hero-right { max-width: 100%; }
     }
   </style>
 </head>
@@ -591,7 +672,7 @@
   <a href="https://t.me/ZTrustTech" class="float-tg" target="_blank"><i class="fab fa-telegram-plane"></i></a>
 </div>
 
-<!-- Navigation (Logo unchanged) -->
+<!-- Navigation -->
 <nav class="nav">
   <div class="container nav-inner">
     <div class="logo-wrapper">
@@ -607,11 +688,46 @@
   </div>
 </nav>
 
-<!-- Hero Section with GIF (No Buttons) -->
+<!-- Hero Section with Waving GIF + Network Data Panel on Right Side -->
 <section class="hero">
   <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
-    <div class="hero-content"></div>
+    <div class="hero-content">
+      <div class="hero-left"></div>
+      <div class="hero-right">
+        <div class="network-header">
+          <i class="fas fa-network-wired"></i>
+          <span>ZTRUST NETWORK ZONE</span>
+          <i class="fas fa-shield-alt" style="margin-left: auto; font-size: 0.9rem;"></i>
+        </div>
+        <div class="network-stats">
+          <div class="stat-row">
+            <span class="stat-label">▼ ZONES:</span>
+            <div class="stat-value">
+              <span class="zone-tag">Stati</span>
+              <span class="zone-tag">INT_DMZ_ig</span>
+              <span class="zone-tag">OUTSIDE_ig</span>
+              <span class="zone-tag">MobApptest</span>
+              <span class="zone-tag">ET_flight3</span>
+              <span class="zone-tag">ET_FLIGHT_NAT_2</span>
+              <span class="zone-tag">ET_flight3</span>
+            </div>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">DNS:</span>
+            <span class="stat-value dns-badge">false</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">PROXY:</span>
+            <span class="stat-value">no-proxy-</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">STATUS:</span>
+            <span class="stat-value">ACTIVE <span class="blink-cursor"></span></span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -658,7 +774,7 @@
   </div>
 </section>
 
-<!-- NEW DARK AREA with Ztrust Color 2.png large background combined with network effect, placed on top of WhatsApp/Telegram icons -->
+<!-- Dark Area with WhatsApp/Telegram and Ztrust Logo Background -->
 <div class="container">
   <div class="social-dark-area">
     <div class="social-dark-content">
@@ -676,17 +792,6 @@
     </div>
   </div>
 </div>
-
-<!-- Contact Section (Additional fallback) -->
-<section class="section" style="padding-top: 0;">
-  <div class="container">
-    <div class="contact-bar">
-      <div class="contact-item"><i class="fas fa-phone-alt"></i> +251 911 563 698</div>
-      <div class="contact-item"><i class="fas fa-envelope"></i> sales2@ztrust.et</div>
-      <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Bole TK Building, Addis Ababa</div>
-    </div>
-  </div>
-</section>
 
 <!-- Footer -->
 <footer class="footer">
@@ -758,7 +863,6 @@
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
-  // Logo fallback
   document.querySelectorAll('.nav-logo, .footer-logo-icon').forEach(img => {
     if(img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
       img.onerror = null;
