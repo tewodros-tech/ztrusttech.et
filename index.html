@@ -190,13 +190,13 @@
       opacity: 0.9;
     }
     
-    /* Top Left Corner Content (Dark Area) - UPDATED with wider logo */
+    /* Top Left Corner Content (Dark Area) - UPDATED with wider logo and BACKGROUND IMAGE (Ztrust Color 2.png) as subtle backdrop */
     .top-left-content {
       position: fixed;
       top: 95px;
       left: 24px;
       z-index: 1002;
-      max-width: 520px;  /* Slightly wider to accommodate larger logo */
+      max-width: 520px;
       width: auto;
       text-align: left;
       background: rgba(10, 10, 15, 0.75);
@@ -206,6 +206,29 @@
       border-left: 3px solid #3b82f6;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       pointer-events: none;
+      position: relative;
+      overflow: hidden;
+    }
+    /* NEW: Background image (Ztrust Color 2.png) placed subtly inside the top-left dark area */
+    .top-left-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('Ztrust Color (2).png');
+      background-repeat: no-repeat;
+      background-position: 70% 50%;
+      background-size: 55%;
+      opacity: 0.13;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(1px);
+    }
+    .top-left-badge, .top-left-title, .top-left-desc, .dark-area-logo {
+      position: relative;
+      z-index: 2;
     }
     .top-left-badge {
       display: inline-flex;
@@ -690,7 +713,7 @@
   <div class="sub-tag">Infrastructure • Storage • Application Development • Database • API Integration • Network Connectivity — One trusted partner for all your IT needs.</div>
 </div>
 
-<!-- Top Left Content (Dark Area) - Updated with wider Ztrust Color (2).png logo -->
+<!-- Top Left Content (Dark Area) - Background image of Ztrust Color 2.png added via pseudo-element, still retains visible logo -->
 <div class="top-left-content">
   <div class="top-left-badge"><i class="fas fa-microchip"></i> 10+ Years of IT Excellence</div>
   <div class="top-left-title">ZTrust Tech</div>
@@ -717,7 +740,7 @@
   </div>
 </nav>
 
-<!-- Hero Section with GIF and Consultation Button including Ztrust Color Logo -->
+<!-- Hero Section with GIF (unchanged) and Consultation Button including Ztrust Color Logo -->
 <section class="hero">
   <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
@@ -816,7 +839,7 @@
 <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
 <script>
-  // Animated background elements
+  // Animated background elements (unchanged)
   const movingBg = document.getElementById('movingBg');
   const movingWords = ['🔒 ZTrust Tech', '⚡ IT Solutions', '🔐 Secure', '💾 Storage', '🌐 Network', '📱 Apps', '🗄️ Database', '🔌 API', '🏗️ Infrastructure', '☁️ Cloud', '10+ Years', '100% Satisfied', '24/7 Support'];
   for (let i = 0; i < 40; i++) {
