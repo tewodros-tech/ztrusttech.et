@@ -158,12 +158,12 @@
       .nav-logo { height: 48px; }
     }
     
-    /* Top Right Corner Tagline - COMPLETELY REMOVED */
+    /* Top Right Corner Tagline - REMOVED */
     .top-right-tagline {
       display: none;
     }
     
-    /* Top Left Corner Content (Dark Area) - Only background logo, all text removed */
+    /* Top Left Corner Content (Dark Area) - FULL BLEED LOGO BACKGROUND, NO BUTTONS, TEXT REMOVED */
     .top-left-content {
       position: fixed;
       top: 95px;
@@ -171,11 +171,10 @@
       z-index: 1002;
       max-width: 540px;
       width: auto;
-      min-height: 180px;
-      text-align: left;
-      background: rgba(10, 10, 15, 0.82);
-      backdrop-filter: blur(12px);
-      padding: 20px 26px;
+      min-height: 220px;
+      background: transparent;
+      backdrop-filter: blur(0px);
+      padding: 0;
       border-radius: 28px;
       border-left: 3px solid #3b82f6;
       box-shadow: 0 8px 20px rgba(0,0,0,0.4);
@@ -186,7 +185,7 @@
       align-items: center;
       justify-content: center;
     }
-    /* Logo as full background image (using Ztrust Color 2.png) */
+    /* Full background image covering entire dark area, fitted perfectly */
     .top-left-content::before {
       content: '';
       position: absolute;
@@ -197,32 +196,30 @@
       background-image: url('Ztrust Color 2.png');
       background-repeat: no-repeat;
       background-position: center center;
-      background-size: cover;  /* Makes the image cover the entire dark area, wider and fitted */
-      opacity: 0.32;          /* Balanced visibility for strong brand presence */
+      background-size: cover;  /* Makes the image cover the entire area, wide and fitted */
+      opacity: 1;              /* Full visibility for vibrant brand presence */
       pointer-events: none;
       z-index: 0;
       border-radius: 28px;
       transition: opacity 0.3s ease;
     }
-    .top-left-content:hover::before {
-      opacity: 0.45;
-    }
-    /* Subtle inner glow */
+    /* Subtle overlay glow for depth */
     .top-left-content::after {
       content: '';
       position: absolute;
       inset: 0;
       border-radius: 28px;
-      box-shadow: inset 0 0 20px rgba(59,130,246,0.2);
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.3), inset 0 0 15px rgba(59,130,246,0.3);
       pointer-events: none;
       z-index: 1;
     }
+    /* No text, no buttons */
     @media (max-width: 900px) {
-      .top-left-content { max-width: 380px; top: 85px; left: 16px; padding: 16px; min-height: 140px; }
+      .top-left-content { max-width: 380px; top: 85px; left: 16px; min-height: 160px; }
     }
     @media (max-width: 700px) { .top-left-content { display: none; } }
     
-    /* Hero Section with GIF */
+    /* Hero Section with GIF - BUTTONS REMOVED ENTIRELY */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -251,48 +248,16 @@
       z-index: 1;
     }
     .hero .container { position: relative; z-index: 2; width: 100%; }
-    .hero-content { display: flex; flex-direction: column; align-items: flex-start; margin-top: 80px; }
-    .hero-badge, .hero h1, .hero p { display: none; }
-    .btn-group { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
-    
-    /* Enhanced consultation button with logo inside */
-    .btn-primary {
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 600;
-      color: white;
-      text-decoration: none;
-      transition: 0.2s;
-      box-shadow: 0 4px 15px rgba(37,99,235,0.4);
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
+    .hero-content { 
+      display: flex; 
+      flex-direction: column; 
+      align-items: flex-start; 
+      margin-top: 80px;
     }
-    .btn-primary-logo {
-      height: 28px;
-      width: auto;
-      filter: drop-shadow(0 0 4px rgba(255,255,255,0.5));
-      border-radius: 6px;
-      background: transparent;
-      display: inline-block;
-      object-fit: contain;
+    /* No buttons or CTA text in hero */
+    .btn-group {
+      display: none;
     }
-    .btn-primary:hover { transform: translateY(-2px); background: linear-gradient(135deg, #3b82f6, #1e3a8a); }
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid #3b82f6;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 600;
-      color: #e2e8f0;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      backdrop-filter: blur(5px);
-    }
-    .btn-outline:hover { background: rgba(59,130,246,0.2); }
     
     .section { padding: 70px 0; }
     .section-title {
@@ -624,11 +589,9 @@
   <a href="https://t.me/ZTrustTech" class="float-tg" target="_blank"><i class="fab fa-telegram-plane"></i></a>
 </div>
 
-<!-- Top Right Tagline - COMPLETELY REMOVED -->
-
-<!-- Top Left Content (Dark Area) - Only background logo using Ztrust Color 2.png -->
+<!-- Top Left Content (Dark Area) - FULL WIDTH BACKGROUND IMAGE, NO BUTTONS, NO TEXT, FITTED PERFECTLY -->
 <div class="top-left-content">
-  <!-- No text content - only the background logo via ::before pseudo-element with Ztrust Color 2.png -->
+  <!-- Absolutely no text or buttons. Only the full background image of Ztrust Color 2.png covering entire dark area -->
 </div>
 
 <!-- Navigation -->
@@ -647,18 +610,12 @@
   </div>
 </nav>
 
-<!-- Hero Section with GIF and Consultation Button including Ztrust Color 2.png Logo -->
+<!-- Hero Section with GIF - BUTTONS COMPLETELY REMOVED -->
 <section class="hero">
   <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
     <div class="hero-content">
-      <div class="btn-group">
-        <a href="contact.html" class="btn-primary">
-          <img src="Ztrust Color 2.png" alt="ZTrust Logo" class="btn-primary-logo" onerror="this.style.display='none'">
-          Get IT Consultation →
-        </a>
-        <a href="services.html" class="btn-outline"><i class="fas fa-cogs"></i> Explore Services</a>
-      </div>
+      <!-- No buttons or CTA elements here -->
     </div>
   </div>
 </section>
@@ -791,11 +748,10 @@
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
-  document.querySelectorAll('.nav-logo, .footer-logo-icon, .btn-primary-logo').forEach(img => {
+  document.querySelectorAll('.nav-logo, .footer-logo-icon').forEach(img => {
     if(img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
       img.onerror = null;
-      if(img.classList.contains('btn-primary-logo')) img.style.display = 'none';
-      else img.src = 'https://placehold.co/160x55?text=ZTrust';
+      img.src = 'https://placehold.co/160x55?text=ZTrust';
     }
   });
 </script>
