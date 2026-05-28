@@ -158,9 +158,73 @@
       .nav-logo { height: 48px; }
     }
     
-    /* Hero Redesign: Dark area with integrated logo image right below title and description */
+    /* Top Right Corner Tagline - COMPLETELY REMOVED */
+    .top-right-tagline {
+      display: none;
+    }
+    
+    /* Top Left Corner Content (Dark Area) - Only background logo, all text removed */
+    .top-left-content {
+      position: fixed;
+      top: 95px;
+      left: 24px;
+      z-index: 1002;
+      max-width: 540px;
+      width: auto;
+      min-height: 180px;
+      text-align: left;
+      background: rgba(10, 10, 15, 0.82);
+      backdrop-filter: blur(12px);
+      padding: 20px 26px;
+      border-radius: 28px;
+      border-left: 3px solid #3b82f6;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      pointer-events: none;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Logo as full background image (using Ztrust Color 2.png) */
+    .top-left-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('Ztrust Color 2.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;  /* Makes the image cover the entire dark area, wider and fitted */
+      opacity: 0.32;          /* Balanced visibility for strong brand presence */
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 28px;
+      transition: opacity 0.3s ease;
+    }
+    .top-left-content:hover::before {
+      opacity: 0.45;
+    }
+    /* Subtle inner glow */
+    .top-left-content::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      box-shadow: inset 0 0 20px rgba(59,130,246,0.2);
+      pointer-events: none;
+      z-index: 1;
+    }
+    @media (max-width: 900px) {
+      .top-left-content { max-width: 380px; top: 85px; left: 16px; padding: 16px; min-height: 140px; }
+    }
+    @media (max-width: 700px) { .top-left-content { display: none; } }
+    
+    /* Hero Section with GIF */
     .hero {
-      min-height: 100vh;
+      min-height: 90vh;
       display: flex;
       align-items: center;
       position: relative;
@@ -183,198 +247,52 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(5,5,10,0.75) 0%, rgba(2,2,5,0.65) 100%);
+      background: linear-gradient(135deg, rgba(5,5,10,0.55) 0%, rgba(2,2,5,0.45) 100%);
       z-index: 1;
     }
     .hero .container { position: relative; z-index: 2; width: 100%; }
-    .hero-content {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 140px 0 80px;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(59,130,246,0.2);
-      backdrop-filter: blur(8px);
-      padding: 6px 18px;
-      border-radius: 60px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: #60a5fa;
-      border: 1px solid rgba(59,130,246,0.4);
-      margin-bottom: 24px;
-    }
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: 900;
-      background: linear-gradient(135deg, #fff, #94a3f8, #60a5fa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 20px;
-      letter-spacing: -0.02em;
-    }
-    .hero-desc {
-      font-size: 1.1rem;
-      color: #cbd5e6;
-      max-width: 720px;
-      margin: 0 auto 32px;
-      line-height: 1.6;
-    }
-    /* Logo image placed inside hero dark area */
-    .hero-logo-wrapper {
-      margin: 32px auto 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .hero-center-logo {
-      max-width: 220px;
-      width: 100%;
-      height: auto;
-      filter: drop-shadow(0 0 20px rgba(59,130,246,0.5));
-      transition: transform 0.3s ease;
-      opacity: 0.95;
-    }
-    .hero-center-logo:hover {
-      transform: scale(1.02);
-    }
-    .hero-tagline {
-      font-size: 0.9rem;
-      color: #94a3b8;
-      max-width: 600px;
-      margin: 20px auto 0;
-      border-top: 1px dashed rgba(59,130,246,0.3);
-      padding-top: 20px;
-      display: inline-block;
-    }
+    .hero-content { display: flex; flex-direction: column; align-items: flex-start; margin-top: 80px; }
+    .hero-badge, .hero h1, .hero p { display: none; }
+    .btn-group { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
     
-    /* CTA Buttons section (below infrastructure) */
-    .cta-section {
-      background: linear-gradient(135deg, #0a0c15 0%, #0b0e1a 100%);
-      padding: 60px 0;
-      border-top: 1px solid rgba(59,130,246,0.2);
-      border-bottom: 1px solid rgba(59,130,246,0.2);
-      margin: 0;
-    }
-    .cta-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .cta-title {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #fff, #94a3f8, #60a5fa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .cta-desc {
-      color: #94a3b8;
-      max-width: 650px;
-      margin-bottom: 32px;
-      font-size: 1rem;
-    }
-    .btn-group-centered {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    
-    /* Button Primary: Full ZTrust Logo as background image (repeating pattern) */
+    /* Enhanced consultation button with logo inside */
     .btn-primary {
-      background: linear-gradient(135deg, #0f172a, #020617);
-      padding: 14px 36px;
-      border-radius: 56px;
-      font-weight: 700;
-      font-size: 1rem;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
       color: white;
       text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(59,130,246,0.5) inset;
+      transition: 0.2s;
+      box-shadow: 0 4px 15px rgba(37,99,235,0.4);
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(2px);
-      z-index: 1;
     }
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('Ztrust Logo 1 (2).png');
-      background-repeat: repeat;
-      background-size: 42px;
-      background-position: center;
-      opacity: 0.16;
-      pointer-events: none;
-      z-index: -1;
-      transition: opacity 0.3s ease;
+    .btn-primary-logo {
+      height: 28px;
+      width: auto;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.5));
+      border-radius: 6px;
+      background: transparent;
+      display: inline-block;
+      object-fit: contain;
     }
-    .btn-primary:hover::before {
-      opacity: 0.32;
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      background: linear-gradient(135deg, #1e2a5e, #0f172a);
-      box-shadow: 0 12px 28px rgba(37,99,235,0.5);
-    }
-    
+    .btn-primary:hover { transform: translateY(-2px); background: linear-gradient(135deg, #3b82f6, #1e3a8a); }
     .btn-outline {
-      background: rgba(8, 12, 25, 0.7);
-      backdrop-filter: blur(8px);
+      background: transparent;
       border: 1.5px solid #3b82f6;
-      padding: 14px 36px;
-      border-radius: 56px;
+      padding: 12px 28px;
+      border-radius: 40px;
       font-weight: 600;
-      font-size: 1rem;
       color: #e2e8f0;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
+      gap: 8px;
+      backdrop-filter: blur(5px);
     }
-    .btn-outline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('Ztrust Logo 1 (2).png');
-      background-repeat: repeat;
-      background-size: 40px;
-      background-position: center;
-      opacity: 0.12;
-      pointer-events: none;
-      z-index: -1;
-      transition: opacity 0.3s;
-    }
-    .btn-outline:hover::before {
-      opacity: 0.25;
-    }
-    .btn-outline:hover {
-      background: rgba(59,130,246,0.3);
-      border-color: #60a5fa;
-      color: white;
-      transform: translateY(-2px);
-    }
+    .btn-outline:hover { background: rgba(59,130,246,0.2); }
     
     .section { padding: 70px 0; }
     .section-title {
@@ -429,7 +347,7 @@
     .infra-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: #fff; }
     .infra-card p { color: #94a3b8; }
     
-    /* SERVICES GRID */
+    /* SERVICES GRID - Alternating Left/Right Slide Animations */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -566,7 +484,7 @@
       width: 85%;
       max-width: 750px;
       height: auto;
-      background-image: url('Ztrust Logo 1 (2).png');
+      background-image: url('Ztrust Color 2.png');
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
@@ -590,6 +508,8 @@
       margin-bottom: 20px;
       filter: drop-shadow(0 0 12px rgba(59,130,246,0.4));
       display: block;
+      visibility: visible;
+      opacity: 1;
     }
     .footer-tagline {
       font-size: 1rem;
@@ -691,10 +611,6 @@
       .infra-section { background-attachment: scroll; }
       .services-grid { grid-template-columns: 1fr; }
       .footer-logo-icon { max-width: 130px; }
-      .btn-primary, .btn-outline { padding: 10px 22px; font-size: 0.85rem; }
-      .hero h1 { font-size: 2.5rem; }
-      .hero-desc { font-size: 1rem; }
-      .hero-center-logo { max-width: 160px; }
     }
   </style>
 </head>
@@ -708,11 +624,18 @@
   <a href="https://t.me/ZTrustTech" class="float-tg" target="_blank"><i class="fab fa-telegram-plane"></i></a>
 </div>
 
+<!-- Top Right Tagline - COMPLETELY REMOVED -->
+
+<!-- Top Left Content (Dark Area) - Only background logo using Ztrust Color 2.png -->
+<div class="top-left-content">
+  <!-- No text content - only the background logo via ::before pseudo-element with Ztrust Color 2.png -->
+</div>
+
 <!-- Navigation -->
 <nav class="nav">
   <div class="container nav-inner">
     <div class="logo-wrapper">
-      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/58x58?text=ZT'">
+      <img src="Ztrust Color 2.png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/58x58?text=ZT'">
     </div>
     <div class="links" id="navLinks">
       <a href="index.html" class="active">Home</a>
@@ -724,26 +647,23 @@
   </div>
 </nav>
 
-<!-- Hero Section with Integrated Logo Image below title/description (dark area) -->
+<!-- Hero Section with GIF and Consultation Button including Ztrust Color 2.png Logo -->
 <section class="hero">
   <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
     <div class="hero-content">
-      <div class="hero-badge"><i class="fas fa-microchip"></i> 10+ Years of IT Excellence</div>
-      <h1>ZTrust Tech</h1>
-      <p class="hero-desc">Enterprise-grade IT infrastructure, smart storage, custom applications, high-performance databases, seamless API integration, and robust network connectivity — all under one roof.</p>
-      <!-- ZTrust Logo Image placed right below description in hero dark area -->
-      <div class="hero-logo-wrapper">
-        <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech Logo" class="hero-center-logo" onerror="this.src='https://placehold.co/220x80?text=ZTrust'">
-      </div>
-      <div class="hero-tagline">
-        <i class="fas fa-check-circle" style="color:#3b82f6; margin-right:6px;"></i> Complete IT Solutions Provider — Infrastructure • Storage • Application Development • Database • API Integration • Network Connectivity
+      <div class="btn-group">
+        <a href="contact.html" class="btn-primary">
+          <img src="Ztrust Color 2.png" alt="ZTrust Logo" class="btn-primary-logo" onerror="this.style.display='none'">
+          Get IT Consultation →
+        </a>
+        <a href="services.html" class="btn-outline"><i class="fas fa-cogs"></i> Explore Services</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Infrastructure Excellence Section -->
+<!-- Infrastructure Excellence -->
 <section class="infra-section">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-microchip"></i> Our Infrastructure Excellence</h2>
@@ -752,22 +672,6 @@
       <div class="infra-card"><i class="fas fa-database"></i><h3>Data Center Solutions</h3><p>Enterprise-grade data center design, deployment, and management with 99.99% uptime guarantee.</p></div>
       <div class="infra-card"><i class="fas fa-network-wired"></i><h3>Enterprise Networking</h3><p>High-performance network infrastructure with SD-WAN, LAN/WAN, and wireless solutions.</p></div>
       <div class="infra-card"><i class="fas fa-cloud-upload-alt"></i><h3>Cloud Integration</h3><p>Seamless hybrid cloud solutions connecting on-premise infrastructure with major cloud providers.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA SECTION: Get IT Consultation & Explore Services placed around infrastructure part -->
-<section class="cta-section">
-  <div class="container cta-container">
-    <div class="cta-title">Ready to Transform Your IT Landscape?</div>
-    <div class="cta-desc">Join Ethiopia's leading enterprises that trust ZTrust Tech for end-to-end IT solutions — from robust infrastructure to smart applications.</div>
-    <div class="btn-group-centered">
-      <a href="contact.html" class="btn-primary">
-        <i class="fas fa-rocket"></i> Get IT Consultation →
-      </a>
-      <a href="services.html" class="btn-outline">
-        <i class="fas fa-cogs"></i> Explore Services
-      </a>
     </div>
   </div>
 </section>
@@ -784,7 +688,7 @@
   </div>
 </section>
 
-<!-- Core IT Services -->
+<!-- Core IT Services with Images - Alternating Left/Right Slide Animations -->
 <section class="section" style="background:#0a0c12;">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-cubes"></i> Our Core IT Services</h2>
@@ -821,7 +725,7 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
-      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="footer-logo-icon" onerror="this.src='https://placehold.co/160x55?text=ZTrust'">
+      <img src="Ztrust Color 2.png" alt="ZTrust Tech" class="footer-logo-icon" onerror="this.src='https://placehold.co/160x55?text=ZTrust'">
       <div class="footer-tagline">Complete IT Solutions Provider | Infrastructure • Storage • Apps • Database • API • Networks</div>
       <div class="footer-social">
         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -868,7 +772,6 @@
     movingBg.appendChild(numEl);
   }
 
-  // Mobile menu toggle
   const menuToggle = document.getElementById('mobileMenu');
   const navLinks = document.getElementById('navLinks');
   if(menuToggle) {
@@ -888,11 +791,11 @@
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
-  // Fallback images
-  document.querySelectorAll('.nav-logo, .footer-logo-icon, .hero-center-logo').forEach(img => {
+  document.querySelectorAll('.nav-logo, .footer-logo-icon, .btn-primary-logo').forEach(img => {
     if(img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
       img.onerror = null;
-      img.src = 'https://placehold.co/220x80?text=ZTrust';
+      if(img.classList.contains('btn-primary-logo')) img.style.display = 'none';
+      else img.src = 'https://placehold.co/160x55?text=ZTrust';
     }
   });
 </script>
