@@ -120,49 +120,8 @@
       .container { padding: 0 20px; }
     }
     
-    /* Hero Section - ONLY BACKGROUND IMAGE, NO TEXT AT ALL */
+    /* Hero Section - COMPLETELY REMOVED (no text, no blurred background) */
     .hero {
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-    /* Ztrust Color 2.png as full background image */
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('Ztrust Color 2.png');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      opacity: 0.35;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(10,10,15,0.65), rgba(5,5,8,0.75));
-      z-index: 1;
-    }
-    .hero .container { 
-      position: relative; 
-      z-index: 2; 
-    }
-    .hero-content { 
-      /* Empty - no text elements */
-    }
-    /* Hide all potential text content */
-    .hero-badge, .hero h1, .hero p, .hero-stats, .hero-stat {
       display: none;
     }
     
@@ -300,7 +259,7 @@
     
     @media (max-width: 768px) {
       .section-title { font-size: 1.8rem; }
-      .hero { min-height: 45vh; }
+      .hero { display: none; }
     }
   </style>
 </head>
@@ -332,14 +291,7 @@
   </div>
 </nav>
 
-<!-- Hero Section - ONLY BACKGROUND IMAGE, NO TEXT AT ALL -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <!-- Absolutely no text content - only the background image of Ztrust Color 2.png -->
-    </div>
-  </div>
-</section>
+<!-- Hero Section - COMPLETELY REMOVED (no text, no blurred background, no image overlay) -->
 
 <!-- About Content Section -->
 <section class="section">
