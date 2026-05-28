@@ -100,6 +100,9 @@
       filter: drop-shadow(0 0 14px rgba(59,130,246,0.7));
       border-radius: 14px;
       transition: transform 0.2s ease;
+      display: block;
+      visibility: visible;
+      opacity: 1;
     }
     .nav-logo:hover {
       transform: scale(1.03);
@@ -238,7 +241,7 @@
     @media (max-width: 700px) { .top-left-content { display: none; } }
     @media (max-width: 550px) { .top-right-tagline { display: none; } }
     
-    /* Hero Section with Video */
+    /* Hero Section with GIF (replaced video) */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -246,7 +249,7 @@
       position: relative;
       overflow: hidden;
     }
-    .hero-video {
+    .hero-gif {
       position: absolute;
       top: 0;
       left: 0;
@@ -254,6 +257,7 @@
       height: 100%;
       object-fit: cover;
       z-index: 0;
+      pointer-events: none;
     }
     .hero::before {
       content: '';
@@ -262,7 +266,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(5,5,10,0.5) 0%, rgba(2,2,5,0.4) 100%);
+      background: linear-gradient(135deg, rgba(5,5,10,0.55) 0%, rgba(2,2,5,0.45) 100%);
       z-index: 1;
     }
     .hero .container { position: relative; z-index: 2; width: 100%; }
@@ -534,6 +538,9 @@
       height: auto;
       margin-bottom: 20px;
       filter: drop-shadow(0 0 12px rgba(59,130,246,0.4));
+      display: block;
+      visibility: visible;
+      opacity: 1;
     }
     .footer-tagline {
       font-size: 1rem;
@@ -677,12 +684,9 @@
   </div>
 </nav>
 
-<!-- Hero Video Section -->
+<!-- Hero Section with GIF (replaced video) -->
 <section class="hero">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="ENGINEERING (2).mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
     <div class="hero-content">
       <div class="btn-group">
@@ -810,9 +814,8 @@
     movingBg.appendChild(numEl);
   }
 
-  const video = document.querySelector('.hero-video');
-  if (video) video.play().catch(e => console.log('Autoplay prevented'));
-
+  // Hero GIF is now static image, no autoplay needed
+  // Menu toggle logic
   const menuToggle = document.getElementById('mobileMenu');
   const navLinks = document.getElementById('navLinks');
   if(menuToggle) {
@@ -831,6 +834,14 @@
     else backBtn.classList.remove('show');
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  
+  // Ensure logos are fully visible (any additional hidden class removal)
+  document.querySelectorAll('.nav-logo, .footer-logo-icon').forEach(img => {
+    if(img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
+      img.onerror = null;
+      img.src = 'https://placehold.co/160x55?text=ZTrust';
+    }
+  });
 </script>
 </body>
 </html>
