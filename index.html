@@ -240,9 +240,9 @@
     @media (max-width: 700px) { .top-left-content { display: none; } }
     @media (max-width: 550px) { .top-right-tagline { display: none; } }
     
-    /* Hero Section with GIF - Buttons now have ZTrust logo as full background image (not just icon) */
+    /* Hero Section - No buttons here anymore, just visual */
     .hero {
-      min-height: 90vh;
+      min-height: 85vh;
       display: flex;
       align-items: center;
       position: relative;
@@ -269,13 +269,54 @@
       z-index: 1;
     }
     .hero .container { position: relative; z-index: 2; width: 100%; }
-    .hero-content { display: flex; flex-direction: column; align-items: flex-start; margin-top: 80px; }
-    .btn-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+    .hero-content { 
+      display: flex; 
+      flex-direction: column; 
+      align-items: flex-start; 
+      margin-top: 80px;
+    }
+    /* No buttons in hero */
+    
+    /* Button styles for the new CTA section (below infrastructure) */
+    .cta-section {
+      background: linear-gradient(135deg, #0a0c15 0%, #0b0e1a 100%);
+      padding: 60px 0;
+      border-top: 1px solid rgba(59,130,246,0.2);
+      border-bottom: 1px solid rgba(59,130,246,0.2);
+      margin: 0;
+    }
+    .cta-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .cta-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff, #94a3f8, #60a5fa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .cta-desc {
+      color: #94a3b8;
+      max-width: 650px;
+      margin-bottom: 32px;
+      font-size: 1rem;
+    }
+    .btn-group-centered {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
     
     /* Button Primary: Full ZTrust Logo as background image (repeating pattern) */
     .btn-primary {
       background: linear-gradient(135deg, #0f172a, #020617);
-      padding: 14px 32px;
+      padding: 14px 36px;
       border-radius: 56px;
       font-weight: 700;
       font-size: 1rem;
@@ -291,7 +332,6 @@
       backdrop-filter: blur(2px);
       z-index: 1;
     }
-    /* Full logo as background image (repeating pattern) */
     .btn-primary::before {
       content: '';
       position: absolute;
@@ -301,15 +341,15 @@
       height: 100%;
       background-image: url('Ztrust Logo 1 (2).png');
       background-repeat: repeat;
-      background-size: 40px;
+      background-size: 42px;
       background-position: center;
-      opacity: 0.15;
+      opacity: 0.16;
       pointer-events: none;
       z-index: -1;
       transition: opacity 0.3s ease;
     }
     .btn-primary:hover::before {
-      opacity: 0.3;
+      opacity: 0.32;
     }
     .btn-primary:hover {
       transform: translateY(-3px);
@@ -317,12 +357,12 @@
       box-shadow: 0 12px 28px rgba(37,99,235,0.5);
     }
     
-    /* Outline Button also gets full ZTrust Logo background image */
+    /* Outline Button with full ZTrust Logo background image */
     .btn-outline {
       background: rgba(8, 12, 25, 0.7);
       backdrop-filter: blur(8px);
       border: 1.5px solid #3b82f6;
-      padding: 14px 32px;
+      padding: 14px 36px;
       border-radius: 56px;
       font-weight: 600;
       font-size: 1rem;
@@ -345,7 +385,7 @@
       height: 100%;
       background-image: url('Ztrust Logo 1 (2).png');
       background-repeat: repeat;
-      background-size: 38px;
+      background-size: 40px;
       background-position: center;
       opacity: 0.12;
       pointer-events: none;
@@ -677,8 +717,9 @@
       .infra-section { background-attachment: scroll; }
       .services-grid { grid-template-columns: 1fr; }
       .footer-logo-icon { max-width: 130px; }
-      .btn-primary, .btn-outline { padding: 10px 20px; font-size: 0.85rem; }
-      .btn-primary::before, .btn-outline::before { background-size: 30px; }
+      .btn-primary, .btn-outline { padding: 10px 22px; font-size: 0.85rem; }
+      .btn-primary::before, .btn-outline::before { background-size: 32px; }
+      .cta-title { font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -721,26 +762,17 @@
   </div>
 </nav>
 
-<!-- Hero Section with GIF & Buttons (ZTrust logo as full background image on both buttons) -->
+<!-- Hero Section (Buttons Removed from here) -->
 <section class="hero">
   <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
     <div class="hero-content">
-      <div class="btn-group">
-        <!-- Get IT Consultation Button: Background image is ZTrust logo (repeating pattern) -->
-        <a href="contact.html" class="btn-primary">
-          <i class="fas fa-rocket"></i> Get IT Consultation →
-        </a>
-        <!-- Explore Services Button: Also uses ZTrust Logo as background image -->
-        <a href="services.html" class="btn-outline">
-          <i class="fas fa-cogs"></i> Explore Services
-        </a>
-      </div>
+      <!-- No buttons here anymore -->
     </div>
   </div>
 </section>
 
-<!-- Infrastructure Excellence -->
+<!-- Infrastructure Excellence Section -->
 <section class="infra-section">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-microchip"></i> Our Infrastructure Excellence</h2>
@@ -749,6 +781,22 @@
       <div class="infra-card"><i class="fas fa-database"></i><h3>Data Center Solutions</h3><p>Enterprise-grade data center design, deployment, and management with 99.99% uptime guarantee.</p></div>
       <div class="infra-card"><i class="fas fa-network-wired"></i><h3>Enterprise Networking</h3><p>High-performance network infrastructure with SD-WAN, LAN/WAN, and wireless solutions.</p></div>
       <div class="infra-card"><i class="fas fa-cloud-upload-alt"></i><h3>Cloud Integration</h3><p>Seamless hybrid cloud solutions connecting on-premise infrastructure with major cloud providers.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEW CTA SECTION: Get IT Consultation & Explore Services placed right after infrastructure (around the infrastructure part) -->
+<section class="cta-section">
+  <div class="container cta-container">
+    <div class="cta-title">Ready to Transform Your IT Landscape?</div>
+    <div class="cta-desc">Join Ethiopia's leading enterprises that trust ZTrust Tech for end-to-end IT solutions — from robust infrastructure to smart applications.</div>
+    <div class="btn-group-centered">
+      <a href="contact.html" class="btn-primary">
+        <i class="fas fa-rocket"></i> Get IT Consultation →
+      </a>
+      <a href="services.html" class="btn-outline">
+        <i class="fas fa-cogs"></i> Explore Services
+      </a>
     </div>
   </div>
 </section>
