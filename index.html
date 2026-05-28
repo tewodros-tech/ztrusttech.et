@@ -190,18 +190,19 @@
       opacity: 0.9;
     }
     
-    /* Top Left Corner Content */
+    /* Top Left Corner Content (Dark Area) - UPDATED with wider logo */
     .top-left-content {
       position: fixed;
       top: 95px;
       left: 24px;
       z-index: 1002;
-      max-width: 480px;
+      max-width: 520px;  /* Slightly wider to accommodate larger logo */
+      width: auto;
       text-align: left;
-      background: rgba(10, 10, 15, 0.7);
+      background: rgba(10, 10, 15, 0.75);
       backdrop-filter: blur(12px);
-      padding: 14px 22px;
-      border-radius: 24px;
+      padding: 16px 24px;
+      border-radius: 28px;
       border-left: 3px solid #3b82f6;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       pointer-events: none;
@@ -231,9 +232,35 @@
       font-size: 0.8rem;
       color: #e2e8f0;
       line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    /* Dark area logo styling - WIDER and fitted to container */
+    .dark-area-logo {
+      display: block;
+      margin-top: 12px;
+      text-align: center;
+      width: 100%;
+      background: rgba(0,0,0,0.2);
+      border-radius: 20px;
+      padding: 8px 12px;
+      transition: all 0.2s;
+    }
+    .dark-area-logo img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      max-height: 85px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(59,130,246,0.4));
+      border-radius: 12px;
+      transition: transform 0.2s ease;
+    }
+    .dark-area-logo img:hover {
+      transform: scale(1.02);
     }
     @media (max-width: 900px) {
-      .top-left-content { max-width: 380px; top: 85px; left: 16px; padding: 10px 16px; }
+      .top-left-content { max-width: 420px; top: 85px; left: 16px; padding: 12px 18px; }
+      .dark-area-logo img { max-height: 70px; }
       .top-left-title { font-size: 1.3rem; }
       .top-right-tagline { top: 85px; right: 16px; max-width: 300px; }
     }
@@ -525,7 +552,7 @@
       width: 85%;
       max-width: 750px;
       height: auto;
-      background-image: url('Ztrust Logo 1 (2).png');
+      background-image: url('Ztrust Color (2).png');
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
@@ -645,29 +672,6 @@
     }
     .float-wa { background: #25D366; }
     .float-tg { background: #0088cc; }
-    
-    /* ADDED: Dark area logo styling - exactly where the top left content dark area is, we add the logo image below the description */
-    .dark-area-logo {
-      display: block;
-      margin-top: 24px;
-      text-align: center;
-      width: 100%;
-    }
-    .dark-area-logo img {
-      max-width: 180px;
-      width: auto;
-      height: auto;
-      filter: drop-shadow(0 0 16px rgba(59,130,246,0.5));
-      border-radius: 16px;
-      transition: transform 0.2s ease;
-      background: transparent;
-    }
-    .dark-area-logo img:hover {
-      transform: scale(1.02);
-    }
-    @media (max-width: 768px) {
-      .dark-area-logo img { max-width: 140px; }
-    }
   </style>
 </head>
 <body>
@@ -686,14 +690,14 @@
   <div class="sub-tag">Infrastructure • Storage • Application Development • Database • API Integration • Network Connectivity — One trusted partner for all your IT needs.</div>
 </div>
 
-<!-- Top Left Content (Dark area) - Added ZTrust Logo image below the description -->
+<!-- Top Left Content (Dark Area) - Updated with wider Ztrust Color (2).png logo -->
 <div class="top-left-content">
   <div class="top-left-badge"><i class="fas fa-microchip"></i> 10+ Years of IT Excellence</div>
   <div class="top-left-title">ZTrust Tech</div>
   <div class="top-left-desc">Enterprise-grade IT infrastructure, smart storage, custom applications, high-performance databases, seamless API integration, and robust network connectivity — all under one roof.</div>
-  <!-- ADDED: ZTrust Logo image inside the dark area (top-left content block) -->
+  <!-- DARK AREA LOGO: Ztrust Color (2).png, made wider and fitted responsively -->
   <div class="dark-area-logo">
-    <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech Logo" onerror="this.src='https://placehold.co/180x60?text=ZTrust'">
+    <img src="Ztrust Color (2).png" alt="ZTrust Tech Color Logo" onerror="this.src='https://placehold.co/400x80?text=ZTrust+Tech'">
   </div>
 </div>
 
@@ -701,7 +705,7 @@
 <nav class="nav">
   <div class="container nav-inner">
     <div class="logo-wrapper">
-      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/58x58?text=ZT'">
+      <img src="Ztrust Color (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/58x58?text=ZT'">
     </div>
     <div class="links" id="navLinks">
       <a href="index.html" class="active">Home</a>
@@ -713,15 +717,15 @@
   </div>
 </nav>
 
-<!-- Hero Section with GIF and Consultation Button including ZTrust Logo -->
+<!-- Hero Section with GIF and Consultation Button including Ztrust Color Logo -->
 <section class="hero">
   <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
     <div class="hero-content">
       <div class="btn-group">
-        <!-- Enhanced Get IT Consultation button with embedded ZTrust logo -->
+        <!-- Enhanced Get IT Consultation button with embedded Ztrust Color logo -->
         <a href="contact.html" class="btn-primary">
-          <img src="Ztrust Logo 1 (2).png" alt="ZTrust Logo" class="btn-primary-logo" onerror="this.style.display='none'">
+          <img src="Ztrust Color (2).png" alt="ZTrust Logo" class="btn-primary-logo" onerror="this.style.display='none'">
           Get IT Consultation →
         </a>
         <a href="services.html" class="btn-outline"><i class="fas fa-cogs"></i> Explore Services</a>
@@ -792,7 +796,7 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
-      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="footer-logo-icon" onerror="this.src='https://placehold.co/160x55?text=ZTrust'">
+      <img src="Ztrust Color (2).png" alt="ZTrust Tech" class="footer-logo-icon" onerror="this.src='https://placehold.co/160x55?text=ZTrust'">
       <div class="footer-tagline">Complete IT Solutions Provider | Infrastructure • Storage • Apps • Database • API • Networks</div>
       <div class="footer-social">
         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -859,12 +863,12 @@
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
-  // Ensure logos are fully visible (any additional hidden class removal)
+  // Ensure logos are fully visible with fallback for new color logo
   document.querySelectorAll('.nav-logo, .footer-logo-icon, .btn-primary-logo, .dark-area-logo img').forEach(img => {
     if(img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
       img.onerror = null;
       if(img.classList.contains('btn-primary-logo')) img.style.display = 'none';
-      else if(img.closest('.dark-area-logo')) img.src = 'https://placehold.co/180x60?text=ZTrust';
+      else if(img.closest('.dark-area-logo')) img.src = 'https://placehold.co/400x80?text=ZTrust+Tech';
       else img.src = 'https://placehold.co/160x55?text=ZTrust';
     }
   });
