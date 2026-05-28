@@ -120,7 +120,7 @@
       .container { padding: 0 20px; }
     }
     
-    /* Hero Section - ONLY Ztrust Color 2.png BACKGROUND, NO VIDEO, NO TEXT */
+    /* Hero Section - ONLY Ztrust Color 2.png BACKGROUND, NO BLUR, NO TEXT */
     .hero {
       min-height: 70vh;
       display: flex;
@@ -128,7 +128,7 @@
       position: relative;
       overflow: hidden;
     }
-    /* Ztrust Color 2.png as full background image - covering entire hero */
+    /* Ztrust Color 2.png as full background image - no blur overlay */
     .hero::after {
       content: '';
       position: absolute;
@@ -140,20 +140,11 @@
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
-      opacity: 0.4;
+      opacity: 0.85;
       z-index: 0;
       pointer-events: none;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(10,10,15,0.65), rgba(5,5,8,0.75));
-      z-index: 1;
-    }
+    /* No dark gradient overlay - removed blurred vision */
     .hero .container { 
       position: relative; 
       z-index: 2; 
@@ -304,7 +295,7 @@
       .section-title { font-size: 1.8rem; }
       .hero { min-height: 50vh; }
       .first-section { padding-top: 80px; }
-      .hero::after { opacity: 0.5; background-size: contain; }
+      .hero::after { opacity: 0.9; background-size: contain; }
     }
   </style>
 </head>
@@ -336,11 +327,11 @@
   </div>
 </nav>
 
-<!-- Hero Section - ONLY Ztrust Color 2.png BACKGROUND, NO VIDEO, NO TEXT -->
+<!-- Hero Section - ONLY Ztrust Color 2.png BACKGROUND, NO BLUR OVERLAY, NO TEXT -->
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <!-- All text content removed - only the Ztrust Color 2.png background remains -->
+      <!-- All text content removed - only the clean Ztrust Color 2.png background remains -->
     </div>
   </div>
 </section>
