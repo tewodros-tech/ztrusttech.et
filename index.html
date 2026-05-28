@@ -240,7 +240,7 @@
     @media (max-width: 700px) { .top-left-content { display: none; } }
     @media (max-width: 550px) { .top-right-tagline { display: none; } }
     
-    /* Hero Section with GIF (replaced video) + integrated logo on consultation button */
+    /* Hero Section with GIF (replaced video) + enhanced button styling with logo background integration */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -265,52 +265,107 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(5,5,10,0.55) 0%, rgba(2,2,5,0.45) 100%);
+      background: linear-gradient(135deg, rgba(5,5,10,0.65) 0%, rgba(2,2,5,0.55) 100%);
       z-index: 1;
     }
     .hero .container { position: relative; z-index: 2; width: 100%; }
     .hero-content { display: flex; flex-direction: column; align-items: flex-start; margin-top: 80px; }
     .hero-badge, .hero h1, .hero p { display: none; }
-    .btn-group { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+    .btn-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
     
-    /* Enhanced consultation button with logo inside */
+    /* Button Primary: ZTrust Logo embedded as background element and inline image for rich visual */
     .btn-primary {
-      background: linear-gradient(135deg, #2563eb, #1e40af);
+      background: linear-gradient(135deg, #1e2a4f, #0f172a);
       padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 600;
+      border-radius: 48px;
+      font-weight: 700;
       color: white;
       text-decoration: none;
-      transition: 0.2s;
-      box-shadow: 0 4px 15px rgba(37,99,235,0.4);
+      transition: 0.25s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.4) inset;
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(2px);
+      z-index: 1;
+    }
+    /* Logo background pattern inside button */
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('Ztrust Logo 1 (2).png');
+      background-repeat: repeat;
+      background-size: 28px;
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: -1;
+      transition: opacity 0.2s;
     }
     .btn-primary-logo {
-      height: 28px;
+      height: 32px;
       width: auto;
-      filter: drop-shadow(0 0 4px rgba(255,255,255,0.5));
-      border-radius: 6px;
-      background: transparent;
+      filter: drop-shadow(0 0 6px rgba(59,130,246,0.8));
+      border-radius: 8px;
       display: inline-block;
       object-fit: contain;
-    }
-    .btn-primary:hover { transform: translateY(-2px); background: linear-gradient(135deg, #3b82f6, #1e3a8a); }
-    .btn-outline {
       background: transparent;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      box-shadow: 0 12px 28px rgba(37,99,235,0.5);
+    }
+    .btn-primary:hover::before {
+      opacity: 0.2;
+    }
+    
+    /* Enhanced Outline button also with subtle logo background effect */
+    .btn-outline {
+      background: rgba(10, 15, 27, 0.65);
+      backdrop-filter: blur(8px);
       border: 1.5px solid #3b82f6;
       padding: 12px 28px;
-      border-radius: 40px;
+      border-radius: 48px;
       font-weight: 600;
       color: #e2e8f0;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      backdrop-filter: blur(5px);
+      gap: 10px;
+      transition: 0.25s;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
-    .btn-outline:hover { background: rgba(59,130,246,0.2); }
+    .btn-outline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('Ztrust Logo 1 (2).png');
+      background-repeat: repeat;
+      background-size: 24px;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .btn-outline:hover {
+      background: rgba(59,130,246,0.25);
+      border-color: #60a5fa;
+      color: white;
+      transform: translateY(-2px);
+    }
+    .btn-outline:hover::before {
+      opacity: 0.15;
+    }
     
     .section { padding: 70px 0; }
     .section-title {
@@ -652,6 +707,8 @@
       .infra-section { background-attachment: scroll; }
       .services-grid { grid-template-columns: 1fr; }
       .footer-logo-icon { max-width: 130px; }
+      .btn-primary, .btn-outline { padding: 10px 20px; font-size: 0.9rem; }
+      .btn-primary-logo { height: 26px; }
     }
   </style>
 </head>
@@ -694,13 +751,13 @@
   </div>
 </nav>
 
-<!-- Hero Section with GIF (replaced video) and Consultation Button including ZTrust Logo -->
+<!-- Hero Section with GIF and Buttons with Logo Background Integration -->
 <section class="hero">
   <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple Curve Animation" class="hero-gif" loading="eager">
   <div class="container">
     <div class="hero-content">
       <div class="btn-group">
-        <!-- Enhanced Get IT Consultation button with embedded ZTrust logo -->
+        <!-- Enhanced Get IT Consultation button: includes embedded ZTrust logo and background pattern -->
         <a href="contact.html" class="btn-primary">
           <img src="Ztrust Logo 1 (2).png" alt="ZTrust Logo" class="btn-primary-logo" onerror="this.style.display='none'">
           Get IT Consultation →
@@ -840,7 +897,7 @@
   });
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
-  // Ensure logos are fully visible (any additional hidden class removal)
+  // Ensure logos are fully visible and fallback
   document.querySelectorAll('.nav-logo, .footer-logo-icon, .btn-primary-logo').forEach(img => {
     if(img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
       img.onerror = null;
