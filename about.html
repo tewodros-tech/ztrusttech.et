@@ -120,7 +120,7 @@
       .container { padding: 0 20px; }
     }
     
-    /* Hero Section with AI Video Background */
+    /* Hero Section with Ztrust Color 2.png as background image (replacing video) */
     .hero {
       min-height: 85vh;
       display: flex;
@@ -129,14 +129,21 @@
       position: relative;
       overflow: hidden;
     }
-    .hero-video {
+    /* Ztrust Color 2.png as full background image */
+    .hero::after {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      background-image: url('Ztrust Color 2.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      opacity: 0.28;
       z-index: 0;
+      pointer-events: none;
     }
     .hero::before {
       content: '';
@@ -145,7 +152,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(10,10,15,0.75), rgba(5,5,8,0.85));
+      background: linear-gradient(135deg, rgba(10,10,15,0.7), rgba(5,5,8,0.85));
       z-index: 1;
     }
     .hero .container { 
@@ -189,6 +196,11 @@
     }
     .hero-stat {
       text-align: center;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      padding: 12px 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(59,130,246,0.3);
     }
     .hero-stat h2 {
       font-size: 2rem;
@@ -197,7 +209,7 @@
     }
     .hero-stat p {
       font-size: 0.85rem;
-      color: #94a3b8;
+      color: #cbd5e6;
       margin-bottom: 0;
     }
     
@@ -338,6 +350,7 @@
       .section-title { font-size: 1.8rem; }
       .hero-stats { justify-content: center; }
       .hero-stat h2 { font-size: 1.5rem; }
+      .hero-stat { padding: 8px 16px; }
     }
   </style>
 </head>
@@ -356,7 +369,7 @@
 <nav class="nav">
   <div class="container nav-inner">
     <div class="logo-wrapper">
-      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/44x44?text=ZT'">
+      <img src="Ztrust Color 2.png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/44x44?text=ZT'">
       <div class="logo-text">ZTrust <span>Tech</span></div>
     </div>
     <div class="links" id="navLinks">
@@ -369,12 +382,8 @@
   </div>
 </nav>
 
-<!-- Hero Section with AI Video Background -->
+<!-- Hero Section with Ztrust Color 2.png as background image (replacing video) -->
 <section class="hero">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="AI.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
   <div class="container">
     <div class="hero-content">
       <div class="hero-badge">
@@ -444,7 +453,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <img src="Ztrust Logo 1 (2).png" class="footer-logo" onerror="this.src='https://placehold.co/45x45?text=ZT'">
+        <img src="Ztrust Color 2.png" class="footer-logo" onerror="this.src='https://placehold.co/45x45?text=ZT'">
         <p style="margin-top: 12px; color:#94a3b8;">Complete IT Solutions Provider<br>Infrastructure • Storage • Apps • Database • API • Networks</p>
         <div class="social-links">
           <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -498,12 +507,6 @@
         navLinks.classList.remove('active');
       }
     });
-  }
-  
-  // Video play handling
-  const video = document.querySelector('.hero-video');
-  if(video) {
-    video.play().catch(e => console.log('Video autoplay prevented:', e));
   }
   
   // Back to top button
