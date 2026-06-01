@@ -1,6 +1,3 @@
-The issue is the **loader never hides** because it's waiting for all images to load, and some images (like `Ztrust Color (2).png`) might not exist or fail to load. Let me fix this with a guaranteed timeout fallback:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +14,7 @@ The issue is the **loader never hides** because it's waiting for all images to l
       --blue:#3b82f6;--blue-light:#60a5fa;--blue-dark:#1d4ed8;
       --indigo:#6366f1;--purple:#8b5cf6;--cyan:#06b6d4;
       --emerald:#10b981;--amber:#f59e0b;--rose:#f43f5e;
-      --glass:rgba(10,12,20,0.6);--glass-border:rgba(59,130,246,0.12);
+      --glass:rgba(10,12,20,0.65);--glass-border:rgba(59,130,246,0.12);
     }
     html{scroll-behavior:smooth;}
     body{font-family:'Inter',sans-serif;background:#030308;color:#e2e8f0;line-height:1.6;overflow-x:hidden;}
@@ -29,23 +26,21 @@ The issue is the **loader never hides** because it's waiting for all images to l
       transition:opacity 0.8s ease,visibility 0.8s;
     }
     .loader.hide{opacity:0;visibility:hidden;pointer-events:none;}
-    .loader-logo-wrap{position:relative;width:200px;height:200px;margin-bottom:30px;}
+    .loader-logo-container{position:relative;width:160px;height:160px;margin-bottom:30px;}
     .loader-logo-img{
-      width:140px;height:140px;object-fit:contain;position:absolute;
+      width:120px;height:120px;object-fit:contain;position:absolute;
       top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;
-      filter:drop-shadow(0 0 25px rgba(59,130,246,0.6));
+      filter:drop-shadow(0 0 20px rgba(59,130,246,0.5));
       animation:loaderLogoPulse 2s ease-in-out infinite;
     }
-    @keyframes loaderLogoPulse{
-      0%,100%{transform:translate(-50%,-50%) scale(1);filter:drop-shadow(0 0 25px rgba(59,130,246,0.6));}
-      50%{transform:translate(-50%,-50%) scale(1.08);filter:drop-shadow(0 0 45px rgba(59,130,246,0.9));}
-    }
+    @keyframes loaderLogoPulse{0%,100%{transform:translate(-50%,-50%) scale(1);filter:drop-shadow(0 0 20px rgba(59,130,246,0.5));}50%{transform:translate(-50%,-50%) scale(1.05);filter:drop-shadow(0 0 35px rgba(59,130,246,0.8));}}
     .loader-ring{
-      position:absolute;top:50%;left:50%;border:2px solid transparent;border-radius:50%;
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      border:2px solid transparent;border-radius:50%;
     }
-    .loader-ring:nth-child(1){width:190px;height:190px;border-top-color:var(--blue);border-right-color:rgba(59,130,246,0.3);animation:loaderSpin 1.5s linear infinite;transform:translate(-50%,-50%);}
-    .loader-ring:nth-child(2){width:170px;height:170px;border-top-color:var(--purple);border-left-color:rgba(139,92,246,0.3);animation:loaderSpin 1.2s linear infinite reverse;transform:translate(-50%,-50%);}
-    .loader-ring:nth-child(3){width:150px;height:150px;border-bottom-color:var(--cyan);border-right-color:rgba(6,182,212,0.3);animation:loaderSpin 0.9s linear infinite;transform:translate(-50%,-50%);}
+    .loader-ring:nth-child(1){width:150px;height:150px;border-top-color:var(--blue);border-right-color:rgba(59,130,246,0.3);animation:loaderSpin 1.5s linear infinite;}
+    .loader-ring:nth-child(2){width:130px;height:130px;border-top-color:var(--purple);border-left-color:rgba(139,92,246,0.3);animation:loaderSpin 1.2s linear infinite reverse;}
+    .loader-ring:nth-child(3){width:110px;height:110px;border-bottom-color:var(--cyan);border-right-color:rgba(6,182,212,0.3);animation:loaderSpin 0.9s linear infinite;}
     @keyframes loaderSpin{to{transform:translate(-50%,-50%) rotate(360deg);}}
     .loader-text{
       font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--blue-light);
@@ -89,6 +84,8 @@ The issue is the **loader never hides** because it's waiting for all images to l
     .logo-wrapper{display:flex;align-items:center;gap:14px;}
     .nav-logo{height:52px;width:auto;object-fit:contain;border-radius:14px;transition:0.4s;filter:drop-shadow(0 0 12px rgba(59,130,246,0.5));}
     .nav-logo:hover{transform:rotate(-3deg) scale(1.05);}
+    .logo-text{font-size:1.5rem;font-weight:800;font-family:'Space Grotesk',sans-serif;color:#fff;display:none;}
+    .logo-text span{background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;}
     .links{display:flex;gap:2rem;align-items:center;}
     .links a{text-decoration:none;font-weight:600;color:#94a3b8;font-size:0.9rem;position:relative;padding:6px 0;transition:0.3s;}
     .links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--purple));transition:0.3s;border-radius:2px;}
@@ -114,14 +111,14 @@ The issue is the **loader never hides** because it's waiting for all images to l
       min-height:100vh;display:flex;align-items:center;justify-content:center;
       position:relative;overflow:hidden;
     }
-    .hero-bg-img{
-      position:absolute;top:0;left:0;width:100%;height:100%;
-      object-fit:cover;z-index:0;pointer-events:none;
-      opacity:0.25;filter:blur(1px) saturate(1.3);
+    .hero-gif{
+      position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;
+      pointer-events:none;opacity:0.9;
     }
     .hero::before{
-      content:'';position:absolute;inset:0;z-index:1;
-      background:linear-gradient(180deg,rgba(3,3,8,0.85) 0%,rgba(3,3,8,0.65) 40%,rgba(3,3,8,0.85) 100%);
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(3,3,8,0.7) 0%,rgba(3,3,8,0.5) 40%,rgba(3,3,8,0.7) 100%);
+      z-index:1;
     }
     .hero .container{position:relative;z-index:2;}
     .hero-content{
@@ -129,40 +126,45 @@ The issue is the **loader never hides** because it's waiting for all images to l
       flex-direction:column;text-align:center;min-height:80vh;
       padding-top:80px;
     }
+
+    /* Logo Showcase in Hero */
     .hero-logo-showcase{
       position:relative;margin-bottom:40px;
       animation:heroLogoEnter 1s ease 0.3s both;
     }
-    @keyframes heroLogoEnter{from{opacity:0;transform:scale(0.6) translateY(40px);}to{opacity:1;transform:scale(1) translateY(0);}}
+    @keyframes heroLogoEnter{from{opacity:0;transform:scale(0.7) translateY(30px);}to{opacity:1;transform:scale(1) translateY(0);}}
     .hero-logo-img{
-      width:clamp(220px,28vw,400px);height:auto;
-      filter:drop-shadow(0 0 50px rgba(59,130,246,0.5));
+      width:clamp(180px,22vw,320px);height:auto;
+      filter:drop-shadow(0 0 40px rgba(59,130,246,0.4));
       animation:logoFloat 6s ease-in-out infinite;
       position:relative;z-index:2;
     }
-    @keyframes logoFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
+    @keyframes logoFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
     .hero-logo-glow{
       position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-      width:350px;height:350px;border-radius:50%;
-      background:radial-gradient(circle,rgba(59,130,246,0.18) 0%,transparent 70%);
+      width:300px;height:300px;border-radius:50%;
+      background:radial-gradient(circle,rgba(59,130,246,0.15) 0%,transparent 70%);
       animation:glowPulse 4s ease-in-out infinite;z-index:1;
     }
-    @keyframes glowPulse{0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.25);}}
+    @keyframes glowPulse{0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.2);}}
+
+    /* Orbit Rings around Logo */
     .hero-orbits{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:1;}
     .hero-orbit{
       position:absolute;border:1px solid rgba(59,130,246,0.08);border-radius:50%;
       top:50%;left:50%;transform:translate(-50%,-50%);
     }
-    .hero-orbit:nth-child(1){width:280px;height:280px;animation:orbitSpin 20s linear infinite;}
-    .hero-orbit:nth-child(2){width:380px;height:380px;animation:orbitSpin 30s linear infinite reverse;}
-    .hero-orbit:nth-child(3){width:480px;height:480px;animation:orbitSpin 40s linear infinite;}
-    .hero-orbit:nth-child(4){width:580px;height:580px;animation:orbitSpin 50s linear infinite reverse;}
+    .hero-orbit:nth-child(1){width:250px;height:250px;animation:orbitSpin 20s linear infinite;}
+    .hero-orbit:nth-child(2){width:350px;height:350px;animation:orbitSpin 30s linear infinite reverse;}
+    .hero-orbit:nth-child(3){width:450px;height:450px;animation:orbitSpin 40s linear infinite;}
+    .hero-orbit:nth-child(4){width:550px;height:550px;animation:orbitSpin 50s linear infinite reverse;}
     .hero-orbit::before{
       content:'';position:absolute;width:8px;height:8px;border-radius:50%;
       background:var(--blue);top:-4px;left:50%;
       box-shadow:0 0 10px var(--blue),0 0 20px var(--blue);
     }
     @keyframes orbitSpin{from{transform:translate(-50%,-50%) rotate(0);}to{transform:translate(-50%,-50%) rotate(360deg);}}
+
     .hero-badge{
       display:inline-flex;align-items:center;gap:10px;
       background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.12);
@@ -240,8 +242,13 @@ The issue is the **loader never hides** because it's waiting for all images to l
     .section-sub{color:#64748b;max-width:600px;margin:0 auto;font-size:1.05rem;}
 
     /* ══════════ INFRA SECTION ══════════ */
-    .infra-section{position:relative;overflow:hidden;}
-    .infra-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.12;z-index:0;filter:blur(2px);}
+    .infra-section{
+      position:relative;overflow:hidden;
+    }
+    .infra-bg{
+      position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.15;z-index:0;
+      filter:blur(2px);
+    }
     .infra-section::before{
       content:'';position:absolute;inset:0;
       background:linear-gradient(180deg,rgba(3,3,8,0.95) 0%,rgba(3,3,8,0.85) 50%,rgba(3,3,8,0.95) 100%);
@@ -278,6 +285,7 @@ The issue is the **loader never hides** because it's waiting for all images to l
     .infra-card p{color:#64748b;font-size:0.9rem;line-height:1.7;}
 
     /* ══════════ STATS ══════════ */
+    .stats-section{position:relative;overflow:hidden;}
     .stats-grid{
       display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
       background:rgba(59,130,246,0.06);border:1px solid var(--glass-border);
@@ -314,11 +322,20 @@ The issue is the **loader never hides** because it's waiting for all images to l
       box-shadow:0 25px 70px rgba(0,0,0,0.4),0 0 30px rgba(59,130,246,0.06);
     }
     .service-img-wrapper{position:relative;overflow:hidden;height:180px;}
-    .service-img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s;}
+    .service-img{
+      width:100%;height:100%;object-fit:cover;transition:transform 0.6s;
+    }
     .service-card:hover .service-img{transform:scale(1.1);}
-    .service-img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(3,3,8,0.9) 100%);z-index:1;}
+    .service-img-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(180deg,transparent 40%,rgba(3,3,8,0.9) 100%);
+      z-index:1;
+    }
     .service-info{padding:24px 22px 28px;position:relative;z-index:2;}
-    .service-info h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;color:#f1f5f9;font-family:'Space Grotesk',sans-serif;}
+    .service-info h3{
+      font-size:1.1rem;font-weight:700;margin-bottom:8px;color:#f1f5f9;
+      font-family:'Space Grotesk',sans-serif;
+    }
     .service-info p{color:#64748b;font-size:0.85rem;line-height:1.6;}
     .service-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
     .service-tag-item{
@@ -407,7 +424,10 @@ The issue is the **loader never hides** because it's waiting for all images to l
       width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;
       font-size:1.6rem;color:#fff;text-decoration:none;transition:all 0.3s;position:relative;
     }
-    .float-btn::after{content:'';position:absolute;inset:-3px;border-radius:19px;background:inherit;opacity:0.3;filter:blur(10px);z-index:-1;}
+    .float-btn::after{
+      content:'';position:absolute;inset:-3px;border-radius:19px;
+      background:inherit;opacity:0.3;filter:blur(10px);z-index:-1;
+    }
     .float-btn.wa{background:linear-gradient(135deg,#25d366,#128c7e);}
     .float-btn.tg{background:linear-gradient(135deg,#0088cc,#005f8c);}
     .float-btn:hover{transform:translateY(-4px) scale(1.08);}
@@ -428,7 +448,7 @@ The issue is the **loader never hides** because it's waiting for all images to l
       .services-grid{grid-template-columns:1fr;}.infra-cards{grid-template-columns:1fr;}
       .stats-grid{grid-template-columns:repeat(2,1fr);}
       .footer-grid{grid-template-columns:1fr 1fr;}
-      .hero h1{font-size:2rem;}.hero-logo-img{width:clamp(160px,35vw,260px);}
+      .hero h1{font-size:2rem;}.hero-logo-img{width:clamp(140px,30vw,220px);}
       .cta-section{padding:50px 24px;}
     }
     @media(max-width:480px){
@@ -442,11 +462,11 @@ The issue is the **loader never hides** because it's waiting for all images to l
 
 <!-- ══════ LOADER ══════ -->
 <div class="loader" id="loader">
-  <div class="loader-logo-wrap">
+  <div class="loader-logo-container">
     <div class="loader-ring"></div>
     <div class="loader-ring"></div>
     <div class="loader-ring"></div>
-    <img src="Ztrust Logo 1 (2).png" alt="ZTrust" class="loader-logo-img" onerror="this.src='https://placehold.co/140x140/0f172a/3b82f6?text=ZT'">
+    <img src="Ztrust Color 2.png" alt="ZTrust" class="loader-logo-img" onerror="this.src='https://placehold.co/120x120/0f172a/3b82f6?text=ZT'">
   </div>
   <div class="loader-text">Initializing Secure Systems</div>
   <div class="loader-bar"><div class="loader-bar-fill"></div></div>
@@ -472,7 +492,7 @@ The issue is the **loader never hides** because it's waiting for all images to l
 <nav class="nav" id="mainNav">
   <div class="container nav-inner">
     <div class="logo-wrapper">
-      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/52x52/0f172a/3b82f6?text=ZT'">
+      <img src="Ztrust Color 2.png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/52x52/0f172a/3b82f6?text=ZT'">
     </div>
     <div class="links" id="navLinks">
       <a href="index.html" class="active">Home</a>
@@ -487,9 +507,10 @@ The issue is the **loader never hides** because it's waiting for all images to l
 
 <!-- ══════ HERO ══════ -->
 <section class="hero" id="heroSection">
-  <img src="Ztrust Color (2).png" alt="" class="hero-bg-img" onerror="this.style.display='none'">
+  <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Network Animation" class="hero-gif" loading="eager">
   <div class="container">
     <div class="hero-content">
+      <!-- Logo Showcase -->
       <div class="hero-logo-showcase">
         <div class="hero-logo-glow"></div>
         <div class="hero-orbits">
@@ -498,7 +519,7 @@ The issue is the **loader never hides** because it's waiting for all images to l
           <div class="hero-orbit"></div>
           <div class="hero-orbit"></div>
         </div>
-        <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="hero-logo-img" onerror="this.style.display='none'">
+        <img src="Ztrust Color 2.png" alt="ZTrust Tech" class="hero-logo-img" onerror="this.style.display='none'">
       </div>
       <div class="hero-badge">
         <span class="live-dot"></span>
@@ -599,7 +620,10 @@ The issue is the **loader never hides** because it's waiting for all images to l
         <div class="service-info">
           <h3>IT Infrastructure</h3>
           <p>Complete infrastructure design, deployment, and management including servers and virtualization.</p>
-          <div class="service-tags"><span class="service-tag-item">Servers</span><span class="service-tag-item">Virtualization</span></div>
+          <div class="service-tags">
+            <span class="service-tag-item">Servers</span>
+            <span class="service-tag-item">Virtualization</span>
+          </div>
         </div>
       </div>
       <div class="service-card reveal" style="--i:1">
@@ -610,7 +634,10 @@ The issue is the **loader never hides** because it's waiting for all images to l
         <div class="service-info">
           <h3>Storage Solutions</h3>
           <p>SAN, NAS, backup systems, disaster recovery, and data archiving solutions.</p>
-          <div class="service-tags"><span class="service-tag-item">SAN/NAS</span><span class="service-tag-item">Backup</span></div>
+          <div class="service-tags">
+            <span class="service-tag-item">SAN/NAS</span>
+            <span class="service-tag-item">Backup</span>
+          </div>
         </div>
       </div>
       <div class="service-card reveal" style="--i:2">
@@ -621,7 +648,10 @@ The issue is the **loader never hides** because it's waiting for all images to l
         <div class="service-info">
           <h3>Application Development</h3>
           <p>Custom web, mobile, and desktop applications tailored to your business processes.</p>
-          <div class="service-tags"><span class="service-tag-item">Web</span><span class="service-tag-item">Mobile</span></div>
+          <div class="service-tags">
+            <span class="service-tag-item">Web</span>
+            <span class="service-tag-item">Mobile</span>
+          </div>
         </div>
       </div>
       <div class="service-card reveal" style="--i:3">
@@ -632,7 +662,10 @@ The issue is the **loader never hides** because it's waiting for all images to l
         <div class="service-info">
           <h3>Database Management</h3>
           <p>SQL, NoSQL, database design, optimization, migration, and administration.</p>
-          <div class="service-tags"><span class="service-tag-item">SQL</span><span class="service-tag-item">NoSQL</span></div>
+          <div class="service-tags">
+            <span class="service-tag-item">SQL</span>
+            <span class="service-tag-item">NoSQL</span>
+          </div>
         </div>
       </div>
       <div class="service-card reveal" style="--i:4">
@@ -643,7 +676,10 @@ The issue is the **loader never hides** because it's waiting for all images to l
         <div class="service-info">
           <h3>API Integration</h3>
           <p>Seamless third-party API integration, RESTful APIs, and microservices architecture.</p>
-          <div class="service-tags"><span class="service-tag-item">REST</span><span class="service-tag-item">Microservices</span></div>
+          <div class="service-tags">
+            <span class="service-tag-item">REST</span>
+            <span class="service-tag-item">Microservices</span>
+          </div>
         </div>
       </div>
       <div class="service-card reveal" style="--i:5">
@@ -654,7 +690,10 @@ The issue is the **loader never hides** because it's waiting for all images to l
         <div class="service-info">
           <h3>Network Connectivity</h3>
           <p>Enterprise networking, SD-WAN, LAN/WAN, wireless solutions, and network security.</p>
-          <div class="service-tags"><span class="service-tag-item">SD-WAN</span><span class="service-tag-item">LAN/WAN</span></div>
+          <div class="service-tags">
+            <span class="service-tag-item">SD-WAN</span>
+            <span class="service-tag-item">LAN/WAN</span>
+          </div>
         </div>
       </div>
       <div class="service-card reveal" style="--i:6">
@@ -665,7 +704,10 @@ The issue is the **loader never hides** because it's waiting for all images to l
         <div class="service-info">
           <h3>Cybersecurity Solutions</h3>
           <p>Advanced threat protection, endpoint security, firewall management, and compliance.</p>
-          <div class="service-tags"><span class="service-tag-item">Firewall</span><span class="service-tag-item">Endpoint</span></div>
+          <div class="service-tags">
+            <span class="service-tag-item">Firewall</span>
+            <span class="service-tag-item">Endpoint</span>
+          </div>
         </div>
       </div>
       <div class="service-card reveal" style="--i:7">
@@ -676,7 +718,10 @@ The issue is the **loader never hides** because it's waiting for all images to l
         <div class="service-info">
           <h3>Awareness Trainings</h3>
           <p>Cybersecurity awareness, phishing simulations, and IT security culture development.</p>
-          <div class="service-tags"><span class="service-tag-item">Phishing</span><span class="service-tag-item">Workshops</span></div>
+          <div class="service-tags">
+            <span class="service-tag-item">Phishing</span>
+            <span class="service-tag-item">Workshops</span>
+          </div>
         </div>
       </div>
     </div>
@@ -706,4 +751,208 @@ The issue is the **loader never hides** because it's waiting for all images to l
       <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Bole TK Building, Addis Ababa</div>
     </div>
     <div class="contact-bar">
-      <a href="https://wa.me/251911563698" class="method-btn wa" target="_blank"><i class="fab fa-whatsapp
+      <a href="https://wa.me/251911563698" class="method-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp: +251 911 563 698</a>
+      <a href="https://t.me/ZTrustTech" class="method-btn tg" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram: @ZTrustTech</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="Ztrust Color 2.png" class="footer-logo" alt="ZTrust Tech" onerror="this.src='https://placehold.co/50x50/0f172a/3b82f6?text=ZT'">
+        <p style="margin-top:12px;color:#64748b;font-size:0.9rem;">Complete IT Solutions Provider<br>Infrastructure • Storage • Apps • Database • API • Networks</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://t.me/ZTrustTech" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a href="https://wa.me/251911563698" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div><h4>Our Services</h4><a href="services.html">Infrastructure</a><a href="services.html">Storage</a><a href="services.html">App Development</a><a href="services.html">Database</a><a href="services.html">API Integration</a><a href="services.html">Networking</a></div>
+      <div><h4>Contact</h4><a href="#"><i class="fas fa-user" style="width:16px;margin-right:8px;color:var(--blue);"></i>GM: Ssasebih Nega</a><a href="tel:+251911563698"><i class="fas fa-phone" style="width:16px;margin-right:8px;color:var(--blue);"></i>+251 911 563 698</a><a href="mailto:sales2@ztrust.et"><i class="fas fa-envelope" style="width:16px;margin-right:8px;color:var(--blue);"></i>sales2@ztrust.et</a><a href="#"><i class="fas fa-map-marker-alt" style="width:16px;margin-right:8px;color:var(--blue);"></i>Bole TK Building</a></div>
+    </div>
+    <div class="copyright">© 2026 <a href="index.html">ZTrust Tech</a>. 10+ Years of IT Excellence | All IT Solutions Under One Roof | Made with 💙 in Ethiopia</div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+// ══════ LOADER ══════
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),2800));
+
+// ══════ NETWORK CONNECTING CANVAS (Main Feature) ══════
+(function(){
+  const c=document.getElementById('networkCanvas');if(!c)return;
+  const ctx=c.getContext('2d');let w,h,nodes=[],mouse={x:-1000,y:-1000};
+  function resize(){w=c.width=innerWidth;h=c.height=innerHeight;}
+  resize();addEventListener('resize',resize);
+  addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+
+  class Node{
+    constructor(){
+      this.x=Math.random()*w;this.y=Math.random()*h;
+      this.vx=(Math.random()-0.5)*0.5;this.vy=(Math.random()-0.5)*0.5;
+      this.r=Math.random()*2+1;
+      this.baseAlpha=0.15+Math.random()*0.2;
+      this.color=['59,130,246','99,102,241','139,92,246','6,182,212'][~~(Math.random()*4)];
+      this.pulse=Math.random()*Math.PI*2;
+      this.pulseSpeed=0.01+Math.random()*0.02;
+    }
+    update(){
+      this.x+=this.vx;this.y+=this.vy;
+      this.pulse+=this.pulseSpeed;
+      if(this.x<0||this.x>w)this.vx*=-1;
+      if(this.y<0||this.y>h)this.vy*=-1;
+      // Mouse repulsion
+      const dx=this.x-mouse.x,dy=this.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<150){
+        const force=(150-d)/150*0.02;
+        this.vx+=dx/d*force;this.vy+=dy/d*force;
+      }
+      // Damping
+      this.vx*=0.999;this.vy*=0.999;
+    }
+    draw(){
+      const alpha=this.baseAlpha+Math.sin(this.pulse)*0.1;
+      ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${this.color},${alpha})`;ctx.fill();
+      // Glow
+      ctx.beginPath();ctx.arc(this.x,this.y,this.r*3,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${this.color},${alpha*0.15})`;ctx.fill();
+    }
+  }
+
+  const count=Math.min(90,~~(w*h/12000));
+  for(let i=0;i<count;i++)nodes.push(new Node());
+
+  function drawConnections(){
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<160){
+          const alpha=0.06*(1-d/160);
+          const grad=ctx.createLinearGradient(nodes[i].x,nodes[i].y,nodes[j].x,nodes[j].y);
+          grad.addColorStop(0,`rgba(${nodes[i].color},${alpha})`);
+          grad.addColorStop(1,`rgba(${nodes[j].color},${alpha})`);
+          ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);
+          ctx.strokeStyle=grad;ctx.lineWidth=0.8;ctx.stroke();
+        }
+      }
+      // Mouse connections
+      const dx=nodes[i].x-mouse.x,dy=nodes[i].y-mouse.y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<200){
+        const alpha=0.15*(1-d/200);
+        ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(mouse.x,mouse.y);
+        ctx.strokeStyle=`rgba(59,130,246,${alpha})`;ctx.lineWidth=1;ctx.stroke();
+        // Mouse glow node
+        ctx.beginPath();ctx.arc(mouse.x,mouse.y,3,0,Math.PI*2);
+        ctx.fillStyle=`rgba(59,130,246,${alpha*2})`;ctx.fill();
+      }
+    }
+  }
+
+  function loop(){
+    ctx.clearRect(0,0,w,h);
+    nodes.forEach(n=>{n.update();n.draw();});
+    drawConnections();
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+// ══════ PARTICLE CANVAS ══════
+(function(){
+  const c=document.getElementById('particleCanvas');if(!c)return;
+  const ctx=c.getContext('2d');let w,h,particles=[];
+  function resize(){w=c.width=innerWidth;h=c.height=innerHeight;}
+  resize();addEventListener('resize',resize);
+  class P{constructor(){this.reset();}reset(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-0.5)*0.15;this.vy=(Math.random()-0.5)*0.15;this.r=Math.random()*1+0.3;this.a=Math.random()*0.15+0.05;this.c=['59,130,246','99,102,241','6,182,212'][~~(Math.random()*3)];}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>w||this.y<0||this.y>h)this.reset();}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(${this.c},${this.a})`;ctx.fill();}}
+  const n=Math.min(50,~~(w*h/25000));for(let i=0;i<n;i++)particles.push(new P());
+  function loop(){ctx.clearRect(0,0,w,h);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
+  loop();
+})();
+
+// ══════ MOVING BACKGROUND ══════
+(function(){
+  const mb=document.getElementById('movingBg');if(!mb)return;
+  const words=['🔒 ZTrust Tech','⚡ IT Solutions','🔐 Secure','💾 Storage','🌐 Network','📱 Apps','🗄️ Database','🔌 API','🏗️ Infrastructure','☁️ Cloud','10+ Years','24/7 Support','🛡️ Cybersecurity'];
+  for(let i=0;i<35;i++){
+    const el=document.createElement('div');el.className='moving-element';
+    el.textContent=words[~~(Math.random()*words.length)];
+    el.style.fontSize=(0.8+Math.random()*0.8)+'rem';
+    el.style.setProperty('--y-offset',(Math.random()*60-30)+'vh');
+    el.style.top=Math.random()*100+'%';
+    el.style.animationDelay=Math.random()*20+'s';
+    el.style.animationDuration=(14+Math.random()*20)+'s';
+    el.style.opacity=0.04+Math.random()*0.06;
+    mb.appendChild(el);
+  }
+})();
+
+// ══════ TYPING EFFECT ══════
+(function(){
+  const el=document.getElementById('typingText');if(!el)return;
+  const lines=['> Connecting 350+ successful projects...','> Deploying enterprise-grade solutions across Ethiopia...','> Protecting your data with military-grade security...','> Welcome to ZTrust Tech — Your IT Partner.'];
+  let li=0,ci=0,del=false,pause=0;
+  function type(){
+    if(pause>0){pause--;requestAnimationFrame(type);return;}
+    const line=lines[li];
+    if(!del){el.innerHTML=line.substring(0,ci+1)+'<span class="cursor"></span>';ci++;if(ci>=line.length){del=true;pause=80;requestAnimationFrame(type);return;}}
+    else{el.innerHTML=line.substring(0,ci)+'<span class="cursor"></span>';ci--;if(ci<=0){del=false;li=(li+1)%lines.length;pause=20;}}
+    setTimeout(type,del?25:45+Math.random()*35);
+  }
+  setTimeout(type,3200);
+})();
+
+// ══════ NAV ══════
+const nav=document.getElementById('mainNav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+
+// ══════ MOBILE MENU ══════
+const mt=document.getElementById('mobileMenu'),nl=document.getElementById('navLinks');
+mt.addEventListener('click',e=>{e.stopPropagation();nl.classList.toggle('active');const i=mt.querySelector('i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times');});
+nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nl.classList.remove('active');const i=mt.querySelector('i');i.classList.add('fa-bars');i.classList.remove('fa-times');}));
+document.addEventListener('click',e=>{if(nl.classList.contains('active')&&!nl.contains(e.target)){nl.classList.remove('active');const i=mt.querySelector('i');i.classList.add('fa-bars');i.classList.remove('fa-times');}});
+
+// ══════ SCROLL REVEAL ══════
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
+const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(el=>revObs.observe(el));
+
+// ══════ COUNTER ANIMATION ══════
+function animateCounters(){
+  document.querySelectorAll('[data-target]').forEach(el=>{
+    const t=parseInt(el.dataset.target),sfx=el.querySelector('span')?el.querySelector('span').outerHTML:'',dur=2200,start=performance.now();
+    function upd(now){const p=Math.min((now-start)/dur,1),eased=1-Math.pow(1-p,3);el.innerHTML=Math.floor(eased*t)+sfx;if(p<1)requestAnimationFrame(upd);}
+    requestAnimationFrame(upd);
+  });
+}
+const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCounters();counterObs.disconnect();}});},{threshold:0.3});
+const sg=document.querySelector('.stats-grid');if(sg)counterObs.observe(sg);
+
+// ══════ CARD MOUSE FOLLOW ══════
+document.querySelectorAll('.service-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+  });
+});
+
+// ══════ BACK TO TOP ══════
+const btt=document.getElementById('backToTop');
+addEventListener('scroll',()=>btt.classList.toggle('show',scrollY>400));
+btt.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+
+// ══════ SMOOTH SCROLL ══════
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
+</script>
+</body>
+</html>
