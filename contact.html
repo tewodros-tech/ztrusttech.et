@@ -1,368 +1,1736 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>ZTrust Tech | Contact Us - Get IT Solutions</title>
-  <link rel="icon" type="image/png" href="ICON Final 1 (1).png">
-  <link rel="shortcut icon" href="ICON Final 1 (1).png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="ICON Final 1 (1).png" />
+  <link rel="shortcut icon" href="ICON Final 1 (1).png" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #060711;
+      --bg-2: #0b1020;
+      --card: rgba(15, 23, 42, 0.72);
+      --card-2: rgba(2, 6, 23, 0.72);
+      --line: rgba(96, 165, 250, 0.22);
+      --line-strong: rgba(59, 130, 246, 0.55);
+      --text: #eef2ff;
+      --muted: #94a3b8;
+      --blue: #3b82f6;
+      --blue-2: #60a5fa;
+      --cyan: #22d3ee;
+      --green: #25D366;
+      --telegram: #0088cc;
+      --purple: #8b5cf6;
+      --danger: #f43f5e;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --radius-lg: 34px;
+      --radius-md: 22px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: #0a0a0f;
-      color: #eef2ff;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.5;
       overflow-x: hidden;
     }
+
+    body::selection {
+      background: rgba(59, 130, 246, 0.45);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Background */
     .cyber-bg {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      background: linear-gradient(135deg, #0a0a0f 0%, #0f111a 50%, #050508 100%);
+      inset: 0;
+      z-index: -4;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(59,130,246,0.25), transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(34,211,238,0.18), transparent 28%),
+        radial-gradient(circle at 70% 80%, rgba(139,92,246,0.22), transparent 35%),
+        linear-gradient(135deg, #05060d 0%, #0b1020 50%, #020617 100%);
     }
-    .cyber-overlay {
+
+    .cyber-grid {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: repeating-linear-gradient(0deg, rgba(59,130,246,0.02) 0px, rgba(59,130,246,0.02) 1px, transparent 1px, transparent 12px);
+      inset: 0;
       pointer-events: none;
-      z-index: -1;
+      z-index: -3;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.055) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 85%);
+      animation: gridMove 16s linear infinite;
     }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+    @keyframes gridMove {
+      from { transform: translateY(0); }
+      to { transform: translateY(42px); }
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      opacity: 0.16;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 3px);
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(30px);
+      opacity: 0.4;
+      z-index: -1;
+      animation: floatOrb 9s ease-in-out infinite alternate;
+    }
+
+    .orb.one {
+      width: 280px;
+      height: 280px;
+      background: rgba(59,130,246,0.45);
+      left: -90px;
+      top: 180px;
+    }
+
+    .orb.two {
+      width: 240px;
+      height: 240px;
+      background: rgba(34,211,238,0.35);
+      right: -90px;
+      top: 440px;
+      animation-delay: 2s;
+    }
+
+    @keyframes floatOrb {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to { transform: translate3d(30px, -40px, 0) scale(1.12); }
+    }
+
+    /* Navigation */
     .nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(10, 10, 15, 0.95);
-      backdrop-filter: blur(16px);
+      background: rgba(2, 6, 23, 0.76);
+      backdrop-filter: blur(22px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(59,130,246,0.3);
+      border-bottom: 1px solid rgba(96,165,250,0.22);
     }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
-    .logo-wrapper { display: flex; align-items: center; gap: 10px; }
-    .nav-logo { height: 44px; width: auto; object-fit: contain; border-radius: 10px; }
-    .logo-text { font-size: 1.4rem; font-weight: 800; color: #fff; }
-    .logo-text span { color: #3b82f6; }
-    .links { display: flex; gap: 1.8rem; }
-    .links a { text-decoration: none; font-weight: 600; color: #cbd5e6; transition: 0.2s; font-size: 0.9rem; }
-    .links a:hover, .links a.active { color: #3b82f6; }
-    .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; }
-    @media (max-width: 820px) {
-      .links {
-        position: fixed;
-        top: 68px;
-        left: -100%;
-        width: 75%;
-        height: calc(100vh - 68px);
-        background: rgba(10,10,15,0.98);
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem;
-        transition: left 0.3s ease;
-        gap: 1.8rem;
-        border-right: 2px solid #3b82f6;
-        z-index: 1001;
-      }
-      .links.active { left: 0; }
-      .menu-toggle { display: block; }
-      .container { padding: 0 20px; }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
     }
-    .hero {
-      min-height: 45vh;
+
+    .logo-wrapper {
       display: flex;
       align-items: center;
-      padding: 100px 0 60px;
-      position: relative;
-      background: url('10.jfif') no-repeat center center/cover;
+      gap: 11px;
+      text-decoration: none;
     }
+
+    .nav-logo {
+      height: 46px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 0 24px rgba(59,130,246,0.25);
+    }
+
+    .logo-text {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.03em;
+    }
+
+    .logo-text span {
+      color: var(--blue-2);
+    }
+
+    .links {
+      display: flex;
+      gap: 1.7rem;
+      align-items: center;
+    }
+
+    .links a {
+      position: relative;
+      text-decoration: none;
+      font-weight: 700;
+      color: #cbd5e6;
+      transition: 0.25s;
+      font-size: 0.92rem;
+    }
+
+    .links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      transition: 0.25s;
+      border-radius: 10px;
+    }
+
+    .links a:hover,
+    .links a.active {
+      color: #fff;
+    }
+
+    .links a:hover::after,
+    .links a.active::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(37,99,235,0.95), rgba(34,211,238,0.75));
+      color: #fff !important;
+      box-shadow: 0 14px 30px rgba(37,99,235,0.26);
+    }
+
+    .nav-cta::after {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      padding: 118px 0 70px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(2,6,23,0.78), rgba(2,6,23,0.94)),
+        url('10.jfif') no-repeat center center / cover;
+      border-bottom: 1px solid rgba(96,165,250,0.18);
+    }
+
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(10,10,15,0.88), rgba(5,5,8,0.92));
-      z-index: 0;
+      inset: 0;
+      background:
+        radial-gradient(circle at 25% 30%, rgba(59,130,246,0.26), transparent 28%),
+        radial-gradient(circle at 80% 30%, rgba(34,211,238,0.20), transparent 30%);
+      pointer-events: none;
     }
-    .hero .container { position: relative; z-index: 1; }
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #fff, #94a3f8, #60a5fa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 20px;
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
     }
-    .hero p { font-size: 1.1rem; color: #cbd5e6; }
-    .section { padding: 70px 0; }
-    .section-title {
-      text-align: center;
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-    .section-title i { color: #3b82f6; margin-right: 12px; }
-    .contact-grid {
+
+    .hero-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      background: rgba(15,17,26,0.7);
-      border-radius: 40px;
-      padding: 48px;
-      border: 1px solid #1e293b;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 52px;
+      align-items: center;
     }
-    .info-card {
-      background: rgba(10,12,18,0.5);
-      border-radius: 24px;
-      padding: 24px;
-      margin-bottom: 24px;
-      border: 1px solid #1e293b;
-    }
-    .info-card i { font-size: 2rem; color: #3b82f6; margin-bottom: 12px; }
-    .form-group { margin-bottom: 24px; }
-    input, textarea, select {
-      width: 100%;
-      padding: 14px 18px;
-      background: #0a0c12;
-      border: 1px solid #2d3748;
-      border-radius: 16px;
-      color: white;
-      font-family: inherit;
-    }
-    input:focus, textarea:focus, select:focus { outline: none; border-color: #3b82f6; }
-    .btn-primary {
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      padding: 14px 32px;
-      border-radius: 40px;
-      font-weight: 600;
-      color: white;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      font-size: 1rem;
-    }
-    .btn-primary:hover { transform: translateY(-2px); }
-    .whatsapp-link, .telegram-link {
-      background: #25D366;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 40px;
-      text-decoration: none;
+
+    .badge {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-weight: 600;
-      margin: 10px;
+      padding: 9px 14px;
+      border: 1px solid rgba(96,165,250,0.35);
+      border-radius: 999px;
+      background: rgba(15,23,42,0.65);
+      color: #dbeafe;
+      font-weight: 700;
+      font-size: 0.86rem;
+      margin-bottom: 20px;
+      box-shadow: 0 0 35px rgba(59,130,246,0.15);
     }
-    .telegram-link { background: #0088cc; }
-    .map-container {
-      margin-top: 40px;
-      border-radius: 24px;
+
+    .badge i {
+      color: var(--cyan);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.45rem, 5vw, 5.1rem);
+      line-height: 0.98;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #fff 0%, #93c5fd 42%, #22d3ee 78%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 680px;
+      font-size: 1.08rem;
+      color: #cbd5e1;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 14px 20px;
+      transition: 0.25s ease;
+      color: #fff;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      box-shadow: 0 18px 35px rgba(37,99,235,0.28);
+    }
+
+    .btn-earth {
+      background: linear-gradient(135deg, rgba(34,197,94,0.95), rgba(20,184,166,0.95));
+      box-shadow: 0 18px 35px rgba(34,197,94,0.22);
+    }
+
+    .btn-ghost {
+      background: rgba(15,23,42,0.72);
+      border: 1px solid rgba(148,163,184,0.22);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 680px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(15,23,42,0.62);
+      border: 1px solid rgba(96,165,250,0.18);
+      backdrop-filter: blur(14px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.55rem;
+      color: #fff;
+      letter-spacing: -0.04em;
+    }
+
+    .stat small {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    /* Earth / GPS card */
+    .earth-card {
+      position: relative;
+      min-height: 520px;
+      border-radius: 40px;
+      background:
+        linear-gradient(145deg, rgba(15,23,42,0.75), rgba(2,6,23,0.86));
+      border: 1px solid rgba(96,165,250,0.25);
+      box-shadow: var(--shadow);
       overflow: hidden;
-      border: 1px solid #1e293b;
+      padding: 30px;
+      isolation: isolate;
     }
+
+    .earth-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(59,130,246,0.35), transparent 35%),
+        radial-gradient(circle at 40% 65%, rgba(34,211,238,0.18), transparent 35%);
+      z-index: -1;
+    }
+
+    .earth-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .earth-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #dbeafe;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .earth-label i {
+      color: #22d3ee;
+      font-size: 1.25rem;
+    }
+
+    .gps-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: #bbf7d0;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.35);
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .gps-live span {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.7);
+      animation: livePulse 1.4s infinite;
+    }
+
+    @keyframes livePulse {
+      0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+
+    .globe-wrap {
+      position: relative;
+      width: min(350px, 78vw);
+      height: min(350px, 78vw);
+      margin: 25px auto 32px;
+      display: grid;
+      place-items: center;
+    }
+
+    .globe {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 32% 25%, rgba(255,255,255,0.38), transparent 10%),
+        radial-gradient(circle at 35% 30%, rgba(147,197,253,0.6), transparent 18%),
+        linear-gradient(135deg, #0ea5e9, #1d4ed8 45%, #020617 88%);
+      box-shadow:
+        inset -28px -28px 60px rgba(0,0,0,0.52),
+        inset 22px 16px 46px rgba(255,255,255,0.12),
+        0 0 70px rgba(59,130,246,0.42);
+      overflow: hidden;
+      animation: globeFloat 4.5s ease-in-out infinite alternate;
+    }
+
+    .globe::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 18px, rgba(255,255,255,0.12) 19px 20px),
+        repeating-linear-gradient(0deg, transparent 0 24px, rgba(255,255,255,0.10) 25px 26px);
+      opacity: 0.32;
+      border-radius: 50%;
+    }
+
+    .globe::after {
+      content: '';
+      position: absolute;
+      inset: 20%;
+      background:
+        radial-gradient(circle at 35% 25%, #16a34a 0 10%, transparent 11%),
+        radial-gradient(circle at 60% 42%, #22c55e 0 13%, transparent 14%),
+        radial-gradient(circle at 38% 64%, #15803d 0 12%, transparent 13%),
+        radial-gradient(circle at 70% 70%, #84cc16 0 8%, transparent 9%);
+      filter: blur(2px);
+      opacity: 0.78;
+      animation: landMove 9s linear infinite;
+    }
+
+    @keyframes globeFloat {
+      from { transform: translateY(0) rotate(-3deg); }
+      to { transform: translateY(-12px) rotate(3deg); }
+    }
+
+    @keyframes landMove {
+      from { transform: translateX(-25px); }
+      to { transform: translateX(25px); }
+    }
+
+    .orbit {
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      border: 1px solid rgba(96,165,250,0.32);
+      transform: rotate(-18deg);
+    }
+
+    .orbit.two {
+      inset: 25px;
+      transform: rotate(28deg);
+      border-color: rgba(34,211,238,0.20);
+    }
+
+    .gps-pin {
+      position: absolute;
+      left: 58%;
+      top: 36%;
+      width: 54px;
+      height: 54px;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(244,63,94,0.12);
+      border: 1px solid rgba(244,63,94,0.35);
+      animation: pinBounce 1.8s ease-in-out infinite;
+      z-index: 3;
+    }
+
+    .gps-pin::before,
+    .gps-pin::after {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      border: 2px solid rgba(244,63,94,0.45);
+      animation: gpsRipple 1.8s infinite;
+    }
+
+    .gps-pin::after {
+      animation-delay: 0.55s;
+    }
+
+    .gps-pin i {
+      color: #fb7185;
+      font-size: 1.8rem;
+      filter: drop-shadow(0 0 14px rgba(244,63,94,0.8));
+    }
+
+    @keyframes gpsRipple {
+      from { transform: scale(0.72); opacity: 0.85; }
+      to { transform: scale(1.55); opacity: 0; }
+    }
+
+    @keyframes pinBounce {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-8px); }
+    }
+
+    .location-mini {
+      border-radius: 24px;
+      background: rgba(2,6,23,0.62);
+      border: 1px solid rgba(96,165,250,0.22);
+      padding: 20px;
+    }
+
+    .location-mini h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .location-mini h3 i {
+      color: #fb7185;
+    }
+
+    .coordinates {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      color: #cbd5e1;
+      font-size: 0.92rem;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(148,163,184,0.14);
+    }
+
+    .copy-btn {
+      border: 1px solid rgba(96,165,250,0.28);
+      background: rgba(59,130,246,0.12);
+      color: #bfdbfe;
+      padding: 8px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* Sections */
+    .section {
+      padding: 82px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(96,165,250,0.22);
+      color: #bfdbfe;
+      font-weight: 900;
+      margin-bottom: 14px;
+      font-size: 0.84rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      margin-bottom: 12px;
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, #fff, #93c5fd, #22d3ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-subtitle {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .panel {
+      background: linear-gradient(145deg, rgba(15,23,42,0.76), rgba(2,6,23,0.72));
+      border: 1px solid rgba(96,165,250,0.20);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(59,130,246,0.16), transparent 34%);
+      pointer-events: none;
+    }
+
+    .panel-inner {
+      position: relative;
+      padding: 30px;
+    }
+
+    .info-card {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 16px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(2,6,23,0.50);
+      border: 1px solid rgba(148,163,184,0.13);
+      margin-bottom: 14px;
+      transition: 0.25s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(96,165,250,0.36);
+      box-shadow: 0 20px 45px rgba(2,6,23,0.35);
+    }
+
+    .info-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(59,130,246,0.20), rgba(34,211,238,0.10));
+      border: 1px solid rgba(96,165,250,0.25);
+      color: var(--blue-2);
+      font-size: 1.25rem;
+    }
+
+    .info-card h3 {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .info-card p,
+    .info-card a {
+      color: var(--muted);
+      font-size: 0.94rem;
+      text-decoration: none;
+    }
+
+    .info-card strong {
+      color: #e0f2fe;
+    }
+
+    .quick-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .quick-buttons .btn {
+      width: 100%;
+      padding: 13px 14px;
+      font-size: 0.92rem;
+    }
+
+    .btn-wa {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      box-shadow: 0 16px 30px rgba(37,211,102,0.22);
+    }
+
+    .btn-tg {
+      background: linear-gradient(135deg, #0088cc, #2563eb);
+      box-shadow: 0 16px 30px rgba(0,136,204,0.22);
+    }
+
+    /* Form */
+    form {
+      position: relative;
+    }
+
+    .form-header {
+      margin-bottom: 22px;
+    }
+
+    .form-header h2 {
+      font-size: 1.75rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .form-header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      color: #cbd5e1;
+      font-weight: 800;
+      font-size: 0.84rem;
+      margin-bottom: 8px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 15px 16px;
+      background: rgba(2,6,23,0.78);
+      border: 1px solid rgba(148,163,184,0.18);
+      border-radius: 18px;
+      color: white;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: 0.25s;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #64748b;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: rgba(96,165,250,0.75);
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.14);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px 22px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 900;
+      color: #fff;
+      background: linear-gradient(135deg, #2563eb, #06b6d4, #8b5cf6);
+      box-shadow: 0 22px 50px rgba(37,99,235,0.28);
+      transition: 0.25s;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      filter: saturate(1.2);
+    }
+
+    .secure-note {
+      color: #93c5fd;
+      font-weight: 700;
+      font-size: 0.78rem;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    /* Map */
+    .map-section {
+      margin-top: 36px;
+    }
+
+    .map-shell {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(96,165,250,0.25);
+      box-shadow: var(--shadow);
+      background: #020617;
+    }
+
+    .map-shell iframe {
+      display: block;
+      width: 100%;
+      height: 410px;
+      border: 0;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    .map-overlay-card {
+      position: absolute;
+      left: 24px;
+      top: 24px;
+      max-width: 330px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(2,6,23,0.82);
+      border: 1px solid rgba(96,165,250,0.25);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .map-overlay-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 7px;
+      letter-spacing: -0.03em;
+    }
+
+    .map-overlay-card h3 i {
+      color: #fb7185;
+    }
+
+    .map-overlay-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .map-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .mini-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 900;
+      padding: 9px 12px;
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(59,130,246,0.20);
+      border: 1px solid rgba(96,165,250,0.27);
+    }
+
+    .mini-btn.green {
+      background: rgba(34,197,94,0.18);
+      border-color: rgba(34,197,94,0.28);
+    }
+
+    .map-gps-pointer {
+      position: absolute;
+      right: 13%;
+      top: 43%;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(244,63,94,0.14);
+      border: 1px solid rgba(244,63,94,0.45);
+      pointer-events: none;
+    }
+
+    .map-gps-pointer::before,
+    .map-gps-pointer::after {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 2px solid rgba(244,63,94,0.45);
+      animation: gpsRipple 1.8s infinite;
+    }
+
+    .map-gps-pointer::after {
+      animation-delay: 0.55s;
+    }
+
+    .map-gps-pointer i {
+      font-size: 2rem;
+      color: #fb7185;
+      filter: drop-shadow(0 0 12px rgba(244,63,94,0.8));
+    }
+
+    /* Footer */
     .footer {
-      background: #05050a;
-      padding: 50px 0 30px;
-      border-top: 1px solid #1e293b;
+      background: rgba(2,6,23,0.92);
+      padding: 58px 0 30px;
+      border-top: 1px solid rgba(96,165,250,0.16);
     }
+
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 40px;
-      margin-bottom: 40px;
+      grid-template-columns: 1.2fr repeat(3, 1fr);
+      gap: 36px;
+      margin-bottom: 36px;
     }
-    .footer-logo { height: 45px; width: auto; margin-bottom: 12px; }
-    .social-links a { font-size: 1.3rem; margin-right: 18px; color: #94a3b8; display: inline-block; }
-    .social-links a:hover { color: #3b82f6; }
-    .footer a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 10px; }
-    .footer a:hover { color: #60a5fa; padding-left: 4px; }
-    .footer h4 { color: #fff; margin-bottom: 18px; }
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #2563eb;
-      width: 45px;
-      height: 45px;
-      border-radius: 30px;
-      color: white;
-      cursor: pointer;
-      opacity: 0;
+
+    .footer-logo {
+      height: 46px;
+      width: auto;
+      margin-bottom: 14px;
+      border-radius: 12px;
+    }
+
+    .footer p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer h4 {
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .footer a {
+      color: var(--muted);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
       transition: 0.2s;
-      border: none;
-      z-index: 999;
+      font-size: 0.92rem;
     }
-    .back-to-top.show { opacity: 1; }
-    hr { border-color: #1e293b; margin: 20px 0; }
-    .copyright { text-align: center; padding-top: 25px; border-top: 1px solid #1e293b; font-size: 0.8rem; color: #94a3b8; }
+
+    .footer a:hover {
+      color: #60a5fa;
+      transform: translateX(4px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(15,23,42,0.92);
+      border: 1px solid rgba(96,165,250,0.18);
+      color: #cbd5e1;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-3px);
+      color: #fff;
+      border-color: rgba(96,165,250,0.45);
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid rgba(148,163,184,0.14);
+      margin: 22px 0;
+    }
+
+    .copyright {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    /* Floating buttons */
     .floating-wa-tg {
       position: fixed;
-      bottom: 20px;
-      left: 20px;
+      bottom: 22px;
+      left: 22px;
       display: flex;
       flex-direction: column;
       gap: 12px;
       z-index: 999;
     }
-    .float-wa, .float-tg {
-      width: 50px;
-      height: 50px;
+
+    .float-wa,
+    .float-tg {
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
+      display: grid;
+      place-items: center;
+      font-size: 1.75rem;
       color: white;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      transition: 0.25s;
     }
-    .float-wa { background: #25D366; }
-    .float-tg { background: #0088cc; }
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2rem; }
-      .section-title { font-size: 1.8rem; }
-      .contact-grid { grid-template-columns: 1fr; padding: 24px; }
+
+    .float-wa:hover,
+    .float-tg:hover {
+      transform: translateY(-4px) scale(1.04);
+    }
+
+    .float-wa {
+      background: var(--green);
+    }
+
+    .float-tg {
+      background: var(--telegram);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s;
+      border: none;
+      z-index: 999;
+      box-shadow: 0 18px 40px rgba(37,99,235,0.3);
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%) translateY(25px);
+      background: rgba(2,6,23,0.92);
+      color: #e0f2fe;
+      border: 1px solid rgba(96,165,250,0.30);
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero-layout,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .earth-card {
+        min-height: auto;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 820px) {
+      .links {
+        position: fixed;
+        top: 72px;
+        left: -100%;
+        width: min(82%, 340px);
+        height: calc(100vh - 72px);
+        background: rgba(2,6,23,0.98);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        transition: left 0.3s ease;
+        gap: 1.35rem;
+        border-right: 1px solid rgba(96,165,250,0.4);
+        z-index: 1001;
+      }
+
+      .links.active {
+        left: 0;
+      }
+
+      .links a {
+        font-size: 1.03rem;
+      }
+
+      .nav-cta {
+        width: 100%;
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-stats,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .map-overlay-card {
+        position: relative;
+        left: auto;
+        top: auto;
+        max-width: none;
+        margin: 14px;
+      }
+
+      .map-gps-pointer {
+        right: 12%;
+        top: 58%;
+        width: 58px;
+        height: 58px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        padding: 0 18px;
+      }
+
+      .hero {
+        padding-top: 105px;
+      }
+
+      .hero-actions,
+      .quick-buttons {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .panel-inner {
+        padding: 22px;
+      }
+
+      .info-card {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-wa-tg {
+        bottom: 18px;
+        left: 16px;
+      }
+
+      .back-to-top {
+        right: 16px;
+        bottom: 18px;
+      }
     }
   </style>
 </head>
+
 <body>
-<div class="cyber-bg"></div>
-<div class="cyber-overlay"></div>
+  <div class="cyber-bg"></div>
+  <div class="cyber-grid"></div>
+  <div class="noise"></div>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
 
-<div class="floating-wa-tg">
-  <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://t.me/ZTrustTech" class="float-tg" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-</div>
-
-<nav class="nav">
-  <div class="container nav-inner">
-    <div class="logo-wrapper">
-      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/44x44?text=ZT'">
-      <div class="logo-text">ZTrust <span>Tech</span></div>
-    </div>
-    <div class="links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="active">Contact</a>
-    </div>
-    <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
+  <div class="floating-wa-tg">
+    <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-wa" target="_blank" aria-label="WhatsApp ZTrust Tech">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://t.me/ZTrustTech" class="float-tg" target="_blank" aria-label="Telegram ZTrust Tech">
+      <i class="fab fa-telegram-plane"></i>
+    </a>
   </div>
-</nav>
 
-<section class="hero" style="background-image: url('10.jfif');">
-  <div class="container">
-    <div class="hero-content">
-      <h1><i class="fas fa-address-card"></i> Contact Us</h1>
-      <p>Reach out for IT consultations, project inquiries, or support. We respond within 24 hours.</p>
-    </div>
-  </div>
-</section>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo-wrapper">
+        <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/46x46?text=ZT'">
+        <div class="logo-text">ZTrust <span>Tech</span></div>
+      </a>
 
-<section class="section">
-  <div class="container">
-    <div class="contact-grid">
-      <div>
-        <h2 class="section-title" style="text-align:left;"><i class="fas fa-map-pin"></i> Get in Touch</h2>
-        <div class="info-card">
-          <i class="fas fa-map-marker-alt"></i>
-          <h3>Visit Our Office</h3>
-          <p style="color:#94a3b8;">Bole TK Building, Addis Ababa, Ethiopia<br>📍 GPS: 9.0056° N, 38.7636° E</p>
-        </div>
-        <div class="info-card">
-          <i class="fas fa-phone-alt"></i>
-          <h3>Call Us</h3>
-          <p style="color:#94a3b8;">General Manager (Ssasebih Nega): <strong>+251 911 563 698</strong><br>Office: +251115582626</p>
-        </div>
-        <div class="info-card">
-          <i class="fas fa-envelope"></i>
-          <h3>Email Us</h3>
-          <p style="color:#94a3b8;">Sales & Inquiries: <strong>sales2@ztrust.et</strong><br>General: info@ztrusttech.com</p>
-        </div>
-        <div class="info-card">
-          <i class="fas fa-clock"></i>
-          <h3>Working Hours</h3>
-          <p style="color:#94a3b8;">Monday – Friday: 8:30 AM – 5:30 PM<br>Saturday: 9:00 AM – 1:00 PM<br><span style="color:#60a5fa;">📞 24/7 Emergency Support Available</span></p>
-        </div>
-        <div style="text-align: center; margin-top: 20px;">
-          <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="whatsapp-link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-          <a href="https://t.me/ZTrustTech" class="telegram-link" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
-        </div>
+      <div class="links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech%2C%20I%20need%20IT%20support." target="_blank" class="nav-cta">
+          <i class="fab fa-whatsapp"></i> Get Support
+        </a>
       </div>
-      <div>
-        <h2 class="section-title" style="text-align:left;"><i class="fas fa-paper-plane"></i> Send Inquiry</h2>
-        <form id="contactForm">
-          <div class="form-group"><input type="text" placeholder="Full Name" required></div>
-          <div class="form-group"><input type="email" placeholder="Email Address" required></div>
-          <div class="form-group"><input type="tel" placeholder="Phone Number (WhatsApp)" required></div>
-          <div class="form-group">
-            <select required>
-              <option value="">Select Service Needed</option>
-              <option>IT Infrastructure</option><option>Storage Solutions</option><option>Application Development</option>
-              <option>Database Management</option><option>API Integration</option><option>Network Connectivity</option>
-              <option>Cloud Services</option><option>Cybersecurity</option><option>Other</option>
-            </select>
+
+      <div class="menu-toggle" id="mobileMenu" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-layout">
+        <div>
+          <div class="badge">
+            <i class="fas fa-satellite-dish"></i>
+            GPS-ready IT support from Addis Ababa
           </div>
-          <div class="form-group"><textarea rows="5" placeholder="Describe your IT requirements..." required></textarea></div>
-          <button type="submit" class="btn-primary"><i class="fab fa-telegram-plane"></i> Send Message →</button>
-          <p style="font-size:0.7rem; color:#60a5fa; margin-top: 16px; text-align:center;">🔒 We'll respond within 24 hours via WhatsApp or email</p>
-        </form>
+
+          <h1>
+            Contact <span>ZTrust Tech</span>
+          </h1>
+
+          <p>
+            Reach us for IT infrastructure, storage, cybersecurity, software development,
+            API integration, cloud solutions, network connectivity, and enterprise support.
+            We respond quickly through WhatsApp, Telegram, phone, or email.
+          </p>
+
+          <div class="hero-actions">
+            <a href="tel:+251911563698" class="btn btn-primary">
+              <i class="fas fa-phone-volume"></i> Call General Manager
+            </a>
+
+            <a href="https://earth.google.com/web/search/9.0056,38.7636" class="btn btn-earth" target="_blank">
+              <i class="fa-solid fa-earth-africa"></i> Open in Google Earth
+            </a>
+
+            <a href="#contact-form" class="btn btn-ghost">
+              <i class="fas fa-paper-plane"></i> Send Inquiry
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>24h</strong>
+              <small>Response Time</small>
+            </div>
+            <div class="stat">
+              <strong>10+</strong>
+              <small>Years Experience</small>
+            </div>
+            <div class="stat">
+              <strong>24/7</strong>
+              <small>Emergency Support</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="earth-card">
+          <div class="earth-top">
+            <div class="earth-label">
+              <i class="fa-solid fa-earth-africa"></i>
+              Google Earth Location
+            </div>
+            <div class="gps-live">
+              <span></span> GPS LOCKED
+            </div>
+          </div>
+
+          <div class="globe-wrap">
+            <div class="orbit"></div>
+            <div class="orbit two"></div>
+            <div class="globe"></div>
+
+            <div class="gps-pin" title="ZTrust Tech GPS Location">
+              <i class="fas fa-location-dot"></i>
+            </div>
+          </div>
+
+          <div class="location-mini">
+            <h3>
+              <i class="fas fa-location-crosshairs"></i>
+              ZTrust Tech Office
+            </h3>
+            <p style="color:#94a3b8;">
+              Bole TK Building, Addis Ababa, Ethiopia.
+            </p>
+
+            <div class="coordinates">
+              <span id="gpsText">9.0056° N, 38.7636° E</span>
+              <button class="copy-btn" id="copyGps">
+                <i class="fas fa-copy"></i> Copy GPS
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.6!2d38.7636!3d9.0056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85c6b6f2d4f1%3A0x3c6d0e8f5b7c8a0!2sBole%2C%20Addis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" width="100%" height="300" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <section class="section" id="contact-form">
+    <div class="container">
+      <div class="section-heading">
+        <div class="section-kicker">
+          <i class="fas fa-headset"></i>
+          Talk to our IT team
+        </div>
+        <h2 class="section-title">
+          Let’s Build Your <span>IT Solution</span>
+        </h2>
+        <p class="section-subtitle">
+          Whether you need infrastructure deployment, cloud migration, storage design,
+          cybersecurity, software development, or emergency technical support, ZTrust Tech is ready.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="panel">
+          <div class="panel-inner">
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h3>Visit Our Office</h3>
+                <p>
+                  Bole TK Building, Addis Ababa, Ethiopia<br>
+                  <strong>GPS:</strong> 9.0056° N, 38.7636° E
+                </p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div>
+                <h3>Call Us</h3>
+                <p>
+                  General Manager: <strong>Ssasebih Nega</strong><br>
+                  <a href="tel:+251911563698">+251 911 563 698</a><br>
+                  Office: <a href="tel:+251115582626">+251 115 582 626</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h3>Email Us</h3>
+                <p>
+                  Sales & Inquiries:<br>
+                  <a href="mailto:sales2@ztrust.et"><strong>sales2@ztrust.et</strong></a><br>
+                  General: <a href="mailto:info@ztrusttech.com">info@ztrusttech.com</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <h3>Working Hours</h3>
+                <p>
+                  Monday – Friday: 8:30 AM – 5:30 PM<br>
+                  Saturday: 9:00 AM – 1:00 PM<br>
+                  <strong>24/7 Emergency Support Available</strong>
+                </p>
+              </div>
+            </div>
+
+            <div class="quick-buttons">
+              <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="btn btn-wa" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+
+              <a href="https://t.me/ZTrustTech" class="btn btn-tg" target="_blank">
+                <i class="fab fa-telegram-plane"></i> Telegram
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-inner">
+            <div class="form-header">
+              <h2><i class="fas fa-paper-plane" style="color:#60a5fa;"></i> Send Inquiry</h2>
+              <p>
+                Fill the form and we will prepare your message for WhatsApp.
+              </p>
+            </div>
+
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fullName">Full Name</label>
+                  <input id="fullName" type="text" placeholder="Your full name" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input id="email" type="email" placeholder="you@example.com" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">Phone / WhatsApp</label>
+                  <input id="phone" type="tel" placeholder="+251..." required>
+                </div>
+
+                <div class="form-group">
+                  <label for="service">Service Needed</label>
+                  <select id="service" required>
+                    <option value="">Select service</option>
+                    <option>IT Infrastructure</option>
+                    <option>Storage Solutions</option>
+                    <option>Application Development</option>
+                    <option>Database Management</option>
+                    <option>API Integration</option>
+                    <option>Network Connectivity</option>
+                    <option>Cloud Services</option>
+                    <option>Cybersecurity</option>
+                    <option>Emergency Support</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Project / Requirement Details</label>
+                <textarea id="message" placeholder="Describe your IT requirements..." required></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">
+                <i class="fab fa-whatsapp"></i> Send via WhatsApp
+              </button>
+
+              <p class="secure-note">
+                <i class="fas fa-shield-alt"></i>
+                Your inquiry is handled privately. We usually respond within 24 hours.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-section">
+        <div class="map-shell">
+          <iframe
+            src="https://www.google.com/maps?q=9.0056,38.7636&z=16&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+
+          <div class="map-overlay-card">
+            <h3>
+              <i class="fas fa-location-crosshairs"></i>
+              GPS Pointer Active
+            </h3>
+            <p>
+              Navigate to ZTrust Tech office using Google Maps or Google Earth.
+            </p>
+
+            <div class="map-actions">
+              <a class="mini-btn" href="https://www.google.com/maps?q=9.0056,38.7636" target="_blank">
+                <i class="fas fa-map-location-dot"></i> Google Maps
+              </a>
+
+              <a class="mini-btn green" href="https://earth.google.com/web/search/9.0056,38.7636" target="_blank">
+                <i class="fa-solid fa-earth-africa"></i> Google Earth
+              </a>
+            </div>
+          </div>
+
+          <div class="map-gps-pointer">
+            <i class="fas fa-map-pin"></i>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div><img src="Ztrust Logo 1 (2).png" class="footer-logo" onerror="this.src='https://placehold.co/45x45?text=ZT'"><p style="margin-top:12px; color:#94a3b8;">Complete IT Solutions Provider</p><div class="social-links"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="https://t.me/ZTrustTech" target="_blank"><i class="fab fa-telegram"></i></a><a href="https://wa.me/251911563698" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
-      <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-      <div><h4>Services</h4><a href="services.html">Infrastructure</a><a href="services.html">Storage</a><a href="services.html">Development</a><a href="services.html">API Integration</a><a href="services.html">Networking</a></div>
-      <div><h4>Contact</h4><p style="color:#94a3b8;"><i class="fas fa-user"></i> GM: Ssasebih Nega</p><p style="color:#94a3b8;"><i class="fas fa-phone"></i> +251 911 563 698</p><p style="color:#94a3b8;"><i class="fas fa-envelope"></i> sales2@ztrust.et</p><p style="color:#94a3b8;"><i class="fas fa-map-marker-alt"></i> Bole TK Building</p></div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="Ztrust Logo 1 (2).png" class="footer-logo" alt="ZTrust Tech" onerror="this.src='https://placehold.co/46x46?text=ZT'">
+          <p>
+            Complete IT Solutions Provider delivering infrastructure, storage,
+            software, cloud, networking, and cybersecurity services.
+          </p>
+
+          <div class="social-links">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://t.me/ZTrustTech" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://wa.me/251911563698" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <a href="services.html">Infrastructure</a>
+          <a href="services.html">Storage Solutions</a>
+          <a href="services.html">Development</a>
+          <a href="services.html">API Integration</a>
+          <a href="services.html">Networking</a>
+          <a href="services.html">Cybersecurity</a>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <p><i class="fas fa-user"></i> GM: Ssasebih Nega</p>
+          <p><i class="fas fa-phone"></i> +251 911 563 698</p>
+          <p><i class="fas fa-envelope"></i> sales2@ztrust.et</p>
+          <p><i class="fas fa-map-marker-alt"></i> Bole TK Building</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <p class="copyright">
+        © 2026 ZTrust Tech. 10+ Years of IT Excellence | All IT Solutions Under One Roof
+      </p>
     </div>
-    <hr><p class="copyright">© 2026 ZTrust Tech. 10+ Years of IT Excellence | All IT Solutions Under One Roof</p>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <div class="toast" id="toast">
+    GPS copied successfully.
   </div>
-</footer>
 
-<button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+  <script>
+    const menuToggle = document.getElementById('mobileMenu');
+    const navLinks = document.getElementById('navLinks');
 
-<script>
-  const menuToggle = document.getElementById('mobileMenu');
-  const navLinks = document.getElementById('navLinks');
-  if(menuToggle) {
-    menuToggle.addEventListener('click', (e) => { e.stopPropagation(); navLinks.classList.toggle('active'); });
-    document.querySelectorAll('.links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-  }
-  const backBtn = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 300) backBtn.classList.add('show');
-    else backBtn.classList.remove('show');
-  });
-  backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  
-  const form = document.getElementById('contactForm');
-  if(form) {
+    if (menuToggle) {
+      menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+        menuToggle.innerHTML = navLinks.classList.contains('active')
+          ? '<i class="fas fa-times"></i>'
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      document.querySelectorAll('.links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+          navLinks.classList.remove('active');
+          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      });
+    }
+
+    const backBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backBtn.classList.add('show');
+      } else {
+        backBtn.classList.remove('show');
+      }
+    });
+
+    backBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const toast = document.getElementById('toast');
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2300);
+    }
+
+    const copyGps = document.getElementById('copyGps');
+
+    copyGps.addEventListener('click', async () => {
+      const gps = '9.0056, 38.7636';
+
+      try {
+        await navigator.clipboard.writeText(gps);
+        showToast('GPS coordinates copied: ' + gps);
+      } catch (err) {
+        showToast('GPS: ' + gps);
+      }
+    });
+
+    const form = document.getElementById('contactForm');
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      alert("✅ Thank you! ZTrust Tech will contact you within 24 hours via WhatsApp or email.");
+
+      const name = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const whatsappMessage =
+        `Hello ZTrust Tech,%0A%0A` +
+        `I would like to request IT service.%0A%0A` +
+        `Name: ${encodeURIComponent(name)}%0A` +
+        `Email: ${encodeURIComponent(email)}%0A` +
+        `Phone: ${encodeURIComponent(phone)}%0A` +
+        `Service Needed: ${encodeURIComponent(service)}%0A%0A` +
+        `Message:%0A${encodeURIComponent(message)}%0A%0A` +
+        `Thank you.`;
+
+      window.open(`https://wa.me/251911563698?text=${whatsappMessage}`, '_blank');
+
+      showToast('Opening WhatsApp with your inquiry...');
       form.reset();
     });
-  }
-</script>
+  </script>
 </body>
 </html>
