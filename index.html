@@ -3,733 +3,1720 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZTrust Tech | Complete IT Solutions Provider</title>
+  <title>ZTrust Tech | Complete IT Solutions Provider - Home</title>
+
   <link rel="icon" type="image/png" href="ICON Final 1 (1).png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="shortcut icon" href="ICON Final 1 (1).png" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
+    *{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --blue:#3b82f6;--blue-l:#60a5fa;--indigo:#6366f1;
-      --purple:#8b5cf6;--cyan:#06b6d4;--emerald:#10b981;
-      --amber:#f59e0b;--rose:#f43f5e;
-      --bg:#030308;--card:rgba(10,12,22,0.8);
-      --border:rgba(59,130,246,0.08);
-      --text:#e2e8f0;--muted:#94a3b8;--dim:#64748b;
-      --ease:cubic-bezier(0.16,1,0.3,1);
-    }
-    html{scroll-behavior:smooth;cursor:none;}
-    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;cursor:none;}
-    ::selection{background:rgba(59,130,246,0.3);color:#fff;}
-    ::-webkit-scrollbar{width:5px;}
-    ::-webkit-scrollbar-track{background:transparent;}
-    ::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.2);border-radius:4px;}
-    a{text-decoration:none;color:inherit;}
-    .container{max-width:1280px;margin:0 auto;padding:0 28px;}
+      --bg:#03040a;
+      --bg2:#07111f;
+      --bg3:#0b1528;
+      --card:#0b1220;
+      --card2:#0f182b;
+      --line:rgba(96,165,250,.12);
 
-    /* ══════ CUSTOM CURSOR ══════ */
-    .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:#fff;border-radius:50%;pointer-events:none;z-index:99998;transition:transform 0.1s;mix-blend-mode:difference;}
-    .cursor-ring{position:fixed;top:0;left:0;width:40px;height:40px;border:1.5px solid rgba(59,130,246,0.4);border-radius:50%;pointer-events:none;z-index:99997;transition:width 0.4s var(--ease),height 0.4s var(--ease),border-color 0.4s;transform:translate(-50%,-50%);}
-    .cursor-ring.hover{width:64px;height:64px;border-color:var(--purple);border-width:2px;}
-    .cursor-glow{position:fixed;top:0;left:0;width:200px;height:200px;background:radial-gradient(circle,rgba(59,130,246,0.06),transparent 70%);border-radius:50%;pointer-events:none;z-index:-1;transform:translate(-50%,-50%);transition:opacity 0.3s;}
-    @media(max-width:768px){.cursor-dot,.cursor-ring,.cursor-glow{display:none;}}
-    html{cursor:auto;}body{cursor:auto;}
-    @media(hover:hover){.cursor-dot,.cursor-ring{display:block;}a,button,.svc-bento,.tilt-card{cursor:none;}}
+      --text:#edf3fc;
+      --muted:#a0b2ca;
+      --muted2:#70829a;
 
-    /* ══════ NOISE OVERLAY ══════ */
-    .noise{position:fixed;inset:0;z-index:9997;pointer-events:none;opacity:0.018;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      --blue:#3b82f6;
+      --blue2:#60a5fa;
+      --blue3:#1d4ed8;
+      --indigo:#6366f1;
+      --purple:#8b5cf6;
+      --cyan:#06b6d4;
+      --emerald:#10b981;
+      --amber:#f59e0b;
+      --rose:#f43f5e;
+
+      --glass:rgba(10,14,24,.72);
+      --glass2:rgba(13,18,31,.86);
+      --shadow-xl:0 30px 100px rgba(0,0,0,.52);
+      --shadow-lg:0 22px 70px rgba(0,0,0,.34);
+      --shadow-md:0 14px 42px rgba(0,0,0,.24);
     }
 
-    /* ══════ NAV ══════ */
-    .nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(3,3,8,0.4);backdrop-filter:blur(24px);border-bottom:1px solid rgba(59,130,246,0.04);transition:all 0.5s;}
-    .nav.scrolled{background:rgba(3,3,8,0.92);box-shadow:0 4px 50px rgba(0,0,0,0.4);}
-    .nav-in{display:flex;justify-content:space-between;align-items:center;padding:16px 0;}
-    .nav-brand{display:flex;align-items:center;gap:12px;}
-    .nav-brand img{height:52px;border-radius:12px;padding:3px 8px;background:rgba(10,12,20,0.5);filter:drop-shadow(0 0 14px rgba(59,130,246,0.8));transition:0.4s;}
-    .nav-brand img:hover{transform:scale(1.05) rotate(-2deg);}
-    .nav-menu{display:flex;gap:2rem;align-items:center;}
-    .nav-menu a{font-weight:600;font-size:0.88rem;color:var(--muted);position:relative;padding:4px 0;transition:0.3s;}
-    .nav-menu a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--purple));transition:0.4s var(--ease);border-radius:2px;transform:translateX(-50%);}
-    .nav-menu a:hover,.nav-menu a.active{color:#fff;}
-    .nav-menu a:hover::after,.nav-menu a.active::after{width:100%;}
-    .nav-btn{padding:10px 26px;border-radius:12px;font-weight:700;font-size:0.85rem;background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;transition:0.4s;position:relative;overflow:hidden;}
-    .nav-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transition:0.5s;}
-    .nav-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(59,130,246,0.35);}
-    .nav-btn:hover::before{left:100%;}
-    .burger{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;}
-    @media(max-width:820px){
-      .nav-menu{position:fixed;top:76px;left:-100%;width:75%;max-width:280px;height:calc(100vh - 76px);background:rgba(3,3,8,0.98);flex-direction:column;padding:2.5rem 2rem;gap:1.5rem;border-right:1px solid rgba(59,130,246,0.1);transition:left 0.5s var(--ease);z-index:1001;backdrop-filter:blur(40px);}
-      .nav-menu.open{left:0;}
-      .burger{display:block;}
-      .nav-btn{display:none;}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(59,130,246,.08), transparent 22%),
+        radial-gradient(circle at 92% 8%, rgba(139,92,246,.08), transparent 22%),
+        radial-gradient(circle at 50% 100%, rgba(6,182,212,.05), transparent 26%),
+        linear-gradient(180deg,#020308 0%,#040712 35%,#03040a 100%);
+      overflow-x:hidden;
+      line-height:1.6;
     }
 
-    /* ════════════════════════════════════════
-       HERO — FULL COVERAGE WITH MORPH BLOBS
-    ════════════════════════════════════════ */
-    .hero{position:relative;width:100%;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
-    .hero-bg{position:absolute;inset:0;background:url("Ztrust Color (2).png") center/cover no-repeat;z-index:0;}
-    .hero-bg::after{content:'';position:absolute;inset:0;background:
-      radial-gradient(ellipse 100% 80% at 30% 50%,transparent 10%,rgba(3,3,8,0.35) 50%,rgba(3,3,8,0.95) 100%),
-      linear-gradient(180deg,rgba(3,3,8,0.2) 0%,transparent 25%,transparent 65%,rgba(3,3,8,0.98) 100%);
+    img{display:block;max-width:100%}
+    .container{max-width:1420px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+    .section{padding:110px 0;position:relative}
+    .section-header{text-align:center;margin-bottom:68px}
+    .section-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 16px;border-radius:999px;
+      background:rgba(59,130,246,.08);
+      border:1px solid rgba(96,165,250,.12);
+      color:var(--blue2);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;
+      margin-bottom:16px;
     }
-    /* Morphing blobs */
-    .hero-blobs{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;}
-    .blob{position:absolute;border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;filter:blur(100px);animation:morph 20s ease-in-out infinite;opacity:0.1;}
-    .blob.b1{width:600px;height:500px;background:var(--blue);top:-10%;right:-5%;animation-duration:18s;}
-    .blob.b2{width:500px;height:400px;background:var(--purple);bottom:10%;left:-8%;animation-duration:22s;animation-delay:3s;}
-    .blob.b3{width:400px;height:350px;background:var(--cyan);top:30%;left:40%;animation-duration:25s;animation-delay:6s;}
-    @keyframes morph{
-      0%,100%{border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;transform:translate(0,0) rotate(0deg);}
-      25%{border-radius:58% 42% 75% 25% / 76% 46% 54% 24%;transform:translate(40px,-30px) rotate(5deg);}
-      50%{border-radius:50% 50% 33% 67% / 55% 27% 73% 45%;transform:translate(-20px,50px) rotate(-3deg);}
-      75%{border-radius:33% 67% 58% 42% / 63% 68% 32% 37%;transform:translate(30px,20px) rotate(4deg);}
+    .section-title{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(2rem,3.6vw,3.4rem);
+      line-height:1.04;font-weight:900;margin-bottom:16px;
     }
-    /* Hero grid */
-    .hero-grid{position:absolute;inset:0;z-index:1;pointer-events:none;
-      background-image:linear-gradient(rgba(59,130,246,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.02) 1px,transparent 1px);
-      background-size:100px 100px;opacity:0.5;
+    .section-sub{
+      max-width:760px;margin:0 auto;color:var(--muted2);font-size:1.04rem;
     }
-    /* Floating decorative lines */
-    .hero-lines{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
-    .h-line{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(59,130,246,0.08),transparent);animation:lineFloat linear infinite;}
-    .h-line:nth-child(1){width:300px;top:20%;left:-300px;animation-duration:12s;}
-    .h-line:nth-child(2){width:200px;top:50%;left:-200px;animation-duration:15s;animation-delay:3s;}
-    .h-line:nth-child(3){width:250px;top:75%;left:-250px;animation-duration:18s;animation-delay:6s;}
-    @keyframes lineFloat{0%{transform:translateX(0);}100%{transform:translateX(calc(100vw + 400px));}}
 
-    /* Hero content */
-    .hero-content{position:relative;z-index:5;max-width:680px;padding:140px 0 80px;}
+    /* BACKGROUND */
+    .grid-bg{
+      position:fixed;inset:0;z-index:-4;pointer-events:none;
+      background-image:
+        linear-gradient(rgba(59,130,246,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,.018) 1px, transparent 1px);
+      background-size:68px 68px;
+      mask-image:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.9) 18%, rgba(0,0,0,.9) 84%, transparent 100%);
+    }
+    .noise{
+      position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:.035;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='white' fill-opacity='1'%3E%3Ccircle cx='6' cy='10' r='1'/%3E%3Ccircle cx='42' cy='27' r='1'/%3E%3Ccircle cx='87' cy='52' r='1'/%3E%3Ccircle cx='132' cy='21' r='1'/%3E%3Ccircle cx='159' cy='95' r='1'/%3E%3Ccircle cx='120' cy='130' r='1'/%3E%3Ccircle cx='54' cy='118' r='1'/%3E%3Ccircle cx='18' cy='148' r='1'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .orb{
+      position:fixed;border-radius:50%;filter:blur(140px);opacity:.08;pointer-events:none;z-index:-2
+    }
+    .orb.o1{width:650px;height:650px;background:var(--blue);top:-200px;right:-150px;animation:orb 30s ease-in-out infinite}
+    .orb.o2{width:520px;height:520px;background:var(--purple);bottom:-150px;left:-100px;animation:orb 34s ease-in-out infinite reverse}
+    .orb.o3{width:380px;height:380px;background:var(--cyan);top:42%;left:40%;animation:orb 24s ease-in-out infinite 5s}
+    @keyframes orb{
+      0%,100%{transform:translate(0,0)}
+      33%{transform:translate(54px,-56px)}
+      66%{transform:translate(-42px,46px)}
+    }
+
+    /* LOADER */
+    .loader{
+      position:fixed;inset:0;background:#020207;z-index:99999;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      transition:opacity .8s ease,visibility .8s ease;
+    }
+    .loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+    .loader-wrap{position:relative;width:190px;height:190px;margin-bottom:26px}
+    .loader-ring{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      border-radius:50%;border:2px solid transparent;
+    }
+    .loader-ring:nth-child(1){width:178px;height:178px;border-top-color:var(--blue);border-right-color:rgba(59,130,246,.24);animation:spin 1.65s linear infinite}
+    .loader-ring:nth-child(2){width:148px;height:148px;border-top-color:var(--purple);border-left-color:rgba(139,92,246,.24);animation:spin 1.18s linear infinite reverse}
+    .loader-ring:nth-child(3){width:118px;height:118px;border-bottom-color:var(--cyan);border-right-color:rgba(6,182,212,.22);animation:spin .92s linear infinite}
+    @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+    .loader-logo{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:134px;height:134px;object-fit:contain;
+      filter:
+        brightness(1.2)
+        contrast(1.18)
+        saturate(1.18)
+        drop-shadow(0 0 18px rgba(255,255,255,.10))
+        drop-shadow(0 0 38px rgba(59,130,246,.9))
+        drop-shadow(0 0 76px rgba(99,102,241,.32));
+      animation:loaderPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes loaderPulse{
+      0%,100%{transform:translate(-50%,-50%) scale(1)}
+      50%{transform:translate(-50%,-50%) scale(1.08)}
+    }
+    .loader-text{
+      font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--blue2);
+      letter-spacing:4px;text-transform:uppercase;margin-bottom:14px
+    }
+    .loader-bar{width:250px;height:3px;background:rgba(59,130,246,.1);border-radius:999px;overflow:hidden}
+    .loader-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan));animation:loadFill 2.5s ease-in-out forwards}
+    @keyframes loadFill{0%{width:0}60%{width:70%}100%{width:100%}}
+    .loader-sub{margin-top:10px;color:#3b4a61;font-size:.68rem;font-family:'JetBrains Mono',monospace}
+
+    /* NAV */
+    .nav{
+      position:fixed;top:0;left:0;width:100%;z-index:1000;
+      background:rgba(3,4,10,.32);
+      backdrop-filter:blur(24px);
+      border-bottom:1px solid rgba(96,165,250,.06);
+      transition:.35s ease;
+    }
+    .nav.scrolled{
+      background:rgba(3,4,10,.9);
+      border-bottom-color:rgba(96,165,250,.12);
+      box-shadow:0 14px 40px rgba(0,0,0,.34);
+    }
+    .nav-inner{
+      display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 0;
+    }
+    .brand-wrap{display:flex;align-items:center;gap:14px}
+    .nav-logo{
+      height:68px;width:auto;object-fit:contain;border-radius:18px;padding:5px;
+      background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(59,130,246,.08));
+      border:1px solid rgba(96,165,250,.14);
+      box-shadow:0 12px 34px rgba(0,0,0,.28),0 0 34px rgba(59,130,246,.26);
+      filter:
+        brightness(1.18)
+        contrast(1.16)
+        saturate(1.18)
+        drop-shadow(0 0 16px rgba(59,130,246,.65));
+    }
+    .brand-text h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;color:#fff}
+    .brand-text span{
+      display:block;margin-top:5px;color:var(--blue2);font-size:.66rem;font-family:'JetBrains Mono',monospace;
+      letter-spacing:1.5px;text-transform:uppercase
+    }
+    .links{display:flex;gap:2rem;align-items:center}
+    .links a{
+      text-decoration:none;color:var(--muted);font-weight:600;font-size:.92rem;position:relative;padding:8px 0;transition:.3s
+    }
+    .links a::after{
+      content:"";position:absolute;left:0;bottom:0;width:0;height:2px;border-radius:2px;
+      background:linear-gradient(90deg,var(--blue),var(--purple));transition:.3s
+    }
+    .links a:hover,.links a.active{color:#fff}
+    .links a:hover::after,.links a.active::after{width:100%}
+    .nav-cta{
+      text-decoration:none;color:#fff;font-weight:800;font-size:.88rem;
+      padding:11px 24px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--indigo));
+      box-shadow:0 12px 28px rgba(59,130,246,.28);transition:.3s
+    }
+    .nav-cta:hover{transform:translateY(-2px)}
+    .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer}
+
+    /* HERO */
+    .hero{
+      min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;isolation:isolate;
+      background:
+        linear-gradient(120deg, rgba(3,5,15,.90) 0%, rgba(4,8,20,.60) 34%, rgba(3,4,10,.90) 100%),
+        url("Ztrust Color 2.png") center/cover no-repeat;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(59,130,246,.22), transparent 25%),
+        radial-gradient(circle at 86% 16%, rgba(139,92,246,.18), transparent 24%),
+        radial-gradient(circle at 50% 60%, rgba(6,182,212,.07), transparent 30%);
+    }
+    .hero::after{
+      content:"";position:absolute;left:0;right:0;bottom:0;height:180px;z-index:1;pointer-events:none;
+      background:linear-gradient(180deg,transparent 0%,rgba(3,4,10,.72) 55%,rgba(3,4,10,1) 100%);
+    }
+
+    .hero-tech-grid{
+      position:absolute;inset:0;z-index:1;pointer-events:none;
+      background-image:
+        linear-gradient(rgba(96,165,250,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96,165,250,.03) 1px, transparent 1px);
+      background-size:120px 120px;
+      mask-image:radial-gradient(circle at center, rgba(0,0,0,.95), transparent 88%);
+    }
+
+    .hero-ripple-stack{
+      position:absolute;inset:auto 0 10%;z-index:1;pointer-events:none;
+      display:flex;flex-direction:column;gap:10px;opacity:.42;
+    }
+    .hero-ripple-stack img{
+      width:100%;height:90px;object-fit:cover;mix-blend-mode:screen;filter:brightness(1.12) contrast(1.15);
+      transform:scale(1.04);
+    }
+    .hero-ripple-stack img:nth-child(2){opacity:.55;transform:scale(1.02) translateY(-10px)}
+    .hero-ripple-stack img:nth-child(3){opacity:.35;transform:scale(1) translateY(-18px)}
+
+    .hero-beams{
+      position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden
+    }
+    .beam{
+      position:absolute;height:1px;
+      background:linear-gradient(90deg,transparent,rgba(96,165,250,.46),transparent);
+      filter:blur(.2px);animation:beamMove linear infinite;opacity:.55
+    }
+    .beam.b1{width:36vw;top:20%;left:-12%;animation-duration:10s}
+    .beam.b2{width:28vw;top:34%;left:28%;animation-duration:12s;animation-delay:2s}
+    .beam.b3{width:42vw;top:62%;left:-8%;animation-duration:14s;animation-delay:1.2s}
+    .beam.b4{width:20vw;top:76%;left:45%;animation-duration:11s;animation-delay:3s}
+    @keyframes beamMove{
+      0%{transform:translateX(-4vw);opacity:0}
+      15%{opacity:.55}
+      100%{transform:translateX(18vw);opacity:0}
+    }
+
+    .hero-particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+    .hp{
+      position:absolute;border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.9), rgba(96,165,250,.35) 45%, transparent 72%);
+      animation:heroFloat linear infinite;opacity:.42
+    }
+    .hp1{width:8px;height:8px;left:8%;top:88%;animation-duration:18s}
+    .hp2{width:11px;height:11px;left:20%;top:84%;animation-duration:20s;animation-delay:2s}
+    .hp3{width:6px;height:6px;left:36%;top:90%;animation-duration:14s;animation-delay:1s}
+    .hp4{width:10px;height:10px;left:52%;top:87%;animation-duration:22s;animation-delay:3s}
+    .hp5{width:7px;height:7px;left:66%;top:90%;animation-duration:16s;animation-delay:2.4s}
+    .hp6{width:10px;height:10px;left:81%;top:88%;animation-duration:19s;animation-delay:4s}
+    .hp7{width:6px;height:6px;left:93%;top:86%;animation-duration:15s;animation-delay:1.2s}
+    @keyframes heroFloat{
+      0%{transform:translateY(0) translateX(0) scale(.85);opacity:0}
+      10%{opacity:.42}
+      60%{transform:translateY(-42vh) translateX(16px) scale(1)}
+      100%{transform:translateY(-82vh) translateX(-10px) scale(1.12);opacity:0}
+    }
+
+    .hero-grid{
+      min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px;
+      padding:110px 0 86px;position:relative;z-index:2;
+    }
+    .hero-left{max-width:760px}
     .hero-badge{
       display:inline-flex;align-items:center;gap:10px;
-      background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.15);
-      padding:10px 24px;border-radius:50px;font-size:0.72rem;font-weight:700;
-      color:var(--blue-l);text-transform:uppercase;letter-spacing:3px;
-      margin-bottom:28px;backdrop-filter:blur(12px);
-      opacity:0;transform:translateY(20px);
-      animation:heroReveal 0.8s var(--ease) 0.3s forwards;
+      padding:10px 20px;border-radius:999px;
+      background:rgba(59,130,246,.08);border:1px solid rgba(96,165,250,.14);
+      color:var(--blue2);font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:2.5px;
+      margin-bottom:22px;box-shadow:0 10px 28px rgba(59,130,246,.08);
+      animation:fadeUp .8s ease .15s both;
     }
-    .hero-badge .pulse-dot{width:7px;height:7px;background:var(--emerald);border-radius:50%;animation:pulseDot 2s ease infinite;flex-shrink:0;}
-    @keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.5);}50%{box-shadow:0 0 0 8px rgba(16,185,129,0);}}
+    .hero-badge .live{width:8px;height:8px;border-radius:50%;background:var(--emerald);animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.45}}
+
     .hero-title{
-      font-family:'Space Grotesk',sans-serif;font-weight:800;
-      font-size:clamp(2.6rem,6vw,4.2rem);line-height:1.05;
-      margin-bottom:22px;letter-spacing:-0.03em;
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(3rem,6vw,6.2rem);
+      line-height:.95;font-weight:900;letter-spacing:-2.4px;margin-bottom:18px;
+      animation:fadeUp .8s ease .3s both;
     }
-    .hero-title .line{display:block;overflow:hidden;}
-    .hero-title .word{display:inline-block;opacity:0;transform:translateY(100%);animation:wordUp 0.8s var(--ease) forwards;}
-    .hero-title .accent{
-      background:linear-gradient(135deg,var(--blue-l),var(--purple),var(--cyan));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-      background-size:200% auto;animation:gradShift 5s ease infinite;
+    .hero-title .grad{
+      background:linear-gradient(135deg,#fff 0%,#dbeafe 20%,#7dd3fc 50%,#a78bfa 82%,#fff 100%);
+      background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+      animation:grad 6s ease-in-out infinite;
     }
-    @keyframes wordUp{to{opacity:1;transform:translateY(0);}}
-    @keyframes gradShift{0%,100%{background-position:0% center;}50%{background-position:100% center;}}
-    .hero-desc{font-size:1.1rem;color:var(--muted);line-height:1.85;max-width:500px;margin-bottom:16px;opacity:0;transform:translateY(20px);animation:heroReveal 0.8s var(--ease) 0.9s forwards;}
-    .hero-typing{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--blue-l);min-height:1.5em;margin-bottom:36px;opacity:0;animation:heroReveal 0.8s var(--ease) 1.1s forwards;}
-    .hero-typing .cur{display:inline-block;width:2px;height:1em;background:var(--blue);margin-left:3px;animation:blink 1s step-end infinite;vertical-align:text-bottom;}
-    @keyframes blink{50%{opacity:0;}}
-    .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:50px;opacity:0;transform:translateY(20px);animation:heroReveal 0.8s var(--ease) 1.3s forwards;}
-    @keyframes heroReveal{to{opacity:1;transform:translateY(0);}}
-    .btn-mag{
-      padding:16px 36px;border-radius:14px;font-weight:700;font-size:0.92rem;
-      display:inline-flex;align-items:center;gap:10px;transition:all 0.4s var(--ease);
-      font-family:'Inter',sans-serif;position:relative;overflow:hidden;
-    }
-    .btn-mag.pri{background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;box-shadow:0 6px 30px rgba(59,130,246,0.3);}
-    .btn-mag.pri:hover{transform:translateY(-4px);box-shadow:0 14px 45px rgba(59,130,246,0.45);}
-    .btn-mag.pri::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);transition:0.6s;}
-    .btn-mag.pri:hover::before{left:100%;}
-    .btn-mag.sec{background:rgba(255,255,255,0.04);color:#fff;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px);}
-    .btn-mag.sec:hover{border-color:var(--blue);background:rgba(59,130,246,0.06);transform:translateY(-4px);}
-    .hero-stats{display:flex;gap:44px;opacity:0;animation:heroReveal 0.8s var(--ease) 1.6s forwards;}
-    .h-stat{position:relative;padding-left:16px;}
-    .h-stat::before{content:'';position:absolute;left:0;top:4px;width:3px;height:calc(100% - 8px);border-radius:2px;background:linear-gradient(180deg,var(--blue),var(--purple));opacity:0.3;}
-    .h-stat-num{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.5rem;color:#fff;}
-    .h-stat-num em{font-style:normal;color:var(--blue-l);font-size:0.9rem;}
-    .h-stat-lbl{font-size:0.68rem;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;margin-top:2px;font-weight:500;}
-    .hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:5;text-align:center;opacity:0;animation:heroReveal 0.8s var(--ease) 2s forwards;}
-    .scroll-txt{font-size:0.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:3px;margin-bottom:10px;font-weight:600;}
-    .scroll-line{width:1px;height:40px;background:linear-gradient(180deg,var(--blue),transparent);margin:0 auto;animation:scrollPulse 2s ease infinite;}
-    @keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1);}50%{opacity:0.3;transform:scaleY(0.6);}}
+    @keyframes grad{0%,100%{background-position:0% center}50%{background-position:100% center}}
 
-    /* ══════ RIPPLE GIF ══════ */
-    .ripple{position:relative;width:100%;margin-top:-2px;z-index:6;overflow:hidden;background:var(--bg);}
-    .ripple img{width:100%;display:block;mix-blend-mode:screen;opacity:0.7;filter:brightness(1.15);}
-    .ripple::before,.ripple::after{content:'';position:absolute;left:0;right:0;height:100px;z-index:2;pointer-events:none;}
-    .ripple::before{top:0;background:linear-gradient(180deg,var(--bg),transparent);}
-    .ripple::after{bottom:0;background:linear-gradient(0deg,var(--bg),transparent);}
+    .hero-desc{
+      max-width:690px;color:#c3d0e0;font-size:1.08rem;margin-bottom:12px;
+      animation:fadeUp .8s ease .48s both;
+    }
+    .hero-typing{
+      color:var(--blue2);font-family:'JetBrains Mono',monospace;font-size:.82rem;min-height:1.5em;margin-bottom:28px;
+      animation:fadeUp .8s ease .62s both;
+    }
+    .cursor{display:inline-block;width:2px;height:1em;background:var(--blue);margin-left:4px;vertical-align:text-bottom;animation:blink 1s step-end infinite}
+    @keyframes blink{50%{opacity:0}}
 
-    /* ══════ SECTIONS ══════ */
-    .section{padding:100px 0;position:relative;}
-    .section-alt{background:rgba(59,130,246,0.015);}
-    .sec-head{text-align:center;margin-bottom:64px;}
-    .sec-label{display:inline-flex;align-items:center;gap:8px;font-size:0.7rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:3px;margin-bottom:14px;}
-    .sec-heading{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;margin-bottom:14px;letter-spacing:-0.02em;}
-    .sec-heading em{font-style:normal;background:linear-gradient(135deg,var(--blue-l),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;}
-    .sec-desc{color:var(--dim);max-width:560px;margin:0 auto;font-size:1rem;line-height:1.7;}
+    .hero-actions{
+      display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px;
+      animation:fadeUp .8s ease .78s both;
+    }
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+      padding:16px 32px;border-radius:16px;font-weight:800;font-size:.95rem;transition:.35s ease;position:relative;overflow:hidden
+    }
+    .btn::before{
+      content:"";position:absolute;top:0;left:-100%;width:60%;height:100%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+      transition:.6s ease;
+    }
+    .btn:hover::before{left:130%}
+    .btn.primary{
+      background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;
+      box-shadow:0 16px 38px rgba(59,130,246,.30);
+    }
+    .btn.primary:hover{transform:translateY(-3px)}
+    .btn.secondary{
+      color:#eef4ff;background:rgba(12,16,28,.62);border:1px solid rgba(99,102,241,.22);backdrop-filter:blur(12px)
+    }
+    .btn.secondary:hover{transform:translateY(-3px);background:rgba(59,130,246,.08)}
 
-    /* ════════════════════════════════════════
-       BENTO GRID — SERVICES
-    ════════════════════════════════════════ */
-    .bento{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(200px,auto);gap:18px;}
-    .svc-bento{
-      position:relative;background:var(--card);border:1px solid var(--border);
-      border-radius:24px;padding:32px 28px;overflow:hidden;
-      transition:all 0.5s var(--ease);display:flex;flex-direction:column;justify-content:flex-end;
+    .hero-stat-row{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:730px;
+      animation:fadeUp .8s ease .94s both;
     }
-    .svc-bento::before{
-      content:'';position:absolute;inset:0;
-      background:linear-gradient(135deg,var(--holo-a,rgba(59,130,246,0)),var(--holo-b,rgba(139,92,246,0)));
-      opacity:0;transition:opacity 0.4s;border-radius:inherit;pointer-events:none;
+    .hero-stat{
+      background:rgba(10,14,26,.58);
+      border:1px solid rgba(96,165,250,.12);
+      backdrop-filter:blur(18px);
+      padding:18px;border-radius:20px;box-shadow:0 10px 28px rgba(0,0,0,.16);position:relative;overflow:hidden
     }
-    .svc-bento:hover::before{opacity:1;}
-    .svc-bento::after{
-      content:'';position:absolute;top:0;left:0;right:0;height:3px;
-      background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan),var(--blue));
-      background-size:300% 100%;opacity:0;transition:0.4s;
+    .hero-stat::after{
+      content:"";position:absolute;right:-22px;bottom:-36px;width:110px;height:110px;border-radius:50%;
+      background:radial-gradient(circle, rgba(59,130,246,.18), transparent 70%);
     }
-    .svc-bento:hover::after{opacity:1;animation:borderFlow 3s linear infinite;}
-    @keyframes borderFlow{0%{background-position:0% 0%;}100%{background-position:300% 0%;}}
-    .svc-bento:hover{transform:translateY(-6px);border-color:rgba(59,130,246,0.2);box-shadow:0 24px 60px rgba(0,0,0,0.35),0 0 40px rgba(59,130,246,0.04);}
-    .svc-bento.featured{grid-column:1/3;grid-row:1/3;padding:44px 40px;}
-    .svc-ico{
-      width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;
-      font-size:1.15rem;color:#fff;margin-bottom:18px;position:relative;z-index:2;
+    .hero-stat strong{
+      display:block;font-size:1.74rem;line-height:1;color:#fff;font-weight:900;font-family:'Space Grotesk',sans-serif
     }
-    .svc-bento.featured .svc-ico{width:72px;height:72px;border-radius:20px;font-size:1.5rem;margin-bottom:24px;}
-    .svc-bento h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;font-family:'Space Grotesk',sans-serif;position:relative;z-index:2;}
-    .svc-bento.featured h3{font-size:1.5rem;margin-bottom:12px;}
-    .svc-bento p{color:var(--dim);font-size:0.84rem;line-height:1.7;position:relative;z-index:2;}
-    .svc-bento.featured p{font-size:0.92rem;max-width:400px;}
-    .svc-arrow{
-      display:inline-flex;align-items:center;gap:6px;margin-top:16px;
-      font-size:0.78rem;font-weight:600;color:var(--blue-l);
-      transition:0.3s;position:relative;z-index:2;
+    .hero-stat span{
+      display:block;margin-top:6px;color:#94a9c5;font-size:.76rem;text-transform:uppercase;letter-spacing:1.6px;font-weight:700
     }
-    .svc-arrow i{transition:0.3s;font-size:0.65rem;}
-    .svc-bento:hover .svc-arrow{gap:10px;}
-    .svc-tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;position:relative;z-index:2;}
-    .svc-mini-tag{font-size:0.6rem;padding:3px 10px;border-radius:6px;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.08);color:var(--blue-l);font-weight:600;}
-    /* holographic shimmer */
-    .svc-bento .holo-shine{
-      position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;
-      background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,0.03) 0%,transparent 50%);
-      opacity:0;transition:opacity 0.3s;
-    }
-    .svc-bento:hover .holo-shine{opacity:1;}
 
-    /* ══════ STATS ══════ */
-    .stats-strip{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+    .hero-right{
+      display:flex;justify-content:center;align-items:center;
+      animation:fadeUp .95s ease .5s both;
     }
-    .stat-pill{
-      background:var(--card);border:1px solid var(--border);border-radius:20px;
-      padding:36px 20px;text-align:center;transition:0.4s var(--ease);position:relative;overflow:hidden;
+    .hero-right-wrap{
+      width:min(620px,100%);position:relative;
     }
-    .stat-pill::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(59,130,246,0.04),transparent 70%);opacity:0;transition:0.4s;}
-    .stat-pill:hover::before{opacity:1;}
-    .stat-pill:hover{transform:translateY(-5px);border-color:rgba(59,130,246,0.15);box-shadow:0 16px 50px rgba(0,0,0,0.3);}
-    .stat-pill i{font-size:1.3rem;margin-bottom:14px;display:block;}
-    .stat-val{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:2.4rem;color:#fff;}
-    .stat-val em{font-style:normal;color:var(--blue-l);font-size:1.1rem;}
-    .stat-lbl{font-size:0.68rem;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;margin-top:6px;font-weight:500;}
-
-    /* ══════ WHY US — 3D TILT ══════ */
-    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-    .tilt-card{
-      background:var(--card);border:1px solid var(--border);border-radius:22px;
-      padding:36px 28px;transition:all 0.15s;position:relative;overflow:hidden;
-      transform-style:preserve-3d;will-change:transform;
+    .hero-right-wrap::before{
+      content:"";position:absolute;inset:-18px;border-radius:38px;
+      background:conic-gradient(from 160deg, rgba(59,130,246,.18), rgba(139,92,246,.16), rgba(6,182,212,.15), rgba(59,130,246,.18));
+      filter:blur(18px);opacity:.9;z-index:0;
     }
-    .tilt-card:hover{border-color:rgba(59,130,246,0.2);box-shadow:0 20px 60px rgba(0,0,0,0.3);}
-    .tilt-card .shine{
-      position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-      background:radial-gradient(circle at var(--tx,50%) var(--ty,50%),rgba(255,255,255,0.04),transparent 60%);
-      opacity:0;transition:opacity 0.3s;
+
+    .hero-panel{
+      position:relative;z-index:1;
+      background:linear-gradient(180deg,rgba(12,16,28,.90),rgba(8,11,19,.84));
+      border:1px solid rgba(96,165,250,.14);
+      border-radius:34px;padding:22px;
+      box-shadow:var(--shadow-xl),0 0 40px rgba(59,130,246,.07);
+      backdrop-filter:blur(18px);
+      overflow:hidden;
     }
-    .tilt-card:hover .shine{opacity:1;}
-    .why-num{
-      font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.8rem;
-      background:linear-gradient(135deg,var(--blue),var(--purple));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-      margin-bottom:14px;line-height:1;transform:translateZ(20px);
+    .hero-panel::after{
+      content:"";position:absolute;inset:0;
+      background:
+        linear-gradient(135deg,transparent 0%,rgba(255,255,255,.03) 22%,transparent 40%),
+        radial-gradient(circle at 10% 10%, rgba(59,130,246,.12), transparent 35%);
+      pointer-events:none;
     }
-    .tilt-card h3{font-size:1.05rem;font-weight:700;margin-bottom:10px;font-family:'Space Grotesk',sans-serif;transform:translateZ(15px);}
-    .tilt-card p{color:var(--dim);font-size:0.85rem;line-height:1.7;transform:translateZ(10px);}
 
-    /* ══════ TESTIMONIALS ══════ */
-    .testi-track{display:flex;gap:20px;overflow:hidden;padding:10px 0;position:relative;}
-    .testi-track::before,.testi-track::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:3;pointer-events:none;}
-    .testi-track::before{left:0;background:linear-gradient(90deg,var(--bg),transparent);}
-    .testi-track::after{right:0;background:linear-gradient(270deg,var(--bg),transparent);}
-    .testi-card{
-      min-width:360px;max-width:360px;background:var(--card);border:1px solid var(--border);
-      border-radius:22px;padding:30px;flex-shrink:0;transition:0.4s;position:relative;
+    .panel-top{
+      display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;position:relative;z-index:2
     }
-    .testi-card:hover{border-color:rgba(59,130,246,0.2);transform:translateY(-4px);}
-    .testi-stars{color:var(--amber);font-size:0.8rem;letter-spacing:2px;margin-bottom:12px;}
-    .testi-quote{color:#c8d0dd;font-size:0.88rem;line-height:1.8;margin-bottom:18px;font-style:italic;}
-    .testi-author{display:flex;align-items:center;gap:12px;}
-    .testi-avatar{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;color:#fff;flex-shrink:0;}
-    .testi-name{font-weight:700;font-size:0.82rem;}
-    .testi-role{font-size:0.68rem;color:var(--dim);}
-
-    /* ══════ CTA ══════ */
-    .cta-box{
-      border-radius:28px;overflow:hidden;position:relative;
-      padding:70px 40px;text-align:center;
-      background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(99,102,241,0.06),rgba(139,92,246,0.05));
-      border:1px solid rgba(59,130,246,0.08);
+    .hero-chip{
+      padding:8px 14px;border-radius:999px;font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      background:rgba(59,130,246,.08);border:1px solid rgba(96,165,250,.12);color:var(--blue2)
     }
-    .cta-box h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;margin-bottom:14px;}
-    .cta-box h2 em{font-style:normal;background:linear-gradient(135deg,var(--blue-l),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;}
-    .cta-box p{color:var(--dim);margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto;}
-    .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-
-    /* ══════ CONTACT ══════ */
-    .contact-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:20px 0 16px;}
-    .c-chip{display:flex;align-items:center;gap:10px;padding:12px 22px;border-radius:12px;background:var(--card);border:1px solid var(--border);font-size:0.88rem;font-weight:500;transition:0.3s;}
-    .c-chip:hover{border-color:rgba(59,130,246,0.2);transform:translateY(-2px);}
-    .c-chip i{color:var(--blue);font-size:0.9rem;}
-    .msg-btns{display:flex;gap:12px;justify-content:center;padding-bottom:30px;}
-    .msg-btn{padding:12px 26px;border-radius:12px;color:#fff;font-weight:700;font-size:0.85rem;display:inline-flex;align-items:center;gap:8px;transition:0.3s;}
-    .msg-btn.wa{background:linear-gradient(135deg,#25d366,#128c7e);}
-    .msg-btn.tg{background:linear-gradient(135deg,#0088cc,#005f8c);}
-    .msg-btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.3);}
-
-    /* ══════ FOOTER ══════ */
-    .footer{background:rgba(3,3,8,0.98);border-top:1px solid rgba(30,41,59,0.25);padding:60px 0 28px;}
-    .ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px;}
-    .ft-brand img{height:50px;border-radius:10px;padding:3px 8px;background:rgba(10,12,20,0.5);filter:drop-shadow(0 0 10px rgba(59,130,246,0.5));margin-bottom:14px;}
-    .ft-brand p{color:var(--dim);font-size:0.86rem;line-height:1.7;margin-bottom:14px;}
-    .ft-social{display:flex;gap:10px;}
-    .ft-social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(30,41,59,0.4);border:1px solid rgba(30,41,59,0.5);color:var(--muted);font-size:0.95rem;transition:0.3s;}
-    .ft-social a:hover{background:rgba(59,130,246,0.1);color:var(--blue-l);transform:translateY(-2px);}
-    .footer h4{font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:16px;font-size:0.9rem;}
-    .footer ul{list-style:none;}
-    .footer ul li{margin-bottom:10px;}
-    .footer ul a{color:var(--dim);font-size:0.86rem;transition:0.3s;}
-    .footer ul a:hover{color:var(--blue-l);padding-left:4px;}
-    .ft-info-item{display:flex;align-items:center;gap:8px;color:var(--dim);font-size:0.86rem;margin-bottom:10px;}
-    .ft-info-item i{color:var(--blue);font-size:0.75rem;width:16px;}
-    .ft-bottom{text-align:center;padding-top:24px;border-top:1px solid rgba(30,41,59,0.25);font-size:0.78rem;color:#374151;}
-    .ft-bottom a{color:var(--blue-l);}
-
-    /* ══════ FLOATING ══════ */
-    .fab-wrap{position:fixed;bottom:28px;left:28px;display:flex;flex-direction:column;gap:12px;z-index:999;}
-    .fab{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;color:#fff;transition:0.3s;position:relative;}
-    .fab::after{content:'';position:absolute;inset:-2px;border-radius:16px;background:inherit;opacity:0.25;filter:blur(8px);z-index:-1;}
-    .fab.wa{background:linear-gradient(135deg,#25d366,#128c7e);}
-    .fab.tg{background:linear-gradient(135deg,#0088cc,#005f8c);}
-    .fab:hover{transform:translateY(-3px) scale(1.08);}
-    .top-btn{position:fixed;bottom:28px;right:28px;width:46px;height:46px;border-radius:14px;border:none;background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:0.3s;z-index:999;box-shadow:0 4px 20px rgba(59,130,246,0.25);}
-    .top-btn.show{opacity:1;visibility:visible;}
-    .top-btn:hover{transform:translateY(-3px);}
-
-    /* ══════ REVEALS ══════ */
-    .rv{opacity:0;transform:translateY(40px);transition:all 0.8s var(--ease);}
-    .rv.in{opacity:1;transform:translateY(0);}
-    .rv-s{opacity:0;transform:scale(0.94);transition:all 0.8s var(--ease);}
-    .rv-s.in{opacity:1;transform:scale(1);}
-    .d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}.d4{transition-delay:0.4s;}
-
-    /* ══════ RESPONSIVE ══════ */
-    @media(max-width:1024px){.bento{grid-template-columns:repeat(2,1fr);}.svc-bento.featured{grid-column:1/3;}.why-grid{grid-template-columns:repeat(2,1fr);}.ft-grid{grid-template-columns:repeat(2,1fr);}}
-    @media(max-width:768px){
-      .bento{grid-template-columns:1fr;}.svc-bento.featured{grid-column:auto;grid-row:auto;}
-      .stats-strip{grid-template-columns:repeat(2,1fr);}
-      .why-grid{grid-template-columns:1fr;}
-      .ft-grid{grid-template-columns:1fr;}
-      .hero-content{padding:120px 0 60px;}
-      .hero-stats{gap:20px;flex-wrap:wrap;}
-      .testi-card{min-width:280px;max-width:280px;}
+    .hero-status{
+      display:flex;align-items:center;gap:8px;color:#dbe8f7;font-size:.78rem;font-weight:700
     }
-    @media(max-width:480px){.stats-strip{grid-template-columns:1fr 1fr;}.hero-stats{flex-direction:column;gap:14px;}}
+    .hero-status .dot{width:8px;height:8px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 5px rgba(16,185,129,.12)}
+
+    .logo-stage{
+      min-height:330px;border-radius:28px;position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(59,130,246,.18), transparent 42%),
+        radial-gradient(circle at 75% 25%, rgba(139,92,246,.16), transparent 28%),
+        linear-gradient(135deg, rgba(15,18,31,.98), rgba(7,10,18,1));
+      border:1px solid rgba(96,165,250,.12);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .logo-stage::before{
+      content:"";position:absolute;inset:auto -12% 18% -12%;height:1px;
+      background:linear-gradient(90deg,transparent,rgba(96,165,250,.38),transparent);
+      transform:rotate(-8deg)
+    }
+    .logo-stage::after{
+      content:"";position:absolute;top:-35%;left:-15%;width:130%;height:180%;
+      background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.06) 48%,transparent 60%);
+      animation:glassSweep 7s linear infinite;
+    }
+    @keyframes glassSweep{from{transform:translateX(-35%)}to{transform:translateX(38%)}}
+
+    .ring{
+      position:absolute;border-radius:50%;border:1px solid rgba(96,165,250,.18)
+    }
+    .ring.r1{width:240px;height:240px;animation:spin 18s linear infinite}
+    .ring.r2{width:310px;height:310px;border-color:rgba(139,92,246,.16);animation:spin 24s linear infinite reverse}
+    .ring.r3{width:380px;height:380px;border-color:rgba(6,182,212,.12);animation:spin 30s linear infinite}
+    .ring .dot{
+      position:absolute;width:10px;height:10px;border-radius:50%;
+      background:linear-gradient(135deg,var(--blue2),var(--cyan));
+      box-shadow:0 0 14px rgba(96,165,250,.8)
+    }
+    .r1 .dot{top:-5px;left:50%;transform:translateX(-50%)}
+    .r2 .dot{right:16px;top:50%;transform:translateY(-50%)}
+    .r3 .dot{bottom:12px;left:25%;transform:translateX(-50%)}
+
+    .hero-logo{
+      width:min(78%,370px);height:auto;object-fit:contain;position:relative;z-index:3;
+      filter:
+        brightness(1.2)
+        contrast(1.18)
+        saturate(1.18)
+        drop-shadow(0 0 20px rgba(255,255,255,.12))
+        drop-shadow(0 0 40px rgba(59,130,246,.75))
+        drop-shadow(0 0 90px rgba(99,102,241,.24));
+      animation:logoFloat 5.5s ease-in-out infinite;
+    }
+    @keyframes logoFloat{
+      0%,100%{transform:translateY(0) scale(1)}
+      50%{transform:translateY(-10px) scale(1.02)}
+    }
+
+    .hero-mini-grid{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px
+    }
+    .hero-mini{
+      display:flex;gap:12px;align-items:flex-start;
+      background:rgba(16,20,33,.72);border:1px solid rgba(96,165,250,.10);
+      border-radius:18px;padding:14px;transition:.3s
+    }
+    .hero-mini:hover{transform:translateY(-3px);border-color:rgba(96,165,250,.2)}
+    .hero-mini i{
+      width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+      color:#fff;background:linear-gradient(135deg,var(--blue),var(--indigo));flex-shrink:0
+    }
+    .hero-mini strong{display:block;color:#fff;font-size:.92rem}
+    .hero-mini span{display:block;color:var(--muted2);font-size:.77rem;margin-top:2px}
+
+    .hero-scroll{
+      position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:2;animation:fadeUp .8s ease 1.2s both
+    }
+    .scroll-mouse{
+      width:28px;height:45px;border:2px solid rgba(99,102,241,.25);border-radius:16px;display:flex;justify-content:center;padding-top:8px
+    }
+    .scroll-dot{width:4px;height:10px;background:var(--blue);border-radius:4px;animation:scrollAnim 2s ease-in-out infinite}
+    @keyframes scrollAnim{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+    /* RIPPLE ART SECTION */
+    .ripple-art{
+      position:relative;padding:0;background:linear-gradient(180deg,rgba(3,4,10,1),rgba(6,9,18,.98));
+      overflow:hidden;border-top:1px solid rgba(96,165,250,.08);border-bottom:1px solid rgba(96,165,250,.08);
+    }
+    .ripple-art::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(59,130,246,.1), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+      pointer-events:none;z-index:2;
+    }
+    .ripple-layer{
+      position:relative;height:220px;overflow:hidden;
+    }
+    .ripple-layer img{
+      position:absolute;left:0;width:100%;object-fit:cover;mix-blend-mode:screen;
+      filter:brightness(1.12) contrast(1.18) saturate(1.08);
+      opacity:.95;
+    }
+    .ripple-layer img.r1{top:10px;height:180px;animation:rippleShift1 14s ease-in-out infinite}
+    .ripple-layer img.r2{top:28px;height:180px;opacity:.55;animation:rippleShift2 18s ease-in-out infinite}
+    .ripple-layer img.r3{top:46px;height:180px;opacity:.32;animation:rippleShift3 22s ease-in-out infinite}
+    @keyframes rippleShift1{0%,100%{transform:scale(1.03) translateX(0)}50%{transform:scale(1.08) translateX(-14px)}}
+    @keyframes rippleShift2{0%,100%{transform:scale(1.02) translateX(0)}50%{transform:scale(1.06) translateX(14px)}}
+    @keyframes rippleShift3{0%,100%{transform:scale(1.01) translateX(0)}50%{transform:scale(1.05) translateX(-8px)}}
+
+    .ripple-copy{
+      position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;pointer-events:none
+    }
+    .ripple-copy span{
+      font-family:'JetBrains Mono',monospace;
+      font-size:.75rem;letter-spacing:4px;text-transform:uppercase;
+      color:rgba(191,219,254,.9);
+      padding:10px 18px;border-radius:999px;
+      background:rgba(7,11,20,.42);border:1px solid rgba(96,165,250,.1);backdrop-filter:blur(12px)
+    }
+
+    /* INTRO BLOCK */
+    .intro-wrap{
+      display:grid;grid-template-columns:1.04fr .96fr;gap:28px;align-items:stretch;
+    }
+    .intro-main,.intro-side{
+      background:linear-gradient(180deg,rgba(12,16,28,.86),rgba(8,11,19,.82));
+      border:1px solid rgba(96,165,250,.12);
+      border-radius:30px;box-shadow:var(--shadow-md);position:relative;overflow:hidden
+    }
+    .intro-main::before,.intro-side::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(59,130,246,.08), transparent 28%),
+        radial-gradient(circle at 100% 100%, rgba(139,92,246,.07), transparent 25%);
+      pointer-events:none;
+    }
+    .intro-main{padding:40px}
+    .intro-main h3{
+      font-family:'Space Grotesk',sans-serif;font-size:2.2rem;line-height:1.05;font-weight:900;margin-bottom:16px;position:relative;z-index:2
+    }
+    .intro-main p{color:var(--muted);margin-bottom:16px;position:relative;z-index:2}
+    .intro-grid{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px;position:relative;z-index:2
+    }
+    .intro-card{
+      padding:18px;border-radius:20px;background:rgba(255,255,255,.02);border:1px solid rgba(96,165,250,.08);min-height:120px
+    }
+    .intro-card strong{
+      display:block;font-family:'Space Grotesk',sans-serif;color:#fff;font-size:1rem;font-weight:800;margin-bottom:8px
+    }
+    .intro-card span{display:block;color:var(--muted2);font-size:.9rem}
+
+    .intro-side{padding:22px}
+    .intro-side-inner{
+      height:100%;border-radius:24px;padding:26px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(59,130,246,.16), transparent 24%),
+        radial-gradient(circle at 80% 16%, rgba(139,92,246,.14), transparent 24%),
+        linear-gradient(135deg,#10182c,#0a1020);
+      border:1px solid rgba(96,165,250,.10);
+      display:flex;flex-direction:column;justify-content:center;
+      position:relative;overflow:hidden
+    }
+    .intro-side-inner::after{
+      content:"";position:absolute;right:-20px;bottom:-20px;width:180px;height:180px;border-radius:50%;
+      background:radial-gradient(circle, rgba(59,130,246,.14), transparent 70%);
+      pointer-events:none;
+    }
+    .intro-side-inner h4{
+      font-family:'Space Grotesk',sans-serif;font-size:1.45rem;font-weight:800;margin-bottom:12px;position:relative;z-index:2
+    }
+    .intro-side-inner p{color:var(--muted);margin-bottom:18px;position:relative;z-index:2}
+    .intro-side-inner ul{list-style:none;position:relative;z-index:2}
+    .intro-side-inner li{
+      padding:10px 0;border-bottom:1px solid rgba(96,165,250,.08);
+      color:#d5e4f5;display:flex;align-items:center;gap:10px
+    }
+    .intro-side-inner li:last-child{border-bottom:none}
+    .intro-side-inner i{color:var(--blue2)}
+
+    /* NET ZONE */
+    .net-zone{position:relative;overflow:hidden}
+    .net-zone::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(3,3,8,.94) 0%, rgba(3,3,8,.72) 50%, rgba(3,3,8,.94) 100%);
+      z-index:0;pointer-events:none
+    }
+    .net-zone .container{position:relative;z-index:2}
+    #networkCanvas,#particleCanvas{
+      position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;display:block
+    }
+    #networkCanvas{opacity:1;mix-blend-mode:screen}
+    #particleCanvas{opacity:.95}
+    .moving-bg{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+    .moving-element{
+      position:absolute;font-size:1.2rem;opacity:.08;white-space:nowrap;
+      animation:floatMove linear infinite;font-family:monospace;font-weight:bold;color:#3b82f6
+    }
+    @keyframes floatMove{
+      0%{transform:translateX(-100%) translateY(0) rotate(0deg);opacity:0}
+      10%{opacity:.1}
+      90%{opacity:.1}
+      100%{transform:translateX(100vw) translateY(var(--y-offset,0)) rotate(360deg);opacity:0}
+    }
+
+    /* CORE IT SERVICES */
+    .service-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+    }
+    .service-card{
+      background:linear-gradient(180deg,rgba(12,16,28,.88),rgba(8,11,19,.84));
+      border:1px solid rgba(96,165,250,.12);
+      border-radius:30px;overflow:hidden;box-shadow:var(--shadow-md);
+      transition:.45s;position:relative;
+    }
+    .service-card:hover{transform:translateY(-10px);border-color:rgba(96,165,250,.24)}
+    .service-card::after{
+      content:"";position:absolute;inset:0;
+      background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(59,130,246,.12) 0%, transparent 58%);
+      opacity:0;transition:.3s;pointer-events:none;z-index:3
+    }
+    .service-card:hover::after{opacity:1}
+
+    .service-image{
+      position:relative;height:230px;overflow:hidden;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(59,130,246,.20), transparent 28%),
+        radial-gradient(circle at 78% 20%, rgba(139,92,246,.18), transparent 28%),
+        linear-gradient(135deg, rgba(15,18,31,.96), rgba(7,10,18,.98));
+      border-bottom:1px solid rgba(96,165,250,.1);
+    }
+    .service-image img{
+      width:100%;height:100%;object-fit:cover;object-position:center;
+      filter:brightness(1.07) contrast(1.14) saturate(1.15);
+      transition:transform .75s ease, filter .45s ease;
+    }
+    .service-card:hover .service-image img{
+      transform:scale(1.08);
+      filter:brightness(1.12) contrast(1.17) saturate(1.2);
+    }
+    .service-image::after{
+      content:"";position:absolute;inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.08) 35%, rgba(0,0,0,.58) 100%),
+        linear-gradient(135deg, rgba(59,130,246,.08), transparent 45%, rgba(139,92,246,.08) 100%);
+    }
+    .service-chip{
+      position:absolute;top:16px;left:16px;z-index:2;
+      width:48px;height:48px;border-radius:15px;
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;background:linear-gradient(135deg,var(--blue),var(--indigo));
+      box-shadow:0 12px 24px rgba(59,130,246,.28);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .service-body{padding:22px;position:relative;z-index:2}
+    .service-body h3{
+      font-family:'Space Grotesk',sans-serif;font-size:1.12rem;font-weight:800;margin-bottom:8px
+    }
+    .service-body p{color:var(--muted2);font-size:.88rem;line-height:1.68}
+    .service-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .service-tags span{
+      font-size:.66rem;padding:4px 11px;border-radius:999px;
+      background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.12);color:var(--blue2);font-weight:700
+    }
+
+    /* VISUAL VALUE STRIP */
+    .value-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
+    .value-card{
+      background:linear-gradient(180deg,rgba(12,16,28,.84),rgba(8,11,19,.80));
+      border:1px solid rgba(96,165,250,.12);border-radius:24px;padding:22px 20px;box-shadow:var(--shadow-md);transition:.35s
+    }
+    .value-card:hover{transform:translateY(-5px);border-color:rgba(96,165,250,.22)}
+    .value-card i{
+      width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+      color:#fff;background:linear-gradient(135deg,var(--blue),var(--indigo));margin-bottom:14px;font-size:1.15rem
+    }
+    .value-card h4{font-family:'Space Grotesk',sans-serif;font-size:1.03rem;font-weight:800;margin-bottom:8px}
+    .value-card p{color:var(--muted2);font-size:.88rem}
+
+    /* IMPACT */
+    .stats-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+      background:rgba(59,130,246,.07);border:1px solid rgba(96,165,250,.13);
+      border-radius:30px;overflow:hidden;box-shadow:var(--shadow-md)
+    }
+    .stat-card{
+      background:linear-gradient(180deg,rgba(11,15,26,.84),rgba(8,10,18,.82));
+      padding:40px 24px;text-align:center
+    }
+    .stat-card i{display:block;font-size:1.6rem;margin-bottom:12px}
+    .stat-card .num{
+      font-family:'Space Grotesk',sans-serif;font-size:2.85rem;font-weight:900;line-height:1;color:#fff
+    }
+    .stat-card .num span{font-size:1.45rem;color:var(--blue2)}
+    .stat-card .label{
+      margin-top:10px;color:var(--muted2);font-size:.73rem;text-transform:uppercase;letter-spacing:1.6px;font-weight:700
+    }
+
+    /* INFRA */
+    .infra-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .infra-card{
+      background:linear-gradient(180deg,rgba(12,16,28,.88),rgba(8,11,19,.84));
+      border:1px solid rgba(96,165,250,.12);
+      border-radius:30px;padding:34px 28px;box-shadow:var(--shadow-md);transition:.35s;position:relative;overflow:hidden
+    }
+    .infra-card::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan));
+      transform:scaleX(0);transform-origin:left;transition:.35s
+    }
+    .infra-card:hover::before{transform:scaleX(1)}
+    .infra-card:hover{transform:translateY(-8px)}
+    .infra-card::after{
+      content:"";position:absolute;right:-70px;top:-70px;width:170px;height:170px;border-radius:50%;
+      background:radial-gradient(circle, rgba(59,130,246,.12), transparent 70%);
+    }
+    .infra-icon{
+      width:78px;height:78px;border-radius:22px;margin-bottom:20px;
+      display:flex;align-items:center;justify-content:center;font-size:1.65rem;color:#fff;position:relative
+    }
+    .infra-icon::after{
+      content:"";position:absolute;inset:-5px;border-radius:26px;background:inherit;opacity:.25;filter:blur(16px);z-index:-1
+    }
+    .infra-card h3{
+      font-family:'Space Grotesk',sans-serif;font-size:1.18rem;font-weight:800;margin-bottom:10px
+    }
+    .infra-card p{color:var(--muted2);font-size:.92rem}
+
+    /* CTA */
+    .cta-shell{
+      border-radius:38px;padding:92px 40px;text-align:center;position:relative;overflow:hidden;
+      background:
+        linear-gradient(135deg,rgba(37,99,235,.08),rgba(99,102,241,.08),rgba(139,92,246,.08)),
+        linear-gradient(180deg,rgba(11,15,26,.88),rgba(8,11,19,.86));
+      border:1px solid rgba(96,165,250,.11);
+      box-shadow:var(--shadow-xl)
+    }
+    .cta-shell::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse at 30% 50%,rgba(59,130,246,.08),transparent 50%),
+        radial-gradient(ellipse at 70% 50%,rgba(139,92,246,.08),transparent 50%);
+      pointer-events:none
+    }
+    .cta-shell h2{
+      font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,3vw,3.1rem);font-weight:900;line-height:1.06;margin-bottom:16px;position:relative
+    }
+    .cta-shell p{max-width:620px;margin:0 auto 30px;color:var(--muted2);position:relative}
+
+    /* CONTACT / FOOTER */
+    .contact-section{padding:60px 0 40px}
+    .contact-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:16px 0}
+    .contact-item{
+      display:inline-flex;align-items:center;gap:10px;
+      background:linear-gradient(180deg,rgba(12,16,28,.84),rgba(8,11,19,.8));
+      border:1px solid rgba(96,165,250,.12);
+      border-radius:14px;padding:14px 24px;font-size:.9rem;font-weight:700
+    }
+    .contact-item i{color:var(--blue)}
+    .method-btn{
+      text-decoration:none;color:#fff;font-weight:800;font-size:.9rem;
+      display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:14px;transition:.3s
+    }
+    .method-btn.wa{background:linear-gradient(135deg,#25d366,#128c7e)}
+    .method-btn.tg{background:linear-gradient(135deg,#0088cc,#005f8c)}
+    .method-btn:hover{transform:translateY(-3px)}
+
+    .footer{
+      background:rgba(4,5,11,.96);padding:62px 0 30px;border-top:1px solid rgba(30,41,59,.3)
+    }
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+    .footer-logo{
+      height:62px;width:auto;border-radius:14px;padding:4px;
+      background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(59,130,246,.06));
+      border:1px solid rgba(96,165,250,.10);
+      filter:
+        brightness(1.12)
+        contrast(1.12)
+        saturate(1.18)
+        drop-shadow(0 0 16px rgba(59,130,246,.4));
+    }
+    .footer h4{font-family:'Space Grotesk',sans-serif;color:#fff;margin-bottom:20px}
+    .footer a{display:block;text-decoration:none;color:var(--muted2);margin-bottom:12px;font-size:.9rem;transition:.3s}
+    .footer a:hover{color:var(--blue2);padding-left:6px}
+    .social-links{display:flex;gap:12px;margin-top:16px}
+    .social-links a{
+      width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+      background:rgba(30,41,59,.4);border:1px solid rgba(30,41,59,.6);color:#94a3b8;font-size:1.1rem;transition:.3s
+    }
+    .social-links a:hover{background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.25);color:var(--blue2);transform:translateY(-3px)}
+    .copyright{
+      text-align:center;padding-top:30px;border-top:1px solid rgba(30,41,59,.3);font-size:.82rem;color:#475569
+    }
+    .copyright a{color:var(--blue2);text-decoration:none}
+
+    /* FLOAT / BTT */
+    .floating-btns{position:fixed;bottom:30px;left:30px;display:flex;flex-direction:column;gap:12px;z-index:999}
+    .float-btn{
+      width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+      text-decoration:none;color:#fff;font-size:1.6rem;transition:.3s;position:relative
+    }
+    .float-btn::after{content:"";position:absolute;inset:-3px;border-radius:19px;background:inherit;opacity:.28;filter:blur(10px);z-index:-1}
+    .float-btn.wa{background:linear-gradient(135deg,#25d366,#128c7e)}
+    .float-btn.tg{background:linear-gradient(135deg,#0088cc,#005f8c)}
+    .float-btn:hover{transform:translateY(-4px) scale(1.08)}
+
+    .back-to-top{
+      position:fixed;bottom:30px;right:30px;width:52px;height:52px;border:none;border-radius:16px;
+      background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;font-size:1.15rem;
+      display:flex;align-items:center;justify-content:center;cursor:pointer;
+      opacity:0;visibility:hidden;transition:.3s;z-index:999
+    }
+    .back-to-top.show{opacity:1;visibility:visible}
+    .back-to-top:hover{transform:translateY(-3px)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(50px);transition:all .85s cubic-bezier(.4,0,.2,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-scale{opacity:0;transform:scale(.92);transition:all .85s cubic-bezier(.4,0,.2,1)}
+    .reveal-scale.visible{opacity:1;transform:scale(1)}
+
+    /* RESPONSIVE */
+    @media(max-width:1240px){
+      .hero-grid,.intro-wrap{grid-template-columns:1fr}
+      .hero-left{text-align:center;max-width:100%}
+      .hero-desc{margin-left:auto;margin-right:auto}
+      .hero-actions{justify-content:center}
+      .hero-stat-row{margin-left:auto;margin-right:auto}
+      .service-grid{grid-template-columns:repeat(2,1fr)}
+      .value-grid,.infra-cards{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:980px){
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .intro-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:860px){
+      .links{
+        position:fixed;top:86px;left:-100%;width:82%;max-width:330px;height:calc(100vh - 86px);
+        background:rgba(4,5,11,.98);backdrop-filter:blur(30px);border-right:1px solid rgba(59,130,246,.15);
+        flex-direction:column;gap:1rem;padding:2.5rem 2rem;transition:left .4s cubic-bezier(.4,0,.2,1);z-index:1001
+      }
+      .links.active{left:0}
+      .menu-toggle{display:block}
+      .nav-cta{display:none}
+      .brand-text{display:none}
+      .hero-title{font-size:2.8rem}
+      .hero-stat-row{grid-template-columns:1fr}
+      .hero-mini-grid{grid-template-columns:1fr}
+      .service-grid,.value-grid,.infra-cards{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .ripple-layer{height:150px}
+      .ripple-layer img{height:130px!important}
+    }
+    @media(max-width:560px){
+      .container{padding:0 18px}
+      .hero-title{font-size:2.35rem}
+      .stats-grid{grid-template-columns:1fr 1fr}
+      .floating-btns{left:18px;bottom:18px}
+      .back-to-top{right:18px;bottom:18px}
+      .nav-logo{height:58px}
+      .logo-stage{min-height:240px}
+      .hero-ripple-stack{display:none}
+    }
   </style>
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-  <div class="cursor-glow" id="cursorGlow"></div>
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-wrap">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Logo" class="loader-logo" onerror="this.src='https://placehold.co/134x134/0f172a/3b82f6?text=ZT'">
+    </div>
+    <div class="loader-text">Initializing Secure Systems</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <div class="loader-sub">ZTrust Tech • Complete IT Solutions</div>
+  </div>
 
-  <!-- Noise -->
+  <!-- Background -->
+  <div class="grid-bg"></div>
   <div class="noise"></div>
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
 
-  <!-- Nav -->
-  <nav class="nav" id="nav">
-    <div class="container nav-in">
-      <a href="index.html" class="nav-brand">
-        <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" onerror="this.src='https://placehold.co/100x52/0f172a/3b82f6?text=ZTrust'">
-      </a>
-      <div class="nav-menu" id="navMenu">
+  <!-- Floating -->
+  <div class="floating-btns">
+    <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-btn wa" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://t.me/ZTrustTech" class="float-btn tg" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="mainNav">
+    <div class="container nav-inner">
+      <div class="brand-wrap">
+        <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/150x68/0f172a/3b82f6?text=ZTrust'">
+        <div class="brand-text">
+          <h3>ZTrust Tech</h3>
+          <span>Complete IT Solutions</span>
+        </div>
+      </div>
+
+      <div class="links" id="navLinks">
         <a href="index.html" class="active">Home</a>
         <a href="services.html">Services</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>
-      <a href="contact.html" class="nav-btn"><i class="fas fa-headset"></i> Get Support</a>
-      <button class="burger" id="burger"><i class="fas fa-bars"></i></button>
+
+      <a href="contact.html" class="nav-cta"><i class="fas fa-headset"></i> Get Support</a>
+      <button class="menu-toggle" id="mobileMenu" aria-label="Menu"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-blobs">
-      <div class="blob b1"></div>
-      <div class="blob b2"></div>
-      <div class="blob b3"></div>
-    </div>
-    <div class="hero-grid"></div>
-    <div class="hero-lines">
-      <div class="h-line"></div><div class="h-line"></div><div class="h-line"></div>
-    </div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge"><span class="pulse-dot"></span> 10+ Years of IT Excellence in Ethiopia</div>
-        <h1 class="hero-title">
-          <span class="line"><span class="word" style="animation-delay:0.4s">Complete</span> <span class="word accent" style="animation-delay:0.5s">IT</span></span>
-          <span class="line"><span class="word" style="animation-delay:0.6s">Solutions</span> <span class="word" style="animation-delay:0.7s">Provider</span></span>
-        </h1>
-        <p class="hero-desc">Empowering businesses across Ethiopia with world-class infrastructure, application development, cybersecurity, and 24/7 technical support.</p>
-        <div class="hero-typing" id="typingText"></div>
-        <div class="hero-btns">
-          <a href="services.html" class="btn-mag pri magnetic"><i class="fas fa-shield-halved"></i> Our Services</a>
-          <a href="contact.html" class="btn-mag sec magnetic"><i class="fas fa-phone"></i> Contact Us</a>
-        </div>
-        <div class="hero-stats">
-          <div class="h-stat"><div class="h-stat-num"><span data-count="350">0</span><em>+</em></div><div class="h-stat-lbl">Projects Delivered</div></div>
-          <div class="h-stat"><div class="h-stat-num"><span data-count="10">0</span><em>+</em></div><div class="h-stat-lbl">Years Experience</div></div>
-          <div class="h-stat"><div class="h-stat-num"><span data-count="99">0</span><em>%</em></div><div class="h-stat-lbl">Satisfaction</div></div>
-          <div class="h-stat"><div class="h-stat-num">24<em>/7</em></div><div class="h-stat-lbl">Support Active</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <div class="scroll-txt">Scroll</div>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+    <div class="hero-tech-grid"></div>
 
-  <!-- RIPPLE GIF -->
-  <div class="ripple">
-    <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="" onerror="this.style.display='none'">
-  </div>
-
-  <!-- SERVICES — BENTO -->
-  <section class="section">
-    <div class="container">
-      <div class="sec-head rv">
-        <div class="sec-label"><i class="fas fa-cubes"></i> What We Do</div>
-        <h2 class="sec-heading">Our Core <em>IT Services</em></h2>
-        <p class="sec-desc">End-to-end technology solutions built for Ethiopia's leading enterprises.</p>
-      </div>
-      <div class="bento">
-        <div class="svc-bento featured rv">
-          <div class="holo-shine"></div>
-          <div class="svc-ico" style="background:linear-gradient(135deg,#2563eb,#3b82f6);"><i class="fas fa-server"></i></div>
-          <h3>IT Infrastructure</h3>
-          <p>Complete infrastructure design, deployment, and management — from servers and virtualization to cloud-ready compute environments with 99.99% uptime.</p>
-          <div class="svc-tag-row"><span class="svc-mini-tag">Servers</span><span class="svc-mini-tag">Virtualization</span><span class="svc-mini-tag">Compute</span></div>
-          <a href="services.html" class="svc-arrow">Explore <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="svc-bento rv d1">
-          <div class="holo-shine"></div>
-          <div class="svc-ico" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6);"><i class="fas fa-hard-drive"></i></div>
-          <h3>Storage Solutions</h3>
-          <p>SAN, NAS, backup & disaster recovery.</p>
-          <a href="services.html" class="svc-arrow">Learn more <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="svc-bento rv d2">
-          <div class="holo-shine"></div>
-          <div class="svc-ico" style="background:linear-gradient(135deg,#0891b2,#06b6d4);"><i class="fas fa-cloud-arrow-up"></i></div>
-          <h3>Cloud Integration</h3>
-          <p>Hybrid cloud with AWS, Azure, GCP.</p>
-          <a href="services.html" class="svc-arrow">Learn more <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="svc-bento rv">
-          <div class="holo-shine"></div>
-          <div class="svc-ico" style="background:linear-gradient(135deg,#059669,#10b981);"><i class="fas fa-code"></i></div>
-          <h3>App Development</h3>
-          <p>Custom web, mobile & desktop apps.</p>
-          <a href="services.html" class="svc-arrow">Learn more <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="svc-bento rv d1">
-          <div class="holo-shine"></div>
-          <div class="svc-ico" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><i class="fas fa-database"></i></div>
-          <h3>Database Mgmt</h3>
-          <p>SQL, NoSQL, design & optimization.</p>
-          <a href="services.html" class="svc-arrow">Learn more <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="svc-bento rv d2">
-          <div class="holo-shine"></div>
-          <div class="svc-ico" style="background:linear-gradient(135deg,#4f46e5,#6366f1);"><i class="fas fa-wifi"></i></div>
-          <h3>Network</h3>
-          <p>SD-WAN, LAN/WAN, wireless.</p>
-          <a href="services.html" class="svc-arrow">Learn more <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="svc-bento rv">
-          <div class="holo-shine"></div>
-          <div class="svc-ico" style="background:linear-gradient(135deg,#dc2626,#f43f5e);"><i class="fas fa-shield-halved"></i></div>
-          <h3>Cybersecurity</h3>
-          <p>Threat protection, firewall, compliance.</p>
-          <a href="services.html" class="svc-arrow">Learn more <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="svc-bento rv d1">
-          <div class="holo-shine"></div>
-          <div class="svc-ico" style="background:linear-gradient(135deg,#0d9488,#14b8a6);"><i class="fas fa-plug"></i></div>
-          <h3>API Integration</h3>
-          <p>REST, microservices, 3rd party APIs.</p>
-          <a href="services.html" class="svc-arrow">Learn more <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="svc-bento rv d2">
-          <div class="holo-shine"></div>
-          <div class="svc-ico" style="background:linear-gradient(135deg,#c2410c,#ea580c);"><i class="fas fa-user-shield"></i></div>
-          <h3>Training</h3>
-          <p>Security awareness & workshops.</p>
-          <a href="services.html" class="svc-arrow">Learn more <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
+    <div class="hero-ripple-stack">
+      <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple">
+      <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple">
+      <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple">
     </div>
-  </section>
 
-  <!-- STATS -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="sec-head rv">
-        <div class="sec-label"><i class="fas fa-chart-line"></i> Our Impact</div>
-        <h2 class="sec-heading">Trusted by <em>Ethiopia's Leading</em> Organizations</h2>
-      </div>
-      <div class="stats-strip">
-        <div class="stat-pill rv"><i class="fas fa-calendar-check" style="color:var(--blue);"></i><div class="stat-val"><span data-count="10">0</span><em>+</em></div><div class="stat-lbl">Years Experience</div></div>
-        <div class="stat-pill rv d1"><i class="fas fa-project-diagram" style="color:var(--purple);"></i><div class="stat-val"><span data-count="350">0</span><em>+</em></div><div class="stat-lbl">Projects Completed</div></div>
-        <div class="stat-pill rv d2"><i class="fas fa-shield-halved" style="color:var(--cyan);"></i><div class="stat-val"><span data-count="99">0</span><em>%</em></div><div class="stat-lbl">Client Satisfaction</div></div>
-        <div class="stat-pill rv d3"><i class="fas fa-headset" style="color:var(--emerald);"></i><div class="stat-val">24<em>/7</em></div><div class="stat-lbl">Support Active</div></div>
-      </div>
+    <div class="hero-beams">
+      <span class="beam b1"></span>
+      <span class="beam b2"></span>
+      <span class="beam b3"></span>
+      <span class="beam b4"></span>
     </div>
-  </section>
 
-  <!-- WHY US — 3D TILT -->
-  <section class="section">
-    <div class="container">
-      <div class="sec-head rv">
-        <div class="sec-label"><i class="fas fa-award"></i> Why ZTrust</div>
-        <h2 class="sec-heading">Why Leading Companies <em>Choose Us</em></h2>
-        <p class="sec-desc">We combine deep expertise with cutting-edge technology to deliver results that drive your business forward.</p>
-      </div>
-      <div class="why-grid">
-        <div class="tilt-card rv"><div class="shine"></div><div class="why-num">01</div><h3>10+ Years of Excellence</h3><p>A decade of proven expertise delivering enterprise IT solutions across Ethiopia's top organizations and government institutions.</p></div>
-        <div class="tilt-card rv d1"><div class="shine"></div><div class="why-num">02</div><h3>Certified Expert Team</h3><p>Our team holds certifications from Cisco, Microsoft, AWS, and VMware — ensuring best-in-class implementation.</p></div>
-        <div class="tilt-card rv d2"><div class="shine"></div><div class="why-num">03</div><h3>24/7 Priority Support</h3><p>Round-the-clock technical support with guaranteed response times. Your systems are never left unattended.</p></div>
-        <div class="tilt-card rv"><div class="shine"></div><div class="why-num">04</div><h3>End-to-End Solutions</h3><p>From infrastructure to applications to security — everything under one roof. One partner for all your IT needs.</p></div>
-        <div class="tilt-card rv d1"><div class="shine"></div><div class="why-num">05</div><h3>Enterprise-Grade Security</h3><p>Bank-grade security protocols and compliance frameworks protecting your most critical data and systems.</p></div>
-        <div class="tilt-card rv d2"><div class="shine"></div><div class="why-num">06</div><h3>Local Expertise, Global Standards</h3><p>Deep understanding of Ethiopia's landscape combined with international best practices and technology standards.</p></div>
-      </div>
+    <div class="hero-particles">
+      <span class="hp hp1"></span>
+      <span class="hp hp2"></span>
+      <span class="hp hp3"></span>
+      <span class="hp hp4"></span>
+      <span class="hp hp5"></span>
+      <span class="hp hp6"></span>
+      <span class="hp hp7"></span>
     </div>
-  </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="section section-alt">
     <div class="container">
-      <div class="sec-head rv">
-        <div class="sec-label"><i class="fas fa-quote-left"></i> Testimonials</div>
-        <h2 class="sec-heading">What Our <em>Clients</em> Say</h2>
-      </div>
-      <div class="testi-track rv-s" id="testiTrack">
-        <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"ZTrust transformed our entire IT infrastructure. Their team delivered a world-class data center solution that exceeded our expectations."</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,#2563eb,#3b82f6);">AK</div><div><div class="testi-name">Abebe Kebede</div><div class="testi-role">CTO, Ethiopian Airlines Group</div></div></div></div>
-        <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"Outstanding cybersecurity implementation. They identified vulnerabilities we never knew existed and fortified our systems completely."</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6);">ST</div><div><div class="testi-name">Sara Tadesse</div><div class="testi-role">IT Director, Commercial Bank of Ethiopia</div></div></div></div>
-        <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"Their 24/7 support team is incredible. Any issue is resolved within minutes. Truly a reliable IT partner for our bank."</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,#059669,#10b981);">DM</div><div><div class="testi-name">Daniel Mulugeta</div><div class="testi-role">VP Engineering, Dashen Bank</div></div></div></div>
-        <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"ZTrust built our cloud infrastructure seamlessly. Migration was smooth, zero downtime, and performance improved 3x."</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,#d97706,#f59e0b);">HA</div><div><div class="testi-name">Hana Assefa</div><div class="testi-role">CEO, Ethio Telecom Digital</div></div></div></div>
-        <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-quote">"Professional, timely, and incredibly skilled. ZTrust is the go-to IT partner for any enterprise in Ethiopia."</p><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">GY</div><div><div class="testi-name">Getachew Yilma</div><div class="testi-role">Director, Ministry of Innovation</div></div></div></div>
-      </div>
-    </div>
-  </section>
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="hero-badge">
+            <span class="live"></span>
+            10+ Years of IT Excellence • Enterprise Grade Security
+          </div>
 
-  <!-- CTA -->
-  <section class="section">
-    <div class="container">
-      <div class="cta-box rv-s">
-        <h2>Ready to <em>Transform</em> Your IT?</h2>
-        <p>Partner with Ethiopia's most trusted IT solutions provider. Free consultation available today.</p>
-        <div class="cta-btns">
-          <a href="contact.html" class="btn-mag pri magnetic"><i class="fas fa-headset"></i> Get Free Consultation</a>
-          <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="btn-mag pri magnetic" style="background:linear-gradient(135deg,#25d366,#128c7e);" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-        </div>
-      </div>
-    </div>
-  </section>
+          <h1 class="hero-title">
+            <span class="grad">One Brand.</span><br>
+            Every IT Solution.<br>
+            Built Beautifully.
+          </h1>
 
-  <!-- CONTACT -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="sec-head rv">
-        <div class="sec-label"><i class="fas fa-envelope"></i> Get In Touch</div>
-        <h2 class="sec-heading">Let's <em>Connect</em></h2>
-      </div>
-      <div class="contact-chips rv">
-        <div class="c-chip"><i class="fas fa-phone-alt"></i> +251 911 563 698</div>
-        <div class="c-chip"><i class="fas fa-envelope"></i> sales2@ztrust.et</div>
-        <div class="c-chip"><i class="fas fa-map-marker-alt"></i> Bole TK Building, Addis Ababa</div>
-      </div>
-      <div class="msg-btns rv">
-        <a href="https://wa.me/251911563698" class="msg-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-        <a href="https://t.me/ZTrustTech" class="msg-btn tg" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram Us</a>
-      </div>
-    </div>
-  </section>
+          <p class="hero-desc">
+            ZTrust Tech transforms infrastructure, cybersecurity, networking, development,
+            storage, cloud, and support into one powerful digital experience —
+            engineered for organizations that want stability, elegance, and serious performance.
+          </p>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="ft-grid">
-        <div class="ft-brand">
-          <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" onerror="this.src='https://placehold.co/140x50/0f172a/3b82f6?text=ZTrust'">
-          <p>Complete IT Solutions Provider. Infrastructure, Storage, Applications, Database, API, Networking & Cybersecurity — all under one roof.</p>
-          <div class="ft-social">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://t.me/ZTrustTech" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://wa.me/251911563698" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <div class="hero-typing" id="typingText"></div>
+
+          <div class="hero-actions">
+            <a href="services.html" class="btn primary"><i class="fas fa-shield-halved"></i> Explore Services</a>
+            <a href="contact.html" class="btn secondary"><i class="fas fa-phone"></i> Contact Us</a>
+          </div>
+
+          <div class="hero-stat-row">
+            <div class="hero-stat">
+              <strong>10+</strong>
+              <span>Years Experience</span>
+            </div>
+            <div class="hero-stat">
+              <strong>350+</strong>
+              <span>Projects Delivered</span>
+            </div>
+            <div class="hero-stat">
+              <strong>24/7</strong>
+              <span>Support Active</span>
+            </div>
           </div>
         </div>
-        <div><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-        <div><h4>Services</h4><ul><li><a href="services.html">Infrastructure</a></li><li><a href="services.html">Storage</a></li><li><a href="services.html">App Development</a></li><li><a href="services.html">Database</a></li><li><a href="services.html">API Integration</a></li><li><a href="services.html">Networking</a></li></ul></div>
-        <div>
-          <h4>Contact Info</h4>
-          <div class="ft-info-item"><i class="fas fa-user"></i> GM: Ssasebih Nega</div>
-          <div class="ft-info-item"><i class="fas fa-phone"></i> +251 911 563 698</div>
-          <div class="ft-info-item"><i class="fas fa-envelope"></i> sales2@ztrust.et</div>
-          <div class="ft-info-item"><i class="fas fa-map-marker-alt"></i> Bole TK Building</div>
+
+        <div class="hero-right">
+          <div class="hero-right-wrap">
+            <div class="hero-panel">
+              <div class="panel-top">
+                <div class="hero-chip">Digital Core</div>
+                <div class="hero-status"><span class="dot"></span> Systems Active & Protected</div>
+              </div>
+
+              <div class="logo-stage">
+                <div class="ring r1"><span class="dot"></span></div>
+                <div class="ring r2"><span class="dot"></span></div>
+                <div class="ring r3"><span class="dot"></span></div>
+                <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech Logo" class="hero-logo" onerror="this.src='https://placehold.co/370x240/0f172a/3b82f6?text=ZTrust+Tech'">
+              </div>
+
+              <div class="hero-mini-grid">
+                <div class="hero-mini">
+                  <i class="fas fa-server"></i>
+                  <div>
+                    <strong>Infrastructure</strong>
+                    <span>Reliable enterprise environments</span>
+                  </div>
+                </div>
+                <div class="hero-mini">
+                  <i class="fas fa-lock"></i>
+                  <div>
+                    <strong>Cybersecurity</strong>
+                    <span>Protection across every layer</span>
+                  </div>
+                </div>
+                <div class="hero-mini">
+                  <i class="fas fa-code"></i>
+                  <div>
+                    <strong>Development</strong>
+                    <span>Smart web and software systems</span>
+                  </div>
+                </div>
+                <div class="hero-mini">
+                  <i class="fas fa-network-wired"></i>
+                  <div>
+                    <strong>Connectivity</strong>
+                    <span>Integrated networking and flow</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-scroll">
+        <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTRA EXCEPTIONAL RIPPLE COMBINATION -->
+  <section class="ripple-art">
+    <div class="ripple-layer">
+      <img class="r1" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Curve Ripple Line" onerror="this.style.display='none'">
+      <img class="r2" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Curve Ripple Line" onerror="this.style.display='none'">
+      <img class="r3" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Curve Ripple Line" onerror="this.style.display='none'">
+      <div class="ripple-copy"><span>Flow • Connectivity • Trust • Performance</span></div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="container">
+      <div class="intro-wrap">
+        <div class="intro-main reveal">
+          <div class="section-badge"><i class="fas fa-building"></i> About ZTrust Tech</div>
+          <h3>Technology should feel powerful, seamless, and deeply trusted.</h3>
+          <p>
+            ZTrust Tech is a complete IT solutions provider delivering infrastructure,
+            networking, cybersecurity, development, database systems, storage solutions,
+            cloud integration, and enterprise support for organizations across Ethiopia.
+          </p>
+          <p>
+            We believe modern IT should not look fragmented. It should feel unified.
+            That is why our solutions are designed as connected systems — where each
+            capability strengthens the others and every layer contributes to performance,
+            security, resilience, and growth.
+          </p>
+
+          <div class="intro-grid">
+            <div class="intro-card">
+              <strong>One Roof for All IT</strong>
+              <span>Infrastructure, software, networking, storage, API integration, security, and support.</span>
+            </div>
+            <div class="intro-card">
+              <strong>Built Around Trust</strong>
+              <span>We design environments that are secure, stable, and dependable over time.</span>
+            </div>
+            <div class="intro-card">
+              <strong>Business-Centered Delivery</strong>
+              <span>Technology aligned with workflows, operational needs, and real goals.</span>
+            </div>
+            <div class="intro-card">
+              <strong>Modern + Practical</strong>
+              <span>Beautifully engineered systems that remain usable, maintainable, and scalable.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="intro-side reveal-scale">
+          <div class="intro-side-inner">
+            <h4>What defines our approach?</h4>
+            <p>
+              We combine strong engineering with modern presentation, deep integration, and long-term support.
+            </p>
+            <ul>
+              <li><i class="fas fa-angle-right"></i> Enterprise infrastructure built for uptime</li>
+              <li><i class="fas fa-angle-right"></i> Security woven into every project layer</li>
+              <li><i class="fas fa-angle-right"></i> Development tailored to real workflows</li>
+              <li><i class="fas fa-angle-right"></i> Networking designed for continuity and speed</li>
+              <li><i class="fas fa-angle-right"></i> Ongoing support that protects investment</li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="ft-bottom">© 2026 <a href="index.html">ZTrust Tech</a>. All Rights Reserved. | Made with 💙 in Ethiopia</div>
     </div>
-  </footer>
+  </section>
 
-  <!-- Floating -->
-  <div class="fab-wrap">
-    <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="fab wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://t.me/ZTrustTech" class="fab tg" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+  <!-- NET ZONE -->
+  <div class="net-zone" id="netZone">
+    <canvas id="networkCanvas"></canvas>
+    <canvas id="particleCanvas"></canvas>
+    <div class="moving-bg" id="movingBg"></div>
+
+    <!-- CORE SERVICES WITH IMAGES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge"><i class="fas fa-cubes"></i> Core IT Services</div>
+          <h2 class="section-title">A powerful visual showcase of our <span style="background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;">core capabilities</span>.</h2>
+          <p class="section-sub">
+            Rich service imagery, elegant presentation, and complete coverage of your IT landscape — designed to feel premium and unforgettable.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <div class="service-card reveal">
+            <div class="service-image">
+              <span class="service-chip"><i class="fas fa-server"></i></span>
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="IT Infrastructure" onerror="this.src='https://placehold.co/800x500/0f172a/3b82f6?text=IT+Infrastructure'">
+            </div>
+            <div class="service-body">
+              <h3>IT Infrastructure</h3>
+              <p>Complete infrastructure planning, deployment, servers, virtualization, compute optimization, and stable enterprise environments.</p>
+              <div class="service-tags"><span>Servers</span><span>Virtualization</span></div>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-image">
+              <span class="service-chip"><i class="fas fa-hard-drive"></i></span>
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Storage Solutions" onerror="this.src='https://placehold.co/800x500/0f172a/3b82f6?text=Storage+Solutions'">
+            </div>
+            <div class="service-body">
+              <h3>Storage Solutions</h3>
+              <p>SAN, NAS, backup systems, business continuity, disaster recovery, and secure protection of enterprise information.</p>
+              <div class="service-tags"><span>SAN/NAS</span><span>Backup</span></div>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-image">
+              <span class="service-chip"><i class="fas fa-code"></i></span>
+              <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80" alt="Application Development" onerror="this.src='https://placehold.co/800x500/0f172a/3b82f6?text=Application+Development'">
+            </div>
+            <div class="service-body">
+              <h3>Application Development</h3>
+              <p>Custom web, mobile, and desktop solutions built around real processes, workflows, and digital transformation goals.</p>
+              <div class="service-tags"><span>Web</span><span>Mobile</span></div>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-image">
+              <span class="service-chip"><i class="fas fa-database"></i></span>
+              <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=1200&q=80" alt="Database Management" onerror="this.src='https://placehold.co/800x500/0f172a/3b82f6?text=Database+Management'">
+            </div>
+            <div class="service-body">
+              <h3>Database Management</h3>
+              <p>SQL, NoSQL, architecture design, tuning, migration, administration, and secure data performance optimization.</p>
+              <div class="service-tags"><span>SQL</span><span>NoSQL</span></div>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-image">
+              <span class="service-chip"><i class="fas fa-plug"></i></span>
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="API Integration" onerror="this.src='https://placehold.co/800x500/0f172a/3b82f6?text=API+Integration'">
+            </div>
+            <div class="service-body">
+              <h3>API Integration</h3>
+              <p>Seamless third-party connectivity, REST APIs, microservices, and workflow automation across systems and platforms.</p>
+              <div class="service-tags"><span>REST</span><span>Automation</span></div>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-image">
+              <span class="service-chip"><i class="fas fa-network-wired"></i></span>
+              <img src="https://images.unsplash.com/photo-1520869562399-e772f042f422?auto=format&fit=crop&w=1200&q=80" alt="Network Connectivity" onerror="this.src='https://placehold.co/800x500/0f172a/3b82f6?text=Networking'">
+            </div>
+            <div class="service-body">
+              <h3>Network Connectivity</h3>
+              <p>Enterprise networking, SD-WAN, LAN/WAN, wireless design, optimization, secure communication, and branch integration.</p>
+              <div class="service-tags"><span>SD-WAN</span><span>LAN/WAN</span></div>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-image">
+              <span class="service-chip"><i class="fas fa-user-shield"></i></span>
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80" alt="Cybersecurity Solutions" onerror="this.src='https://placehold.co/800x500/0f172a/3b82f6?text=Cybersecurity'">
+            </div>
+            <div class="service-body">
+              <h3>Cybersecurity Solutions</h3>
+              <p>Advanced threat protection, endpoint defense, firewall management, compliance, monitoring, and risk reduction.</p>
+              <div class="service-tags"><span>Firewall</span><span>Endpoint</span></div>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-image">
+              <span class="service-chip"><i class="fas fa-chalkboard-teacher"></i></span>
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Awareness Training" onerror="this.src='https://placehold.co/800x500/0f172a/3b82f6?text=Awareness+Training'">
+            </div>
+            <div class="service-body">
+              <h3>Awareness Trainings</h3>
+              <p>Cybersecurity awareness, phishing simulations, team education, and stronger internal security culture development.</p>
+              <div class="service-tags"><span>Training</span><span>Phishing</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="value-grid reveal">
+          <div class="value-card">
+            <i class="fas fa-layer-group"></i>
+            <h4>All IT Under One Roof</h4>
+            <p>Infrastructure, security, software, networking, and support delivered as one complete ecosystem.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-user-shield"></i>
+            <h4>Security by Design</h4>
+            <p>Every environment is shaped with risk reduction, resilience, and control at the center.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-sitemap"></i>
+            <h4>Scalable by Nature</h4>
+            <p>Solutions are engineered to evolve with your organization while remaining stable and manageable.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-handshake"></i>
+            <h4>Built for Partnership</h4>
+            <p>We stay connected through support, optimization, advice, and long-term technology confidence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="section" style="padding-top:40px;">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge"><i class="fas fa-chart-line"></i> Impact</div>
+          <h2 class="section-title">A track record that reflects <span style="background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;">depth and trust</span>.</h2>
+          <p class="section-sub">Measured through long-term service, real projects, active support, and a consistent standard of quality.</p>
+        </div>
+
+        <div class="stats-grid reveal-scale">
+          <div class="stat-card">
+            <i class="fas fa-calendar-check" style="color:var(--blue)"></i>
+            <div class="num" data-target="10">0<span>+</span></div>
+            <div class="label">Years Experience</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-project-diagram" style="color:var(--purple)"></i>
+            <div class="num" data-target="350">0<span>+</span></div>
+            <div class="label">Projects Done</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-face-smile" style="color:var(--cyan)"></i>
+            <div class="num" data-target="99">0<span>%</span></div>
+            <div class="label">Client Satisfaction</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-headset" style="color:var(--emerald)"></i>
+            <div class="num">24<span>/7</span></div>
+            <div class="label">Support Active</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFRA -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge"><i class="fas fa-microchip"></i> Infrastructure Excellence</div>
+          <h2 class="section-title">We design digital foundations that are beautiful in architecture and <span style="background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;">brilliant in performance</span>.</h2>
+          <p class="section-sub">
+            Enterprise infrastructure, secure connectivity, and cloud-ready environments designed for resilience, continuity, and operational confidence.
+          </p>
+        </div>
+
+        <div class="infra-cards">
+          <div class="infra-card reveal">
+            <div class="infra-icon" style="background:linear-gradient(135deg,#2563eb,#3b82f6)">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3>Data Center Solutions</h3>
+            <p>Enterprise-grade data center planning, deployment, optimization, availability strategy, and resilient operational management.</p>
+          </div>
+
+          <div class="infra-card reveal">
+            <div class="infra-icon" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6)">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <h3>Enterprise Networking</h3>
+            <p>High-performance SD-WAN, LAN/WAN, wireless architecture, segmentation, optimization, and secure branch connectivity.</p>
+          </div>
+
+          <div class="infra-card reveal">
+            <div class="infra-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4)">
+              <i class="fas fa-cloud-arrow-up"></i>
+            </div>
+            <h3>Cloud Integration</h3>
+            <p>Hybrid cloud environments connecting on-premise systems with modern cloud platforms, workflows, and digital ecosystems.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-shell reveal-scale">
+          <h2>
+            Ready to build an IT environment that feels<br>
+            stronger, smarter, and more <span style="background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;">exceptional</span>?
+          </h2>
+          <p>
+            Let ZTrust Tech transform your technology into a secure, beautiful, and business-ready digital foundation.
+          </p>
+          <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;">
+            <a href="contact.html" class="btn primary"><i class="fas fa-headset"></i> Get Free Consultation</a>
+            <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="btn secondary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-bar">
+          <div class="contact-item"><i class="fas fa-phone-alt"></i> +251 911 563 698</div>
+          <div class="contact-item"><i class="fas fa-envelope"></i> sales2@ztrust.et</div>
+          <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Bole TK Building, Addis Ababa</div>
+        </div>
+        <div class="contact-bar">
+          <a href="https://wa.me/251911563698" class="method-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp: +251 911 563 698</a>
+          <a href="https://t.me/ZTrustTech" class="method-btn tg" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram: @ZTrustTech</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <img src="Ztrust Logo 1 (2).png" class="footer-logo" alt="ZTrust Tech" onerror="this.src='https://placehold.co/180x62/0f172a/3b82f6?text=ZTrust'">
+            <p style="margin-top:12px;color:#64748b;font-size:.92rem;">
+              Complete IT Solutions Provider<br>
+              Infrastructure • Storage • Apps • Database • API • Networks • Security
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
+              <a href="https://t.me/ZTrustTech" target="_blank"><i class="fab fa-telegram"></i></a>
+              <a href="https://wa.me/251911563698" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <div>
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+
+          <div>
+            <h4>Our Services</h4>
+            <a href="services.html">Infrastructure</a>
+            <a href="services.html">Storage</a>
+            <a href="services.html">App Development</a>
+            <a href="services.html">Database</a>
+            <a href="services.html">API Integration</a>
+            <a href="services.html">Networking</a>
+          </div>
+
+          <div>
+            <h4>Contact</h4>
+            <a href="#"><i class="fas fa-user" style="width:16px;margin-right:8px;color:var(--blue)"></i>GM: Ssasebih Nega</a>
+            <a href="tel:+251911563698"><i class="fas fa-phone" style="width:16px;margin-right:8px;color:var(--blue)"></i>+251 911 563 698</a>
+            <a href="mailto:sales2@ztrust.et"><i class="fas fa-envelope" style="width:16px;margin-right:8px;color:var(--blue)"></i>sales2@ztrust.et</a>
+            <a href="#"><i class="fas fa-map-marker-alt" style="width:16px;margin-right:8px;color:var(--blue)"></i>Bole TK Building</a>
+          </div>
+        </div>
+
+        <div class="copyright">
+          © 2026 <a href="index.html">ZTrust Tech</a>. 10+ Years of IT Excellence | All IT Solutions Under One Roof | Made with 💙 in Ethiopia
+        </div>
+      </div>
+    </footer>
   </div>
-  <button class="top-btn" id="topBtn"><i class="fas fa-arrow-up"></i></button>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <script>
-    /* ══════ CUSTOM CURSOR ══════ */
-    (function(){
-      const dot=document.getElementById('cursorDot');
-      const ring=document.getElementById('cursorRing');
-      const glow=document.getElementById('cursorGlow');
-      if(!dot||!ring)return;
-      let mx=0,my=0,rx=0,ry=0,gx=0,gy=0;
-      document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-      function animCursor(){
-        rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;
-        gx+=(mx-gx)*0.05;gy+=(my-gy)*0.05;
-        dot.style.transform=`translate(${mx-4}px,${my-4}px)`;
-        ring.style.left=rx+'px';ring.style.top=ry+'px';
-        if(glow){glow.style.left=gx+'px';glow.style.top=gy+'px';}
-        requestAnimationFrame(animCursor);
+    // LOADER
+    window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),2200));
+
+    // NAV
+    const nav=document.getElementById('mainNav');
+    addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+
+    // MOBILE MENU
+    const mt=document.getElementById('mobileMenu');
+    const nl=document.getElementById('navLinks');
+    mt.addEventListener('click',e=>{
+      e.stopPropagation();
+      nl.classList.toggle('active');
+      const i=mt.querySelector('i');
+      i.classList.toggle('fa-bars');
+      i.classList.toggle('fa-times');
+    });
+    nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      nl.classList.remove('active');
+      const i=mt.querySelector('i');
+      i.classList.add('fa-bars');
+      i.classList.remove('fa-times');
+    }));
+    document.addEventListener('click',e=>{
+      if(nl.classList.contains('active') && !nl.contains(e.target) && !mt.contains(e.target)){
+        nl.classList.remove('active');
+        const i=mt.querySelector('i');
+        i.classList.add('fa-bars');
+        i.classList.remove('fa-times');
       }
-      animCursor();
-      document.querySelectorAll('a,button,.svc-bento,.tilt-card,.magnetic').forEach(el=>{
-        el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
-        el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
-      });
-    })();
-
-    /* ══════ MAGNETIC BUTTONS ══════ */
-    document.querySelectorAll('.magnetic').forEach(btn=>{
-      btn.addEventListener('mousemove',e=>{
-        const r=btn.getBoundingClientRect();
-        const x=e.clientX-r.left-r.width/2;
-        const y=e.clientY-r.top-r.height/2;
-        btn.style.transform=`translate(${x*0.2}px,${y*0.2}px)`;
-      });
-      btn.addEventListener('mouseleave',()=>{btn.style.transform='translate(0,0)';});
     });
 
-    /* ══════ HOLO SHINE ON BENTO CARDS ══════ */
-    document.querySelectorAll('.svc-bento').forEach(card=>{
-      card.addEventListener('mousemove',e=>{
-        const r=card.getBoundingClientRect();
-        const x=((e.clientX-r.left)/r.width*100);
-        const y=((e.clientY-r.top)/r.height*100);
-        card.style.setProperty('--mx',x+'%');
-        card.style.setProperty('--my',y+'%');
-      });
-    });
-
-    /* ══════ 3D TILT ══════ */
-    document.querySelectorAll('.tilt-card').forEach(card=>{
-      card.addEventListener('mousemove',e=>{
-        const r=card.getBoundingClientRect();
-        const x=e.clientX-r.left;const y=e.clientY-r.top;
-        const cx=r.width/2;const cy=r.height/2;
-        const rotX=(y-cy)/cy*-6;const rotY=(x-cx)/cx*6;
-        card.style.transform=`perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
-        card.style.setProperty('--tx',x+'px');
-        card.style.setProperty('--ty',y+'px');
-      });
-      card.addEventListener('mouseleave',()=>{card.style.transform='perspective(800px) rotateX(0) rotateY(0) scale(1)';});
-    });
-
-    /* ══════ TYPING ══════ */
+    // TYPING
     (function(){
-      const el=document.getElementById('typingText');if(!el)return;
-      const lines=['> Connecting 350+ successful projects...','> Deploying enterprise solutions across Ethiopia...','> Protecting your data 24/7 with enterprise security...','> Welcome to ZTrust Tech — Your IT Partner.'];
-      let li=0,ci=0,del=false,pa=0;
+      const el=document.getElementById('typingText');
+      if(!el) return;
+      const lines=[
+        '> Infrastructure. Security. Development. Storage. Connectivity...',
+        '> One complete IT ecosystem for ambitious organizations...',
+        '> Beautifully engineered systems built around trust...',
+        '> Welcome to ZTrust Tech — complete IT solutions provider.'
+      ];
+      let li=0,ci=0,del=false,pause=0;
       function type(){
-        if(pa>0){pa--;requestAnimationFrame(type);return;}
+        if(pause>0){pause--;requestAnimationFrame(type);return}
         const line=lines[li];
-        if(!del){el.innerHTML=line.substring(0,ci+1)+'<span class="cur"></span>';ci++;if(ci>=line.length){del=true;pa=70;requestAnimationFrame(type);return;}}
-        else{el.innerHTML=line.substring(0,ci)+'<span class="cur"></span>';ci--;if(ci<=0){del=false;li=(li+1)%lines.length;pa=15;}}
-        setTimeout(type,del?20:40+Math.random()*30);
+        if(!del){
+          el.innerHTML=line.substring(0,ci+1)+'<span class="cursor"></span>';
+          ci++;
+          if(ci>=line.length){del=true;pause=80;requestAnimationFrame(type);return}
+        }else{
+          el.innerHTML=line.substring(0,ci)+'<span class="cursor"></span>';
+          ci--;
+          if(ci<=0){del=false;li=(li+1)%lines.length;pause=20}
+        }
+        setTimeout(type,del?22:44+Math.random()*28);
       }
-      setTimeout(type,1500);
+      setTimeout(type,1100);
     })();
 
-    /* ══════ NAV ══════ */
-    window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
+    // REVEAL
+    const reveals=document.querySelectorAll('.reveal,.reveal-scale');
+    const revObs=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(el=>revObs.observe(el));
 
-    /* ══════ BURGER ══════ */
-    const burger=document.getElementById('burger'),navMenu=document.getElementById('navMenu');
-    burger.addEventListener('click',e=>{e.stopPropagation();navMenu.classList.toggle('open');const i=burger.querySelector('i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times');});
-    navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navMenu.classList.remove('open');burger.querySelector('i').classList.add('fa-bars');burger.querySelector('i').classList.remove('fa-times');}));
-    document.addEventListener('click',e=>{if(navMenu.classList.contains('open')&&!navMenu.contains(e.target)){navMenu.classList.remove('open');burger.querySelector('i').classList.add('fa-bars');burger.querySelector('i').classList.remove('fa-times');}});
+    // COUNTERS
+    function animateCounters(){
+      document.querySelectorAll('[data-target]').forEach(el=>{
+        const t=parseInt(el.dataset.target,10);
+        const sfx=el.querySelector('span') ? el.querySelector('span').outerHTML : '';
+        const dur=2200,start=performance.now();
+        function upd(now){
+          const p=Math.min((now-start)/dur,1);
+          const eased=1-Math.pow(1-p,3);
+          el.innerHTML=Math.floor(eased*t)+sfx;
+          if(p<1) requestAnimationFrame(upd);
+        }
+        requestAnimationFrame(upd);
+      });
+    }
+    const counterObs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){animateCounters();counterObs.disconnect();}
+      });
+    },{threshold:.3});
+    const statsGrid=document.querySelector('.stats-grid');
+    if(statsGrid) counterObs.observe(statsGrid);
 
-    /* ══════ SCROLL REVEAL ══════ */
-    const rvObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('.rv,.rv-s').forEach(el=>rvObs.observe(el));
+    // CARD LIGHT FOLLOW
+    document.querySelectorAll('.service-card').forEach(card=>{
+      card.addEventListener('mousemove',e=>{
+        const r=card.getBoundingClientRect();
+        card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+        card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+      });
+    });
 
-    /* ══════ COUNTER ══════ */
-    let counted=false;
-    const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&!counted){counted=true;document.querySelectorAll('[data-count]').forEach(el=>{
-      const t=parseInt(el.dataset.count);const dur=2000;const start=performance.now();
-      function u(now){const p=Math.min((now-start)/dur,1);el.textContent=Math.floor((1-Math.pow(1-p,3))*t);if(p<1)requestAnimationFrame(u);}
-      requestAnimationFrame(u);
-    });}});},{threshold:0.3});
-    document.querySelectorAll('.stats-strip,.hero-stats').forEach(el=>cObs.observe(el));
+    // BACK TO TOP
+    const btt=document.getElementById('backToTop');
+    addEventListener('scroll',()=>btt.classList.toggle('show',scrollY>400));
+    btt.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
-    /* ══════ TESTIMONIALS AUTO ══════ */
+    // NET + PARTICLES
     (function(){
-      const track=document.getElementById('testiTrack');if(!track)return;
-      let pos=0,paused=false;
-      track.addEventListener('mouseenter',()=>paused=true);
-      track.addEventListener('mouseleave',()=>paused=false);
-      track.addEventListener('touchstart',()=>paused=true);
-      track.addEventListener('touchend',()=>setTimeout(()=>paused=false,2000));
-      function anim(){if(!paused){pos+=0.4;if(pos>=track.scrollWidth-track.clientWidth)pos=0;track.scrollLeft=pos;}requestAnimationFrame(anim);}
-      anim();
+      const zone=document.getElementById('netZone');
+      const c=document.getElementById('networkCanvas');
+      if(!zone||!c) return;
+      const ctx=c.getContext('2d');
+
+      let w=0,h=0,nodes=[],mouse={x:-1000,y:-1000};
+
+      function resize(){
+        const r=zone.getBoundingClientRect();
+        w=c.width=Math.max(1,Math.floor(r.width));
+        h=c.height=Math.max(1,Math.floor(r.height));
+      }
+      resize();
+      addEventListener('resize',resize);
+
+      addEventListener('mousemove',e=>{
+        const r=zone.getBoundingClientRect();
+        mouse.x=e.clientX-r.left;
+        mouse.y=e.clientY-r.top;
+        if(mouse.x<0||mouse.y<0||mouse.x>r.width||mouse.y>r.height){
+          mouse.x=-1000; mouse.y=-1000;
+        }
+      });
+
+      class Node{
+        constructor(){
+          this.x=Math.random()*w; this.y=Math.random()*h;
+          this.vx=(Math.random()-0.5)*0.5; this.vy=(Math.random()-0.5)*0.5;
+          this.r=Math.random()*2+1;
+          this.baseAlpha=0.16+Math.random()*0.2;
+          this.color=['59,130,246','99,102,241','139,92,246','6,182,212'][~~(Math.random()*4)];
+          this.pulse=Math.random()*Math.PI*2;
+          this.pulseSpeed=0.01+Math.random()*0.02;
+        }
+        update(){
+          this.x+=this.vx; this.y+=this.vy; this.pulse+=this.pulseSpeed;
+          if(this.x<0||this.x>w) this.vx*=-1;
+          if(this.y<0||this.y>h) this.vy*=-1;
+          const dx=this.x-mouse.x, dy=this.y-mouse.y;
+          const d=Math.sqrt(dx*dx+dy*dy) || 1;
+          if(d<150){
+            const force=(150-d)/150*0.02;
+            this.vx+=dx/d*force; this.vy+=dy/d*force;
+          }
+          this.vx*=0.999; this.vy*=0.999;
+        }
+        draw(){
+          const alpha=this.baseAlpha+Math.sin(this.pulse)*0.1;
+          ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+          ctx.fillStyle=`rgba(${this.color},${alpha})`; ctx.fill();
+          ctx.beginPath(); ctx.arc(this.x,this.y,this.r*3,0,Math.PI*2);
+          ctx.fillStyle=`rgba(${this.color},${alpha*0.15})`; ctx.fill();
+        }
+      }
+
+      function rebuild(){
+        nodes=[];
+        const count=Math.min(120,Math.max(60,~~(w*h/14000)));
+        for(let i=0;i<count;i++) nodes.push(new Node());
+      }
+      rebuild();
+
+      let lastW=w,lastH=h;
+      function checkResize(){
+        const r=zone.getBoundingClientRect();
+        const nw=Math.floor(r.width), nh=Math.floor(r.height);
+        if(nw!==lastW || nh!==lastH){
+          resize(); rebuild();
+          lastW=nw; lastH=nh;
+        }
+        requestAnimationFrame(checkResize);
+      }
+      requestAnimationFrame(checkResize);
+
+      function drawConnections(){
+        for(let i=0;i<nodes.length;i++){
+          for(let j=i+1;j<nodes.length;j++){
+            const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+            const d=Math.sqrt(dx*dx+dy*dy);
+            if(d<160){
+              const alpha=0.06*(1-d/160);
+              const grad=ctx.createLinearGradient(nodes[i].x,nodes[i].y,nodes[j].x,nodes[j].y);
+              grad.addColorStop(0,`rgba(${nodes[i].color},${alpha})`);
+              grad.addColorStop(1,`rgba(${nodes[j].color},${alpha})`);
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x,nodes[i].y);
+              ctx.lineTo(nodes[j].x,nodes[j].y);
+              ctx.strokeStyle=grad; ctx.lineWidth=.8; ctx.stroke();
+            }
+          }
+
+          const dx=nodes[i].x-mouse.x, dy=nodes[i].y-mouse.y;
+          const d=Math.sqrt(dx*dx+dy*dy);
+          if(d<200){
+            const alpha=0.15*(1-d/200);
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x,nodes[i].y);
+            ctx.lineTo(mouse.x,mouse.y);
+            ctx.strokeStyle=`rgba(59,130,246,${alpha})`;
+            ctx.lineWidth=1; ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(mouse.x,mouse.y,3,0,Math.PI*2);
+            ctx.fillStyle=`rgba(59,130,246,${alpha*2})`;
+            ctx.fill();
+          }
+        }
+      }
+
+      function loop(){
+        ctx.clearRect(0,0,w,h);
+        nodes.forEach(n=>{n.update();n.draw()});
+        drawConnections();
+        requestAnimationFrame(loop);
+      }
+      loop();
     })();
 
-    /* ══════ TOP BTN ══════ */
-    const topBtn=document.getElementById('topBtn');
-    window.addEventListener('scroll',()=>topBtn.classList.toggle('show',scrollY>400));
-    topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    // PARTICLES
+    (function(){
+      const zone=document.getElementById('netZone');
+      const c=document.getElementById('particleCanvas');
+      if(!zone||!c) return;
+      const ctx=c.getContext('2d');
+      let w=0,h=0,particles=[];
+
+      function resize(){
+        const r=zone.getBoundingClientRect();
+        w=c.width=Math.max(1,Math.floor(r.width));
+        h=c.height=Math.max(1,Math.floor(r.height));
+      }
+      resize();
+      addEventListener('resize',resize);
+
+      class P{
+        constructor(){this.reset()}
+        reset(){
+          this.x=Math.random()*w; this.y=Math.random()*h;
+          this.vx=(Math.random()-0.5)*0.15; this.vy=(Math.random()-0.5)*0.15;
+          this.r=Math.random()*1+.3;
+          this.a=Math.random()*0.15+0.05;
+          this.c=['59,130,246','99,102,241','6,182,212'][~~(Math.random()*3)];
+        }
+        update(){
+          this.x+=this.vx; this.y+=this.vy;
+          if(this.x<0||this.x>w||this.y<0||this.y>h) this.reset();
+        }
+        draw(){
+          ctx.beginPath();
+          ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+          ctx.fillStyle=`rgba(${this.c},${this.a})`;
+          ctx.fill();
+        }
+      }
+
+      function rebuild(){
+        particles=[];
+        const n=Math.min(70,Math.max(35,~~(w*h/26000)));
+        for(let i=0;i<n;i++) particles.push(new P());
+      }
+      rebuild();
+
+      let lastW=w,lastH=h;
+      function checkResize(){
+        const r=zone.getBoundingClientRect();
+        const nw=Math.floor(r.width), nh=Math.floor(r.height);
+        if(nw!==lastW || nh!==lastH){
+          resize(); rebuild();
+          lastW=nw; lastH=nh;
+        }
+        requestAnimationFrame(checkResize);
+      }
+      requestAnimationFrame(checkResize);
+
+      function loop(){
+        ctx.clearRect(0,0,w,h);
+        particles.forEach(p=>{p.update();p.draw()});
+        requestAnimationFrame(loop);
+      }
+      loop();
+    })();
+
+    // MOVING TEXT BG
+    (function(){
+      const mb=document.getElementById('movingBg');
+      if(!mb) return;
+      const words=['ZTrust Tech','Infrastructure','Security','Cloud','Storage','Networking','Apps','Database','API','10+ Years','24/7 Support','Enterprise'];
+      for(let i=0;i<30;i++){
+        const el=document.createElement('div');
+        el.className='moving-element';
+        el.textContent=words[~~(Math.random()*words.length)];
+        el.style.fontSize=(0.8+Math.random()*0.85)+'rem';
+        el.style.setProperty('--y-offset',(Math.random()*60-30)+'vh');
+        el.style.top=Math.random()*100+'%';
+        el.style.animationDelay=Math.random()*20+'s';
+        el.style.animationDuration=(14+Math.random()*20)+'s';
+        el.style.opacity=0.035+Math.random()*0.055;
+        mb.appendChild(el);
+      }
+    })();
   </script>
 </body>
 </html>
+
+
