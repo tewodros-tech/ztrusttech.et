@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,7 +111,6 @@
       min-height:100vh;display:flex;align-items:center;justify-content:center;
       position:relative;overflow:hidden;
     }
-    /* Ztrust Color (2).png as full hero background */
     .hero-bg-img{
       position:absolute;top:0;left:0;width:100%;height:100%;
       object-fit:cover;z-index:0;pointer-events:none;
@@ -128,8 +126,6 @@
       flex-direction:column;text-align:center;min-height:80vh;
       padding-top:80px;
     }
-
-    /* BIG LOGO SHOWCASE */
     .hero-logo-showcase{
       position:relative;margin-bottom:40px;
       animation:heroLogoEnter 1s ease 0.3s both;
@@ -149,8 +145,6 @@
       animation:glowPulse 4s ease-in-out infinite;z-index:1;
     }
     @keyframes glowPulse{0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.25);}}
-
-    /* Orbit Rings around Logo */
     .hero-orbits{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:1;}
     .hero-orbit{
       position:absolute;border:1px solid rgba(59,130,246,0.08);border-radius:50%;
@@ -166,7 +160,6 @@
       box-shadow:0 0 10px var(--blue),0 0 20px var(--blue);
     }
     @keyframes orbitSpin{from{transform:translate(-50%,-50%) rotate(0);}to{transform:translate(-50%,-50%) rotate(360deg);}}
-
     .hero-badge{
       display:inline-flex;align-items:center;gap:10px;
       background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.12);
@@ -491,11 +484,9 @@
 
 <!-- ══════ HERO ══════ -->
 <section class="hero" id="heroSection">
-  <!-- Ztrust Color (2).png as full hero background -->
   <img src="Ztrust Color (2).png" alt="" class="hero-bg-img" onerror="this.style.display='none'">
   <div class="container">
     <div class="hero-content">
-      <!-- BIG LOGO SHOWCASE -->
       <div class="hero-logo-showcase">
         <div class="hero-logo-glow"></div>
         <div class="hero-orbits">
@@ -744,76 +735,75 @@
 
 <script>
 // ══════ LOADER ══════
-window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),2800));
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('hide');},2800);});
 
 // ══════ NETWORK CONNECTING CANVAS ══════
 (function(){
-  const c=document.getElementById('networkCanvas');if(!c)return;
-  const ctx=c.getContext('2d');let w,h,nodes=[],mouse={x:-1000,y:-1000};
-  function resize(){w=c.width=innerWidth;h=c.height=innerHeight;}
-  resize();addEventListener('resize',resize);
-  addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+  var c=document.getElementById('networkCanvas');if(!c)return;
+  var ctx=c.getContext('2d');var w,h,nodes=[],mouse={x:-1000,y:-1000};
+  function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  window.addEventListener('mousemove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;});
 
-  class Node{
-    constructor(){
-      this.x=Math.random()*w;this.y=Math.random()*h;
-      this.vx=(Math.random()-0.5)*0.5;this.vy=(Math.random()-0.5)*0.5;
-      this.r=Math.random()*2+1;
-      this.baseAlpha=0.15+Math.random()*0.2;
-      this.color=['59,130,246','99,102,241','139,92,246','6,182,212'][~~(Math.random()*4)];
-      this.pulse=Math.random()*Math.PI*2;
-      this.pulseSpeed=0.01+Math.random()*0.02;
-    }
-    update(){
-      this.x+=this.vx;this.y+=this.vy;
-      this.pulse+=this.pulseSpeed;
-      if(this.x<0||this.x>w)this.vx*=-1;
-      if(this.y<0||this.y>h)this.vy*=-1;
-      const dx=this.x-mouse.x,dy=this.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<150){const force=(150-d)/150*0.02;this.vx+=dx/d*force;this.vy+=dy/d*force;}
-      this.vx*=0.999;this.vy*=0.999;
-    }
-    draw(){
-      const alpha=this.baseAlpha+Math.sin(this.pulse)*0.1;
-      ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${this.color},${alpha})`;ctx.fill();
-      ctx.beginPath();ctx.arc(this.x,this.y,this.r*3,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${this.color},${alpha*0.15})`;ctx.fill();
-    }
+  function Node(){
+    this.x=Math.random()*w;this.y=Math.random()*h;
+    this.vx=(Math.random()-0.5)*0.5;this.vy=(Math.random()-0.5)*0.5;
+    this.r=Math.random()*2+1;
+    this.baseAlpha=0.15+Math.random()*0.2;
+    var colors=['59,130,246','99,102,241','139,92,246','6,182,212'];
+    this.color=colors[Math.floor(Math.random()*colors.length)];
+    this.pulse=Math.random()*Math.PI*2;
+    this.pulseSpeed=0.01+Math.random()*0.02;
   }
+  Node.prototype.update=function(){
+    this.x+=this.vx;this.y+=this.vy;
+    this.pulse+=this.pulseSpeed;
+    if(this.x<0||this.x>w)this.vx*=-1;
+    if(this.y<0||this.y>h)this.vy*=-1;
+    var dx=this.x-mouse.x,dy=this.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<150){var force=(150-d)/150*0.02;this.vx+=dx/d*force;this.vy+=dy/d*force;}
+    this.vx*=0.999;this.vy*=0.999;
+  };
+  Node.prototype.draw=function(){
+    var alpha=this.baseAlpha+Math.sin(this.pulse)*0.1;
+    ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fillStyle='rgba('+this.color+','+alpha+')';ctx.fill();
+    ctx.beginPath();ctx.arc(this.x,this.y,this.r*3,0,Math.PI*2);
+    ctx.fillStyle='rgba('+this.color+','+(alpha*0.15)+')';ctx.fill();
+  };
 
-  const count=Math.min(90,~~(w*h/12000));
-  for(let i=0;i<count;i++)nodes.push(new Node());
+  var count=Math.min(90,Math.floor(w*h/12000));
+  for(var i=0;i<count;i++)nodes.push(new Node());
 
   function drawConnections(){
-    for(let i=0;i<nodes.length;i++){
-      for(let j=i+1;j<nodes.length;j++){
-        const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;
-        const d=Math.sqrt(dx*dx+dy*dy);
+    for(var i=0;i<nodes.length;i++){
+      for(var j=i+1;j<nodes.length;j++){
+        var dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;
+        var d=Math.sqrt(dx*dx+dy*dy);
         if(d<160){
-          const alpha=0.06*(1-d/160);
-          const grad=ctx.createLinearGradient(nodes[i].x,nodes[i].y,nodes[j].x,nodes[j].y);
-          grad.addColorStop(0,`rgba(${nodes[i].color},${alpha})`);
-          grad.addColorStop(1,`rgba(${nodes[j].color},${alpha})`);
+          var alpha=0.06*(1-d/160);
+          var grad=ctx.createLinearGradient(nodes[i].x,nodes[i].y,nodes[j].x,nodes[j].y);
+          grad.addColorStop(0,'rgba('+nodes[i].color+','+alpha+')');
+          grad.addColorStop(1,'rgba('+nodes[j].color+','+alpha+')');
           ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);
           ctx.strokeStyle=grad;ctx.lineWidth=0.8;ctx.stroke();
         }
       }
-      const dx=nodes[i].x-mouse.x,dy=nodes[i].y-mouse.y;
-      const d=Math.sqrt(dx*dx+dy*dy);
+      var dx=nodes[i].x-mouse.x,dy=nodes[i].y-mouse.y;
+      var d=Math.sqrt(dx*dx+dy*dy);
       if(d<200){
-        const alpha=0.15*(1-d/200);
+        var alpha=0.15*(1-d/200);
         ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(mouse.x,mouse.y);
-        ctx.strokeStyle=`rgba(59,130,246,${alpha})`;ctx.lineWidth=1;ctx.stroke();
+        ctx.strokeStyle='rgba(59,130,246,'+alpha+')';ctx.lineWidth=1;ctx.stroke();
         ctx.beginPath();ctx.arc(mouse.x,mouse.y,3,0,Math.PI*2);
-        ctx.fillStyle=`rgba(59,130,246,${alpha*2})`;ctx.fill();
+        ctx.fillStyle='rgba(59,130,246,'+(alpha*2)+')';ctx.fill();
       }
     }
   }
 
   function loop(){
     ctx.clearRect(0,0,w,h);
-    nodes.forEach(n=>{n.update();n.draw();});
+    nodes.forEach(function(n){n.update();n.draw();});
     drawConnections();
     requestAnimationFrame(loop);
   }
@@ -822,24 +812,37 @@ window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loade
 
 // ══════ PARTICLE CANVAS ══════
 (function(){
-  const c=document.getElementById('particleCanvas');if(!c)return;
-  const ctx=c.getContext('2d');let w,h,particles=[];
-  function resize(){w=c.width=innerWidth;h=c.height=innerHeight;}
-  resize();addEventListener('resize',resize);
-  class P{constructor(){this.reset();}reset(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-0.5)*0.15;this.vy=(Math.random()-0.5)*0.15;this.r=Math.random()*1+0.3;this.a=Math.random()*0.15+0.05;this.c=['59,130,246','99,102,241','6,182,212'][~~(Math.random()*3)];}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>w||this.y<0||this.y>h)this.reset();}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(${this.c},${this.a})`;ctx.fill();}}
-  const n=Math.min(50,~~(w*h/25000));for(let i=0;i<n;i++)particles.push(new P());
-  function loop(){ctx.clearRect(0,0,w,h);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
+  var c=document.getElementById('particleCanvas');if(!c)return;
+  var ctx=c.getContext('2d');var w,h,particles=[];
+  function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  function P(){this.reset();}
+  P.prototype.reset=function(){
+    this.x=Math.random()*w;this.y=Math.random()*h;
+    this.vx=(Math.random()-0.5)*0.15;this.vy=(Math.random()-0.5)*0.15;
+    this.r=Math.random()*1+0.3;this.a=Math.random()*0.15+0.05;
+    var cols=['59,130,246','99,102,241','6,182,212'];
+    this.c=cols[Math.floor(Math.random()*cols.length)];
+  };
+  P.prototype.update=function(){
+    this.x+=this.vx;this.y+=this.vy;
+    if(this.x<0||this.x>w||this.y<0||this.y>h)this.reset();
+  };
+  P.prototype.draw=function(){
+    ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fillStyle='rgba('+this.c+','+this.a+')';ctx.fill();
+  };
+  var n=Math.min(50,Math.floor(w*h/25000));for(var i=0;i<n;i++)particles.push(new P());
+  function loop(){ctx.clearRect(0,0,w,h);particles.forEach(function(p){p.update();p.draw();});requestAnimationFrame(loop);}
   loop();
 })();
 
 // ══════ MOVING BACKGROUND ══════
 (function(){
-  const mb=document.getElementById('movingBg');if(!mb)return;
-  const words=['🔒 ZTrust Tech','⚡ IT Solutions','🔐 Secure',' Storage','🌐 Network','📱 Apps','🗄️ Database','🔌 API','🏗️ Infrastructure','☁️ Cloud','10+ Years','24/7 Support','🛡️ Cybersecurity'];
-  for(let i=0;i<35;i++){
-    const el=document.createElement('div');el.className='moving-element';
-    el.textContent=words[~~(Math.random()*words.length)];
+  var mb=document.getElementById('movingBg');if(!mb)return;
+  var words=['🔒 ZTrust Tech','⚡ IT Solutions','🔐 Secure','💾 Storage','🌐 Network',' Apps','🗄️ Database','🔌 API','️ Infrastructure','️ Cloud','10+ Years','24/7 Support','🛡️ Cybersecurity'];
+  for(var i=0;i<35;i++){
+    var el=document.createElement('div');el.className='moving-element';
+    el.textContent=words[Math.floor(Math.random()*words.length)];
     el.style.fontSize=(0.8+Math.random()*0.8)+'rem';
     el.style.setProperty('--y-offset',(Math.random()*60-30)+'vh');
-    el.style.top=Math.random()*100+'%';
-    el.style.animationDelay=Math.random
