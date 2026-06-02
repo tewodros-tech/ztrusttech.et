@@ -160,7 +160,7 @@
     @keyframes loadFill{0%{width:0}60%{width:70%}100%{width:100%}}
     .loader-sub{margin-top:10px;color:#3b4a61;font-size:.66rem;font-family:'JetBrains Mono',monospace;text-align:center}
 
-    /* NAV - MOBILE COMPATIBLE with logoword image */
+    /* NAV - with only logoword, links moved to right before support button */
     .nav{
       position:fixed;top:0;left:0;width:100%;z-index:1000;
       background:rgba(3,4,10,.32);
@@ -174,45 +174,68 @@
       box-shadow:0 14px 40px rgba(0,0,0,.34);
     }
     .nav-inner{
-      display:flex;justify-content:space-between;align-items:center;gap:18px;padding:12px 0;
-    }
-    .brand-wrap{
       display:flex;
+      justify-content:space-between;
       align-items:center;
-      gap:12px;
-    }
-    .nav-logo{
-      height:52px;
-      width:auto;
-      object-fit:contain;
-      border-radius:14px;
-      padding:4px;
-      background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(59,130,246,.08));
-      border:1px solid rgba(96,165,250,.14);
+      gap:18px;
+      padding:12px 0;
     }
     .logo-word-img{
-      height:42px;
+      height:48px;
       width:auto;
       object-fit:contain;
-      filter:drop-shadow(0 0 8px rgba(59,130,246,.4));
+      filter:drop-shadow(0 0 12px rgba(59,130,246,.5));
       transition:0.2s;
     }
-    .links{display:flex;gap:1.5rem;align-items:center}
+    .nav-right-group{
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+    .links{
+      display:flex;
+      gap:1.8rem;
+      align-items:center;
+    }
     .links a{
-      text-decoration:none;color:var(--muted);font-weight:600;font-size:.85rem;position:relative;padding:6px 0;
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:600;
+      font-size:.88rem;
+      position:relative;
+      padding:6px 0;
+      transition:0.2s;
     }
     .links a::after{
-      content:"";position:absolute;left:0;bottom:0;width:0;height:2px;border-radius:2px;
-      background:linear-gradient(90deg,var(--blue),var(--purple));transition:.3s
+      content:"";position:absolute;left:0;bottom:0;width:0;height:2px;
+      background:linear-gradient(90deg,var(--blue),var(--purple));
+      transition:.3s;
+      border-radius:2px;
     }
     .links a:hover,.links a.active{color:#fff}
     .links a:hover::after,.links a.active::after{width:100%}
     .nav-cta{
-      text-decoration:none;color:#fff;font-weight:800;font-size:.8rem;
-      padding:8px 18px;border-radius:30px;background:linear-gradient(135deg,var(--blue),var(--indigo));
-      box-shadow:0 8px 18px rgba(59,130,246,.25);
+      text-decoration:none;
+      color:#fff;
+      font-weight:800;
+      font-size:.85rem;
+      padding:8px 20px;
+      border-radius:40px;
+      background:linear-gradient(135deg,var(--blue),var(--indigo));
+      box-shadow:0 8px 20px rgba(59,130,246,.3);
+      white-space:nowrap;
+      transition:0.2s;
     }
-    .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+    .nav-cta:hover{transform:translateY(-2px);}
+    .menu-toggle{
+      display:none;
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:1.6rem;
+      cursor:pointer;
+      margin-left:8px;
+    }
 
     /* HERO - Minimalist with side catchphrases */
     .hero{
@@ -390,12 +413,8 @@
       gap:12px;
       margin-bottom:20px;
     }
-    .footer-logo-creative img:first-child{
-      height:54px;
-      filter:drop-shadow(0 0 12px rgba(59,130,246,.5));
-    }
     .footer-logo-creative .footer-word-img{
-      height:38px;
+      height:42px;
       width:auto;
       opacity:0.95;
     }
@@ -515,19 +534,26 @@
       .hero-catch-left,.hero-catch-right{display:none;}
       .hero-bottom-tag{white-space:normal; width:80%; font-size:0.55rem; text-align:center;}
     }
+    @media(max-width:780px){
+      .nav-right-group{gap:16px;}
+      .links{gap:1rem;}
+      .links a{font-size:0.8rem;}
+    }
     @media(max-width:680px){
       .service-grid-exceptional{grid-template-columns:1fr;}
       .section{padding:60px 0;}
+      .nav-right-group{position:relative;}
       .links{
-        position:fixed;top:72px;left:-100%;width:80%;max-width:300px;height:calc(100vh - 72px);
+        position:fixed;top:72px;left:-100%;width:75%;max-width:280px;height:calc(100vh - 72px);
         background:rgba(4,5,11,.98);backdrop-filter:blur(30px);
-        flex-direction:column;gap:1.5rem;padding:2rem;transition:left .4s;z-index:1001;
+        flex-direction:column;gap:1.8rem;padding:2rem;transition:left .4s;z-index:1001;
+        border-right:1px solid rgba(59,130,246,.2);
       }
       .links.active{left:0;}
       .menu-toggle{display:block;}
-      .nav-cta{display:none;}
+      .nav-cta{display:inline-flex;}
       .hero-catch-left,.hero-catch-right{display:none;}
-      .logo-word-img{height:32px;}
+      .logo-word-img{height:38px;}
     }
   </style>
 </head>
@@ -538,18 +564,19 @@
   
   <nav class="nav" id="mainNav">
     <div class="container nav-inner">
-      <div class="brand-wrap">
-        <img src="Ztrust Logo 1 (2).png" class="nav-logo" alt="ZTrust Tech">
-        <img src="logoword.JPG" class="logo-word-img" alt="ZTrust Word" onerror="this.src='https://placehold.co/140x40/0f172a/3b82f6?text=ZTRUST+TECH'">
+      <!-- Only logoword, main logo removed -->
+      <img src="logoword.JPG" class="logo-word-img" alt="ZTrust Word" onerror="this.src='https://placehold.co/180x50/0f172a/3b82f6?text=ZTRUST+TECH'">
+      
+      <div class="nav-right-group">
+        <div class="links" id="navLinks">
+          <a href="index.html" class="active">Home</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <a href="contact.html" class="nav-cta"><i class="fas fa-headset"></i> Get Support</a>
+        <button class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></button>
       </div>
-      <div class="links" id="navLinks">
-        <a href="index.html" class="active">Home</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <a href="contact.html" class="nav-cta"><i class="fas fa-headset"></i> Get Support</a>
-      <button class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
 
@@ -581,15 +608,14 @@
     <section class="section"><div class="container"><div class="stats-grid"><div class="stat-card"><i class="fas fa-calendar-check" style="color:var(--blue)"></i><div class="num" data-target="10">0<span>+</span></div><div class="label">Years Experience</div></div><div class="stat-card"><i class="fas fa-project-diagram" style="color:var(--purple)"></i><div class="num" data-target="99">0<span>%</span></div><div class="label">Client Retention</div></div><div class="stat-card"><i class="fas fa-face-smile" style="color:var(--cyan)"></i><div class="num" data-target="99">0<span>%</span></div><div class="label">Client Satisfaction</div></div><div class="stat-card"><i class="fas fa-headset" style="color:var(--emerald)"></i><div class="num">24<span>/7</span></div><div class="label">Support Active</div></div></div></div></section>
     <section class="section"><div class="container"><div class="cta-shell"><h2>Ready to build an exceptional IT environment?</h2><p>Let ZTrust Tech transform your technology into a secure, beautiful, and business-ready foundation.</p><div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;"><a href="contact.html" class="btn primary"><i class="fas fa-headset"></i> Get Free Consultation</a><a href="https://wa.me/251911563698" class="btn secondary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div></div></div></section>
 
-    <!-- CREATIVE FOOTER SECTION with logoword image also -->
+    <!-- CREATIVE FOOTER SECTION -->
     <footer class="creative-footer">
       <div class="footer-glow"></div>
       <div class="container footer-main">
         <div class="footer-flex">
           <div class="footer-brand-col">
             <div class="footer-logo-creative">
-              <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech">
-              <img src="logoword.JPG" class="footer-word-img" alt="ZTrust Word" onerror="this.src='https://placehold.co/140x40/0f172a/3b82f6?text=ZTRUST+TECH'">
+              <img src="logoword.JPG" class="footer-word-img" alt="ZTrust Word" onerror="this.src='https://placehold.co/160x45/0f172a/3b82f6?text=ZTRUST+TECH'">
             </div>
             <p class="footer-desc">Complete IT Solutions Provider — Infrastructure, Storage, Apps, Database, API, Networks & Security under one visionary ecosystem.</p>
             <div class="social-links-creative">
