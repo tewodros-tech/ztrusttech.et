@@ -217,7 +217,7 @@
     .nav-cta:hover{transform:translateY(-2px)}
     .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.55rem;cursor:pointer}
 
-    /* HERO - LEFT CORNER ATTRACTIVE LAYOUT */
+    /* HERO - MINIMAL LEFT/RIGHT CATCHPHRASES */
     .hero{
       min-height:100vh;
       display:flex;
@@ -226,15 +226,14 @@
       overflow:hidden;
       isolation:isolate;
       background:
-        linear-gradient(120deg, rgba(3,5,15,.90) 0%, rgba(4,8,20,.60) 34%, rgba(3,4,10,.90) 100%),
+        linear-gradient(120deg, rgba(3,5,15,.70) 0%, rgba(4,8,20,.40) 34%, rgba(3,4,10,.70) 100%),
         url("Ztrust Color 2.png") center/cover no-repeat;
     }
     .hero::before{
       content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
       background:
-        radial-gradient(circle at 14% 18%, rgba(59,130,246,.22), transparent 25%),
-        radial-gradient(circle at 86% 16%, rgba(139,92,246,.18), transparent 24%),
-        radial-gradient(circle at 50% 60%, rgba(6,182,212,.07), transparent 30%);
+        radial-gradient(circle at 14% 18%, rgba(59,130,246,.15), transparent 25%),
+        radial-gradient(circle at 86% 16%, rgba(139,92,246,.12), transparent 24%);
     }
     .hero::after{
       content:"";position:absolute;left:0;right:0;bottom:0;height:180px;z-index:1;pointer-events:none;
@@ -293,117 +292,77 @@
       100%{transform:translateY(-82vh) translateX(-10px) scale(1.12);opacity:0}
     }
 
-    .hero-content-left{
-      position:relative;
-      z-index:5;
-      max-width:780px;
-      margin-left:0;
-      padding:100px 0 120px;
-    }
-    .hero-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 20px;
-      border-radius:999px;
-      background:rgba(59,130,246,.12);
-      border:1px solid rgba(96,165,250,.25);
-      color:var(--blue2);
-      font-size:.72rem;
-      font-weight:800;
+    /* minimalist hero overlay - left and right short catchphrases */
+    .hero-catch-left, .hero-catch-right{
+      position:absolute;
+      z-index:20;
+      font-family:'JetBrains Mono',monospace;
+      font-weight:500;
+      letter-spacing:2px;
       text-transform:uppercase;
-      letter-spacing:2.5px;
-      margin-bottom:28px;
-      backdrop-filter:blur(8px);
-      box-shadow:0 8px 20px rgba(0,0,0,.2);
-    }
-    .hero-badge .live{width:8px;height:8px;border-radius:50%;background:var(--emerald);animation:pulse 2s ease-in-out infinite}
-    @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.45}}
-    .hero-tagline{
-      font-family:'JetBrains Mono',monospace;
-      font-size:0.85rem;
-      letter-spacing:2.2px;
-      color:var(--cyan);
-      margin-bottom:22px;
-      border-left:3px solid var(--blue);
-      padding-left:18px;
-      background:linear-gradient(135deg,#b9f3ff,#60a5fa);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-      font-weight:600;
-      text-shadow:0 0 8px rgba(6,182,212,.3);
-    }
-    .hero-typing{
-      color:var(--blue2);
-      font-family:'JetBrains Mono',monospace;
-      font-size:.82rem;
-      min-height:2.2em;
-      margin-bottom:32px;
-      background:rgba(3,4,15,.5);
-      padding:8px 16px;
-      border-radius:40px;
-      display:inline-block;
+      background:rgba(3,5,18,.45);
       backdrop-filter:blur(12px);
-      border:1px solid rgba(96,165,250,.15);
+      padding:10px 20px;
+      border-radius:60px;
+      border:1px solid rgba(96,165,250,.25);
+      font-size:0.75rem;
+      white-space:nowrap;
+      pointer-events:none;
+      color:#cbdffa;
+      box-shadow:0 4px 14px rgba(0,0,0,.2);
     }
-    .cursor{display:inline-block;width:2px;height:1em;background:var(--blue);margin-left:4px;vertical-align:text-bottom;animation:blink 1s step-end infinite}
-    @keyframes blink{50%{opacity:0}}
-    .hero-actions{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-      margin-bottom:38px;
+    .hero-catch-left{
+      left:30px;
+      top:50%;
+      transform:translateY(-50%) rotate(-90deg);
+      transform-origin:left top;
+      writing-mode:vertical-rl;
+      text-orientation:mixed;
+      padding:16px 8px;
     }
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;text-decoration:none;
-      padding:14px 28px;border-radius:40px;font-weight:800;font-size:.9rem;transition:.35s ease;position:relative;overflow:hidden
+    .hero-catch-right{
+      right:30px;
+      top:50%;
+      transform:translateY(-50%) rotate(90deg);
+      transform-origin:right top;
+      writing-mode:vertical-rl;
+      text-orientation:mixed;
+      padding:16px 8px;
+      background:rgba(99,102,241,.35);
+      border-color:rgba(139,92,246,.4);
+      color:#e0d5ff;
     }
-    .btn::before{
-      content:"";position:absolute;top:0;left:-100%;width:60%;height:100%;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
-      transition:.6s ease;
+    .hero-bottom-tag{
+      position:absolute;
+      bottom:22%;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:20;
+      font-family:'JetBrains Mono',monospace;
+      font-size:0.7rem;
+      background:rgba(0,0,0,.5);
+      backdrop-filter:blur(12px);
+      padding:6px 18px;
+      border-radius:40px;
+      letter-spacing:2px;
+      color:var(--blue2);
+      border:1px solid rgba(96,165,250,.3);
+      white-space:nowrap;
+      pointer-events:none;
     }
-    .btn:hover::before{left:130%}
-    .btn.primary{
-      background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;
-      box-shadow:0 16px 32px rgba(59,130,246,.35);
+    @media(max-width:860px){
+      .hero-catch-left, .hero-catch-right{display:none;}
+      .hero-bottom-tag{white-space:normal; text-align:center; width:80%; font-size:0.6rem; bottom:18%;}
     }
-    .btn.primary:hover{transform:translateY(-3px)}
-    .btn.secondary{
-      color:#eef4ff;background:rgba(12,16,28,.7);border:1px solid rgba(99,102,241,.35);backdrop-filter:blur(12px)
-    }
-    .btn.secondary:hover{transform:translateY(-3px);background:rgba(59,130,246,.15)}
-
-    .hero-stat-row{
-      display:flex;
-      gap:22px;
-      flex-wrap:wrap;
-    }
-    .hero-stat{
-      background:rgba(5,8,20,.65);
-      border:1px solid rgba(96,165,250,.2);
-      backdrop-filter:blur(16px);
-      padding:16px 28px;
-      border-radius:28px;
-      box-shadow:0 12px 28px rgba(0,0,0,.2);
-      min-width:140px;
-      text-align:center;
-      transition:0.3s;
-    }
-    .hero-stat:hover{transform:translateY(-4px);border-color:rgba(96,165,250,.4);background:rgba(10,16,30,.8);}
-    .hero-stat strong{
-      display:block;font-size:1.9rem;line-height:1.1;color:#fff;font-weight:900;font-family:'Space Grotesk',sans-serif
-    }
-    .hero-stat span{
-      display:block;margin-top:8px;color:#b4c8f0;font-size:.7rem;text-transform:uppercase;letter-spacing:1.6px;font-weight:700
+    @media(max-width:560px){
+      .hero-bottom-tag{font-size:0.55rem; bottom:15%;}
     }
 
     .hero-scroll{
-      position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:2;animation:fadeUp .8s ease 1.2s both
+      position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:20;animation:fadeUp .8s ease 1.2s both
     }
     .scroll-mouse{
-      width:28px;height:45px;border:2px solid rgba(99,102,241,.35);border-radius:16px;display:flex;justify-content:center;padding-top:8px
+      width:28px;height:45px;border:2px solid rgba(99,102,241,.4);border-radius:16px;display:flex;justify-content:center;padding-top:8px
     }
     .scroll-dot{width:4px;height:10px;background:var(--blue);border-radius:4px;animation:scrollAnim 2s ease-in-out infinite}
     @keyframes scrollAnim{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
@@ -570,6 +529,11 @@
     .footer{
       background:rgba(4,5,11,.96);padding:58px 0 30px;border-top:1px solid rgba(30,41,59,.3)
     }
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+    .footer-logo{height:58px;width:auto;}
+    .social-links{display:flex;gap:12px;margin-top:16px}
+    .social-links a{width:42px;height:42px;border-radius:12px;background:rgba(30,41,59,.4);display:flex;align-items:center;justify-content:center;color:#94a3b8;transition:.3s}
+    .social-links a:hover{background:rgba(59,130,246,.2);color:var(--blue2);}
     .back-to-top{
       position:fixed;bottom:24px;right:24px;width:50px;height:50px;border-radius:16px;
       background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;
@@ -579,18 +543,22 @@
     .back-to-top.show{opacity:1;visibility:visible}
     .reveal{opacity:0;transform:translateY(50px);transition:all .85s cubic-bezier(.4,0,.2,1)}
     .reveal.visible{opacity:1;transform:translateY(0)}
+
     @media(max-width:1240px){
       .service-grid-exceptional{grid-template-columns:repeat(2,1fr);}
-      .hero-content-left{max-width:90%;}
+      .hero-catch-left,.hero-catch-right{font-size:0.65rem; padding:8px 12px;}
     }
     @media(max-width:860px){
-      .hero-stat-row{flex-direction:column;align-items:flex-start;}
-      .hero-stat{width:100%;}
       .service-grid-exceptional{grid-template-columns:1fr;}
       .intro-wrap{grid-template-columns:1fr;}
       .cyber-overlay{width:120px;}
       .stats-grid{grid-template-columns:repeat(2,1fr);}
       .infra-cards{grid-template-columns:1fr;}
+      .footer-grid{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:560px){
+      .hero-catch-left,.hero-catch-right{display:none;}
+      .hero-bottom-tag{width:90%; font-size:0.6rem;}
     }
   </style>
 </head>
@@ -600,16 +568,17 @@
   <div class="floating-btns"><a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-btn wa" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/ZTrustTech" class="float-btn tg" target="_blank"><i class="fab fa-telegram-plane"></i></a></div>
   <nav class="nav" id="mainNav"><div class="container nav-inner"><div class="brand-wrap"><img src="Ztrust Logo 1 (2).png" class="nav-logo" alt="ZTrust Tech"><div class="brand-text"><h3>ZTrust Tech</h3><span>Complete IT Solutions</span></div></div><div class="links" id="navLinks"><a href="index.html" class="active">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><a href="contact.html" class="nav-cta"><i class="fas fa-headset"></i> Get Support</a><button class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></button></div></nav>
 
-  <section class="hero"><div class="hero-tech-grid"></div><div class="hero-ripple-stack"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"></div><div class="hero-beams"><span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span><span class="beam b4"></span></div><div class="hero-particles"><span class="hp hp1"></span><span class="hp hp2"></span><span class="hp hp3"></span><span class="hp hp4"></span><span class="hp hp5"></span><span class="hp hp6"></span><span class="hp hp7"></span></div>
-    <div class="container" style="display:flex; justify-content:flex-start;">
-      <div class="hero-content-left">
-        <div class="hero-badge"><span class="live"></span> 10+ Years of IT Excellence • Enterprise Security</div>
-        <div class="hero-tagline">✦ Zero-Trust Infrastructure | AI-Driven Defense ✦</div>
-        <div class="hero-typing" id="typingText"></div>
-        <div class="hero-actions"><a href="services.html" class="btn primary"><i class="fas fa-shield-halved"></i> Explore Services</a><a href="contact.html" class="btn secondary"><i class="fas fa-phone"></i> Contact Us</a></div>
-        <div class="hero-stat-row"><div class="hero-stat"><strong>10+</strong><span>Years Experience</span></div><div class="hero-stat"><strong>99%</strong><span>Client Retention</span></div><div class="hero-stat"><strong>24/7</strong><span>Support Active</span></div></div>
-      </div>
-    </div>
+  <section class="hero">
+    <div class="hero-tech-grid"></div>
+    <div class="hero-ripple-stack"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"></div>
+    <div class="hero-beams"><span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span><span class="beam b4"></span></div>
+    <div class="hero-particles"><span class="hp hp1"></span><span class="hp hp2"></span><span class="hp hp3"></span><span class="hp hp4"></span><span class="hp hp5"></span><span class="hp hp6"></span><span class="hp hp7"></span></div>
+    
+    <!-- minimalist side catchphrases -->
+    <div class="hero-catch-left">◉ TRUST · SECURITY · INNOVATION</div>
+    <div class="hero-catch-right">⚡ AI-DRIVEN · ZERO-TRUST · 24/7</div>
+    <div class="hero-bottom-tag">✦ COMPLETE IT SOLUTIONS PROVIDER ✦</div>
+    
     <div class="hero-scroll"><div class="scroll-mouse"><div class="scroll-dot"></div></div></div>
   </section>
 
@@ -630,7 +599,7 @@
     </div></section>
     <section class="section"><div class="container"><div class="stats-grid"><div class="stat-card"><i class="fas fa-calendar-check" style="color:var(--blue)"></i><div class="num" data-target="10">0<span>+</span></div><div class="label">Years Experience</div></div><div class="stat-card"><i class="fas fa-project-diagram" style="color:var(--purple)"></i><div class="num" data-target="99">0<span>%</span></div><div class="label">Client Retention</div></div><div class="stat-card"><i class="fas fa-face-smile" style="color:var(--cyan)"></i><div class="num" data-target="99">0<span>%</span></div><div class="label">Client Satisfaction</div></div><div class="stat-card"><i class="fas fa-headset" style="color:var(--emerald)"></i><div class="num">24<span>/7</span></div><div class="label">Support Active</div></div></div></div></section>
     <section class="section"><div class="container"><div class="infra-cards"><div class="infra-card"><div class="infra-icon" style="background:linear-gradient(135deg,#2563eb,#3b82f6)"><i class="fas fa-database"></i></div><h3>Data Center Solutions</h3><p>Enterprise-grade data center planning, deployment, and resilient operational management.</p></div><div class="infra-card"><div class="infra-icon" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6)"><i class="fas fa-network-wired"></i></div><h3>Enterprise Networking</h3><p>High-performance SD-WAN, LAN/WAN, wireless architecture, and secure branch connectivity.</p></div><div class="infra-card"><div class="infra-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4)"><i class="fas fa-cloud-arrow-up"></i></div><h3>Cloud Integration</h3><p>Hybrid cloud environments connecting on-premise systems with modern cloud workflows.</p></div></div></div></section>
-    <section class="section"><div class="container"><div class="cta-shell"><h2>Ready to build an IT environment that feels stronger, smarter, and more exceptional?</h2><p>Let ZTrust Tech transform your technology into a secure, beautiful, and business-ready digital foundation.</p><div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;"><a href="contact.html" class="btn primary"><i class="fas fa-headset"></i> Get Free Consultation</a><a href="https://wa.me/251911563698" class="btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div></div></div></section>
+    <section class="section"><div class="container"><div class="cta-shell"><h2>Ready to build an IT environment that feels stronger, smarter, and more exceptional?</h2><p>Let ZTrust Tech transform your technology into a secure, beautiful, and business-ready digital foundation.</p><div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;"><a href="contact.html" class="btn primary"><i class="fas fa-headset"></i> Get Free Consultation</a><a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="btn secondary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div></div></div></section>
     <footer class="footer"><div class="container"><div class="footer-grid"><div><img src="Ztrust Logo 1 (2).png" class="footer-logo" alt="ZTrust"><p style="margin-top:12px;color:#64748b;">Complete IT Solutions Provider<br>Infrastructure • Storage • Apps • Database • API • Networks • Security</p><div class="social-links"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div></div><div><h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><div><h4>Our Services</h4><a href="services.html">Infrastructure</a><a href="services.html">Storage</a><a href="services.html">App Development</a><a href="services.html">Database</a><a href="services.html">API Integration</a><a href="services.html">Networking</a></div><div><h4>Contact</h4><a href="#"><i class="fas fa-user"></i> GM: Ssasebih Nega</a><a href="tel:+251911563698"><i class="fas fa-phone"></i> +251 911 563 698</a><a href="mailto:sales2@ztrust.et"><i class="fas fa-envelope"></i> sales2@ztrust.et</a><a href="#"><i class="fas fa-map-marker-alt"></i> Bole TK Building</a></div></div><div class="copyright">© 2026 ZTrust Tech. All IT Solutions Under One Roof | Made with 💙 in Ethiopia</div></div></footer>
   </div>
   <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
@@ -639,7 +608,6 @@
     window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),2200));
     const nav=document.getElementById('mainNav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
     const mt=document.getElementById('mobileMenu'),nl=document.getElementById('navLinks');mt.addEventListener('click',()=>nl.classList.toggle('active'));
-    (function(){const el=document.getElementById('typingText');if(!el)return;const lines=['> Infrastructure. Security. Development. Storage. Connectivity...','> Welcome to ZTrust Tech — complete IT solutions provider.'];let li=0,ci=0,del=false;function type(){const line=lines[li];if(!del){el.innerHTML=line.substring(0,ci+1)+'<span class="cursor"></span>';ci++;if(ci>=line.length){del=true;setTimeout(type,1800);return}}else{el.innerHTML=line.substring(0,ci)+'<span class="cursor"></span>';ci--;if(ci<=0){del=false;li=(li+1)%lines.length;}}setTimeout(type,del?40:60);}setTimeout(type,800);})();
     const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('[data-target]').forEach(el=>{let t=parseInt(el.dataset.target);let span=el.querySelector('span')?.outerHTML||'';let start=performance.now();let dur=1800;function update(now){let p=Math.min((now-start)/dur,1);let eased=1-Math.pow(1-p,3);el.innerHTML=Math.floor(eased*t)+span;if(p<1)requestAnimationFrame(update);}requestAnimationFrame(update);});counterObs.disconnect();}});},{threshold:.3});document.querySelector('.stats-grid')&&counterObs.observe(document.querySelector('.stats-grid'));
     const btt=document.getElementById('backToTop');window.addEventListener('scroll',()=>btt.classList.toggle('show',window.scrollY>400));btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
     const netCanvas=document.getElementById('networkCanvas');if(netCanvas){let ctx=netCanvas.getContext('2d');let w,h;function resize(){const r=document.getElementById('netZone').getBoundingClientRect();w=netCanvas.width=r.width;h=netCanvas.height=r.height;}resize();window.addEventListener('resize',resize);let dots=[];for(let i=0;i<70;i++)dots.push({x:Math.random()*w,y:Math.random()*h,dx:(Math.random()-0.5)*0.3,dy:(Math.random()-0.5)*0.3});function draw(){ctx.clearRect(0,0,w,h);ctx.fillStyle='rgba(59,130,246,0.2)';dots.forEach(d=>{d.x+=d.dx;d.y+=d.dy;if(d.x<0||d.x>w)d.dx*=-1;if(d.y<0||d.y>h)d.dy*=-1;ctx.beginPath();ctx.arc(d.x,d.y,1.6,0,Math.PI*2);ctx.fill();});for(let i=0;i<dots.length;i++)for(let j=i+1;j<dots.length;j++){let dx=dots[i].x-dots[j].x,dy=dots[i].y-dots[j].y,dist=Math.hypot(dx,dy);if(dist<140){ctx.beginPath();ctx.moveTo(dots[i].x,dots[i].y);ctx.lineTo(dots[j].x,dots[j].y);ctx.strokeStyle=`rgba(96,165,250,${0.08*(1-dist/140)})`;ctx.stroke();}}requestAnimationFrame(draw);}draw();}
