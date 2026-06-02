@@ -296,15 +296,19 @@
 
     .hero-grid{
       min-height:100vh;
-      display:grid;
-      grid-template-columns:1fr;
+      display:flex;
       align-items:center;
-      gap:36px;
+      justify-content:space-between;
+      gap:40px;
       padding:110px 0 86px;
       position:relative;
       z-index:2;
+      flex-wrap:wrap;
     }
-    .hero-left{max-width:900px;margin:0 auto;text-align:center}
+    .hero-left{
+      flex:1;
+      max-width:620px;
+    }
     .hero-badge{
       display:inline-flex;align-items:center;gap:10px;
       padding:10px 18px;border-radius:999px;
@@ -316,21 +320,17 @@
     .hero-badge .live{width:8px;height:8px;border-radius:50%;background:var(--emerald);animation:pulse 2s ease-in-out infinite}
     @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.45}}
 
-    .hero-title{
-      font-family:'Space Grotesk',sans-serif;
-      font-size:clamp(2.5rem,6vw,5.8rem);
-      line-height:1.02;
-      font-weight:900;
-      letter-spacing:-1.7px;
-      margin-bottom:18px;
+    .hero-tagline{
+      font-family:'JetBrains Mono',monospace;
+      font-size:0.85rem;
+      letter-spacing:2px;
+      color:var(--blue2);
+      margin-bottom:28px;
+      border-left:3px solid var(--blue);
+      padding-left:16px;
       animation:fadeUp .8s ease .3s both;
+      text-transform:uppercase;
     }
-    .hero-title .grad{
-      background:linear-gradient(135deg,#fff 0%,#dbeafe 20%,#7dd3fc 50%,#a78bfa 82%,#fff 100%);
-      background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
-      animation:grad 6s ease-in-out infinite;
-    }
-    @keyframes grad{0%,100%{background-position:0% center}50%{background-position:100% center}}
 
     .hero-typing{
       color:var(--blue2);
@@ -346,7 +346,6 @@
     .hero-actions{
       display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px;
       animation:fadeUp .8s ease .78s both;
-      justify-content:center;
     }
     .btn{
       display:inline-flex;align-items:center;gap:10px;text-decoration:none;
@@ -369,8 +368,7 @@
     .btn.secondary:hover{transform:translateY(-3px);background:rgba(59,130,246,.08)}
 
     .hero-stat-row{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:730px;
-      margin-left:auto;margin-right:auto;
+      display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:520px;
       animation:fadeUp .8s ease .94s both;
     }
     .hero-stat{
@@ -510,134 +508,121 @@
     .intro-side-inner li:last-child{border-bottom:none}
     .intro-side-inner i{color:var(--blue2);margin-top:4px}
 
-    /* NET ZONE */
-    .net-zone{position:relative;overflow:hidden}
+    /* NET ZONE + EXCEPTIONAL CORE SERVICES */
+    .net-zone{
+      position:relative;
+      overflow:hidden;
+      background: radial-gradient(ellipse at 20% 40%, rgba(59,130,246,.12), transparent 45%),
+                  radial-gradient(ellipse at 85% 70%, rgba(139,92,246,.1), transparent 50%),
+                  linear-gradient(135deg, #03040a 0%, #070b17 100%);
+    }
     .net-zone::before{
       content:"";position:absolute;inset:0;
-      background:linear-gradient(180deg, rgba(3,3,8,.94) 0%, rgba(3,3,8,.72) 50%, rgba(3,3,8,.94) 100%);
+      background:radial-gradient(circle at 50% 50%, rgba(6,182,212,.08) 0%, transparent 70%);
       z-index:0;pointer-events:none
     }
-    .net-zone .container{position:relative;z-index:2}
     #networkCanvas,#particleCanvas{
       position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;display:block
     }
-    #networkCanvas{opacity:1;mix-blend-mode:screen}
-    #particleCanvas{opacity:.95}
     .moving-bg{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
     .moving-element{
-      position:absolute;font-size:1.2rem;opacity:.08;white-space:nowrap;
+      position:absolute;font-size:1.2rem;opacity:.06;white-space:nowrap;
       animation:floatMove linear infinite;font-family:monospace;font-weight:bold;color:#3b82f6
     }
     @keyframes floatMove{
       0%{transform:translateX(-100%) translateY(0) rotate(0deg);opacity:0}
-      10%{opacity:.1}
-      90%{opacity:.1}
+      10%{opacity:.08}
+      90%{opacity:.08}
       100%{transform:translateX(100vw) translateY(var(--y-offset,0)) rotate(360deg);opacity:0}
     }
+    .cyber-overlay{
+      position:absolute;bottom:5%;right:3%;z-index:15;width:260px;max-width:26vw;
+      opacity:0.55;transition:0.4s;pointer-events:none;
+      filter:drop-shadow(0 0 18px rgba(59,130,246,0.4));
+    }
+    .cyber-overlay img{border-radius:28px;border:1px solid rgba(96,165,250,0.4);background:rgba(3,4,10,0.3);backdrop-filter:blur(3px);}
 
-    /* cybersecurity image integrated with net zone */
-    .cyber-overlay {
-      position: absolute;
-      bottom: 6%;
-      right: 4%;
-      z-index: 15;
-      width: 260px;
-      max-width: 28vw;
-      opacity: 0.5;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-      filter: drop-shadow(0 0 12px rgba(59,130,246,0.3));
+    /* EXCEPTIONAL SERVICE GRID */
+    .service-grid-exceptional{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:28px;
+      margin-top:20px;
+      position:relative;
+      z-index:5;
     }
-    .cyber-overlay:hover { opacity: 0.8; }
-    .cyber-overlay img {
-      width: 100%;
-      border-radius: 28px;
-      border: 1px solid rgba(96,165,250,0.3);
-      background: rgba(3,4,10,0.4);
-      backdrop-filter: blur(4px);
+    .service-card-ex{
+      background:linear-gradient(145deg, rgba(12,18,30,.92), rgba(5,8,17,.96));
+      backdrop-filter:blur(8px);
+      border:1px solid rgba(96,165,250,.18);
+      border-radius:32px;
+      overflow:hidden;
+      transition:all 0.5s cubic-bezier(0.2,0.9,0.4,1.1);
+      box-shadow:0 25px 45px -12px rgba(0,0,0,0.5);
     }
-
-    /* CORE SERVICES */
-    .service-grid{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+    .service-card-ex:hover{
+      transform:translateY(-12px) scale(1.02);
+      border-color:rgba(99,102,241,0.45);
+      box-shadow:0 32px 60px -18px rgba(59,130,246,0.4);
     }
-    .service-card{
-      background:linear-gradient(180deg,rgba(12,16,28,.88),rgba(8,11,19,.84));
-      border:1px solid rgba(96,165,250,.12);
-      border-radius:28px;overflow:hidden;box-shadow:var(--shadow-md);
-      transition:.45s;position:relative;
+    .service-img-ex{
+      height:240px;
+      overflow:hidden;
+      position:relative;
+      background:linear-gradient(125deg,#0f172a,#030712);
     }
-    .service-card:hover{transform:translateY(-10px);border-color:rgba(96,165,250,.24)}
-    .service-card::after{
+    .service-img-ex img{
+      width:100%;height:100%;object-fit:cover;
+      transition:transform 0.9s ease, filter 0.5s;
+      filter:brightness(0.92) contrast(1.1);
+    }
+    .service-card-ex:hover .service-img-ex img{
+      transform:scale(1.12);
+      filter:brightness(1.05) contrast(1.15);
+    }
+    .service-img-ex::after{
       content:"";position:absolute;inset:0;
-      background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(59,130,246,.12) 0%, transparent 58%);
-      opacity:0;transition:.3s;pointer-events:none;z-index:3
+      background:linear-gradient(180deg, transparent 30%, rgba(3,4,10,0.85) 100%);
     }
-    .service-card:hover::after{opacity:1}
-
-    .service-image{
-      position:relative;height:220px;overflow:hidden;
-      background:
-        radial-gradient(circle at 20% 18%, rgba(59,130,246,.20), transparent 28%),
-        radial-gradient(circle at 78% 20%, rgba(139,92,246,.18), transparent 28%),
-        linear-gradient(135deg, rgba(15,18,31,.96), rgba(7,10,18,.98));
-      border-bottom:1px solid rgba(96,165,250,.1);
-    }
-    .service-image img{
-      width:100%;height:100%;object-fit:cover;object-position:center;
-      filter:brightness(1.07) contrast(1.14) saturate(1.15);
-      transition:transform .75s ease, filter .45s ease;
-    }
-    .service-card:hover .service-image img{
-      transform:scale(1.08);
-      filter:brightness(1.12) contrast(1.17) saturate(1.2);
-    }
-    .service-image::after{
-      content:"";position:absolute;inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.08) 35%, rgba(0,0,0,.58) 100%),
-        linear-gradient(135deg, rgba(59,130,246,.08), transparent 45%, rgba(139,92,246,.08) 100%);
-    }
-    .service-chip{
-      position:absolute;top:16px;left:16px;z-index:2;
-      width:46px;height:46px;border-radius:15px;
+    .service-chip-ex{
+      position:absolute;top:18px;left:18px;z-index:3;
+      width:48px;height:48px;border-radius:22px;
+      background:linear-gradient(135deg,var(--blue),var(--indigo));
       display:flex;align-items:center;justify-content:center;
-      color:#fff;background:linear-gradient(135deg,var(--blue),var(--indigo));
-      box-shadow:0 12px 24px rgba(59,130,246,.28);
-      border:1px solid rgba(255,255,255,.12);
+      font-size:1.3rem;color:white;
+      box-shadow:0 12px 22px rgba(59,130,246,0.4);
+      border:1px solid rgba(255,255,255,0.15);
     }
-    .service-body{padding:20px;position:relative;z-index:2}
-    .service-body h3{
-      font-family:'Space Grotesk',sans-serif;font-size:1.08rem;font-weight:800;margin-bottom:8px;line-height:1.25
+    .service-body-ex{
+      padding:24px 22px 28px;
+      background:linear-gradient(180deg, rgba(8,12,22,.92), rgba(3,6,14,.98));
     }
-    .service-body p{color:var(--muted2);font-size:.88rem;line-height:1.75}
-    .service-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-    .service-tags span{
-      font-size:.66rem;padding:4px 11px;border-radius:999px;
-      background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.12);color:var(--blue2);font-weight:700
-    }
-
-    /* VALUE GRID */
-    .value-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
-    .value-card{
-      background:linear-gradient(180deg,rgba(12,16,28,.84),rgba(8,11,19,.80));
-      border:1px solid rgba(96,165,250,.12);border-radius:24px;padding:22px 20px;box-shadow:var(--shadow-md);transition:.35s
-    }
-    .value-card:hover{transform:translateY(-5px);border-color:rgba(96,165,250,.22)}
-    .value-card i{
-      width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;
-      color:#fff;background:linear-gradient(135deg,var(--blue),var(--indigo));margin-bottom:14px;font-size:1.1rem
-    }
-    .value-card h4{
+    .service-body-ex h3{
       font-family:'Space Grotesk',sans-serif;
-      font-size:1rem;
-      font-weight:800;
-      margin-bottom:8px;
-      line-height:1.3;
+      font-size:1.2rem;font-weight:800;margin-bottom:10px;
+      background:linear-gradient(135deg,#fff,#b9d0ff);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
     }
-    .value-card p{color:var(--muted2);font-size:.88rem;line-height:1.75}
+    .service-body-ex p{color:#9aafcf;font-size:.86rem;line-height:1.7;margin-bottom:16px;}
+    .service-tags-ex{
+      display:flex;gap:10px;flex-wrap:wrap;
+    }
+    .service-tags-ex span{
+      font-size:.65rem;padding:5px 12px;border-radius:40px;
+      background:rgba(59,130,246,.12);border:1px solid rgba(96,165,250,.2);
+      color:var(--blue2);font-weight:700;
+    }
+    @media(max-width:1200px){
+      .service-grid-exceptional{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:760px){
+      .service-grid-exceptional{grid-template-columns:1fr;}
+      .cyber-overlay{width:140px;}
+      .hero-grid{flex-direction:column;}
+      .hero-left{max-width:100%;text-align:center;}
+      .hero-tagline{text-align:left;}
+    }
 
-    /* IMPACT */
     .stats-grid{
       display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
       background:rgba(59,130,246,.07);border:1px solid rgba(96,165,250,.13);
@@ -647,384 +632,72 @@
       background:linear-gradient(180deg,rgba(11,15,26,.84),rgba(8,10,18,.82));
       padding:38px 22px;text-align:center
     }
-    .stat-card i{display:block;font-size:1.5rem;margin-bottom:12px}
-    .stat-card .num{
-      font-family:'Space Grotesk',sans-serif;font-size:2.6rem;font-weight:900;line-height:1;color:#fff
-    }
-    .stat-card .num span{font-size:1.35rem;color:var(--blue2)}
-    .stat-card .label{
-      margin-top:10px;color:var(--muted2);font-size:.72rem;text-transform:uppercase;letter-spacing:1.4px;font-weight:700;line-height:1.5
-    }
-
-    /* INFRA */
     .infra-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
     .infra-card{
       background:linear-gradient(180deg,rgba(12,16,28,.88),rgba(8,11,19,.84));
       border:1px solid rgba(96,165,250,.12);
-      border-radius:28px;padding:30px 24px;box-shadow:var(--shadow-md);transition:.35s;position:relative;overflow:hidden
+      border-radius:28px;padding:30px 24px;transition:.35s;
     }
-    .infra-card::before{
-      content:"";position:absolute;top:0;left:0;right:0;height:3px;
-      background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan));
-      transform:scaleX(0);transform-origin:left;transition:.35s
-    }
-    .infra-card:hover::before{transform:scaleX(1)}
-    .infra-card:hover{transform:translateY(-8px)}
-    .infra-card::after{
-      content:"";position:absolute;right:-70px;top:-70px;width:170px;height:170px;border-radius:50%;
-      background:radial-gradient(circle, rgba(59,130,246,.12), transparent 70%);
-    }
-    .infra-icon{
-      width:74px;height:74px;border-radius:20px;margin-bottom:18px;
-      display:flex;align-items:center;justify-content:center;font-size:1.55rem;color:#fff;position:relative
-    }
-    .infra-icon::after{
-      content:"";position:absolute;inset:-5px;border-radius:24px;background:inherit;opacity:.25;filter:blur(16px);z-index:-1
-    }
-    .infra-card h3{
-      font-family:'Space Grotesk',sans-serif;font-size:1.12rem;font-weight:800;margin-bottom:10px;line-height:1.3
-    }
-    .infra-card p{color:var(--muted2);font-size:.9rem;line-height:1.75}
-
-    /* CTA */
+    .infra-card:hover{transform:translateY(-8px);border-color:rgba(96,165,250,.3);}
     .cta-shell{
-      border-radius:34px;padding:80px 28px;text-align:center;position:relative;overflow:hidden;
-      background:
-        linear-gradient(135deg,rgba(37,99,235,.08),rgba(99,102,241,.08),rgba(139,92,246,.08)),
-        linear-gradient(180deg,rgba(11,15,26,.88),rgba(8,11,19,.86));
-      border:1px solid rgba(96,165,250,.11);
-      box-shadow:var(--shadow-xl)
+      border-radius:34px;padding:80px 28px;text-align:center;
+      background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(99,102,241,.1));
+      border:1px solid rgba(96,165,250,.2);
     }
-    .cta-shell::before{
-      content:"";position:absolute;inset:0;
-      background:
-        radial-gradient(ellipse at 30% 50%,rgba(59,130,246,.08),transparent 50%),
-        radial-gradient(ellipse at 70% 50%,rgba(139,92,246,.08),transparent 50%);
-      pointer-events:none
-    }
-    .cta-shell h2{
-      font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,3vw,3rem);font-weight:900;line-height:1.12;margin-bottom:16px;position:relative
-    }
-    .cta-shell p{
-      max-width:620px;margin:0 auto 30px;color:var(--muted2);position:relative;font-size:1rem;line-height:1.8
-    }
-
-    /* CONTACT / FOOTER */
-    .contact-section{padding:56px 0 40px}
-    .contact-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin:14px 0}
-    .contact-item{
-      display:inline-flex;align-items:center;gap:10px;
-      background:linear-gradient(180deg,rgba(12,16,28,.84),rgba(8,11,19,.8));
-      border:1px solid rgba(96,165,250,.12);
-      border-radius:14px;padding:14px 20px;font-size:.9rem;font-weight:700
-    }
-    .contact-item i{color:var(--blue)}
-    .method-btn{
-      text-decoration:none;color:#fff;font-weight:800;font-size:.9rem;
-      display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:14px;transition:.3s
-    }
-    .method-btn.wa{background:linear-gradient(135deg,#25d366,#128c7e)}
-    .method-btn.tg{background:linear-gradient(135deg,#0088cc,#005f8c)}
-    .method-btn:hover{transform:translateY(-3px)}
-
     .footer{
       background:rgba(4,5,11,.96);padding:58px 0 30px;border-top:1px solid rgba(30,41,59,.3)
     }
-    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
-    .footer-logo{
-      height:58px;width:auto;border-radius:14px;padding:4px;
-      background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(59,130,246,.06));
-      border:1px solid rgba(96,165,250,.10);
-      filter:
-        brightness(1.12)
-        contrast(1.12)
-        saturate(1.18)
-        drop-shadow(0 0 16px rgba(59,130,246,.4));
-    }
-    .footer h4{font-family:'Space Grotesk',sans-serif;color:#fff;margin-bottom:18px;font-size:1rem}
-    .footer a{display:block;text-decoration:none;color:var(--muted2);margin-bottom:12px;font-size:.9rem;transition:.3s;line-height:1.7}
-    .footer a:hover{color:var(--blue2);padding-left:6px}
-    .social-links{display:flex;gap:12px;margin-top:16px}
-    .social-links a{
-      width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-      background:rgba(30,41,59,.4);border:1px solid rgba(30,41,59,.6);color:#94a3b8;font-size:1.1rem;transition:.3s
-    }
-    .social-links a:hover{background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.25);color:var(--blue2);transform:translateY(-3px)}
-    .copyright{
-      text-align:center;padding-top:24px;border-top:1px solid rgba(30,41,59,.3);font-size:.8rem;color:#475569;line-height:1.7
-    }
-    .copyright a{color:var(--blue2);text-decoration:none}
-
-    /* FLOAT / BTT */
-    .floating-btns{position:fixed;bottom:24px;left:24px;display:flex;flex-direction:column;gap:12px;z-index:999}
-    .float-btn{
-      width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;
-      text-decoration:none;color:#fff;font-size:1.5rem;transition:.3s;position:relative
-    }
-    .float-btn::after{content:"";position:absolute;inset:-3px;border-radius:19px;background:inherit;opacity:.28;filter:blur(10px);z-index:-1}
-    .float-btn.wa{background:linear-gradient(135deg,#25d366,#128c7e)}
-    .float-btn.tg{background:linear-gradient(135deg,#0088cc,#005f8c)}
-    .float-btn:hover{transform:translateY(-4px) scale(1.08)}
-
     .back-to-top{
-      position:fixed;bottom:24px;right:24px;width:50px;height:50px;border:none;border-radius:16px;
-      background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;font-size:1.1rem;
+      position:fixed;bottom:24px;right:24px;width:50px;height:50px;border-radius:16px;
+      background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;
       display:flex;align-items:center;justify-content:center;cursor:pointer;
       opacity:0;visibility:hidden;transition:.3s;z-index:999
     }
     .back-to-top.show{opacity:1;visibility:visible}
-    .back-to-top:hover{transform:translateY(-3px)}
-
-    /* REVEAL */
     .reveal{opacity:0;transform:translateY(50px);transition:all .85s cubic-bezier(.4,0,.2,1)}
     .reveal.visible{opacity:1;transform:translateY(0)}
-    .reveal-scale{opacity:0;transform:scale(.92);transition:all .85s cubic-bezier(.4,0,.2,1)}
-    .reveal-scale.visible{opacity:1;transform:scale(1)}
-
-    /* RESPONSIVE */
-    @media(max-width:1240px){
-      .hero-grid,.intro-wrap{grid-template-columns:1fr}
-      .hero-left{text-align:center;max-width:100%}
-      .service-grid{grid-template-columns:repeat(2,1fr)}
-      .value-grid,.infra-cards{grid-template-columns:repeat(2,1fr)}
-      .section{padding:88px 0}
-    }
-    @media(max-width:980px){
-      .stats-grid{grid-template-columns:repeat(2,1fr)}
-      .footer-grid{grid-template-columns:1fr 1fr}
-      .intro-grid{grid-template-columns:1fr}
-    }
-    @media(max-width:860px){
-      .links{
-        position:fixed;top:82px;left:-100%;width:82%;max-width:330px;height:calc(100vh - 82px);
-        background:rgba(4,5,11,.98);backdrop-filter:blur(30px);border-right:1px solid rgba(59,130,246,.15);
-        flex-direction:column;gap:1rem;padding:2.5rem 2rem;transition:left .4s cubic-bezier(.4,0,.2,1);z-index:1001
-      }
-      .links.active{left:0}
-      .menu-toggle{display:block}
-      .nav-cta{display:none}
-      .brand-text{display:none}
-      .hero-title{font-size:2.7rem}
-      .hero-stat-row{grid-template-columns:1fr}
-      .service-grid,.value-grid,.infra-cards{grid-template-columns:1fr}
-      .footer-grid{grid-template-columns:1fr}
-      .ripple-layer{height:140px}
-      .ripple-layer img{height:120px!important}
-      .section{padding:80px 0}
-      .hero-grid{padding:98px 0 80px}
-      .cyber-overlay{width:140px; bottom:3%; right:2%;}
-    }
-    @media(max-width:560px){
-      .container{padding:0 18px}
-      .hero-title{font-size:2.18rem;letter-spacing:-1px}
-      .hero-desc{font-size:.95rem}
-      .btn{width:100%;justify-content:center}
-      .stats-grid{grid-template-columns:1fr 1fr}
-      .floating-btns{left:16px;bottom:16px}
-      .back-to-top{right:16px;bottom:16px}
-      .nav-logo{height:54px}
-      .hero-ripple-stack{display:none}
-      .ripple-copy span{font-size:.62rem;letter-spacing:2px;padding:8px 12px}
-      .contact-item,.method-btn{width:100%;justify-content:center;text-align:center}
-      .contact-bar{flex-direction:column;align-items:stretch}
-      .section-title{font-size:1.85rem}
-      .cyber-overlay{width:100px;}
-    }
   </style>
 </head>
 <body>
+  <div class="loader" id="loader"><div class="loader-wrap"><div class="loader-ring"></div><div class="loader-ring"></div><div class="loader-ring"></div><img src="Ztrust Logo 1 (2).png" class="loader-logo" onerror="this.src='https://placehold.co/134x134/0f172a/3b82f6?text=ZT'"></div><div class="loader-text">Initializing Secure Systems</div><div class="loader-bar"><div class="loader-fill"></div></div><div class="loader-sub">ZTrust Tech • Complete IT Solutions</div></div>
+  <div class="grid-bg"></div><div class="noise"></div><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+  <div class="floating-btns"><a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-btn wa" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/ZTrustTech" class="float-btn tg" target="_blank"><i class="fab fa-telegram-plane"></i></a></div>
+  <nav class="nav" id="mainNav"><div class="container nav-inner"><div class="brand-wrap"><img src="Ztrust Logo 1 (2).png" class="nav-logo" alt="ZTrust Tech"><div class="brand-text"><h3>ZTrust Tech</h3><span>Complete IT Solutions</span></div></div><div class="links" id="navLinks"><a href="index.html" class="active">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><a href="contact.html" class="nav-cta"><i class="fas fa-headset"></i> Get Support</a><button class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></button></div></nav>
 
-  <div class="loader" id="loader">
-    <div class="loader-wrap">
-      <div class="loader-ring"></div>
-      <div class="loader-ring"></div>
-      <div class="loader-ring"></div>
-      <img src="Ztrust Logo 1 (2).png" alt="ZTrust Logo" class="loader-logo" onerror="this.src='https://placehold.co/134x134/0f172a/3b82f6?text=ZT'">
-    </div>
-    <div class="loader-text">Initializing Secure Systems</div>
-    <div class="loader-bar"><div class="loader-fill"></div></div>
-    <div class="loader-sub">ZTrust Tech • Complete IT Solutions</div>
-  </div>
-
-  <div class="grid-bg"></div>
-  <div class="noise"></div>
-  <div class="orb o1"></div>
-  <div class="orb o2"></div>
-  <div class="orb o3"></div>
-
-  <div class="floating-btns">
-    <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-btn wa" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://t.me/ZTrustTech" class="float-btn tg" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-  </div>
-
-  <nav class="nav" id="mainNav">
-    <div class="container nav-inner">
-      <div class="brand-wrap">
-        <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/150x68/0f172a/3b82f6?text=ZTrust'">
-        <div class="brand-text">
-          <h3>ZTrust Tech</h3>
-          <span>Complete IT Solutions</span>
-        </div>
-      </div>
-      <div class="links" id="navLinks">
-        <a href="index.html" class="active">Home</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <a href="contact.html" class="nav-cta"><i class="fas fa-headset"></i> Get Support</a>
-      <button class="menu-toggle" id="mobileMenu" aria-label="Menu"><i class="fas fa-bars"></i></button>
-    </div>
-  </nav>
-
-  <section class="hero">
-    <div class="hero-tech-grid"></div>
-    <div class="hero-ripple-stack">
-      <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple">
-      <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple">
-      <img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple">
-    </div>
-    <div class="hero-beams"><span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span><span class="beam b4"></span></div>
-    <div class="hero-particles"><span class="hp hp1"></span><span class="hp hp2"></span><span class="hp hp3"></span><span class="hp hp4"></span><span class="hp hp5"></span><span class="hp hp6"></span><span class="hp hp7"></span></div>
-
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-left">
-          <div class="hero-badge"><span class="live"></span> 10+ Years of IT Excellence • Enterprise Security</div>
-          <h1 class="hero-title"><span class="grad">One Brand.</span><br>Every IT Solution.<br>Built Beautifully.</h1>
-          <div class="hero-typing" id="typingText"></div>
-          <div class="hero-actions">
-            <a href="services.html" class="btn primary"><i class="fas fa-shield-halved"></i> Explore Services</a>
-            <a href="contact.html" class="btn secondary"><i class="fas fa-phone"></i> Contact Us</a>
-          </div>
-          <div class="hero-stat-row">
-            <div class="hero-stat"><strong>10+</strong><span>Years Experience</span></div>
-            <div class="hero-stat"><strong>99%</strong><span>Client Retention</span></div>
-            <div class="hero-stat"><strong>24/7</strong><span>Support Active</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-scroll"><div class="scroll-mouse"><div class="scroll-dot"></div></div></div>
-    </div>
+  <section class="hero"><div class="hero-tech-grid"></div><div class="hero-ripple-stack"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"></div><div class="hero-beams"><span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span><span class="beam b4"></span></div><div class="hero-particles"><span class="hp hp1"></span><span class="hp hp2"></span><span class="hp hp3"></span><span class="hp hp4"></span><span class="hp hp5"></span><span class="hp hp6"></span><span class="hp hp7"></span></div>
+    <div class="container"><div class="hero-grid"><div class="hero-left"><div class="hero-badge"><span class="live"></span> 10+ Years of IT Excellence • Enterprise Security</div><div class="hero-tagline">✦ Zero-Trust Infrastructure | AI-Driven Defense ✦</div><div class="hero-typing" id="typingText"></div><div class="hero-actions"><a href="services.html" class="btn primary"><i class="fas fa-shield-halved"></i> Explore Services</a><a href="contact.html" class="btn secondary"><i class="fas fa-phone"></i> Contact Us</a></div><div class="hero-stat-row"><div class="hero-stat"><strong>10+</strong><span>Years Experience</span></div><div class="hero-stat"><strong>99%</strong><span>Client Retention</span></div><div class="hero-stat"><strong>24/7</strong><span>Support Active</span></div></div></div><div style="flex:0.6; display:flex; justify-content:center;"><img src="Ztrust Logo 1 (2).png" alt="ZTrust" style="max-width:280px; width:100%; filter:drop-shadow(0 0 30px rgba(59,130,246,0.5));"></div></div><div class="hero-scroll"><div class="scroll-mouse"><div class="scroll-dot"></div></div></div></div>
   </section>
 
-  <section class="ripple-art">
-    <div class="ripple-layer">
-      <img class="r1" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Curve Ripple Line" onerror="this.style.display='none'">
-      <img class="r2" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Curve Ripple Line" onerror="this.style.display='none'">
-      <img class="r3" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Curve Ripple Line" onerror="this.style.display='none'">
-      <div class="ripple-copy"><span>Flow • Connectivity • Trust • Performance</span></div>
-    </div>
-  </section>
+  <section class="ripple-art"><div class="ripple-layer"><img class="r1" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt=""><img class="r2" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt=""><img class="r3" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt=""><div class="ripple-copy"><span>Flow • Connectivity • Trust • Performance</span></div></div></section>
 
-  <section class="section">
-    <div class="container">
-      <div class="intro-wrap">
-        <div class="intro-main reveal">
-          <div class="section-badge"><i class="fas fa-building"></i> About ZTrust Tech</div>
-          <h3>Technology should feel powerful, seamless, and deeply trusted.</h3>
-          <p>ZTrust Tech is a complete IT solutions provider delivering infrastructure, networking, cybersecurity, development, database systems, storage solutions, cloud integration, and enterprise support for organizations across Ethiopia.</p>
-          <p>We believe modern IT should not look fragmented. It should feel unified. That is why our solutions are designed as connected systems — where each capability strengthens the others and every layer contributes to performance, security, resilience, and growth.</p>
-          <div class="intro-grid">
-            <div class="intro-card"><strong>One Roof for All IT</strong><span>Infrastructure, software, networking, storage, API integration, security, and support.</span></div>
-            <div class="intro-card"><strong>Built Around Trust</strong><span>We design environments that are secure, stable, and dependable over time.</span></div>
-            <div class="intro-card"><strong>Business-Centered Delivery</strong><span>Technology aligned with workflows, operational needs, and real goals.</span></div>
-            <div class="intro-card"><strong>Modern and Practical</strong><span>Beautifully engineered systems that remain usable, maintainable, and scalable.</span></div>
-          </div>
-        </div>
-        <div class="intro-side reveal-scale">
-          <div class="intro-side-inner"><h4>What defines our approach?</h4><p>We combine strong engineering with modern presentation, deep integration, and long-term support.</p>
-            <ul><li><i class="fas fa-angle-right"></i> Enterprise infrastructure built for uptime</li><li><i class="fas fa-angle-right"></i> Security woven into every project layer</li><li><i class="fas fa-angle-right"></i> Development tailored to real workflows</li><li><i class="fas fa-angle-right"></i> Networking designed for continuity and speed</li><li><i class="fas fa-angle-right"></i> Ongoing support that protects investment</li></ul>
-          </div>
-        </div>
+  <div class="net-zone" id="netZone"><canvas id="networkCanvas"></canvas><canvas id="particleCanvas"></canvas><div class="moving-bg" id="movingBg"></div><div class="cyber-overlay"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Cyber Shield" style="border-radius:24px;"></div>
+    <section class="section"><div class="container"><div class="section-header reveal"><div class="section-badge"><i class="fas fa-cubes"></i> Core IT Services</div><h2 class="section-title">Exceptional <span style="background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;">engineering & security</span> for the next decade.</h2><p class="section-sub">Cutting-edge infrastructure, storage, development, networking, and cybersecurity — unified under one visionary ecosystem.</p></div>
+      <div class="service-grid-exceptional">
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-server"></i></span><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Infrastructure"></div><div class="service-body-ex"><h3>IT Infrastructure</h3><p>Resilient servers, virtualization & compute environments built for zero downtime and maximum throughput.</p><div class="service-tags-ex"><span>Servers</span><span>Virtualization</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-hard-drive"></i></span><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Storage"></div><div class="service-body-ex"><h3>Storage Solutions</h3><p>SAN/NAS, automated backups, disaster recovery and immutable storage for business continuity.</p><div class="service-tags-ex"><span>SAN/NAS</span><span>Backup</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-code"></i></span><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80" alt="Development"></div><div class="service-body-ex"><h3>App Development</h3><p>Custom web, mobile & enterprise software tailored to complex business logic and digital transformation.</p><div class="service-tags-ex"><span>Web</span><span>Mobile</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-database"></i></span><img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=1200&q=80" alt="Database"></div><div class="service-body-ex"><h3>Database Management</h3><p>High-performance SQL/NoSQL, tuning, migration, and high-availability architecture.</p><div class="service-tags-ex"><span>SQL</span><span>NoSQL</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-plug"></i></span><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="API"></div><div class="service-body-ex"><h3>API Integration</h3><p>Seamless REST, microservices, and workflow automation bridging legacy and modern systems.</p><div class="service-tags-ex"><span>REST</span><span>Automation</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-network-wired"></i></span><img src="https://images.unsplash.com/photo-1520869562399-e772f042f422?auto=format&fit=crop&w=1200&q=80" alt="Networking"></div><div class="service-body-ex"><h3>Network Connectivity</h3><p>SD-WAN, LAN/WAN, wireless architecture and secure encrypted tunnels across branches.</p><div class="service-tags-ex"><span>SD-WAN</span><span>LAN/WAN</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-user-shield"></i></span><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80" alt="Cyber"></div><div class="service-body-ex"><h3>Cybersecurity</h3><p>Next-gen firewalls, EDR, threat hunting, compliance, and real-time monitoring.</p><div class="service-tags-ex"><span>Firewall</span><span>Endpoint</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-chalkboard-user"></i></span><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Training"></div><div class="service-body-ex"><h3>Awareness Training</h3><p>Phishing simulations, security culture programs, and team education to prevent human risk.</p><div class="service-tags-ex"><span>Training</span><span>Phishing</span></div></div></div>
       </div>
-    </div>
-  </section>
-
-  <div class="net-zone" id="netZone">
-    <canvas id="networkCanvas"></canvas>
-    <canvas id="particleCanvas"></canvas>
-    <div class="moving-bg" id="movingBg"></div>
-    <div class="cyber-overlay">
-      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Cybersecurity Shield Integrated" style="border-radius:24px;" onerror="this.src='https://placehold.co/400x400/0f172a/3b82f6?text=Cyber+Security'">
-    </div>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-badge"><i class="fas fa-cubes"></i> Core IT Services</div>
-          <h2 class="section-title">A powerful visual showcase of our <span style="background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;">core capabilities</span>.</h2>
-          <p class="section-sub">Rich service imagery, elegant presentation, and complete coverage of your IT landscape — designed to feel premium and unforgettable.</p>
-        </div>
-        <div class="service-grid">
-          <div class="service-card reveal"><div class="service-image"><span class="service-chip"><i class="fas fa-server"></i></span><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="IT Infrastructure"></div><div class="service-body"><h3>IT Infrastructure</h3><p>Complete infrastructure planning, deployment, servers, virtualization, compute optimization, and stable enterprise environments.</p><div class="service-tags"><span>Servers</span><span>Virtualization</span></div></div></div>
-          <div class="service-card reveal"><div class="service-image"><span class="service-chip"><i class="fas fa-hard-drive"></i></span><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Storage Solutions"></div><div class="service-body"><h3>Storage Solutions</h3><p>SAN, NAS, backup systems, business continuity, disaster recovery, and secure protection of enterprise information.</p><div class="service-tags"><span>SAN/NAS</span><span>Backup</span></div></div></div>
-          <div class="service-card reveal"><div class="service-image"><span class="service-chip"><i class="fas fa-code"></i></span><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80" alt="Application Development"></div><div class="service-body"><h3>Application Development</h3><p>Custom web, mobile, and desktop solutions built around real processes, workflows, and digital transformation goals.</p><div class="service-tags"><span>Web</span><span>Mobile</span></div></div></div>
-          <div class="service-card reveal"><div class="service-image"><span class="service-chip"><i class="fas fa-database"></i></span><img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=1200&q=80" alt="Database Management"></div><div class="service-body"><h3>Database Management</h3><p>SQL, NoSQL, architecture design, tuning, migration, administration, and secure data performance optimization.</p><div class="service-tags"><span>SQL</span><span>NoSQL</span></div></div></div>
-          <div class="service-card reveal"><div class="service-image"><span class="service-chip"><i class="fas fa-plug"></i></span><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="API Integration"></div><div class="service-body"><h3>API Integration</h3><p>Seamless third-party connectivity, REST APIs, microservices, and workflow automation across systems and platforms.</p><div class="service-tags"><span>REST</span><span>Automation</span></div></div></div>
-          <div class="service-card reveal"><div class="service-image"><span class="service-chip"><i class="fas fa-network-wired"></i></span><img src="https://images.unsplash.com/photo-1520869562399-e772f042f422?auto=format&fit=crop&w=1200&q=80" alt="Network Connectivity"></div><div class="service-body"><h3>Network Connectivity</h3><p>Enterprise networking, SD-WAN, LAN/WAN, wireless design, optimization, secure communication, and branch integration.</p><div class="service-tags"><span>SD-WAN</span><span>LAN/WAN</span></div></div></div>
-          <div class="service-card reveal"><div class="service-image"><span class="service-chip"><i class="fas fa-user-shield"></i></span><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80" alt="Cybersecurity Solutions"></div><div class="service-body"><h3>Cybersecurity Solutions</h3><p>Advanced threat protection, endpoint defense, firewall management, compliance, monitoring, and risk reduction.</p><div class="service-tags"><span>Firewall</span><span>Endpoint</span></div></div></div>
-          <div class="service-card reveal"><div class="service-image"><span class="service-chip"><i class="fas fa-chalkboard-teacher"></i></span><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Awareness Training"></div><div class="service-body"><h3>Awareness Trainings</h3><p>Cybersecurity awareness, phishing simulations, team education, and stronger internal security culture development.</p><div class="service-tags"><span>Training</span><span>Phishing</span></div></div></div>
-        </div>
-        <div class="value-grid reveal">
-          <div class="value-card"><i class="fas fa-layer-group"></i><h4>All IT Under One Roof</h4><p>Infrastructure, security, software, networking, and support delivered as one complete ecosystem.</p></div>
-          <div class="value-card"><i class="fas fa-user-shield"></i><h4>Security by Design</h4><p>Every environment is shaped with risk reduction, resilience, and control at the center.</p></div>
-          <div class="value-card"><i class="fas fa-sitemap"></i><h4>Scalable by Nature</h4><p>Solutions are engineered to evolve with your organization while remaining stable and manageable.</p></div>
-          <div class="value-card"><i class="fas fa-handshake"></i><h4>Built for Partnership</h4><p>We stay connected through support, optimization, advice, and long-term technology confidence.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" style="padding-top:40px;">
-      <div class="container">
-        <div class="section-header reveal"><div class="section-badge"><i class="fas fa-chart-line"></i> Impact</div><h2 class="section-title">A track record that reflects <span style="background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;">depth and trust</span>.</h2><p class="section-sub">Measured through long-term service, real projects, active support, and a consistent standard of quality.</p></div>
-        <div class="stats-grid reveal-scale">
-          <div class="stat-card"><i class="fas fa-calendar-check" style="color:var(--blue)"></i><div class="num" data-target="10">0<span>+</span></div><div class="label">Years Experience</div></div>
-          <div class="stat-card"><i class="fas fa-project-diagram" style="color:var(--purple)"></i><div class="num" data-target="99">0<span>%</span></div><div class="label">Client Retention</div></div>
-          <div class="stat-card"><i class="fas fa-face-smile" style="color:var(--cyan)"></i><div class="num" data-target="99">0<span>%</span></div><div class="label">Client Satisfaction</div></div>
-          <div class="stat-card"><i class="fas fa-headset" style="color:var(--emerald)"></i><div class="num">24<span>/7</span></div><div class="label">Support Active</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-header reveal"><div class="section-badge"><i class="fas fa-microchip"></i> Infrastructure Excellence</div><h2 class="section-title">We design digital foundations that are beautiful in architecture and <span style="background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;">brilliant in performance</span>.</h2><p class="section-sub">Enterprise infrastructure, secure connectivity, and cloud-ready environments designed for resilience, continuity, and operational confidence.</p></div>
-        <div class="infra-cards">
-          <div class="infra-card reveal"><div class="infra-icon" style="background:linear-gradient(135deg,#2563eb,#3b82f6)"><i class="fas fa-database"></i></div><h3>Data Center Solutions</h3><p>Enterprise-grade data center planning, deployment, optimization, availability strategy, and resilient operational management.</p></div>
-          <div class="infra-card reveal"><div class="infra-icon" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6)"><i class="fas fa-network-wired"></i></div><h3>Enterprise Networking</h3><p>High-performance SD-WAN, LAN/WAN, wireless architecture, segmentation, optimization, and secure branch connectivity.</p></div>
-          <div class="infra-card reveal"><div class="infra-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4)"><i class="fas fa-cloud-arrow-up"></i></div><h3>Cloud Integration</h3><p>Hybrid cloud environments connecting on-premise systems with modern cloud platforms, workflows, and digital ecosystems.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section"><div class="container"><div class="cta-shell reveal-scale"><h2>Ready to build an IT environment that feels<br>stronger, smarter, and more <span style="background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;">exceptional</span>?</h2><p>Let ZTrust Tech transform your technology into a secure, beautiful, and business-ready digital foundation.</p><div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;"><a href="contact.html" class="btn primary"><i class="fas fa-headset"></i> Get Free Consultation</a><a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="btn secondary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div></div></div></section>
-
-    <section class="contact-section"><div class="container"><div class="contact-bar"><div class="contact-item"><i class="fas fa-phone-alt"></i> +251 911 563 698</div><div class="contact-item"><i class="fas fa-envelope"></i> sales2@ztrust.et</div><div class="contact-item"><i class="fas fa-map-marker-alt"></i> Bole TK Building, Addis Ababa</div></div><div class="contact-bar"><a href="https://wa.me/251911563698" class="method-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp: +251 911 563 698</a><a href="https://t.me/ZTrustTech" class="method-btn tg" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram: @ZTrustTech</a></div></div></section>
-
-    <footer class="footer"><div class="container"><div class="footer-grid"><div><img src="Ztrust Logo 1 (2).png" class="footer-logo" alt="ZTrust Tech"><p style="margin-top:12px;color:#64748b;font-size:.92rem;line-height:1.8;">Complete IT Solutions Provider<br>Infrastructure • Storage • Apps • Database • API • Networks • Security</p><div class="social-links"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="https://t.me/ZTrustTech" target="_blank"><i class="fab fa-telegram"></i></a><a href="https://wa.me/251911563698" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div><div><h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><div><h4>Our Services</h4><a href="services.html">Infrastructure</a><a href="services.html">Storage</a><a href="services.html">App Development</a><a href="services.html">Database</a><a href="services.html">API Integration</a><a href="services.html">Networking</a></div><div><h4>Contact</h4><a href="#"><i class="fas fa-user" style="width:16px;margin-right:8px;color:var(--blue)"></i>GM: Ssasebih Nega</a><a href="tel:+251911563698"><i class="fas fa-phone" style="width:16px;margin-right:8px;color:var(--blue)"></i>+251 911 563 698</a><a href="mailto:sales2@ztrust.et"><i class="fas fa-envelope" style="width:16px;margin-right:8px;color:var(--blue)"></i>sales2@ztrust.et</a><a href="#"><i class="fas fa-map-marker-alt" style="width:16px;margin-right:8px;color:var(--blue)"></i>Bole TK Building</a></div></div><div class="copyright">© 2026 <a href="index.html">ZTrust Tech</a>. 10+ Years of IT Excellence | All IT Solutions Under One Roof | Made with 💙 in Ethiopia</div></div></footer>
+    </div></section>
+    <section class="section"><div class="container"><div class="stats-grid"><div class="stat-card"><i class="fas fa-calendar-check" style="color:var(--blue)"></i><div class="num" data-target="10">0<span>+</span></div><div class="label">Years Experience</div></div><div class="stat-card"><i class="fas fa-project-diagram" style="color:var(--purple)"></i><div class="num" data-target="99">0<span>%</span></div><div class="label">Client Retention</div></div><div class="stat-card"><i class="fas fa-face-smile" style="color:var(--cyan)"></i><div class="num" data-target="99">0<span>%</span></div><div class="label">Client Satisfaction</div></div><div class="stat-card"><i class="fas fa-headset" style="color:var(--emerald)"></i><div class="num">24<span>/7</span></div><div class="label">Support Active</div></div></div></div></section>
+    <section class="section"><div class="container"><div class="infra-cards"><div class="infra-card"><div class="infra-icon" style="background:linear-gradient(135deg,#2563eb,#3b82f6)"><i class="fas fa-database"></i></div><h3>Data Center Solutions</h3><p>Enterprise-grade data center planning, deployment, and resilient operational management.</p></div><div class="infra-card"><div class="infra-icon" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6)"><i class="fas fa-network-wired"></i></div><h3>Enterprise Networking</h3><p>High-performance SD-WAN, LAN/WAN, wireless architecture, and secure branch connectivity.</p></div><div class="infra-card"><div class="infra-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4)"><i class="fas fa-cloud-arrow-up"></i></div><h3>Cloud Integration</h3><p>Hybrid cloud environments connecting on-premise systems with modern cloud workflows.</p></div></div></div></section>
+    <section class="section"><div class="container"><div class="cta-shell"><h2>Ready to build an IT environment that feels stronger, smarter, and more exceptional?</h2><p>Let ZTrust Tech transform your technology into a secure, beautiful, and business-ready digital foundation.</p><div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;"><a href="contact.html" class="btn primary"><i class="fas fa-headset"></i> Get Free Consultation</a><a href="https://wa.me/251911563698" class="btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div></div></div></section>
+    <footer class="footer"><div class="container"><div class="footer-grid"><div><img src="Ztrust Logo 1 (2).png" class="footer-logo" alt="ZTrust"><p style="margin-top:12px;color:#64748b;">Complete IT Solutions Provider<br>Infrastructure • Storage • Apps • Database • API • Networks • Security</p><div class="social-links"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div></div><div><h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><div><h4>Our Services</h4><a href="services.html">Infrastructure</a><a href="services.html">Storage</a><a href="services.html">App Development</a><a href="services.html">Database</a><a href="services.html">API Integration</a><a href="services.html">Networking</a></div><div><h4>Contact</h4><a href="#"><i class="fas fa-user"></i> GM: Ssasebih Nega</a><a href="tel:+251911563698"><i class="fas fa-phone"></i> +251 911 563 698</a><a href="mailto:sales2@ztrust.et"><i class="fas fa-envelope"></i> sales2@ztrust.et</a><a href="#"><i class="fas fa-map-marker-alt"></i> Bole TK Building</a></div></div><div class="copyright">© 2026 ZTrust Tech. All IT Solutions Under One Roof | Made with 💙 in Ethiopia</div></div></footer>
   </div>
-
-  <button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-
+  <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
   <script>
     window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),2200));
-    const nav=document.getElementById('mainNav');
-    addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
-    const mt=document.getElementById('mobileMenu');
-    const nl=document.getElementById('navLinks');
-    mt.addEventListener('click',e=>{e.stopPropagation();nl.classList.toggle('active');const i=mt.querySelector('i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times');});
-    nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nl.classList.remove('active');const i=mt.querySelector('i');i.classList.add('fa-bars');i.classList.remove('fa-times');}));
-    document.addEventListener('click',e=>{if(nl.classList.contains('active')&&!nl.contains(e.target)&&!mt.contains(e.target)){nl.classList.remove('active');const i=mt.querySelector('i');i.classList.add('fa-bars');i.classList.remove('fa-times');}});
-    (function(){const el=document.getElementById('typingText');if(!el)return;const lines=['> Infrastructure. Security. Development. Storage. Connectivity...','> One complete IT ecosystem for ambitious organizations...','> Beautifully engineered systems built around trust...','> Welcome to ZTrust Tech — complete IT solutions provider.'];let li=0,ci=0,del=false,pause=0;function type(){if(pause>0){pause--;requestAnimationFrame(type);return}const line=lines[li];if(!del){el.innerHTML=line.substring(0,ci+1)+'<span class="cursor"></span>';ci++;if(ci>=line.length){del=true;pause=80;requestAnimationFrame(type);return}}else{el.innerHTML=line.substring(0,ci)+'<span class="cursor"></span>';ci--;if(ci<=0){del=false;li=(li+1)%lines.length;pause=20}}setTimeout(type,del?22:44+Math.random()*28);}setTimeout(type,1100);})();
-    const reveals=document.querySelectorAll('.reveal,.reveal-scale');new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');})},{threshold:.12,rootMargin:'0px 0px -40px 0px'}).observe(reveals[0]);
-    function animateCounters(){document.querySelectorAll('[data-target]').forEach(el=>{const t=parseInt(el.dataset.target,10);const sfx=el.querySelector('span')?el.querySelector('span').outerHTML:'';const dur=2200,start=performance.now();function upd(now){const p=Math.min((now-start)/dur,1);const eased=1-Math.pow(1-p,3);el.innerHTML=Math.floor(eased*t)+sfx;if(p<1)requestAnimationFrame(upd);}requestAnimationFrame(upd);});}
-    const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCounters();counterObs.disconnect();}});},{threshold:.3});const statsGrid=document.querySelector('.stats-grid');if(statsGrid)counterObs.observe(statsGrid);
-    document.querySelectorAll('.service-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');});});
-    const btt=document.getElementById('backToTop');addEventListener('scroll',()=>btt.classList.toggle('show',scrollY>400));btt.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
-    (function(){const zone=document.getElementById('netZone');const c=document.getElementById('networkCanvas');if(!zone||!c)return;const ctx=c.getContext('2d');let w=0,h=0,nodes=[],mouse={x:-1000,y:-1000};function resize(){const r=zone.getBoundingClientRect();w=c.width=Math.max(1,Math.floor(r.width));h=c.height=Math.max(1,Math.floor(r.height));}resize();addEventListener('resize',resize);addEventListener('mousemove',e=>{const r=zone.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;if(mouse.x<0||mouse.y<0||mouse.x>r.width||mouse.y>r.height){mouse.x=-1000;mouse.y=-1000;}});class Node{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-0.5)*0.5;this.vy=(Math.random()-0.5)*0.5;this.r=Math.random()*2+1;this.baseAlpha=0.16+Math.random()*0.2;this.color=['59,130,246','99,102,241','139,92,246','6,182,212'][~~(Math.random()*4)];this.pulse=Math.random()*Math.PI*2;this.pulseSpeed=0.01+Math.random()*0.02;}update(){this.x+=this.vx;this.y+=this.vy;this.pulse+=this.pulseSpeed;if(this.x<0||this.x>w)this.vx*=-1;if(this.y<0||this.y>h)this.vy*=-1;const dx=this.x-mouse.x,dy=this.y-mouse.y;const d=Math.sqrt(dx*dx+dy*dy)||1;if(d<150){const force=(150-d)/150*0.02;this.vx+=dx/d*force;this.vy+=dy/d*force;}this.vx*=0.999;this.vy*=0.999;}draw(){const alpha=this.baseAlpha+Math.sin(this.pulse)*0.1;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(${this.color},${alpha})`;ctx.fill();ctx.beginPath();ctx.arc(this.x,this.y,this.r*3,0,Math.PI*2);ctx.fillStyle=`rgba(${this.color},${alpha*0.15})`;ctx.fill();}}function rebuild(){nodes=[];const count=Math.min(120,Math.max(60,~~(w*h/14000)));for(let i=0;i<count;i++)nodes.push(new Node());}rebuild();let lastW=w,lastH=h;function checkResize(){const r=zone.getBoundingClientRect();const nw=Math.floor(r.width),nh=Math.floor(r.height);if(nw!==lastW||nh!==lastH){resize();rebuild();lastW=nw;lastH=nh;}requestAnimationFrame(checkResize);}requestAnimationFrame(checkResize);function drawConnections(){for(let i=0;i<nodes.length;i++){for(let j=i+1;j<nodes.length;j++){const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;const d=Math.sqrt(dx*dx+dy*dy);if(d<160){const alpha=0.06*(1-d/160);const grad=ctx.createLinearGradient(nodes[i].x,nodes[i].y,nodes[j].x,nodes[j].y);grad.addColorStop(0,`rgba(${nodes[i].color},${alpha})`);grad.addColorStop(1,`rgba(${nodes[j].color},${alpha})`);ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=grad;ctx.lineWidth=.8;ctx.stroke();}}const dx=nodes[i].x-mouse.x,dy=nodes[i].y-mouse.y;const d=Math.sqrt(dx*dx+dy*dy);if(d<200){const alpha=0.15*(1-d/200);ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(mouse.x,mouse.y);ctx.strokeStyle=`rgba(59,130,246,${alpha})`;ctx.lineWidth=1;ctx.stroke();ctx.beginPath();ctx.arc(mouse.x,mouse.y,3,0,Math.PI*2);ctx.fillStyle=`rgba(59,130,246,${alpha*2})`;ctx.fill();}}}function loop(){ctx.clearRect(0,0,w,h);nodes.forEach(n=>{n.update();n.draw();});drawConnections();requestAnimationFrame(loop);}loop();})();
-    (function(){const zone=document.getElementById('netZone');const c=document.getElementById('particleCanvas');if(!zone||!c)return;const ctx=c.getContext('2d');let w=0,h=0,particles=[];function resize(){const r=zone.getBoundingClientRect();w=c.width=Math.max(1,Math.floor(r.width));h=c.height=Math.max(1,Math.floor(r.height));}resize();addEventListener('resize',resize);class P{constructor(){this.reset()}reset(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-0.5)*0.15;this.vy=(Math.random()-0.5)*0.15;this.r=Math.random()*1+.3;this.a=Math.random()*0.15+0.05;this.c=['59,130,246','99,102,241','6,182,212'][~~(Math.random()*3)];}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>w||this.y<0||this.y>h)this.reset();}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(${this.c},${this.a})`;ctx.fill();}}function rebuild(){particles=[];const n=Math.min(70,Math.max(35,~~(w*h/26000)));for(let i=0;i<n;i++)particles.push(new P());}rebuild();let lastW=w,lastH=h;function checkResize(){const r=zone.getBoundingClientRect();const nw=Math.floor(r.width),nh=Math.floor(r.height);if(nw!==lastW||nh!==lastH){resize();rebuild();lastW=nw;lastH=nh;}requestAnimationFrame(checkResize);}requestAnimationFrame(checkResize);function loop(){ctx.clearRect(0,0,w,h);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}loop();})();
-    (function(){const mb=document.getElementById('movingBg');if(!mb)return;const words=['ZTrust Tech','Infrastructure','Security','Cloud','Storage','Networking','Apps','Database','API','10+ Years','24/7 Support','Enterprise'];for(let i=0;i<30;i++){const el=document.createElement('div');el.className='moving-element';el.textContent=words[~~(Math.random()*words.length)];el.style.fontSize=(0.8+Math.random()*0.85)+'rem';el.style.setProperty('--y-offset',(Math.random()*60-30)+'vh');el.style.top=Math.random()*100+'%';el.style.animationDelay=Math.random()*20+'s';el.style.animationDuration=(14+Math.random()*20)+'s';el.style.opacity=0.035+Math.random()*0.055;mb.appendChild(el);}})();
+    const nav=document.getElementById('mainNav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+    const mt=document.getElementById('mobileMenu'),nl=document.getElementById('navLinks');mt.addEventListener('click',()=>nl.classList.toggle('active'));
+    (function(){const el=document.getElementById('typingText');if(!el)return;const lines=['> Infrastructure. Security. Development. Storage. Connectivity...','> Welcome to ZTrust Tech — complete IT solutions provider.'];let li=0,ci=0,del=false;function type(){const line=lines[li];if(!del){el.innerHTML=line.substring(0,ci+1)+'<span class="cursor"></span>';ci++;if(ci>=line.length){del=true;setTimeout(type,1800);return}}else{el.innerHTML=line.substring(0,ci)+'<span class="cursor"></span>';ci--;if(ci<=0){del=false;li=(li+1)%lines.length;}}setTimeout(type,del?40:60);}setTimeout(type,800);})();
+    const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('[data-target]').forEach(el=>{let t=parseInt(el.dataset.target);let span=el.querySelector('span')?.outerHTML||'';let start=performance.now();let dur=1800;function update(now){let p=Math.min((now-start)/dur,1);let eased=1-Math.pow(1-p,3);el.innerHTML=Math.floor(eased*t)+span;if(p<1)requestAnimationFrame(update);}requestAnimationFrame(update);});counterObs.disconnect();}});},{threshold:.3});document.querySelector('.stats-grid')&&counterObs.observe(document.querySelector('.stats-grid'));
+    const btt=document.getElementById('backToTop');window.addEventListener('scroll',()=>btt.classList.toggle('show',window.scrollY>400));btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    // background network animation (simplified)
+    const netCanvas=document.getElementById('networkCanvas');if(netCanvas){let ctx=netCanvas.getContext('2d');let w,h;function resize(){const r=document.getElementById('netZone').getBoundingClientRect();w=netCanvas.width=r.width;h=netCanvas.height=r.height;}resize();window.addEventListener('resize',resize);let dots=[];for(let i=0;i<70;i++)dots.push({x:Math.random()*w,y:Math.random()*h,dx:(Math.random()-0.5)*0.3,dy:(Math.random()-0.5)*0.3});function draw(){ctx.clearRect(0,0,w,h);ctx.fillStyle='rgba(59,130,246,0.2)';dots.forEach(d=>{d.x+=d.dx;d.y+=d.dy;if(d.x<0||d.x>w)d.dx*=-1;if(d.y<0||d.y>h)d.dy*=-1;ctx.beginPath();ctx.arc(d.x,d.y,1.6,0,Math.PI*2);ctx.fill();});for(let i=0;i<dots.length;i++)for(let j=i+1;j<dots.length;j++){let dx=dots[i].x-dots[j].x,dy=dots[i].y-dots[j].y,dist=Math.hypot(dx,dy);if(dist<140){ctx.beginPath();ctx.moveTo(dots[i].x,dots[i].y);ctx.lineTo(dots[j].x,dots[j].y);ctx.strokeStyle=`rgba(96,165,250,${0.08*(1-dist/140)})`;ctx.stroke();}}requestAnimationFrame(draw);}draw();}
   </script>
 </body>
 </html>
