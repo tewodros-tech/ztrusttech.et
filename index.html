@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>ZTrust Tech | Complete IT Solutions Provider - Home</title>
 
   <link rel="icon" type="image/png" href="ICON Final 1 (1).png" />
@@ -160,7 +160,7 @@
     @keyframes loadFill{0%{width:0}60%{width:70%}100%{width:100%}}
     .loader-sub{margin-top:10px;color:#3b4a61;font-size:.66rem;font-family:'JetBrains Mono',monospace;text-align:center}
 
-    /* NAV */
+    /* NAV - MOBILE COMPATIBLE */
     .nav{
       position:fixed;top:0;left:0;width:100%;z-index:1000;
       background:rgba(3,4,10,.32);
@@ -178,30 +178,24 @@
     }
     .brand-wrap{display:flex;align-items:center;gap:12px}
     .nav-logo{
-      height:62px;width:auto;object-fit:contain;border-radius:16px;padding:4px;
+      height:52px;width:auto;object-fit:contain;border-radius:14px;padding:4px;
       background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(59,130,246,.08));
       border:1px solid rgba(96,165,250,.14);
-      box-shadow:0 12px 34px rgba(0,0,0,.28),0 0 34px rgba(59,130,246,.26);
-      filter:
-        brightness(1.18)
-        contrast(1.16)
-        saturate(1.18)
-        drop-shadow(0 0 16px rgba(59,130,246,.65));
     }
     .brand-text h3{
       font-family:'Space Grotesk',sans-serif;
-      font-size:.98rem;
+      font-size:.9rem;
       font-weight:800;
       color:#fff;
       line-height:1.1;
     }
     .brand-text span{
-      display:block;margin-top:4px;color:var(--blue2);font-size:.64rem;font-family:'JetBrains Mono',monospace;
-      letter-spacing:1.4px;text-transform:uppercase
+      display:block;margin-top:4px;color:var(--blue2);font-size:.6rem;font-family:'JetBrains Mono',monospace;
+      letter-spacing:1.2px;text-transform:uppercase
     }
-    .links{display:flex;gap:1.7rem;align-items:center}
+    .links{display:flex;gap:1.5rem;align-items:center}
     .links a{
-      text-decoration:none;color:var(--muted);font-weight:600;font-size:.92rem;position:relative;padding:8px 0;transition:.3s
+      text-decoration:none;color:var(--muted);font-weight:600;font-size:.85rem;position:relative;padding:6px 0;
     }
     .links a::after{
       content:"";position:absolute;left:0;bottom:0;width:0;height:2px;border-radius:2px;
@@ -210,14 +204,13 @@
     .links a:hover,.links a.active{color:#fff}
     .links a:hover::after,.links a.active::after{width:100%}
     .nav-cta{
-      text-decoration:none;color:#fff;font-weight:800;font-size:.86rem;
-      padding:10px 20px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--indigo));
-      box-shadow:0 12px 28px rgba(59,130,246,.28);transition:.3s;white-space:nowrap
+      text-decoration:none;color:#fff;font-weight:800;font-size:.8rem;
+      padding:8px 18px;border-radius:30px;background:linear-gradient(135deg,var(--blue),var(--indigo));
+      box-shadow:0 8px 18px rgba(59,130,246,.25);
     }
-    .nav-cta:hover{transform:translateY(-2px)}
-    .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.55rem;cursor:pointer}
+    .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
 
-    /* HERO - MINIMAL LEFT/RIGHT CATCHPHRASES */
+    /* HERO - Minimalist with side catchphrases */
     .hero{
       min-height:100vh;
       display:flex;
@@ -232,28 +225,26 @@
     .hero::before{
       content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
       background:
-        radial-gradient(circle at 14% 18%, rgba(59,130,246,.15), transparent 25%),
-        radial-gradient(circle at 86% 16%, rgba(139,92,246,.12), transparent 24%);
+        radial-gradient(circle at 14% 18%, rgba(59,130,246,.12), transparent 25%),
+        radial-gradient(circle at 86% 16%, rgba(139,92,246,.1), transparent 24%);
     }
     .hero::after{
-      content:"";position:absolute;left:0;right:0;bottom:0;height:180px;z-index:1;pointer-events:none;
-      background:linear-gradient(180deg,transparent 0%,rgba(3,4,10,.72) 55%,rgba(3,4,10,1) 100%);
+      content:"";position:absolute;left:0;right:0;bottom:0;height:160px;z-index:1;
+      background:linear-gradient(180deg,transparent 0%,rgba(3,4,10,.8) 60%,rgba(3,4,10,1) 100%);
     }
     .hero-tech-grid{
       position:absolute;inset:0;z-index:1;pointer-events:none;
       background-image:
         linear-gradient(rgba(96,165,250,.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(96,165,250,.03) 1px, transparent 1px);
-      background-size:120px 120px;
-      mask-image:radial-gradient(circle at center, rgba(0,0,0,.95), transparent 88%);
+      background-size:100px 100px;
     }
     .hero-ripple-stack{
-      position:absolute;inset:auto 0 10%;z-index:1;pointer-events:none;
-      display:flex;flex-direction:column;gap:10px;opacity:.42;
+      position:absolute;inset:auto 0 8%;z-index:1;pointer-events:none;
+      display:flex;flex-direction:column;gap:8px;opacity:.35;
     }
     .hero-ripple-stack img{
-      width:100%;height:90px;object-fit:cover;mix-blend-mode:screen;filter:brightness(1.12) contrast(1.15);
-      transform:scale(1.04);
+      width:100%;height:70px;object-fit:cover;mix-blend-mode:screen;
     }
     .hero-beams{
       position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden
@@ -261,7 +252,7 @@
     .beam{
       position:absolute;height:1px;
       background:linear-gradient(90deg,transparent,rgba(96,165,250,.46),transparent);
-      filter:blur(.2px);animation:beamMove linear infinite;opacity:.55
+      filter:blur(.2px);animation:beamMove linear infinite;opacity:.45
     }
     .beam.b1{width:36vw;top:20%;left:-12%;animation-duration:10s}
     .beam.b2{width:28vw;top:34%;left:28%;animation-duration:12s;animation-delay:2s}
@@ -269,297 +260,283 @@
     .beam.b4{width:20vw;top:76%;left:45%;animation-duration:11s;animation-delay:3s}
     @keyframes beamMove{
       0%{transform:translateX(-4vw);opacity:0}
-      15%{opacity:.55}
+      15%{opacity:.45}
       100%{transform:translateX(18vw);opacity:0}
     }
     .hero-particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
     .hp{
       position:absolute;border-radius:50%;
       background:radial-gradient(circle, rgba(255,255,255,.9), rgba(96,165,250,.35) 45%, transparent 72%);
-      animation:heroFloat linear infinite;opacity:.42
+      animation:heroFloat linear infinite;opacity:.4
     }
-    .hp1{width:8px;height:8px;left:8%;top:88%;animation-duration:18s}
-    .hp2{width:11px;height:11px;left:20%;top:84%;animation-duration:20s;animation-delay:2s}
-    .hp3{width:6px;height:6px;left:36%;top:90%;animation-duration:14s;animation-delay:1s}
-    .hp4{width:10px;height:10px;left:52%;top:87%;animation-duration:22s;animation-delay:3s}
-    .hp5{width:7px;height:7px;left:66%;top:90%;animation-duration:16s;animation-delay:2.4s}
-    .hp6{width:10px;height:10px;left:81%;top:88%;animation-duration:19s;animation-delay:4s}
-    .hp7{width:6px;height:6px;left:93%;top:86%;animation-duration:15s;animation-delay:1.2s}
+    .hp1{width:7px;height:7px;left:8%;top:88%;animation-duration:18s}
+    .hp2{width:10px;height:10px;left:20%;top:84%;animation-duration:20s}
+    .hp3{width:6px;height:6px;left:36%;top:90%;animation-duration:14s}
+    .hp4{width:9px;height:9px;left:52%;top:87%;animation-duration:22s}
+    .hp5{width:7px;height:7px;left:66%;top:90%;animation-duration:16s}
     @keyframes heroFloat{
-      0%{transform:translateY(0) translateX(0) scale(.85);opacity:0}
-      10%{opacity:.42}
-      60%{transform:translateY(-42vh) translateX(16px) scale(1)}
-      100%{transform:translateY(-82vh) translateX(-10px) scale(1.12);opacity:0}
+      0%{transform:translateY(0) translateX(0);opacity:0}
+      10%{opacity:.4}
+      60%{transform:translateY(-42vh) translateX(16px)}
+      100%{transform:translateY(-82vh) translateX(-10px);opacity:0}
     }
-
-    /* minimalist hero overlay - left and right short catchphrases */
     .hero-catch-left, .hero-catch-right{
       position:absolute;
       z-index:20;
       font-family:'JetBrains Mono',monospace;
       font-weight:500;
-      letter-spacing:2px;
+      letter-spacing:1.5px;
       text-transform:uppercase;
-      background:rgba(3,5,18,.45);
-      backdrop-filter:blur(12px);
-      padding:10px 20px;
-      border-radius:60px;
-      border:1px solid rgba(96,165,250,.25);
-      font-size:0.75rem;
+      background:rgba(3,5,18,.5);
+      backdrop-filter:blur(10px);
+      padding:8px 16px;
+      border-radius:40px;
+      border:1px solid rgba(96,165,250,.3);
+      font-size:0.7rem;
       white-space:nowrap;
       pointer-events:none;
       color:#cbdffa;
-      box-shadow:0 4px 14px rgba(0,0,0,.2);
     }
-    .hero-catch-left{
-      left:30px;
-      top:50%;
-      transform:translateY(-50%) rotate(-90deg);
-      transform-origin:left top;
-      writing-mode:vertical-rl;
-      text-orientation:mixed;
-      padding:16px 8px;
-    }
-    .hero-catch-right{
-      right:30px;
-      top:50%;
-      transform:translateY(-50%) rotate(90deg);
-      transform-origin:right top;
-      writing-mode:vertical-rl;
-      text-orientation:mixed;
-      padding:16px 8px;
-      background:rgba(99,102,241,.35);
-      border-color:rgba(139,92,246,.4);
-      color:#e0d5ff;
-    }
+    .hero-catch-left{left:20px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:left top;writing-mode:vertical-rl;padding:12px 6px;}
+    .hero-catch-right{right:20px;top:50%;transform:translateY(-50%) rotate(90deg);transform-origin:right top;writing-mode:vertical-rl;padding:12px 6px;background:rgba(99,102,241,.4);border-color:rgba(139,92,246,.5);}
     .hero-bottom-tag{
-      position:absolute;
-      bottom:22%;
-      left:50%;
-      transform:translateX(-50%);
-      z-index:20;
-      font-family:'JetBrains Mono',monospace;
-      font-size:0.7rem;
-      background:rgba(0,0,0,.5);
-      backdrop-filter:blur(12px);
-      padding:6px 18px;
-      border-radius:40px;
-      letter-spacing:2px;
-      color:var(--blue2);
-      border:1px solid rgba(96,165,250,.3);
+      position:absolute;bottom:20%;left:50%;transform:translateX(-50%);z-index:20;
+      font-family:'JetBrains Mono',monospace;font-size:0.65rem;
+      background:rgba(0,0,0,.55);backdrop-filter:blur(12px);padding:6px 16px;border-radius:40px;
+      letter-spacing:1.5px;color:var(--blue2);border:1px solid rgba(96,165,250,.4);
       white-space:nowrap;
+    }
+    .hero-scroll{
+      position:absolute;bottom:25px;left:50%;transform:translateX(-50%);z-index:20;
+    }
+    .scroll-mouse{width:26px;height:40px;border:2px solid rgba(99,102,241,.4);border-radius:14px;display:flex;justify-content:center;padding-top:6px}
+    .scroll-dot{width:3px;height:8px;background:var(--blue);border-radius:2px;animation:scrollAnim 2s infinite}
+    @keyframes scrollAnim{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(12px)}}
+
+    /* RIPPLE, INTRO, SERVICES (kept unchanged but responsive) */
+    .ripple-art{position:relative;padding:0;background:linear-gradient(180deg,rgba(3,4,10,1),rgba(6,9,18,.98));overflow:hidden;}
+    .ripple-layer{position:relative;height:160px;overflow:hidden;}
+    .ripple-layer img{position:absolute;left:0;width:100%;object-fit:cover;mix-blend-mode:screen;}
+    .ripple-layer img.r1{top:10px;height:140px;animation:rippleShift1 14s infinite}
+    .ripple-layer img.r2{top:25px;height:140px;opacity:.55;animation:rippleShift2 18s infinite}
+    .ripple-layer img.r3{top:40px;height:140px;opacity:.32;animation:rippleShift3 22s infinite}
+    @keyframes rippleShift1{0%,100%{transform:scale(1.03) translateX(0)}50%{transform:scale(1.08) translateX(-12px)}}
+    @keyframes rippleShift2{0%,100%{transform:scale(1.02) translateX(0)}50%{transform:scale(1.06) translateX(12px)}}
+    @keyframes rippleShift3{0%,100%{transform:scale(1.01) translateX(0)}50%{transform:scale(1.05) translateX(-8px)}}
+    .ripple-copy{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+    .ripple-copy span{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:2.5px;background:rgba(7,11,20,.5);padding:6px 14px;border-radius:40px;border:1px solid rgba(96,165,250,.2);}
+
+    .intro-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .intro-main,.intro-side{background:linear-gradient(180deg,rgba(12,16,28,.86),rgba(8,11,19,.82));border-radius:28px;padding:30px;}
+    .intro-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px;}
+    .intro-card{padding:16px;border-radius:18px;background:rgba(255,255,255,.02);border:1px solid rgba(96,165,250,.08);}
+    .service-grid-exceptional{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:20px;}
+    .service-card-ex{background:linear-gradient(145deg, rgba(12,18,30,.92), rgba(5,8,17,.96));border-radius:28px;overflow:hidden;transition:0.3s;}
+    .service-card-ex:hover{transform:translateY(-8px);}
+    .service-img-ex{height:210px;overflow:hidden;position:relative;}
+    .service-img-ex img{width:100%;height:100%;object-fit:cover;transition:0.5s;}
+    .service-card-ex:hover .service-img-ex img{transform:scale(1.08);}
+    .service-chip-ex{position:absolute;top:16px;left:16px;width:44px;height:44px;border-radius:20px;background:linear-gradient(135deg,var(--blue),var(--indigo));display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+    .service-body-ex{padding:20px;}
+    .service-body-ex h3{font-size:1.1rem;margin-bottom:8px;}
+    .service-tags-ex{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+    .service-tags-ex span{font-size:.65rem;padding:4px 10px;border-radius:30px;background:rgba(59,130,246,.12);}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(59,130,246,.07);border-radius:28px;overflow:hidden;}
+    .stat-card{padding:32px 16px;text-align:center;}
+    .infra-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .infra-card{padding:28px 20px;border-radius:26px;background:linear-gradient(180deg,rgba(12,16,28,.88),rgba(8,11,19,.84));}
+    .cta-shell{border-radius:32px;padding:60px 24px;text-align:center;background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(99,102,241,.1));}
+
+    /* ========== CREATIVE FOOTER ========== */
+    .creative-footer{
+      position:relative;
+      background:linear-gradient(160deg, #03050c 0%, #070b17 100%);
+      border-top:1px solid rgba(59,130,246,.2);
+      overflow:hidden;
+      margin-top:40px;
+    }
+    .creative-footer::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:1px;
+      background:linear-gradient(90deg,transparent,var(--blue),var(--purple),var(--cyan),transparent);
+    }
+    .footer-glow{
+      position:absolute;inset:0;background:radial-gradient(circle at 20% 30%, rgba(59,130,246,.08), transparent 60%);
       pointer-events:none;
     }
-    @media(max-width:860px){
-      .hero-catch-left, .hero-catch-right{display:none;}
-      .hero-bottom-tag{white-space:normal; text-align:center; width:80%; font-size:0.6rem; bottom:18%;}
+    .footer-main{
+      position:relative;z-index:3;
+      padding:70px 0 50px;
     }
-    @media(max-width:560px){
-      .hero-bottom-tag{font-size:0.55rem; bottom:15%;}
+    .footer-flex{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:40px;
     }
-
-    .hero-scroll{
-      position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:20;animation:fadeUp .8s ease 1.2s both
+    .footer-brand-col{
+      flex:1.2;
+      min-width:220px;
     }
-    .scroll-mouse{
-      width:28px;height:45px;border:2px solid rgba(99,102,241,.4);border-radius:16px;display:flex;justify-content:center;padding-top:8px
+    .footer-logo-creative{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:20px;
     }
-    .scroll-dot{width:4px;height:10px;background:var(--blue);border-radius:4px;animation:scrollAnim 2s ease-in-out infinite}
-    @keyframes scrollAnim{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-
-    /* RIPPLE, INTRO, NET ZONE, EXCEPTIONAL SERVICES */
-    .ripple-art{
-      position:relative;padding:0;background:linear-gradient(180deg,rgba(3,4,10,1),rgba(6,9,18,.98));
-      overflow:hidden;border-top:1px solid rgba(96,165,250,.08);border-bottom:1px solid rgba(96,165,250,.08);
+    .footer-logo-creative img{
+      height:54px;
+      filter:drop-shadow(0 0 12px rgba(59,130,246,.5));
     }
-    .ripple-layer{
-      position:relative;height:200px;overflow:hidden;
-    }
-    .ripple-layer img{
-      position:absolute;left:0;width:100%;object-fit:cover;mix-blend-mode:screen;
-      filter:brightness(1.12) contrast(1.18);
-      opacity:.95;
-    }
-    .ripple-layer img.r1{top:10px;height:170px;animation:rippleShift1 14s ease-in-out infinite}
-    .ripple-layer img.r2{top:28px;height:170px;opacity:.55;animation:rippleShift2 18s ease-in-out infinite}
-    .ripple-layer img.r3{top:46px;height:170px;opacity:.32;animation:rippleShift3 22s ease-in-out infinite}
-    @keyframes rippleShift1{0%,100%{transform:scale(1.03) translateX(0)}50%{transform:scale(1.08) translateX(-14px)}}
-    @keyframes rippleShift2{0%,100%{transform:scale(1.02) translateX(0)}50%{transform:scale(1.06) translateX(14px)}}
-    @keyframes rippleShift3{0%,100%{transform:scale(1.01) translateX(0)}50%{transform:scale(1.05) translateX(-8px)}}
-    .ripple-copy{
-      position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;pointer-events:none;padding:0 16px;text-align:center
-    }
-    .ripple-copy span{
-      font-family:'JetBrains Mono',monospace;
-      font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
-      color:rgba(191,219,254,.9);
-      padding:10px 16px;border-radius:999px;
-      background:rgba(7,11,20,.5);border:1px solid rgba(96,165,250,.2);backdrop-filter:blur(12px)
-    }
-
-    .intro-wrap{
-      display:grid;grid-template-columns:1.04fr .96fr;gap:26px;align-items:stretch;
-    }
-    .intro-main,.intro-side{
-      background:linear-gradient(180deg,rgba(12,16,28,.86),rgba(8,11,19,.82));
-      border:1px solid rgba(96,165,250,.12);
-      border-radius:30px;box-shadow:var(--shadow-md);position:relative;overflow:hidden
-    }
-    .intro-main{padding:36px}
-    .intro-main h3{
+    .footer-logo-creative h3{
       font-family:'Space Grotesk',sans-serif;
-      font-size:clamp(1.7rem,3vw,2.15rem);
-      line-height:1.15;
-      font-weight:900;
-      margin-bottom:16px;
+      font-size:1.4rem;
+      font-weight:800;
+      background:linear-gradient(135deg,#fff,#60a5fa);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
     }
-    .intro-main p{
-      color:var(--muted);
-      margin-bottom:16px;
-      font-size:1rem;
-      line-height:1.85;
+    .footer-desc{
+      color:#8da0bc;
+      font-size:.85rem;
+      line-height:1.7;
+      margin-bottom:20px;
+      max-width:320px;
     }
-    .intro-grid{
-      display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px;
+    .social-links-creative{
+      display:flex;
+      gap:14px;
     }
-    .intro-card{
-      padding:18px;border-radius:20px;background:rgba(255,255,255,.02);border:1px solid rgba(96,165,250,.08);
-    }
-    .intro-card strong{display:block;color:#fff;font-weight:800;margin-bottom:8px}
-    .intro-card span{color:var(--muted2);font-size:.9rem;line-height:1.7}
-    .intro-side-inner{
-      height:100%;border-radius:24px;padding:24px;
-      background:radial-gradient(circle at 20% 20%, rgba(59,130,246,.16), transparent 24%);
-      border:1px solid rgba(96,165,250,.10);
-      display:flex;flex-direction:column;justify-content:center;
-    }
-    .intro-side-inner h4{font-size:1.35rem;font-weight:800;margin-bottom:12px;}
-    .intro-side-inner ul{list-style:none}
-    .intro-side-inner li{padding:10px 0;border-bottom:1px solid rgba(96,165,250,.08);display:flex;gap:10px}
-    .intro-side-inner i{color:var(--blue2);margin-top:4px}
-
-    .net-zone{position:relative;overflow:hidden;background:radial-gradient(ellipse at 20% 40%, rgba(59,130,246,.12), transparent 45%);}
-    #networkCanvas,#particleCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
-    .moving-bg{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
-    .cyber-overlay{
-      position:absolute;bottom:5%;right:3%;z-index:15;width:250px;max-width:25vw;
-      opacity:0.55;transition:0.4s;pointer-events:none;
-      filter:drop-shadow(0 0 18px rgba(59,130,246,0.4));
-    }
-    .cyber-overlay img{border-radius:28px;border:1px solid rgba(96,165,250,0.4);background:rgba(3,4,10,0.3);}
-
-    .service-grid-exceptional{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:28px;
-      margin-top:20px;
-      position:relative;
-      z-index:5;
-    }
-    .service-card-ex{
-      background:linear-gradient(145deg, rgba(12,18,30,.92), rgba(5,8,17,.96));
-      backdrop-filter:blur(8px);
-      border:1px solid rgba(96,165,250,.18);
-      border-radius:32px;
-      overflow:hidden;
-      transition:all 0.4s cubic-bezier(0.2,0.9,0.4,1.1);
-    }
-    .service-card-ex:hover{transform:translateY(-12px) scale(1.02);border-color:rgba(99,102,241,0.5);box-shadow:0 32px 60px -18px rgba(59,130,246,0.4);}
-    .service-img-ex{
-      height:240px;
-      overflow:hidden;
-      position:relative;
-    }
-    .service-img-ex img{
-      width:100%;height:100%;object-fit:cover;
-      transition:transform 0.7s ease;
-      filter:brightness(0.92) contrast(1.1);
-    }
-    .service-card-ex:hover .service-img-ex img{transform:scale(1.12);filter:brightness(1.05);}
-    .service-img-ex::after{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(180deg, transparent 30%, rgba(3,4,10,0.85) 100%);
-    }
-    .service-chip-ex{
-      position:absolute;top:18px;left:18px;z-index:3;
-      width:48px;height:48px;border-radius:22px;
-      background:linear-gradient(135deg,var(--blue),var(--indigo));
-      display:flex;align-items:center;justify-content:center;
-      font-size:1.3rem;color:white;
-      box-shadow:0 8px 20px rgba(59,130,246,0.5);
-    }
-    .service-body-ex{
-      padding:24px 22px 28px;
-    }
-    .service-body-ex h3{
-      font-family:'Space Grotesk',sans-serif;
-      font-size:1.2rem;font-weight:800;margin-bottom:10px;
-      background:linear-gradient(135deg,#fff,#b9d0ff);
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-    }
-    .service-body-ex p{color:#9aafcf;font-size:.86rem;line-height:1.7;}
-    .service-tags-ex{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
-    .service-tags-ex span{
-      font-size:.65rem;padding:5px 12px;border-radius:40px;
-      background:rgba(59,130,246,.12);border:1px solid rgba(96,165,250,.2);
-      color:var(--blue2);font-weight:700;
-    }
-    .stats-grid{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-      background:rgba(59,130,246,.07);border:1px solid rgba(96,165,250,.13);
-      border-radius:30px;overflow:hidden;
-    }
-    .stat-card{
-      background:linear-gradient(180deg,rgba(11,15,26,.84),rgba(8,10,18,.82));
-      padding:38px 22px;text-align:center
-    }
-    .infra-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-    .infra-card{
-      background:linear-gradient(180deg,rgba(12,16,28,.88),rgba(8,11,19,.84));
-      border:1px solid rgba(96,165,250,.12);
-      border-radius:28px;padding:30px 24px;transition:.35s;
-    }
-    .infra-card:hover{transform:translateY(-8px);border-color:rgba(96,165,250,.3);}
-    .cta-shell{
-      border-radius:34px;padding:80px 28px;text-align:center;
-      background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(99,102,241,.1));
+    .social-links-creative a{
+      width:44px;height:44px;border-radius:30px;
+      background:rgba(59,130,246,.1);
       border:1px solid rgba(96,165,250,.2);
+      display:flex;align-items:center;justify-content:center;
+      color:#cbd5f0;
+      font-size:1.2rem;
+      transition:0.25s;
     }
-    .footer{
-      background:rgba(4,5,11,.96);padding:58px 0 30px;border-top:1px solid rgba(30,41,59,.3)
+    .social-links-creative a:hover{
+      background:linear-gradient(135deg,var(--blue),var(--indigo));
+      color:white;
+      transform:translateY(-3px);
+      border-color:transparent;
     }
-    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
-    .footer-logo{height:58px;width:auto;}
-    .social-links{display:flex;gap:12px;margin-top:16px}
-    .social-links a{width:42px;height:42px;border-radius:12px;background:rgba(30,41,59,.4);display:flex;align-items:center;justify-content:center;color:#94a3b8;transition:.3s}
-    .social-links a:hover{background:rgba(59,130,246,.2);color:var(--blue2);}
-    .back-to-top{
-      position:fixed;bottom:24px;right:24px;width:50px;height:50px;border-radius:16px;
-      background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;
-      display:flex;align-items:center;justify-content:center;cursor:pointer;
-      opacity:0;visibility:hidden;transition:.3s;z-index:999
+    .footer-links-col{
+      flex:1;
+      min-width:150px;
     }
-    .back-to-top.show{opacity:1;visibility:visible}
-    .reveal{opacity:0;transform:translateY(50px);transition:all .85s cubic-bezier(.4,0,.2,1)}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-
-    @media(max-width:1240px){
+    .footer-links-col h4{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:1rem;
+      margin-bottom:22px;
+      position:relative;
+      display:inline-block;
+    }
+    .footer-links-col h4::after{
+      content:'';position:absolute;bottom:-6px;left:0;width:30px;height:2px;
+      background:linear-gradient(90deg,var(--blue),var(--cyan));
+      border-radius:2px;
+    }
+    .footer-links-col a{
+      display:block;
+      color:#8da0bc;
+      text-decoration:none;
+      margin-bottom:12px;
+      font-size:.85rem;
+      transition:0.2s;
+    }
+    .footer-links-col a i{
+      margin-right:8px;
+      font-size:.7rem;
+      color:var(--blue2);
+    }
+    .footer-links-col a:hover{
+      color:white;
+      transform:translateX(6px);
+    }
+    .contact-info-footer{
+      margin-top:12px;
+    }
+    .contact-info-footer p{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#8da0bc;
+      font-size:.85rem;
+      margin-bottom:12px;
+    }
+    .contact-info-footer i{
+      width:26px;
+      color:var(--blue2);
+    }
+    .footer-bottom{
+      border-top:1px solid rgba(96,165,250,.12);
+      padding:24px 0;
+      text-align:center;
+      font-size:.75rem;
+      color:#62748e;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .footer-bottom .heart{
+      color:#f43f5e;
+    }
+    .footer-bottom a{
+      color:var(--blue2);
+      text-decoration:none;
+    }
+    .footer-stats{
+      display:flex;
+      gap:24px;
+      font-size:.7rem;
+    }
+    .footer-stats span{color:var(--blue2);font-weight:700;}
+    @media(max-width:980px){
+      .footer-flex{flex-direction:column;gap:32px;}
+      .footer-brand-col{text-align:center;align-items:center;}
+      .footer-logo-creative{justify-content:center;}
+      .footer-desc{margin:0 auto 20px;text-align:center;}
+      .social-links-creative{justify-content:center;}
+      .footer-links-col{text-align:center;}
+      .footer-links-col h4::after{left:50%;transform:translateX(-50%);}
+      .contact-info-footer p{justify-content:center;}
+      .footer-bottom{flex-direction:column;text-align:center;}
       .service-grid-exceptional{grid-template-columns:repeat(2,1fr);}
-      .hero-catch-left,.hero-catch-right{font-size:0.65rem; padding:8px 12px;}
-    }
-    @media(max-width:860px){
-      .service-grid-exceptional{grid-template-columns:1fr;}
       .intro-wrap{grid-template-columns:1fr;}
-      .cyber-overlay{width:120px;}
-      .stats-grid{grid-template-columns:repeat(2,1fr);}
       .infra-cards{grid-template-columns:1fr;}
-      .footer-grid{grid-template-columns:1fr 1fr;}
-    }
-    @media(max-width:560px){
+      .stats-grid{grid-template-columns:repeat(2,1fr);}
       .hero-catch-left,.hero-catch-right{display:none;}
-      .hero-bottom-tag{width:90%; font-size:0.6rem;}
+      .hero-bottom-tag{white-space:normal; width:80%; font-size:0.55rem; text-align:center;}
     }
+    @media(max-width:680px){
+      .service-grid-exceptional{grid-template-columns:1fr;}
+      .section{padding:60px 0;}
+      .hero-bottom-tag{width:90%;}
+      .links{
+        position:fixed;top:72px;left:-100%;width:80%;max-width:300px;height:calc(100vh - 72px);
+        background:rgba(4,5,11,.98);backdrop-filter:blur(30px);
+        flex-direction:column;gap:1.5rem;padding:2rem;transition:left .4s;z-index:1001;
+      }
+      .links.active{left:0;}
+      .menu-toggle{display:block;}
+      .nav-cta{display:none;}
+      .brand-text{display:none;}
+      .hero-catch-left,.hero-catch-right{display:none;}
+    }
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:40px;font-weight:800;text-decoration:none;}
+    .btn.primary{background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;}
+    .btn.secondary{background:rgba(12,16,28,.7);border:1px solid rgba(99,102,241,.4);color:#fff;}
+    .back-to-top{position:fixed;bottom:20px;right:20px;width:48px;height:48px;border-radius:30px;background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:.3s;z-index:999;}
+    .back-to-top.show{opacity:1;visibility:visible;}
+    .reveal{opacity:0;transform:translateY(40px);transition:0.85s;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .floating-btns{position:fixed;bottom:20px;left:20px;display:flex;flex-direction:column;gap:10px;z-index:999;}
+    .float-btn{width:48px;height:48px;border-radius:30px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;text-decoration:none;font-size:1.3rem;}
+    .float-btn.tg{background:linear-gradient(135deg,#0088cc,#005f8c);}
   </style>
 </head>
 <body>
@@ -568,49 +545,86 @@
   <div class="floating-btns"><a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-btn wa" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/ZTrustTech" class="float-btn tg" target="_blank"><i class="fab fa-telegram-plane"></i></a></div>
   <nav class="nav" id="mainNav"><div class="container nav-inner"><div class="brand-wrap"><img src="Ztrust Logo 1 (2).png" class="nav-logo" alt="ZTrust Tech"><div class="brand-text"><h3>ZTrust Tech</h3><span>Complete IT Solutions</span></div></div><div class="links" id="navLinks"><a href="index.html" class="active">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><a href="contact.html" class="nav-cta"><i class="fas fa-headset"></i> Get Support</a><button class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></button></div></nav>
 
-  <section class="hero">
-    <div class="hero-tech-grid"></div>
-    <div class="hero-ripple-stack"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"></div>
-    <div class="hero-beams"><span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span><span class="beam b4"></span></div>
-    <div class="hero-particles"><span class="hp hp1"></span><span class="hp hp2"></span><span class="hp hp3"></span><span class="hp hp4"></span><span class="hp hp5"></span><span class="hp hp6"></span><span class="hp hp7"></span></div>
-    
-    <!-- minimalist side catchphrases -->
-    <div class="hero-catch-left">◉ TRUST · SECURITY · INNOVATION</div>
-    <div class="hero-catch-right">⚡ AI-DRIVEN · ZERO-TRUST · 24/7</div>
-    <div class="hero-bottom-tag">✦ COMPLETE IT SOLUTIONS PROVIDER ✦</div>
-    
-    <div class="hero-scroll"><div class="scroll-mouse"><div class="scroll-dot"></div></div></div>
-  </section>
+  <section class="hero"><div class="hero-tech-grid"></div><div class="hero-ripple-stack"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"></div><div class="hero-beams"><span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span><span class="beam b4"></span></div><div class="hero-particles"><span class="hp hp1"></span><span class="hp hp2"></span><span class="hp hp3"></span><span class="hp hp4"></span><span class="hp hp5"></span></div><div class="hero-catch-left">◉ TRUST · SECURITY</div><div class="hero-catch-right">⚡ AI-DRIVEN · ZERO-TRUST</div><div class="hero-bottom-tag">✦ COMPLETE IT SOLUTIONS PROVIDER ✦</div><div class="hero-scroll"><div class="scroll-mouse"><div class="scroll-dot"></div></div></div></section>
 
   <section class="ripple-art"><div class="ripple-layer"><img class="r1" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt=""><img class="r2" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt=""><img class="r3" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt=""><div class="ripple-copy"><span>Flow • Connectivity • Trust • Performance</span></div></div></section>
 
-  <div class="net-zone" id="netZone"><canvas id="networkCanvas"></canvas><canvas id="particleCanvas"></canvas><div class="moving-bg" id="movingBg"></div><div class="cyber-overlay"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Cyber Shield" style="border-radius:24px;"></div>
+  <div class="net-zone" id="netZone"><canvas id="networkCanvas"></canvas><canvas id="particleCanvas"></canvas><div class="moving-bg" id="movingBg"></div>
     <section class="section"><div class="container"><div class="section-header reveal"><div class="section-badge"><i class="fas fa-cubes"></i> Core IT Services</div><h2 class="section-title">Exceptional <span style="background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;">engineering & security</span> for the next decade.</h2><p class="section-sub">Cutting-edge infrastructure, storage, development, networking, and cybersecurity — unified under one visionary ecosystem.</p></div>
-      <div class="service-grid-exceptional">
-        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-server"></i></span><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Infrastructure"></div><div class="service-body-ex"><h3>IT Infrastructure</h3><p>Resilient servers, virtualization & compute environments built for zero downtime and maximum throughput.</p><div class="service-tags-ex"><span>Servers</span><span>Virtualization</span></div></div></div>
-        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-hard-drive"></i></span><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Storage"></div><div class="service-body-ex"><h3>Storage Solutions</h3><p>SAN/NAS, automated backups, disaster recovery and immutable storage for business continuity.</p><div class="service-tags-ex"><span>SAN/NAS</span><span>Backup</span></div></div></div>
-        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-code"></i></span><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80" alt="Development"></div><div class="service-body-ex"><h3>App Development</h3><p>Custom web, mobile & enterprise software tailored to complex business logic and digital transformation.</p><div class="service-tags-ex"><span>Web</span><span>Mobile</span></div></div></div>
-        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-database"></i></span><img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=1200&q=80" alt="Database"></div><div class="service-body-ex"><h3>Database Management</h3><p>High-performance SQL/NoSQL, tuning, migration, and high-availability architecture.</p><div class="service-tags-ex"><span>SQL</span><span>NoSQL</span></div></div></div>
-        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-plug"></i></span><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="API"></div><div class="service-body-ex"><h3>API Integration</h3><p>Seamless REST, microservices, and workflow automation bridging legacy and modern systems.</p><div class="service-tags-ex"><span>REST</span><span>Automation</span></div></div></div>
-        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-network-wired"></i></span><img src="https://images.unsplash.com/photo-1520869562399-e772f042f422?auto=format&fit=crop&w=1200&q=80" alt="Networking"></div><div class="service-body-ex"><h3>Network Connectivity</h3><p>SD-WAN, LAN/WAN, wireless architecture and secure encrypted tunnels across branches.</p><div class="service-tags-ex"><span>SD-WAN</span><span>LAN/WAN</span></div></div></div>
-        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-user-shield"></i></span><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80" alt="Cyber"></div><div class="service-body-ex"><h3>Cybersecurity</h3><p>Next-gen firewalls, EDR, threat hunting, compliance, and real-time monitoring.</p><div class="service-tags-ex"><span>Firewall</span><span>Endpoint</span></div></div></div>
-        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-chalkboard-user"></i></span><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Training"></div><div class="service-body-ex"><h3>Awareness Training</h3><p>Phishing simulations, security culture programs, and team education to prevent human risk.</p><div class="service-tags-ex"><span>Training</span><span>Phishing</span></div></div></div>
+      <div class="service-grid-exceptional"><div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-server"></i></span><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Infrastructure"></div><div class="service-body-ex"><h3>IT Infrastructure</h3><p>Resilient servers & virtualization for zero downtime.</p><div class="service-tags-ex"><span>Servers</span><span>Virtualization</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-hard-drive"></i></span><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Storage"></div><div class="service-body-ex"><h3>Storage Solutions</h3><p>SAN/NAS, automated backups & disaster recovery.</p><div class="service-tags-ex"><span>SAN/NAS</span><span>Backup</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-code"></i></span><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=80" alt="Dev"></div><div class="service-body-ex"><h3>App Development</h3><p>Custom web & mobile solutions for digital transformation.</p><div class="service-tags-ex"><span>Web</span><span>Mobile</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-database"></i></span><img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=800&q=80" alt="DB"></div><div class="service-body-ex"><h3>Database Mgmt</h3><p>High-performance SQL/NoSQL, tuning, high-availability.</p><div class="service-tags-ex"><span>SQL</span><span>NoSQL</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-plug"></i></span><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="API"></div><div class="service-body-ex"><h3>API Integration</h3><p>Seamless REST, microservices & workflow automation.</p><div class="service-tags-ex"><span>REST</span><span>Automation</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-network-wired"></i></span><img src="https://images.unsplash.com/photo-1520869562399-e772f042f422?auto=format&fit=crop&w=800&q=80" alt="Net"></div><div class="service-body-ex"><h3>Network Connectivity</h3><p>SD-WAN, LAN/WAN, wireless secure architectures.</p><div class="service-tags-ex"><span>SD-WAN</span><span>LAN/WAN</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-user-shield"></i></span><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" alt="Cyber"></div><div class="service-body-ex"><h3>Cybersecurity</h3><p>Next-gen firewalls, EDR, threat hunting & compliance.</p><div class="service-tags-ex"><span>Firewall</span><span>EDR</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-chalkboard-user"></i></span><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Training"></div><div class="service-body-ex"><h3>Awareness Training</h3><p>Phishing simulations & security culture programs.</p><div class="service-tags-ex"><span>Training</span><span>Phishing</span></div></div></div>
       </div>
     </div></section>
     <section class="section"><div class="container"><div class="stats-grid"><div class="stat-card"><i class="fas fa-calendar-check" style="color:var(--blue)"></i><div class="num" data-target="10">0<span>+</span></div><div class="label">Years Experience</div></div><div class="stat-card"><i class="fas fa-project-diagram" style="color:var(--purple)"></i><div class="num" data-target="99">0<span>%</span></div><div class="label">Client Retention</div></div><div class="stat-card"><i class="fas fa-face-smile" style="color:var(--cyan)"></i><div class="num" data-target="99">0<span>%</span></div><div class="label">Client Satisfaction</div></div><div class="stat-card"><i class="fas fa-headset" style="color:var(--emerald)"></i><div class="num">24<span>/7</span></div><div class="label">Support Active</div></div></div></div></section>
-    <section class="section"><div class="container"><div class="infra-cards"><div class="infra-card"><div class="infra-icon" style="background:linear-gradient(135deg,#2563eb,#3b82f6)"><i class="fas fa-database"></i></div><h3>Data Center Solutions</h3><p>Enterprise-grade data center planning, deployment, and resilient operational management.</p></div><div class="infra-card"><div class="infra-icon" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6)"><i class="fas fa-network-wired"></i></div><h3>Enterprise Networking</h3><p>High-performance SD-WAN, LAN/WAN, wireless architecture, and secure branch connectivity.</p></div><div class="infra-card"><div class="infra-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4)"><i class="fas fa-cloud-arrow-up"></i></div><h3>Cloud Integration</h3><p>Hybrid cloud environments connecting on-premise systems with modern cloud workflows.</p></div></div></div></section>
-    <section class="section"><div class="container"><div class="cta-shell"><h2>Ready to build an IT environment that feels stronger, smarter, and more exceptional?</h2><p>Let ZTrust Tech transform your technology into a secure, beautiful, and business-ready digital foundation.</p><div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;"><a href="contact.html" class="btn primary"><i class="fas fa-headset"></i> Get Free Consultation</a><a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="btn secondary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div></div></div></section>
-    <footer class="footer"><div class="container"><div class="footer-grid"><div><img src="Ztrust Logo 1 (2).png" class="footer-logo" alt="ZTrust"><p style="margin-top:12px;color:#64748b;">Complete IT Solutions Provider<br>Infrastructure • Storage • Apps • Database • API • Networks • Security</p><div class="social-links"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div></div><div><h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><div><h4>Our Services</h4><a href="services.html">Infrastructure</a><a href="services.html">Storage</a><a href="services.html">App Development</a><a href="services.html">Database</a><a href="services.html">API Integration</a><a href="services.html">Networking</a></div><div><h4>Contact</h4><a href="#"><i class="fas fa-user"></i> GM: Ssasebih Nega</a><a href="tel:+251911563698"><i class="fas fa-phone"></i> +251 911 563 698</a><a href="mailto:sales2@ztrust.et"><i class="fas fa-envelope"></i> sales2@ztrust.et</a><a href="#"><i class="fas fa-map-marker-alt"></i> Bole TK Building</a></div></div><div class="copyright">© 2026 ZTrust Tech. All IT Solutions Under One Roof | Made with 💙 in Ethiopia</div></div></footer>
+    <section class="section"><div class="container"><div class="cta-shell"><h2>Ready to build an exceptional IT environment?</h2><p>Let ZTrust Tech transform your technology into a secure, beautiful, and business-ready foundation.</p><div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;"><a href="contact.html" class="btn primary"><i class="fas fa-headset"></i> Get Free Consultation</a><a href="https://wa.me/251911563698" class="btn secondary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div></div></div></section>
+
+    <!-- CREATIVE FOOTER SECTION -->
+    <footer class="creative-footer">
+      <div class="footer-glow"></div>
+      <div class="container footer-main">
+        <div class="footer-flex">
+          <div class="footer-brand-col">
+            <div class="footer-logo-creative">
+              <img src="Ztrust Logo 1 (2).png" alt="ZTrust Tech">
+              <h3>ZTrust Tech</h3>
+            </div>
+            <p class="footer-desc">Complete IT Solutions Provider — Infrastructure, Storage, Apps, Database, API, Networks & Security under one visionary ecosystem.</p>
+            <div class="social-links-creative">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
+              <a href="https://t.me/ZTrustTech" target="_blank"><i class="fab fa-telegram"></i></a>
+              <a href="https://wa.me/251911563698" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+          <div class="footer-links-col">
+            <h4>Quick Links</h4>
+            <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+            <a href="about.html"><i class="fas fa-chevron-right"></i> About</a>
+            <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a>
+          </div>
+          <div class="footer-links-col">
+            <h4>Our Services</h4>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> Infrastructure</a>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> Storage</a>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> App Development</a>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> Database</a>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> API Integration</a>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> Networking</a>
+          </div>
+          <div class="footer-links-col">
+            <h4>Contact</h4>
+            <div class="contact-info-footer">
+              <p><i class="fas fa-user-circle"></i> GM: Ssasebih Nega</p>
+              <p><i class="fas fa-phone-alt"></i> +251 911 563 698</p>
+              <p><i class="fas fa-envelope"></i> sales2@ztrust.et</p>
+              <p><i class="fas fa-map-marker-alt"></i> Bole TK Building, Addis Ababa</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 <a href="index.html">ZTrust Tech</a>. All IT Solutions Under One Roof</span>
+          <span class="footer-stats"><span>10+</span> Years | <span>24/7</span> Support | <span>99%</span> Retention</span>
+          <span>Made with <i class="fas fa-heart heart"></i> in Ethiopia</span>
+        </div>
+      </div>
+    </footer>
   </div>
   <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
-
   <script>
-    window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),2200));
+    window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),2000));
     const nav=document.getElementById('mainNav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
     const mt=document.getElementById('mobileMenu'),nl=document.getElementById('navLinks');mt.addEventListener('click',()=>nl.classList.toggle('active'));
-    const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('[data-target]').forEach(el=>{let t=parseInt(el.dataset.target);let span=el.querySelector('span')?.outerHTML||'';let start=performance.now();let dur=1800;function update(now){let p=Math.min((now-start)/dur,1);let eased=1-Math.pow(1-p,3);el.innerHTML=Math.floor(eased*t)+span;if(p<1)requestAnimationFrame(update);}requestAnimationFrame(update);});counterObs.disconnect();}});},{threshold:.3});document.querySelector('.stats-grid')&&counterObs.observe(document.querySelector('.stats-grid'));
+    const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('[data-target]').forEach(el=>{let t=parseInt(el.dataset.target);let span=el.querySelector('span')?.outerHTML||'';let start=performance.now();let dur=1600;function update(now){let p=Math.min((now-start)/dur,1);let eased=1-Math.pow(1-p,3);el.innerHTML=Math.floor(eased*t)+span;if(p<1)requestAnimationFrame(update);}requestAnimationFrame(update);});counterObs.disconnect();}});},{threshold:.3});document.querySelector('.stats-grid')&&counterObs.observe(document.querySelector('.stats-grid'));
     const btt=document.getElementById('backToTop');window.addEventListener('scroll',()=>btt.classList.toggle('show',window.scrollY>400));btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-    const netCanvas=document.getElementById('networkCanvas');if(netCanvas){let ctx=netCanvas.getContext('2d');let w,h;function resize(){const r=document.getElementById('netZone').getBoundingClientRect();w=netCanvas.width=r.width;h=netCanvas.height=r.height;}resize();window.addEventListener('resize',resize);let dots=[];for(let i=0;i<70;i++)dots.push({x:Math.random()*w,y:Math.random()*h,dx:(Math.random()-0.5)*0.3,dy:(Math.random()-0.5)*0.3});function draw(){ctx.clearRect(0,0,w,h);ctx.fillStyle='rgba(59,130,246,0.2)';dots.forEach(d=>{d.x+=d.dx;d.y+=d.dy;if(d.x<0||d.x>w)d.dx*=-1;if(d.y<0||d.y>h)d.dy*=-1;ctx.beginPath();ctx.arc(d.x,d.y,1.6,0,Math.PI*2);ctx.fill();});for(let i=0;i<dots.length;i++)for(let j=i+1;j<dots.length;j++){let dx=dots[i].x-dots[j].x,dy=dots[i].y-dots[j].y,dist=Math.hypot(dx,dy);if(dist<140){ctx.beginPath();ctx.moveTo(dots[i].x,dots[i].y);ctx.lineTo(dots[j].x,dots[j].y);ctx.strokeStyle=`rgba(96,165,250,${0.08*(1-dist/140)})`;ctx.stroke();}}requestAnimationFrame(draw);}draw();}
+    const netCanvas=document.getElementById('networkCanvas');if(netCanvas){let ctx=netCanvas.getContext('2d');let w,h;function resize(){const r=document.getElementById('netZone').getBoundingClientRect();w=netCanvas.width=r.width;h=netCanvas.height=r.height;}resize();window.addEventListener('resize',resize);let dots=[];for(let i=0;i<60;i++)dots.push({x:Math.random()*w,y:Math.random()*h,dx:(Math.random()-0.5)*0.4,dy:(Math.random()-0.5)*0.4});function draw(){ctx.clearRect(0,0,w,h);dots.forEach(d=>{d.x+=d.dx;d.y+=d.dy;if(d.x<0||d.x>w)d.dx*=-1;if(d.y<0||d.y>h)d.dy*=-1;ctx.beginPath();ctx.arc(d.x,d.y,1.4,0,Math.PI*2);ctx.fillStyle='rgba(59,130,246,0.25)';ctx.fill();});for(let i=0;i<dots.length;i++)for(let j=i+1;j<dots.length;j++){let dx=dots[i].x-dots[j].x,dy=dots[i].y-dots[j].y,dist=Math.hypot(dx,dy);if(dist<150){ctx.beginPath();ctx.moveTo(dots[i].x,dots[i].y);ctx.lineTo(dots[j].x,dots[j].y);ctx.strokeStyle=`rgba(96,165,250,${0.07*(1-dist/150)})`;ctx.stroke();}}requestAnimationFrame(draw);}draw();}
+    const reveals=document.querySelectorAll('.reveal');new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');})},{threshold:.1}).observe(reveals[0]);
   </script>
 </body>
 </html>
