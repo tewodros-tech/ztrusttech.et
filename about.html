@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="ICON Final 1 (1).png" />
   <link rel="shortcut icon" href="ICON Final 1 (1).png" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -26,6 +26,8 @@
       --cyan: #22d3ee;
       --purple: #8b5cf6;
       --green: #22c55e;
+      --amber: #f59e0b;
+      --rose: #f43f5e;
       --whatsapp: #25D366;
       --telegram: #0088cc;
       --radius-xl: 40px;
@@ -33,16 +35,8 @@
       --shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
@@ -50,23 +44,19 @@
       line-height: 1.5;
       overflow-x: hidden;
     }
+    ::selection { background: rgba(59, 130, 246, 0.45); }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
 
-    ::selection {
-      background: rgba(59, 130, 246, 0.45);
-    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    @media (max-width: 600px) { .container { padding: 0 18px; } }
 
-    a {
-      color: inherit;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #030308; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue), var(--purple)); border-radius: 4px; }
 
     /* ================= BACKGROUND ================= */
-
     .cyber-bg {
       position: fixed;
       inset: 0;
@@ -77,12 +67,8 @@
         radial-gradient(circle at 70% 85%, rgba(139,92,246,0.20), transparent 35%),
         linear-gradient(135deg, #020617 0%, #070a15 45%, #02040a 100%);
     }
-
     .cyber-grid {
-      position: fixed;
-      inset: 0;
-      z-index: -4;
-      pointer-events: none;
+      position: fixed; inset: 0; z-index: -4; pointer-events: none;
       background-image:
         linear-gradient(rgba(96,165,250,0.055) 1px, transparent 1px),
         linear-gradient(90deg, rgba(96,165,250,0.055) 1px, transparent 1px);
@@ -90,452 +76,178 @@
       mask-image: radial-gradient(circle at center, black 42%, transparent 85%);
       animation: gridFlow 18s linear infinite;
     }
-
-    @keyframes gridFlow {
-      from { transform: translateY(0); }
-      to { transform: translateY(44px); }
-    }
-
+    @keyframes gridFlow { from { transform: translateY(0); } to { transform: translateY(44px); } }
     .scanlines {
-      position: fixed;
-      inset: 0;
-      z-index: -3;
-      pointer-events: none;
-      opacity: 0.13;
-      background-image: repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,0.04) 0px,
-        rgba(255,255,255,0.04) 1px,
-        transparent 1px,
-        transparent 4px
-      );
+      position: fixed; inset: 0; z-index: -3; pointer-events: none; opacity: 0.13;
+      background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 4px);
     }
+    .orb { position: fixed; border-radius: 50%; filter: blur(34px); z-index: -2; opacity: 0.42; animation: orbFloat 9s ease-in-out infinite alternate; }
+    .orb.one { width: 320px; height: 320px; background: rgba(59,130,246,0.40); top: 170px; left: -120px; }
+    .orb.two { width: 280px; height: 280px; background: rgba(34,211,238,0.28); right: -120px; top: 520px; animation-delay: 2s; }
+    .orb.three { width: 240px; height: 240px; background: rgba(139,92,246,0.28); left: 38%; bottom: -90px; animation-delay: 1.2s; }
+    @keyframes orbFloat { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(34px, -42px, 0) scale(1.12); } }
 
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(34px);
-      z-index: -2;
-      opacity: 0.42;
-      animation: orbFloat 9s ease-in-out infinite alternate;
-    }
-
-    .orb.one {
-      width: 320px;
-      height: 320px;
-      background: rgba(59,130,246,0.40);
-      top: 170px;
-      left: -120px;
-    }
-
-    .orb.two {
-      width: 280px;
-      height: 280px;
-      background: rgba(34,211,238,0.28);
-      right: -120px;
-      top: 520px;
-      animation-delay: 2s;
-    }
-
-    .orb.three {
-      width: 240px;
-      height: 240px;
-      background: rgba(139,92,246,0.28);
-      left: 38%;
-      bottom: -90px;
-      animation-delay: 1.2s;
-    }
-
-    @keyframes orbFloat {
-      from { transform: translate3d(0, 0, 0) scale(1); }
-      to { transform: translate3d(34px, -42px, 0) scale(1.12); }
-    }
-
-    .floating-elements {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .float-item {
-      position: absolute;
-      font-family: monospace;
-      font-weight: 900;
-      color: #60a5fa;
-      opacity: 0.06;
-      white-space: nowrap;
-      animation: floatAround linear infinite;
-    }
-
-    @keyframes floatAround {
-      0% {
-        transform: translateX(-18vw) translateY(0);
-        opacity: 0;
-      }
-      12% { opacity: 0.075; }
-      88% { opacity: 0.075; }
-      100% {
-        transform: translateX(118vw) translateY(var(--y-move, 0));
-        opacity: 0;
-      }
-    }
+    /* Network Canvas */
+    #networkCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; }
 
     /* ================= NAV ================= */
-
     .nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(2, 6, 23, 0.76);
-      border-bottom: 1px solid rgba(96,165,250,0.22);
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(2, 6, 23, 0.6);
+      border-bottom: 1px solid rgba(96,165,250,0.16);
       backdrop-filter: blur(22px);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.28);
+      transition: all 0.4s;
     }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 0;
+    .nav.scrolled {
+      background: rgba(2, 6, 23, 0.92);
+      border-bottom-color: rgba(96,165,250,0.32);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     }
-
-    .logo-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      text-decoration: none;
-    }
-
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+    .logo-wrapper { display: flex; align-items: center; gap: 11px; text-decoration: none; }
     .nav-logo {
-      height: 46px;
-      width: auto;
-      object-fit: contain;
-      border-radius: 12px;
+      height: 46px; width: auto; object-fit: contain; border-radius: 12px;
       filter: drop-shadow(0 0 14px rgba(59,130,246,0.45));
+      transition: transform 0.3s;
     }
-
-    .logo-text {
-      font-size: 1.35rem;
-      font-weight: 900;
-      letter-spacing: -0.035em;
-      color: #fff;
-    }
-
-    .logo-text span {
-      color: var(--blue-2);
-    }
-
-    .links {
-      display: flex;
-      align-items: center;
-      gap: 1.7rem;
-    }
-
+    .nav-logo:hover { transform: rotate(-8deg) scale(1.08); }
+    .logo-text { font-size: 1.35rem; font-weight: 900; letter-spacing: -0.035em; color: #fff; font-family: 'Space Grotesk', sans-serif; }
+    .logo-text span { color: var(--blue-2); }
+    .links { display: flex; align-items: center; gap: 1.7rem; }
     .links a {
-      position: relative;
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 800;
-      color: #cbd5e1;
-      transition: 0.25s;
+      position: relative; text-decoration: none; font-size: 0.92rem; font-weight: 800;
+      color: #cbd5e1; transition: 0.25s;
     }
-
     .links a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -7px;
-      height: 2px;
-      width: 0;
-      border-radius: 20px;
-      background: linear-gradient(90deg, var(--blue), var(--cyan));
-      transition: 0.25s;
+      content: ''; position: absolute; left: 0; bottom: -7px; height: 2px; width: 0;
+      border-radius: 20px; background: linear-gradient(90deg, var(--blue), var(--cyan)); transition: 0.25s;
     }
-
-    .links a:hover,
-    .links a.active {
-      color: #fff;
-    }
-
-    .links a:hover::after,
-    .links a.active::after {
-      width: 100%;
-    }
-
+    .links a:hover, .links a.active { color: #fff; }
+    .links a:hover::after, .links a.active::after { width: 100%; }
     .nav-cta {
-      padding: 10px 16px;
-      border-radius: 999px;
-      color: #fff !important;
+      padding: 10px 16px; border-radius: 999px; color: #fff !important;
       background: linear-gradient(135deg, #2563eb, #06b6d4);
       box-shadow: 0 16px 32px rgba(37,99,235,0.25);
     }
-
-    .nav-cta::after {
-      display: none;
-    }
-
-    .menu-toggle {
-      display: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
+    .nav-cta::after { display: none; }
+    .menu-toggle { display: none; color: #fff; font-size: 1.5rem; cursor: pointer; background: none; border: none; padding: 8px; }
+    @media (max-width: 820px) {
+      .links {
+        position: fixed; top: 0; left: -100%; width: 80%; max-width: 320px; height: 100vh;
+        background: rgba(2, 6, 23, 0.98); flex-direction: column;
+        padding: 5rem 2rem 2rem; gap: 0.5rem; transition: left 0.4s;
+        border-right: 1px solid rgba(96,165,250,0.18); backdrop-filter: blur(30px);
+      }
+      .links.active { left: 0; }
+      .menu-toggle { display: block; }
+      .links a { font-size: 1.05rem; padding: 14px 0; width: 100%; border-bottom: 1px solid rgba(96,165,250,0.08); }
+      .links a::after { display: none; }
     }
 
     /* ================= HERO ================= */
-
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 120px 0 80px;
-      border-bottom: 1px solid rgba(96,165,250,0.16);
+      min-height: 100vh; display: flex; align-items: center; position: relative;
+      overflow: hidden; padding: 140px 0 80px;
     }
-
     .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background:
         radial-gradient(circle at 70% 42%, rgba(59,130,246,0.22), transparent 28%),
         radial-gradient(circle at 35% 30%, rgba(34,211,238,0.14), transparent 26%);
       pointer-events: none;
     }
-
     .hero-layout {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      gap: 56px;
-      align-items: center;
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 56px; align-items: center;
     }
-
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 15px;
-      border-radius: 999px;
-      color: #dbeafe;
-      font-size: 0.86rem;
-      font-weight: 900;
-      background: rgba(15,23,42,0.68);
-      border: 1px solid rgba(96,165,250,0.32);
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 9px 15px; border-radius: 999px; color: #dbeafe;
+      font-size: 0.86rem; font-weight: 900;
+      background: rgba(15,23,42,0.68); border: 1px solid rgba(96,165,250,0.32);
       box-shadow: 0 0 35px rgba(59,130,246,0.15);
-      margin-bottom: 22px;
+      margin-bottom: 22px; backdrop-filter: blur(10px);
     }
-
-    .hero-badge i {
-      color: var(--cyan);
-    }
-
+    .hero-badge i { color: var(--cyan); }
     .hero h1 {
-      font-size: clamp(2.65rem, 5.6vw, 5.5rem);
-      line-height: 0.96;
-      font-weight: 900;
-      letter-spacing: -0.075em;
-      margin-bottom: 24px;
+      font-size: clamp(2.65rem, 5.6vw, 5.5rem); line-height: 0.96;
+      font-weight: 900; letter-spacing: -0.075em; margin-bottom: 24px;
+      font-family: 'Space Grotesk', sans-serif;
     }
-
     .hero h1 span {
       background: linear-gradient(135deg, #fff 0%, #93c5fd 38%, #22d3ee 76%, #8b5cf6 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-
     .hero p {
-      max-width: 720px;
-      color: #cbd5e1;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      margin-bottom: 30px;
+      max-width: 720px; color: #cbd5e1; font-size: 1.08rem; line-height: 1.75; margin-bottom: 30px;
     }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 34px;
-    }
-
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      font-weight: 900;
-      border-radius: 999px;
-      padding: 14px 22px;
-      color: #fff;
-      transition: 0.25s;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      text-decoration: none; border: none; cursor: pointer; font-family: inherit;
+      font-weight: 900; border-radius: 999px; padding: 14px 22px; color: #fff; transition: 0.25s;
     }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
+    .btn:hover { transform: translateY(-3px); }
     .btn-primary {
       background: linear-gradient(135deg, #2563eb, #06b6d4);
       box-shadow: 0 22px 42px rgba(37,99,235,0.28);
     }
-
+    .btn-primary:hover { box-shadow: 0 24px 50px rgba(37,99,235,0.4); }
     .btn-ghost {
-      background: rgba(15,23,42,0.72);
-      border: 1px solid rgba(148,163,184,0.20);
+      background: rgba(15,23,42,0.72); border: 1px solid rgba(148,163,184,0.20);
     }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      max-width: 720px;
-    }
-
+    .btn-ghost:hover { border-color: var(--blue); background: rgba(59,130,246,0.08); }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 720px; }
     .hero-stat {
-      padding: 18px;
-      border-radius: 22px;
-      background: rgba(15,23,42,0.64);
-      border: 1px solid rgba(96,165,250,0.18);
-      backdrop-filter: blur(16px);
-      transition: 0.25s;
+      padding: 18px; border-radius: 22px;
+      background: rgba(15,23,42,0.64); border: 1px solid rgba(96,165,250,0.18);
+      backdrop-filter: blur(16px); transition: 0.25s;
     }
+    .hero-stat:hover { transform: translateY(-5px); border-color: rgba(96,165,250,0.42); }
+    .hero-stat strong { display: block; font-size: 1.8rem; font-weight: 900; letter-spacing: -0.05em; color: #fff; font-family: 'Space Grotesk', sans-serif; }
+    .hero-stat small { color: var(--muted); font-weight: 800; font-size: 0.8rem; }
 
-    .hero-stat:hover {
-      transform: translateY(-5px);
-      border-color: rgba(96,165,250,0.42);
-    }
-
-    .hero-stat strong {
-      display: block;
-      font-size: 1.8rem;
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      color: #fff;
-    }
-
-    .hero-stat small {
-      color: var(--muted);
-      font-weight: 800;
-      font-size: 0.8rem;
-    }
-
+    /* Holo Card */
     .holo-card {
-      position: relative;
-      min-height: 550px;
-      display: grid;
-      place-items: center;
+      position: relative; min-height: 550px; display: grid; place-items: center;
       border-radius: var(--radius-xl);
-      background:
-        linear-gradient(145deg, rgba(15,23,42,0.74), rgba(2,6,23,0.82));
-      border: 1px solid rgba(96,165,250,0.25);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      isolation: isolate;
+      background: linear-gradient(145deg, rgba(15,23,42,0.74), rgba(2,6,23,0.82));
+      border: 1px solid rgba(96,165,250,0.25); box-shadow: var(--shadow);
+      overflow: hidden; isolation: isolate;
     }
-
     .holo-card::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      background:
-        conic-gradient(from 180deg, transparent, rgba(59,130,246,0.28), transparent, rgba(34,211,238,0.22), transparent);
-      animation: rotateGlow 8s linear infinite;
-      z-index: -2;
+      content: ''; position: absolute; inset: -2px;
+      background: conic-gradient(from 180deg, transparent, rgba(59,130,246,0.28), transparent, rgba(34,211,238,0.22), transparent);
+      animation: rotateGlow 8s linear infinite; z-index: -2;
     }
-
     .holo-card::after {
-      content: '';
-      position: absolute;
-      inset: 1px;
+      content: ''; position: absolute; inset: 1px;
       border-radius: calc(var(--radius-xl) - 1px);
-      background: rgba(2,6,23,0.78);
-      z-index: -1;
+      background: rgba(2,6,23,0.78); z-index: -1;
     }
-
-    @keyframes rotateGlow {
-      from { transform: rotate(0deg) scale(1.4); }
-      to { transform: rotate(360deg) scale(1.4); }
-    }
-
-    .holo-ring {
-      position: absolute;
-      width: 410px;
-      height: 410px;
-      border-radius: 50%;
-      border: 1px solid rgba(96,165,250,0.28);
-      animation: ringSpin 12s linear infinite;
-    }
-
-    .holo-ring.two {
-      width: 330px;
-      height: 330px;
-      border-color: rgba(34,211,238,0.22);
-      animation-duration: 9s;
-      animation-direction: reverse;
-      transform: rotate(30deg);
-    }
-
-    .holo-ring.three {
-      width: 250px;
-      height: 250px;
-      border-color: rgba(139,92,246,0.24);
-      animation-duration: 15s;
-    }
-
-    @keyframes ringSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+    @keyframes rotateGlow { from { transform: rotate(0deg) scale(1.4); } to { transform: rotate(360deg) scale(1.4); } }
+    .holo-ring { position: absolute; width: 410px; height: 410px; border-radius: 50%; border: 1px solid rgba(96,165,250,0.28); animation: ringSpin 12s linear infinite; }
+    .holo-ring.two { width: 330px; height: 330px; border-color: rgba(34,211,238,0.22); animation-duration: 9s; animation-direction: reverse; transform: rotate(30deg); }
+    .holo-ring.three { width: 250px; height: 250px; border-color: rgba(139,92,246,0.24); animation-duration: 15s; }
+    @keyframes ringSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     .holo-logo-wrap {
-      position: relative;
-      width: min(340px, 72vw);
-      height: min(340px, 72vw);
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle, rgba(59,130,246,0.20), transparent 58%),
-        rgba(15,23,42,0.35);
+      position: relative; width: min(340px, 72vw); height: min(340px, 72vw);
+      display: grid; place-items: center; border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.20), transparent 58%), rgba(15,23,42,0.35);
       border: 1px solid rgba(96,165,250,0.22);
-      box-shadow:
-        inset 0 0 60px rgba(59,130,246,0.10),
-        0 0 80px rgba(59,130,246,0.26);
+      box-shadow: inset 0 0 60px rgba(59,130,246,0.10), 0 0 80px rgba(59,130,246,0.26);
       animation: logoFloat 4.5s ease-in-out infinite alternate;
     }
-
-    @keyframes logoFloat {
-      from { transform: translateY(0); }
-      to { transform: translateY(-14px); }
-    }
-
-    .holo-logo {
-      width: 82%;
-      height: 82%;
-      object-fit: contain;
-      filter: drop-shadow(0 0 26px rgba(96,165,250,0.45));
-    }
+    @keyframes logoFloat { from { transform: translateY(0); } to { transform: translateY(-14px); } }
+    .holo-logo { width: 82%; height: 82%; object-fit: contain; filter: drop-shadow(0 0 26px rgba(96,165,250,0.45)); }
 
     .scan-bar {
-      position: absolute;
-      left: 12%;
-      width: 76%;
-      height: 3px;
+      position: absolute; left: 12%; width: 76%; height: 3px;
       background: linear-gradient(90deg, transparent, #22d3ee, transparent);
       box-shadow: 0 0 22px rgba(34,211,238,0.9);
       animation: scanMove 2.8s ease-in-out infinite;
     }
-
     @keyframes scanMove {
       0% { top: 18%; opacity: 0; }
       12% { opacity: 1; }
@@ -544,1398 +256,866 @@
     }
 
     .trust-chip {
-      position: absolute;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 13px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.82);
-      border: 1px solid rgba(96,165,250,0.24);
-      color: #dbeafe;
-      font-size: 0.8rem;
-      font-weight: 900;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+      position: absolute; display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 13px; border-radius: 999px;
+      background: rgba(15,23,42,0.82); border: 1px solid rgba(96,165,250,0.24);
+      color: #dbeafe; font-size: 0.8rem; font-weight: 900;
+      backdrop-filter: blur(14px); box-shadow: 0 18px 40px rgba(0,0,0,0.28);
     }
-
-    .trust-chip i {
-      color: var(--cyan);
-    }
-
-    .trust-chip.one {
-      top: 30px;
-      left: 28px;
-    }
-
-    .trust-chip.two {
-      right: 28px;
-      top: 115px;
-    }
-
-    .trust-chip.three {
-      bottom: 38px;
-      left: 40px;
-    }
-
-    .trust-chip.four {
-      right: 38px;
-      bottom: 110px;
-    }
+    .trust-chip i { color: var(--cyan); }
+    .trust-chip.one { top: 30px; left: 28px; animation: chipFloat 4s ease-in-out infinite alternate; }
+    .trust-chip.two { right: 28px; top: 115px; animation: chipFloat 4.5s ease-in-out infinite alternate-reverse; }
+    .trust-chip.three { bottom: 38px; left: 40px; animation: chipFloat 5s ease-in-out infinite alternate; }
+    .trust-chip.four { right: 38px; bottom: 110px; animation: chipFloat 4.2s ease-in-out infinite alternate-reverse; }
+    @keyframes chipFloat { from { transform: translateY(0); } to { transform: translateY(-10px); } }
 
     /* ================= SECTIONS ================= */
+    .section { padding: 90px 0; position: relative; }
+    @media (max-width: 768px) { .section { padding: 60px 0; } }
 
-    .section {
-      padding: 90px 0;
-      position: relative;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 42px;
-    }
-
+    .section-heading { text-align: center; margin-bottom: 50px; }
     .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(59,130,246,0.10);
-      border: 1px solid rgba(96,165,250,0.22);
-      color: #bfdbfe;
-      font-weight: 900;
-      font-size: 0.84rem;
-      margin-bottom: 14px;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 14px; border-radius: 999px;
+      background: rgba(59,130,246,0.10); border: 1px solid rgba(96,165,250,0.22);
+      color: #bfdbfe; font-weight: 900; font-size: 0.84rem; margin-bottom: 14px;
     }
-
     .section-title {
-      font-size: clamp(2rem, 4vw, 3.3rem);
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      margin-bottom: 13px;
+      font-size: clamp(2rem, 4vw, 3.3rem); font-weight: 900;
+      letter-spacing: -0.06em; margin-bottom: 13px; font-family: 'Space Grotesk', sans-serif;
     }
-
     .section-title span {
       background: linear-gradient(135deg, #fff, #93c5fd, #22d3ee);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-
     .section-subtitle {
-      max-width: 800px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.75;
+      max-width: 800px; margin: 0 auto; color: var(--muted);
+      font-size: 1rem; line-height: 1.75;
     }
 
+    /* ================= STORY / MISSION ================= */
     .panel {
       background: linear-gradient(145deg, rgba(15,23,42,0.74), rgba(2,6,23,0.72));
       border: 1px solid rgba(96,165,250,0.20);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-      position: relative;
-      overflow: hidden;
+      border-radius: var(--radius-xl); box-shadow: var(--shadow);
+      backdrop-filter: blur(18px); position: relative; overflow: hidden;
     }
-
     .panel::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: radial-gradient(circle at top left, rgba(59,130,246,0.15), transparent 34%);
       pointer-events: none;
     }
+    .panel-inner { position: relative; padding: 38px; }
+    @media (max-width: 600px) { .panel-inner { padding: 26px 20px; } }
 
-    .panel-inner {
-      position: relative;
-      padding: 38px;
-    }
+    .story-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 30px; align-items: stretch; }
+    @media (max-width: 900px) { .story-grid { grid-template-columns: 1fr; } }
 
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 30px;
-      align-items: stretch;
-    }
+    .story-text p { color: #cbd5e1; line-height: 1.85; margin-bottom: 18px; }
+    .story-text strong { color: #fff; }
+    .story-text h3 { font-size: 1.5rem; margin-bottom: 16px; letter-spacing: -0.04em; }
+    .story-text .highlight { color: var(--cyan); font-weight: 800; }
 
-    .story-text p {
-      color: #cbd5e1;
-      line-height: 1.85;
-      margin-bottom: 18px;
-    }
-
-    .story-text strong {
-      color: #fff;
-    }
-
-    .mission-cards {
-      display: grid;
-      gap: 16px;
-    }
-
+    .mission-cards { display: grid; gap: 16px; }
     .mission-card {
-      padding: 22px;
-      border-radius: 26px;
-      background: rgba(2,6,23,0.52);
-      border: 1px solid rgba(148,163,184,0.13);
-      transition: 0.25s;
+      padding: 22px; border-radius: 26px;
+      background: rgba(2,6,23,0.52); border: 1px solid rgba(148,163,184,0.13);
+      transition: 0.25s; position: relative; overflow: hidden;
     }
-
-    .mission-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(96,165,250,0.38);
+    .mission-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      transform: scaleX(0); transform-origin: left; transition: 0.4s;
     }
-
+    .mission-card:hover::before { transform: scaleX(1); }
+    .mission-card:hover { transform: translateY(-5px); border-color: rgba(96,165,250,0.38); }
     .mission-card i {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 18px;
-      color: #60a5fa;
-      background: rgba(59,130,246,0.15);
-      border: 1px solid rgba(96,165,250,0.22);
-      margin-bottom: 14px;
-      font-size: 1.2rem;
+      width: 48px; height: 48px; display: grid; place-items: center;
+      border-radius: 18px; color: #60a5fa;
+      background: rgba(59,130,246,0.15); border: 1px solid rgba(96,165,250,0.22);
+      margin-bottom: 14px; font-size: 1.2rem;
     }
-
-    .mission-card h3 {
-      margin-bottom: 7px;
-      letter-spacing: -0.03em;
-    }
-
-    .mission-card p {
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.7;
-    }
+    .mission-card h3 { margin-bottom: 7px; letter-spacing: -0.03em; font-size: 1.1rem; }
+    .mission-card p { color: var(--muted); font-size: 0.94rem; line-height: 1.7; }
 
     /* ================= STATS ================= */
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 28px;
-    }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 28px; }
+    @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr 1fr; } }
 
     .stat-card {
-      position: relative;
-      overflow: hidden;
-      padding: 28px 22px;
-      border-radius: 28px;
-      background: rgba(15,23,42,0.70);
-      border: 1px solid rgba(96,165,250,0.18);
-      text-align: center;
-      transition: 0.25s;
+      position: relative; overflow: hidden; padding: 28px 22px;
+      border-radius: 28px; background: rgba(15,23,42,0.70);
+      border: 1px solid rgba(96,165,250,0.18); text-align: center; transition: 0.25s;
     }
-
-    .stat-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(96,165,250,0.45);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.32);
-    }
-
+    .stat-card:hover { transform: translateY(-6px); border-color: rgba(96,165,250,0.45); box-shadow: 0 24px 60px rgba(0,0,0,0.32); }
     .stat-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: radial-gradient(circle at top, rgba(59,130,246,0.14), transparent 55%);
       pointer-events: none;
     }
-
-    .stat-card i {
-      position: relative;
-      color: var(--cyan);
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
-
-    .stat-card strong {
-      position: relative;
-      display: block;
-      font-size: 2.4rem;
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      color: #fff;
-      margin-bottom: 5px;
-    }
-
-    .stat-card span {
-      position: relative;
-      color: var(--muted);
-      font-weight: 800;
-      font-size: 0.88rem;
-    }
-
-    /* ================= EXPERTISE ================= */
-
-    .expertise-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .expertise-card {
-      position: relative;
-      padding: 28px;
-      border-radius: 30px;
-      background: rgba(15,23,42,0.64);
-      border: 1px solid rgba(96,165,250,0.17);
-      overflow: hidden;
-      transition: 0.25s;
-    }
-
-    .expertise-card:hover {
-      transform: translateY(-7px);
-      border-color: rgba(96,165,250,0.45);
-    }
-
-    .expertise-card::before {
-      content: '';
-      position: absolute;
-      width: 130px;
-      height: 130px;
-      right: -50px;
-      top: -50px;
-      border-radius: 50%;
-      background: rgba(59,130,246,0.16);
-      transition: 0.3s;
-    }
-
-    .expertise-card:hover::before {
-      transform: scale(1.35);
-    }
-
-    .expertise-card i {
-      position: relative;
-      width: 56px;
-      height: 56px;
-      display: grid;
-      place-items: center;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(59,130,246,0.22), rgba(34,211,238,0.10));
-      border: 1px solid rgba(96,165,250,0.25);
-      color: #60a5fa;
-      font-size: 1.4rem;
-      margin-bottom: 18px;
-    }
-
-    .expertise-card h3 {
-      position: relative;
-      margin-bottom: 9px;
-      letter-spacing: -0.035em;
-    }
-
-    .expertise-card p {
-      position: relative;
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.7;
-    }
+    .stat-card i { position: relative; font-size: 1.6rem; color: var(--blue-2); margin-bottom: 10px; display: inline-block; }
+    .stat-num { position: relative; font-size: 2.4rem; font-weight: 900; letter-spacing: -0.04em; color: #fff; font-family: 'Space Grotesk', sans-serif; }
+    .stat-num span { color: var(--blue-2); }
+    .stat-card small { position: relative; display: block; color: var(--muted); font-weight: 800; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
 
     /* ================= TIMELINE ================= */
-
-    .timeline {
-      position: relative;
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
+    .timeline { position: relative; max-width: 1000px; margin: 0 auto; padding: 20px 0; }
     .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 2px;
-      background: linear-gradient(to bottom, transparent, rgba(96,165,250,0.55), transparent);
+      content: ''; position: absolute; top: 0; bottom: 0; left: 50%;
+      width: 2px; background: linear-gradient(180deg, transparent, var(--blue), var(--purple), var(--cyan), transparent);
       transform: translateX(-50%);
     }
-
+    @media (max-width: 768px) {
+      .timeline::before { left: 24px; }
+    }
     .timeline-item {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      margin-bottom: 34px;
+      position: relative; width: 50%; padding: 20px 40px;
+      opacity: 0; transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
     }
-
-    .timeline-item:nth-child(even) .timeline-card {
-      grid-column: 2;
+    .timeline-item.visible { opacity: 1; transform: translateY(0); }
+    .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+    .timeline-item:nth-child(even) { left: 50%; }
+    @media (max-width: 768px) {
+      .timeline-item { width: 100%; left: 0 !important; text-align: left !important; padding: 14px 14px 14px 60px; }
     }
-
     .timeline-dot {
-      position: absolute;
-      left: 50%;
-      top: 22px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #22d3ee;
-      border: 4px solid #020617;
-      box-shadow: 0 0 0 6px rgba(34,211,238,0.14), 0 0 24px rgba(34,211,238,0.7);
-      transform: translateX(-50%);
-      z-index: 3;
+      position: absolute; top: 32px; width: 18px; height: 18px;
+      border-radius: 50%; background: var(--blue);
+      border: 3px solid var(--bg); box-shadow: 0 0 20px var(--blue);
     }
+    .timeline-item:nth-child(odd) .timeline-dot { right: -9px; }
+    .timeline-item:nth-child(even) .timeline-dot { left: -9px; }
+    @media (max-width: 768px) { .timeline-dot { left: 15px !important; right: auto !important; } }
 
     .timeline-card {
-      padding: 24px;
-      border-radius: 26px;
-      background: rgba(15,23,42,0.70);
-      border: 1px solid rgba(96,165,250,0.18);
-      transition: 0.25s;
+      padding: 22px 24px; border-radius: 20px;
+      background: rgba(15,23,42,0.7); border: 1px solid rgba(96,165,250,0.22);
+      backdrop-filter: blur(10px); transition: 0.3s;
     }
-
-    .timeline-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(96,165,250,0.42);
-    }
-
+    .timeline-card:hover { border-color: rgba(96,165,250,0.5); transform: scale(1.02); }
     .timeline-year {
-      color: #60a5fa;
-      font-weight: 900;
-      font-size: 0.9rem;
-      margin-bottom: 8px;
+      display: inline-block; padding: 4px 12px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      font-size: 0.78rem; font-weight: 900; color: #fff; margin-bottom: 8px;
     }
-
-    .timeline-card h3 {
-      margin-bottom: 8px;
-      letter-spacing: -0.03em;
-    }
-
-    .timeline-card p {
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.7;
-    }
+    .timeline-card h4 { font-size: 1.1rem; margin-bottom: 6px; font-family: 'Space Grotesk', sans-serif; }
+    .timeline-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
 
     /* ================= VALUES ================= */
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
+    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    @media (max-width: 900px) { .values-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .values-grid { grid-template-columns: 1fr; } }
 
     .value-card {
-      padding: 26px;
+      position: relative; padding: 30px 24px; text-align: center;
       border-radius: 28px;
-      background: rgba(15,23,42,0.64);
-      border: 1px solid rgba(96,165,250,0.17);
-      transition: 0.25s;
+      background: linear-gradient(145deg, rgba(15,23,42,0.74), rgba(2,6,23,0.72));
+      border: 1px solid rgba(96,165,250,0.18);
+      transition: 0.3s; overflow: hidden;
     }
+    .value-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at top, rgba(59,130,246,0.18), transparent 60%);
+      opacity: 0; transition: 0.4s;
+    }
+    .value-card:hover::before { opacity: 1; }
+    .value-card:hover { transform: translateY(-8px); border-color: rgba(96,165,250,0.45); }
+    .value-icon {
+      position: relative; width: 64px; height: 64px; margin: 0 auto 16px;
+      border-radius: 20px; display: grid; place-items: center;
+      font-size: 1.6rem; color: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .vi-blue { background: linear-gradient(135deg, #2563eb, #3b82f6); box-shadow: 0 8px 24px rgba(59,130,246,0.4); }
+    .vi-purple { background: linear-gradient(135deg, #7c3aed, #8b5cf6); box-shadow: 0 8px 24px rgba(139,92,246,0.4); }
+    .vi-cyan { background: linear-gradient(135deg, #0891b2, #06b6d4); box-shadow: 0 8px 24px rgba(6,182,212,0.4); }
+    .vi-amber { background: linear-gradient(135deg, #d97706, #f59e0b); box-shadow: 0 8px 24px rgba(245,158,11,0.4); }
+    .value-card h4 { position: relative; font-size: 1.1rem; margin-bottom: 8px; font-family: 'Space Grotesk', sans-serif; }
+    .value-card p { position: relative; color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
 
-    .value-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(96,165,250,0.42);
-    }
+    /* ================= LEADERSHIP ================= */
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 900px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; } }
 
-    .value-card i {
-      color: #22d3ee;
-      font-size: 1.8rem;
-      margin-bottom: 14px;
+    .team-card {
+      position: relative; border-radius: 28px; overflow: hidden;
+      background: linear-gradient(145deg, rgba(15,23,42,0.74), rgba(2,6,23,0.82));
+      border: 1px solid rgba(96,165,250,0.18);
+      transition: 0.4s;
     }
+    .team-card:hover { transform: translateY(-8px); border-color: rgba(96,165,250,0.45); box-shadow: 0 25px 60px rgba(0,0,0,0.4); }
+    .team-photo {
+      position: relative; height: 280px; overflow: hidden;
+      background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(139,92,246,0.2));
+      display: grid; place-items: center;
+    }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+    .team-card:hover .team-photo img { transform: scale(1.08); }
+    .team-photo::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(2,6,23,0.9) 100%);
+    }
+    .team-avatar {
+      width: 110px; height: 110px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      display: grid; place-items: center;
+      font-size: 2.6rem; color: #fff; font-weight: 900; font-family: 'Space Grotesk', sans-serif;
+      box-shadow: 0 0 30px rgba(59,130,246,0.5);
+    }
+    .team-info { padding: 24px; text-align: center; position: relative; }
+    .team-info h4 { font-size: 1.2rem; margin-bottom: 4px; font-family: 'Space Grotesk', sans-serif; }
+    .team-info .role { color: var(--blue-2); font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: block; }
+    .team-info p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+    .team-social { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+    .team-social a {
+      width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
+      background: rgba(30,41,59,0.4); border: 1px solid rgba(30,41,59,0.6);
+      color: #94a3b8; transition: 0.3s; font-size: 0.85rem;
+    }
+    .team-social a:hover { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.4); color: var(--blue-2); }
 
-    .value-card h3 {
-      margin-bottom: 8px;
-      letter-spacing: -0.035em;
+    /* ================= TECH STACK SCROLL ================= */
+    .tech-section { padding: 50px 0; }
+    .tech-scroll {
+      display: flex; gap: 18px; overflow: hidden; padding: 18px 0;
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
     }
-
-    .value-card p {
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.7;
+    .tech-track { display: flex; gap: 18px; animation: techScroll 35s linear infinite; }
+    @keyframes techScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .tech-item {
+      flex-shrink: 0; padding: 12px 22px; border-radius: 12px;
+      background: rgba(15,17,26,0.7); border: 1px solid rgba(30,41,59,0.5);
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.85rem; font-weight: 600; color: #94a3b8; white-space: nowrap;
+      transition: 0.3s; backdrop-filter: blur(8px);
     }
+    .tech-item:hover { border-color: rgba(59,130,246,0.4); color: #fff; background: rgba(59,130,246,0.08); }
+    .tech-item i { color: var(--blue); font-size: 1.1rem; }
 
     /* ================= CTA ================= */
-
-    .cta {
-      padding: 76px 0;
+    .cta-section {
+      border-radius: 32px; overflow: hidden; position: relative;
+      padding: 70px 40px; text-align: center;
+      background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(99,102,241,0.08), rgba(139,92,246,0.08));
+      border: 1px solid rgba(59,130,246,0.1); backdrop-filter: blur(10px);
     }
-
-    .cta-box {
-      position: relative;
-      overflow: hidden;
-      padding: 54px;
-      border-radius: var(--radius-xl);
-      text-align: center;
-      background:
-        radial-gradient(circle at 25% 20%, rgba(59,130,246,0.25), transparent 32%),
-        radial-gradient(circle at 80% 80%, rgba(34,211,238,0.16), transparent 30%),
-        linear-gradient(145deg, rgba(15,23,42,0.78), rgba(2,6,23,0.85));
-      border: 1px solid rgba(96,165,250,0.26);
-      box-shadow: var(--shadow);
+    .cta-section::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.08), transparent 50%),
+                 radial-gradient(ellipse at 80% 50%, rgba(139,92,246,0.08), transparent 50%);
     }
-
-    .cta-box h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      letter-spacing: -0.06em;
-      margin-bottom: 14px;
-    }
-
-    .cta-box h2 span {
-      background: linear-gradient(135deg, #fff, #93c5fd, #22d3ee);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .cta-box p {
-      max-width: 760px;
-      margin: 0 auto 26px;
-      color: #cbd5e1;
-      line-height: 1.75;
-    }
-
-    .cta-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn-wa {
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      box-shadow: 0 20px 42px rgba(37,211,102,0.22);
-    }
+    .cta-section h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; font-family: 'Space Grotesk', sans-serif; margin-bottom: 14px; position: relative; }
+    .cta-section p { color: var(--muted); max-width: 520px; margin: 0 auto 28px; position: relative; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+    .btn-whatsapp { background: linear-gradient(135deg, #25d366, #128c7e); box-shadow: 0 22px 42px rgba(37,211,102,0.28); }
+    .btn-whatsapp:hover { box-shadow: 0 24px 50px rgba(37,211,102,0.4); }
 
     /* ================= FOOTER ================= */
-
-    .footer {
-      background: rgba(2,6,23,0.94);
-      padding: 58px 0 30px;
-      border-top: 1px solid rgba(96,165,250,0.16);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.2fr repeat(3, 1fr);
-      gap: 36px;
-      margin-bottom: 36px;
-    }
-
-    .footer-logo {
-      height: 46px;
-      width: auto;
-      margin-bottom: 14px;
-      border-radius: 12px;
-      filter: drop-shadow(0 0 14px rgba(59,130,246,0.35));
-    }
-
-    .footer p {
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.7;
-    }
-
-    .footer h4 {
-      color: #fff;
-      margin-bottom: 16px;
-      letter-spacing: -0.02em;
-    }
-
-    .footer a {
-      color: var(--muted);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 10px;
-      transition: 0.2s;
-      font-size: 0.92rem;
-    }
-
-    .footer a:hover {
-      color: #60a5fa;
-      transform: translateX(4px);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
+    .footer { background: rgba(3,3,8,0.9); padding: 60px 0 28px; border-top: 1px solid rgba(30,41,59,0.3); margin-top: 60px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-logo { height: 48px; width: auto; margin-bottom: 16px; border-radius: 12px; }
+    .footer h4 { color: var(--text); margin-bottom: 18px; font-weight: 700; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; }
+    .footer-link { color: var(--muted); display: flex; align-items: center; margin-bottom: 11px; font-size: 0.88rem; transition: all 0.3s; cursor: pointer; }
+    .footer-link:hover { color: var(--blue-2); transform: translateX(4px); }
+    .footer-link i { width: 16px; margin-right: 8px; color: var(--blue); font-size: 0.8rem; }
+    .footer-text { margin-top: 12px; color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+    .social-links { display: flex; gap: 10px; margin-top: 18px; }
     .social-links a {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(15,23,42,0.92);
-      border: 1px solid rgba(96,165,250,0.18);
-      color: #cbd5e1;
-      font-size: 1.1rem;
-      margin: 0;
+      width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      background: rgba(30,41,59,0.4); border: 1px solid rgba(30,41,59,0.6);
+      color: #94a3b8; font-size: 1rem; transition: 0.3s;
     }
+    .social-links a:hover { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.3); color: var(--blue-2); transform: translateY(-3px); }
+    .copyright { text-align: center; padding-top: 28px; border-top: 1px solid rgba(30,41,59,0.3); font-size: 0.78rem; color: #475569; }
+    .copyright a { color: var(--blue-2); }
+    .copyright i { color: var(--rose); }
 
-    .social-links a:hover {
-      transform: translateY(-3px);
-      color: #fff;
-      border-color: rgba(96,165,250,0.45);
+    /* ================= FLOATING & BACK TO TOP ================= */
+    .floating-btns { position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 10px; z-index: 999; }
+    .float-btn {
+      width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; color: #fff; transition: 0.3s; position: relative;
     }
-
-    hr {
-      border: 0;
-      border-top: 1px solid rgba(148,163,184,0.14);
-      margin: 22px 0;
-    }
-
-    .copyright {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
-
-    /* ================= FLOATING BUTTONS ================= */
-
-    .floating-wa-tg {
-      position: fixed;
-      bottom: 22px;
-      left: 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      z-index: 999;
-    }
-
-    .float-wa,
-    .float-tg {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 1.75rem;
-      color: white;
-      text-decoration: none;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-      transition: 0.25s;
-    }
-
-    .float-wa:hover,
-    .float-tg:hover {
-      transform: translateY(-4px) scale(1.04);
-    }
-
-    .float-wa {
-      background: var(--whatsapp);
-    }
-
-    .float-tg {
-      background: var(--telegram);
-    }
+    .float-btn::after { content: ''; position: absolute; inset: -3px; border-radius: 17px; background: inherit; opacity: 0.3; filter: blur(10px); z-index: -1; }
+    .float-btn.wa { background: linear-gradient(135deg, #25d366, #128c7e); }
+    .float-btn.tg { background: linear-gradient(135deg, #0088cc, #005f8c); }
+    .float-btn:hover { transform: translateY(-4px) scale(1.08); }
+    @media (max-width: 768px) { .floating-btns { bottom: 20px; left: 20px; } .float-btn { width: 46px; height: 46px; font-size: 1.3rem; } }
 
     .back-to-top {
-      position: fixed;
-      bottom: 22px;
-      right: 22px;
-      background: linear-gradient(135deg, #2563eb, #06b6d4);
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      color: white;
-      cursor: pointer;
-      opacity: 0;
-      pointer-events: none;
-      transition: 0.25s;
-      border: none;
-      z-index: 999;
-      box-shadow: 0 18px 40px rgba(37,99,235,0.3);
+      position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+      border-radius: 14px; border: none; background: linear-gradient(135deg, var(--blue), var(--indigo));
+      color: #fff; font-size: 1.1rem; cursor: pointer; opacity: 0; visibility: hidden;
+      transition: 0.3s; z-index: 999; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.3);
     }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { transform: translateY(-3px); }
+    @media (max-width: 768px) { .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; } }
 
-    .back-to-top.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* ================= REVEAL ANIMATION ================= */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: 0.7s ease;
-    }
-
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ================= RESPONSIVE ================= */
-
-    @media (max-width: 1050px) {
-      .hero-layout,
-      .story-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .holo-card {
-        min-height: 500px;
-      }
-
-      .stats-grid,
-      .values-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .expertise-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 820px) {
-      .links {
-        position: fixed;
-        top: 72px;
-        left: -100%;
-        width: min(82%, 340px);
-        height: calc(100vh - 72px);
-        background: rgba(2,6,23,0.98);
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 2rem;
-        transition: left 0.3s ease;
-        gap: 1.35rem;
-        border-right: 1px solid rgba(96,165,250,0.42);
-        z-index: 1001;
-      }
-
-      .links.active {
-        left: 0;
-      }
-
-      .links a {
-        font-size: 1.03rem;
-      }
-
-      .nav-cta {
-        width: 100%;
-        text-align: center;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .timeline::before {
-        left: 12px;
-      }
-
-      .timeline-item,
-      .timeline-item:nth-child(even) .timeline-card {
-        grid-template-columns: 1fr;
-      }
-
-      .timeline-card {
-        grid-column: 1 !important;
-        margin-left: 36px;
-      }
-
-      .timeline-dot {
-        left: 12px;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .container {
-        padding: 0 18px;
-      }
-
-      .hero {
-        padding-top: 105px;
-      }
-
-      .hero-actions,
-      .cta-actions {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .holo-card {
-        min-height: 430px;
-      }
-
-      .trust-chip {
-        display: none;
-      }
-
-      .holo-ring {
-        width: 330px;
-        height: 330px;
-      }
-
-      .holo-ring.two {
-        width: 260px;
-        height: 260px;
-      }
-
-      .panel-inner {
-        padding: 24px;
-      }
-
-      .stats-grid,
-      .expertise-grid,
-      .values-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .cta-box {
-        padding: 34px 22px;
-      }
-
-      .floating-wa-tg {
-        left: 16px;
-        bottom: 18px;
-      }
-
-      .back-to-top {
-        right: 16px;
-        bottom: 18px;
-      }
-    }
+    /* ================= REVEAL ANIMATIONS ================= */
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-50px); transition: all 0.9s cubic-bezier(0.4,0,0.2,1); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(50px); transition: all 0.9s cubic-bezier(0.4,0,0.2,1); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.9); transition: all 0.9s cubic-bezier(0.4,0,0.2,1); }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
   </style>
 </head>
-
 <body>
-  <div class="cyber-bg"></div>
-  <div class="cyber-grid"></div>
-  <div class="scanlines"></div>
-  <div class="orb one"></div>
-  <div class="orb two"></div>
-  <div class="orb three"></div>
 
-  <div class="floating-elements" id="floatingElements"></div>
+<!-- ================= BACKGROUNDS ================= -->
+<div class="cyber-bg"></div>
+<div class="cyber-grid"></div>
+<div class="scanlines"></div>
+<canvas id="networkCanvas"></canvas>
+<div class="orb one"></div>
+<div class="orb two"></div>
+<div class="orb three"></div>
 
-  <div class="floating-wa-tg">
-    <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-wa" target="_blank" aria-label="WhatsApp ZTrust Tech">
-      <i class="fab fa-whatsapp"></i>
+<!-- ================= FLOATING ================= -->
+<div class="floating-btns">
+  <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-btn wa" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://t.me/ZTrustTech" class="float-btn tg" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+</div>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="mainNav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo-wrapper">
+      <img src="Ztrust Color 2.png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/46x46/0f111a/3b82f6?text=ZT&font=roboto'">
+      <div class="logo-text">ZTrust <span>Tech</span></div>
     </a>
-    <a href="https://t.me/ZTrustTech" class="float-tg" target="_blank" aria-label="Telegram ZTrust Tech">
-      <i class="fab fa-telegram-plane"></i>
-    </a>
-  </div>
-
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a href="index.html" class="logo-wrapper">
-        <img src="Ztrust Color 2.png" alt="ZTrust Tech" class="nav-logo" onerror="this.src='https://placehold.co/46x46?text=ZT'">
-        <div class="logo-text">ZTrust <span>Tech</span></div>
-      </a>
-
-      <div class="links" id="navLinks">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="about.html" class="active">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech%2C%20I%20want%20to%20partner%20with%20you." target="_blank" class="nav-cta">
-          <i class="fab fa-whatsapp"></i> Talk to Us
-        </a>
-      </div>
-
-      <div class="menu-toggle" id="mobileMenu">
-        <i class="fas fa-bars"></i>
-      </div>
+    <div class="links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
     </div>
-  </nav>
+    <button class="menu-toggle" id="mobileMenu" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-layout">
-        <div class="reveal">
-          <div class="hero-badge">
-            <i class="fas fa-shield-halved"></i>
-            Trusted IT Excellence Since 2016
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <i class="fas fa-shield-halved"></i>
+          <span>IT Excellence Since 2016 • 10+ Years of Trust</span>
+        </div>
+        <h1>Built on <span>Trust.<br>Powered by Tech.</span></h1>
+        <p>ZTrust Tech is Ethiopia's premier full-spectrum IT solutions partner. We engineer, secure, and maintain the digital backbone of enterprises — combining deep technical expertise with uncompromising 24/7 support to transform how businesses operate.</p>
+        <div class="hero-actions">
+          <a href="#story" class="btn btn-primary">
+            <i class="fas fa-rocket"></i> Our Story
+          </a>
+          <a href="#leadership" class="btn btn-ghost">
+            <i class="fas fa-users"></i> Meet the Team
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong><span class="counter" data-target="10">0</span>+</strong>
+            <small>Years of Excellence</small>
           </div>
-
-          <h1>
-            We Build <span>Reliable Digital Infrastructure</span> for Growing Businesses.
-          </h1>
-
-          <p>
-            ZTrust Tech is a complete IT solutions provider based in Addis Ababa, Ethiopia.
-            We help organizations design, deploy, secure, and scale technology systems —
-            from infrastructure and storage to software, cloud, networking, APIs, databases,
-            and cybersecurity.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#story" class="btn btn-primary">
-              <i class="fas fa-rocket"></i> Discover Our Story
-            </a>
-
-            <a href="contact.html" class="btn btn-ghost">
-              <i class="fas fa-handshake"></i> Partner With Us
-            </a>
+          <div class="hero-stat">
+            <strong><span class="counter" data-target="350">0</span>+</strong>
+            <small>Projects Delivered</small>
           </div>
-
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <strong>10+</strong>
-              <small>Years Experience</small>
-            </div>
-            <div class="hero-stat">
-              <strong>350+</strong>
-              <small>Projects Delivered</small>
-            </div>
-            <div class="hero-stat">
-              <strong>98%</strong>
-              <small>Client Satisfaction</small>
-            </div>
+          <div class="hero-stat">
+            <strong><span class="counter" data-target="120">0</span>+</strong>
+            <small>Enterprise Clients</small>
           </div>
         </div>
-
-        <div class="holo-card reveal">
+      </div>
+      <div class="hero-right">
+        <div class="holo-card">
           <div class="holo-ring"></div>
           <div class="holo-ring two"></div>
           <div class="holo-ring three"></div>
-
-          <div class="trust-chip one">
-            <i class="fas fa-server"></i> Infrastructure
-          </div>
-          <div class="trust-chip two">
-            <i class="fas fa-cloud"></i> Cloud Ready
-          </div>
-          <div class="trust-chip three">
-            <i class="fas fa-shield-alt"></i> Secure Systems
-          </div>
-          <div class="trust-chip four">
-            <i class="fas fa-network-wired"></i> Connected
-          </div>
-
           <div class="holo-logo-wrap">
-            <div class="scan-bar"></div>
-            <img src="Ztrust Color 2.png" alt="ZTrust Tech Logo" class="holo-logo" onerror="this.src='https://placehold.co/300x300?text=ZTrust'">
+            <img src="Ztrust Color 2.png" alt="ZTrust Tech" class="holo-logo" onerror="this.src='https://placehold.co/280x280/0f111a/3b82f6?text=ZT&font=roboto'">
+          </div>
+          <div class="scan-bar"></div>
+          <div class="trust-chip one"><i class="fas fa-shield-halved"></i> ISO 27001 Aligned</div>
+          <div class="trust-chip two"><i class="fas fa-bolt"></i> 99.9% Uptime</div>
+          <div class="trust-chip three"><i class="fas fa-headset"></i> 24/7 NOC</div>
+          <div class="trust-chip four"><i class="fas fa-award"></i> Certified Experts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORY & MISSION ================= -->
+<section class="section" id="story">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="kicker"><i class="fas fa-book-open"></i> Who We Are</div>
+      <h2 class="section-title">Built Through <span>Experience & Execution</span></h2>
+      <p class="section-subtitle">Over the years, ZTrust Tech has grown from technical service delivery into a full-spectrum IT solutions partner — trusted by enterprises across Ethiopia and beyond.</p>
+    </div>
+
+    <div class="panel reveal-scale">
+      <div class="panel-inner">
+        <div class="story-grid">
+          <div class="story-text">
+            <h3>From Vision to Enterprise Reality</h3>
+            <p>Founded in <strong>2016</strong>, ZTrust Tech began with a clear mission: to bridge the gap between complex enterprise IT needs and reliable, world-class technical delivery. What started as a focused team of certified engineers has evolved into Ethiopia's most trusted full-spectrum IT partner.</p>
+            <p>Today, we design, deploy, and maintain the digital infrastructure that powers <span class="highlight">banks, telcos, government institutions, and enterprises</span> — handling everything from hyperscale data centers to mission-critical application testing.</p>
+            <p>Our growth has been driven by one principle: <strong>deliver uncompromising quality, every time</strong>. This has earned us the trust of 120+ enterprise clients and positioned us as a leader in East Africa's IT services landscape.</p>
+            <p>With a team of 50+ certified professionals and a 24/7 NOC, we don't just deliver projects — we engineer <span class="highlight">long-term technology partnerships</span> that fuel our clients' growth.</p>
+          </div>
+          <div class="mission-cards">
+            <div class="mission-card">
+              <i class="fas fa-bullseye"></i>
+              <h3>Our Mission</h3>
+              <p>To deliver enterprise-grade IT solutions with the agility, security, and reliability that modern businesses demand — empowering our clients to focus on what they do best.</p>
+            </div>
+            <div class="mission-card">
+              <i class="fas fa-eye"></i>
+              <h3>Our Vision</h3>
+              <p>To be East Africa's most trusted technology partner, recognized for engineering excellence, innovative solutions, and transformative impact across every industry we serve.</p>
+            </div>
+            <div class="mission-card">
+              <i class="fas fa-handshake"></i>
+              <h3>Our Promise</h3>
+              <p>Every project. Every promise. Every time. We commit to transparency, excellence, and 24/7 partnership — because your success is our success.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- STORY -->
-  <section class="section" id="story">
-    <div class="container">
-      <div class="section-heading reveal">
-        <div class="kicker">
-          <i class="fas fa-fingerprint"></i>
-          Who We Are
-        </div>
-        <h2 class="section-title">
-          Technology Partner with <span>Purpose, Precision & Trust</span>
-        </h2>
-        <p class="section-subtitle">
-          We do not simply install technology. We architect stable, secure, and scalable systems that support real business growth.
-        </p>
+<!-- ================= STATS ================= -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="kicker"><i class="fas fa-chart-line"></i> By the Numbers</div>
+      <h2 class="section-title">Numbers That <span>Speak</span></h2>
+      <p class="section-subtitle">A decade of consistent delivery, measurable impact, and client-first engineering.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card reveal" style="--i:0">
+        <i class="fas fa-calendar-check"></i>
+        <div class="stat-num"><span class="counter" data-target="10">0</span><span>+</span></div>
+        <small>Years of Excellence</small>
       </div>
+      <div class="stat-card reveal" style="--i:1">
+        <i class="fas fa-project-diagram"></i>
+        <div class="stat-num"><span class="counter" data-target="350">0</span><span>+</span></div>
+        <small>Projects Completed</small>
+      </div>
+      <div class="stat-card reveal" style="--i:2">
+        <i class="fas fa-building"></i>
+        <div class="stat-num"><span class="counter" data-target="120">0</span><span>+</span></div>
+        <small>Enterprise Clients</small>
+      </div>
+      <div class="stat-card reveal" style="--i:3">
+        <i class="fas fa-users-gear"></i>
+        <div class="stat-num"><span class="counter" data-target="50">0</span><span>+</span></div>
+        <small>Certified Engineers</small>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="story-grid">
-        <div class="panel reveal">
-          <div class="panel-inner story-text">
-            <p>
-              <strong>ZTrust Tech</strong> was founded with a clear mission: to make enterprise-grade IT solutions accessible, reliable, and practical for organizations in Ethiopia and across Africa.
-            </p>
-
-            <p>
-              With over a decade of hands-on experience, our team has supported businesses across infrastructure deployment, storage architecture, application development, database management, API integration, cloud services, cybersecurity, and network connectivity.
-            </p>
-
-            <p>
-              We combine technical excellence with business understanding. Every solution we deliver is designed to improve performance, reduce risk, support growth, and give clients confidence in their digital future.
-            </p>
-
-            <p>
-              From small businesses to large enterprises, our approach remains the same: listen carefully, design intelligently, implement professionally, and support continuously.
-            </p>
-          </div>
-        </div>
-
-        <div class="mission-cards">
-          <div class="mission-card reveal">
-            <i class="fas fa-bullseye"></i>
-            <h3>Our Mission</h3>
-            <p>
-              To provide complete, secure, and scalable IT solutions that empower businesses to operate smarter and grow faster.
-            </p>
-          </div>
-
-          <div class="mission-card reveal">
-            <i class="fas fa-eye"></i>
-            <h3>Our Vision</h3>
-            <p>
-              To become one of Africa’s most trusted technology partners for digital transformation and enterprise IT excellence.
-            </p>
-          </div>
-
-          <div class="mission-card reveal">
-            <i class="fas fa-gem"></i>
-            <h3>Our Promise</h3>
-            <p>
-              Reliable delivery, transparent communication, strong security, and long-term technical support.
-            </p>
-          </div>
+<!-- ================= TIMELINE ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="kicker"><i class="fas fa-timeline"></i> Our Journey</div>
+      <h2 class="section-title">A Decade of <span>Milestones</span></h2>
+      <p class="section-subtitle">From a small technical team to East Africa's most trusted IT partner — here's our story of growth and impact.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-year">2016</span>
+          <h4>Founded in Addis Ababa</h4>
+          <p>ZTrust Tech is established with a vision to deliver enterprise-grade IT services across Ethiopia.</p>
         </div>
       </div>
-
-      <div class="stats-grid reveal">
-        <div class="stat-card">
-          <i class="fas fa-calendar-check"></i>
-          <strong><span class="counter" data-target="10">0</span>+</strong>
-          <span>Years of Experience</span>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-year">2018</span>
+          <h4>First Major Data Center</h4>
+          <p>Successfully delivered Ethiopia's first Tier-III aligned data center project for a leading financial institution.</p>
         </div>
-
-        <div class="stat-card">
-          <i class="fas fa-project-diagram"></i>
-          <strong><span class="counter" data-target="350">0</span>+</strong>
-          <span>Successful Projects</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-year">2020</span>
+          <h4>24/7 NOC Launched</h4>
+          <p>Launched our round-the-clock Network Operations Center, providing real-time monitoring and incident response.</p>
         </div>
-
-        <div class="stat-card">
-          <i class="fas fa-smile"></i>
-          <strong><span class="counter" data-target="98">0</span>%</strong>
-          <span>Client Satisfaction</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-year">2022</span>
+          <h4>100+ Enterprise Clients</h4>
+          <p>Crossed the milestone of 100+ enterprise clients across banking, telecom, government, and private sectors.</p>
         </div>
-
-        <div class="stat-card">
-          <i class="fas fa-headset"></i>
-          <strong>24/7</strong>
-          <span>Emergency Support</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-year">2024</span>
+          <h4>ISO 27001 Aligned Operations</h4>
+          <p>Achieved ISO 27001 aligned security operations, cementing our position as a security-first IT partner.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-year">2025+</span>
+          <h4>Regional Expansion</h4>
+          <p>Expanding our footprint across East Africa with new offices, partnerships, and cloud-native offerings.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- EXPERTISE -->
-  <section class="section">
-    <div class="container">
-      <div class="section-heading reveal">
-        <div class="kicker">
-          <i class="fas fa-certificate"></i>
-          Core Expertise
-        </div>
-        <h2 class="section-title">
-          One Team. <span>Complete IT Capability.</span>
-        </h2>
-        <p class="section-subtitle">
-          ZTrust Tech brings together infrastructure specialists, developers, database experts, network engineers, cloud architects, and cybersecurity professionals.
-        </p>
+<!-- ================= VALUES ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="kicker"><i class="fas fa-compass"></i> Our Foundation</div>
+      <h2 class="section-title">Values That <span>Define Us</span></h2>
+      <p class="section-subtitle">These principles guide every decision we make, every solution we build, and every relationship we nurture.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal" style="--i:0">
+        <div class="value-icon vi-blue"><i class="fas fa-shield-halved"></i></div>
+        <h4>Trust & Integrity</h4>
+        <p>We build relationships on transparency, honesty, and unwavering ethical standards. Your trust is our most valuable asset.</p>
       </div>
-
-      <div class="expertise-grid">
-        <div class="expertise-card reveal">
-          <i class="fas fa-server"></i>
-          <h3>IT Infrastructure</h3>
-          <p>
-            Server deployment, virtualization, enterprise hardware, system optimization, monitoring, and maintenance.
-          </p>
-        </div>
-
-        <div class="expertise-card reveal">
-          <i class="fas fa-database"></i>
-          <h3>Storage & Database</h3>
-          <p>
-            Scalable storage architecture, backup solutions, SQL/NoSQL databases, performance tuning, and data protection.
-          </p>
-        </div>
-
-        <div class="expertise-card reveal">
-          <i class="fas fa-code"></i>
-          <h3>Application Development</h3>
-          <p>
-            Web applications, internal business systems, custom platforms, automation tools, and full-stack development.
-          </p>
-        </div>
-
-        <div class="expertise-card reveal">
-          <i class="fas fa-plug"></i>
-          <h3>API Integration</h3>
-          <p>
-            Secure API architecture, third-party integrations, payment systems, business automation, and data exchange.
-          </p>
-        </div>
-
-        <div class="expertise-card reveal">
-          <i class="fas fa-network-wired"></i>
-          <h3>Network Connectivity</h3>
-          <p>
-            LAN/WAN design, routing, switching, wireless networks, VPN, firewalls, and secure connectivity.
-          </p>
-        </div>
-
-        <div class="expertise-card reveal">
-          <i class="fas fa-shield-alt"></i>
-          <h3>Cybersecurity</h3>
-          <p>
-            Security hardening, access control, threat prevention, vulnerability management, and secure infrastructure design.
-          </p>
-        </div>
+      <div class="value-card reveal" style="--i:1">
+        <div class="value-icon vi-purple"><i class="fas fa-medal"></i></div>
+        <h4>Engineering Excellence</h4>
+        <p>Every solution is engineered with precision, validated through rigorous testing, and delivered to the highest standards.</p>
+      </div>
+      <div class="value-card reveal" style="--i:2">
+        <div class="value-icon vi-cyan"><i class="fas fa-lightbulb"></i></div>
+        <h4>Innovation First</h4>
+        <p>We embrace cutting-edge technologies and methodologies to keep our clients ahead in an ever-evolving digital landscape.</p>
+      </div>
+      <div class="value-card reveal" style="--i:3">
+        <div class="value-icon vi-amber"><i class="fas fa-handshake"></i></div>
+        <h4>Client Partnership</h4>
+        <p>We don't just serve clients — we partner with them. Your success is our success, measured in long-term relationships.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- TIMELINE -->
-  <section class="section">
-    <div class="container">
-      <div class="section-heading reveal">
-        <div class="kicker">
-          <i class="fas fa-timeline"></i>
-          Our Journey
+<!-- ================= LEADERSHIP ================= -->
+<section class="section" id="leadership">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="kicker"><i class="fas fa-user-tie"></i> Leadership</div>
+      <h2 class="section-title">Meet the <span>Visionaries</span></h2>
+      <p class="section-subtitle">The seasoned experts and certified professionals driving ZTrust Tech's mission forward.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal" style="--i:0">
+        <div class="team-photo">
+          <div class="team-avatar">SN</div>
         </div>
-        <h2 class="section-title">
-          Built Through <span>Experience & Execution</span>
-        </h2>
-        <p class="section-subtitle">
-          Over the years, ZTrust Tech has grown from technical service delivery into a full-spectrum IT solutions partner.
-        </p>
+        <div class="team-info">
+          <h4>Ssasebih Nega</h4>
+          <span class="role">General Manager</span>
+          <p>Visionary leader with 15+ years driving enterprise IT strategy and business growth across East Africa.</p>
+          <div class="team-social">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
       </div>
-
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-year">2016</div>
-            <h3>The Foundation</h3>
-            <p>
-              ZTrust Tech began with a mission to provide dependable IT support and infrastructure services.
-            </p>
+      <div class="team-card reveal" style="--i:1">
+        <div class="team-photo">
+          <div class="team-avatar" style="background:linear-gradient(135deg,var(--cyan),var(--blue));">ZT</div>
+        </div>
+        <div class="team-info">
+          <h4>Technical Director</h4>
+          <span class="role">CTO & Chief Architect</span>
+          <p>Master architect of enterprise solutions. 12+ years designing hyperscale data centers and mission-critical systems.</p>
+          <div class="team-social">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
           </div>
         </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-year">2018</div>
-            <h3>Infrastructure Expansion</h3>
-            <p>
-              Expanded into enterprise infrastructure, servers, storage, networking, and system administration.
-            </p>
-          </div>
+      </div>
+      <div class="team-card reveal" style="--i:2">
+        <div class="team-photo">
+          <div class="team-avatar" style="background:linear-gradient(135deg,var(--amber),var(--rose));">SO</div>
         </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-year">2020</div>
-            <h3>Software & Database Growth</h3>
-            <p>
-              Strengthened capabilities in application development, database management, and API integration.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-year">2023</div>
-            <h3>Cloud & Security Focus</h3>
-            <p>
-              Delivered more advanced cloud, cybersecurity, monitoring, and digital transformation solutions.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-year">2026</div>
-            <h3>Complete IT Solutions Provider</h3>
-            <p>
-              Today, ZTrust Tech stands as a complete technology partner offering all IT solutions under one roof.
-            </p>
+        <div class="team-info">
+          <h4>Security Operations Lead</h4>
+          <span class="role">CISO & SOC Director</span>
+          <p>Certified ethical hacker and security strategist. Leads our 24/7 NOC and enterprise security operations.</p>
+          <div class="team-social">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- VALUES -->
-  <section class="section">
-    <div class="container">
-      <div class="section-heading reveal">
-        <div class="kicker">
-          <i class="fas fa-heart"></i>
-          What Drives Us
-        </div>
-        <h2 class="section-title">
-          Our Values Define <span>How We Deliver</span>
-        </h2>
-      </div>
-
-      <div class="values-grid">
-        <div class="value-card reveal">
-          <i class="fas fa-shield-halved"></i>
-          <h3>Trust</h3>
-          <p>
-            We build long-term relationships through reliability, honesty, and professional accountability.
-          </p>
-        </div>
-
-        <div class="value-card reveal">
-          <i class="fas fa-medal"></i>
-          <h3>Excellence</h3>
-          <p>
-            Every project is delivered with technical precision and attention to detail.
-          </p>
-        </div>
-
-        <div class="value-card reveal">
-          <i class="fas fa-lightbulb"></i>
-          <h3>Innovation</h3>
-          <p>
-            We apply modern technologies to solve real business challenges.
-          </p>
-        </div>
-
-        <div class="value-card reveal">
-          <i class="fas fa-headset"></i>
-          <h3>Support</h3>
-          <p>
-            We stand with clients beyond deployment through responsive support and maintenance.
-          </p>
-        </div>
+<!-- ================= TECH STACK ================= -->
+<section class="section tech-section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="kicker"><i class="fas fa-microchip"></i> Our Expertise</div>
+      <h2 class="section-title">Technologies <span>We Master</span></h2>
+    </div>
+    <div class="tech-scroll reveal">
+      <div class="tech-track">
+        <div class="tech-item"><i class="fab fa-aws"></i> AWS</div>
+        <div class="tech-item"><i class="fab fa-microsoft"></i> Azure</div>
+        <div class="tech-item"><i class="fab fa-google"></i> Google Cloud</div>
+        <div class="tech-item"><i class="fas fa-database"></i> Oracle</div>
+        <div class="tech-item"><i class="fas fa-database"></i> SQL Server</div>
+        <div class="tech-item"><i class="fab fa-python"></i> Python</div>
+        <div class="tech-item"><i class="fab fa-node-js"></i> Node.js</div>
+        <div class="tech-item"><i class="fab fa-react"></i> React</div>
+        <div class="tech-item"><i class="fab fa-docker"></i> Docker</div>
+        <div class="tech-item"><i class="fas fa-network-wired"></i> Cisco</div>
+        <div class="tech-item"><i class="fab fa-linux"></i> Linux</div>
+        <div class="tech-item"><i class="fas fa-shield-halved"></i> Cybersecurity</div>
+        <div class="tech-item"><i class="fab fa-aws"></i> AWS</div>
+        <div class="tech-item"><i class="fab fa-microsoft"></i> Azure</div>
+        <div class="tech-item"><i class="fab fa-google"></i> Google Cloud</div>
+        <div class="tech-item"><i class="fas fa-database"></i> Oracle</div>
+        <div class="tech-item"><i class="fas fa-database"></i> SQL Server</div>
+        <div class="tech-item"><i class="fab fa-python"></i> Python</div>
+        <div class="tech-item"><i class="fab fa-node-js"></i> Node.js</div>
+        <div class="tech-item"><i class="fab fa-react"></i> React</div>
+        <div class="tech-item"><i class="fab fa-docker"></i> Docker</div>
+        <div class="tech-item"><i class="fas fa-network-wired"></i> Cisco</div>
+        <div class="tech-item"><i class="fab fa-linux"></i> Linux</div>
+        <div class="tech-item"><i class="fas fa-shield-halved"></i> Cybersecurity</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container">
-      <div class="cta-box reveal">
-        <h2>
-          Ready to Build a <span>Stronger IT Future?</span>
-        </h2>
-
-        <p>
-          Partner with ZTrust Tech for infrastructure, software, cloud, cybersecurity, networking, database, and complete digital transformation solutions.
-        </p>
-
-        <div class="cta-actions">
-          <a href="contact.html" class="btn btn-primary">
-            <i class="fas fa-paper-plane"></i> Contact Us
-          </a>
-
-          <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech%2C%20I%20would%20like%20to%20discuss%20an%20IT%20project." target="_blank" class="btn btn-wa">
-            <i class="fab fa-whatsapp"></i> WhatsApp Now
-          </a>
-        </div>
+<!-- ================= CTA ================= -->
+<section class="section">
+  <div class="container">
+    <div class="cta-section reveal-scale">
+      <h2>Ready to Build the <span style="background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;">Future Together?</span></h2>
+      <p>Whether you're planning a major infrastructure overhaul, need a trusted security partner, or want to discuss your next big project — our team is ready.</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="btn btn-primary"><i class="fas fa-rocket"></i> Start a Project</a>
+        <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <img src="Ztrust Color 2.png" class="footer-logo" alt="ZTrust Tech" onerror="this.src='https://placehold.co/46x46?text=ZT'">
-
-          <p>
-            Complete IT Solutions Provider based in Addis Ababa, Ethiopia.
-            Infrastructure • Storage • Apps • Database • API • Networks • Cloud • Security
-          </p>
-
-          <div class="social-links">
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://t.me/ZTrustTech" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-            <a href="https://wa.me/251911563698" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          </div>
-        </div>
-
-        <div>
-          <h4>Quick Links</h4>
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-        </div>
-
-        <div>
-          <h4>Our Services</h4>
-          <a href="services.html">Infrastructure</a>
-          <a href="services.html">Storage Solutions</a>
-          <a href="services.html">Application Development</a>
-          <a href="services.html">API Integration</a>
-          <a href="services.html">Network Connectivity</a>
-          <a href="services.html">Cybersecurity</a>
-        </div>
-
-        <div>
-          <h4>Contact Info</h4>
-          <p><i class="fas fa-user"></i> GM: Ssasebih Nega</p>
-          <p><i class="fas fa-phone"></i> +251 911 563 698</p>
-          <p><i class="fas fa-envelope"></i> sales2@ztrust.et</p>
-          <p><i class="fas fa-map-marker-alt"></i> Bole TK Building, Addis Ababa</p>
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="Ztrust Color 2.png" class="footer-logo" alt="ZTrust Tech" onerror="this.src='https://placehold.co/48x48/0f111a/3b82f6?text=ZT&font=roboto'">
+        <p class="footer-text">Complete IT Solutions Provider.<br>Infrastructure • Storage • Apps • Database • API • Networks</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://t.me/ZTrustTech" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a href="https://wa.me/251911563698" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
-
-      <hr>
-
-      <p class="copyright">
-        © 2026 ZTrust Tech. 10+ Years of IT Excellence | All IT Solutions Under One Roof | Based in Addis Ababa, Ethiopia
-      </p>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="index.html" class="footer-link"><i class="fas fa-chevron-right"></i> Home</a>
+        <a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> Services</a>
+        <a href="about.html" class="footer-link"><i class="fas fa-chevron-right"></i> About</a>
+        <a href="contact.html" class="footer-link"><i class="fas fa-chevron-right"></i> Contact</a>
+      </div>
+      <div>
+        <h4>Our Services</h4>
+        <a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> Infrastructure</a>
+        <a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> Data Center</a>
+        <a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> Software Testing</a>
+        <a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> Consultancy</a>
+        <a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> Training</a>
+        <a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> 24/7 Support</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="#" class="footer-link"><i class="fas fa-user"></i> GM: Ssasebih Nega</a>
+        <a href="tel:+251911563698" class="footer-link"><i class="fas fa-phone"></i> +251 911 563 698</a>
+        <a href="mailto:sales2@ztrust.et" class="footer-link"><i class="fas fa-envelope"></i> sales2@ztrust.et</a>
+        <a href="#" class="footer-link"><i class="fas fa-location-dot"></i> Addis Ababa, Ethiopia</a>
+      </div>
     </div>
-  </footer>
+    <div class="copyright">
+      © 2024 <a href="#">ZTrust Tech</a> — All rights reserved. Crafted with <i class="fas fa-heart"></i> in Ethiopia.
+    </div>
+  </div>
+</footer>
 
-  <button id="backToTop" class="back-to-top" aria-label="Back to top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-  <script>
-    // Floating animated data elements
-    const floatingContainer = document.getElementById('floatingElements');
-    const floatTexts = [
-      '01001001', '01110100', '01010011', '01100101', '01100011', '01110101',
-      'SECURE', 'ENCRYPTED', 'CLOUD', 'DEVOPS', 'DATABASE', 'API', 'NETWORK',
-      'ZTrust', 'IT Solutions', 'Infrastructure', 'Cybersecurity', 'Storage',
-      'Monitoring', 'Backup', 'High Availability', 'Digital Transformation'
-    ];
+<script>
+/* ═══════ NETWORK ANIMATION CANVAS ═══════ */
+(function(){
+  const canvas = document.getElementById('networkCanvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, nodes, mouse = {x:-1000,y:-1000};
+  const NODE_COUNT_FACTOR = 0.00012;
+  const MAX_DIST = 140;
 
-    for (let i = 0; i < 58; i++) {
-      const item = document.createElement('div');
-      item.className = 'float-item';
-      item.textContent = floatTexts[Math.floor(Math.random() * floatTexts.length)];
-      item.style.fontSize = (0.65 + Math.random() * 1.1) + 'rem';
-      item.style.top = Math.random() * 100 + '%';
-      item.style.left = Math.random() * 100 + '%';
-      item.style.setProperty('--y-move', (Math.random() * 70 - 35) + 'vh');
-      item.style.animationDuration = (14 + Math.random() * 28) + 's';
-      item.style.animationDelay = (Math.random() * 18) + 's';
-      item.style.opacity = 0.035 + Math.random() * 0.06;
-      floatingContainer.appendChild(item);
-    }
-
-    // Mobile menu
-    const menuToggle = document.getElementById('mobileMenu');
-    const navLinks = document.getElementById('navLinks');
-
-    if (menuToggle) {
-      menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navLinks.classList.toggle('active');
-
-        menuToggle.innerHTML = navLinks.classList.contains('active')
-          ? '<i class="fas fa-times"></i>'
-          : '<i class="fas fa-bars"></i>';
-      });
-
-      document.querySelectorAll('.links a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('active');
-          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        });
-      });
-
-      document.addEventListener('click', (event) => {
-        if (
-          navLinks.classList.contains('active') &&
-          !navLinks.contains(event.target) &&
-          !menuToggle.contains(event.target)
-        ) {
-          navLinks.classList.remove('active');
-          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        }
+  function resize(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    const count = Math.min(120, Math.floor(w*h*NODE_COUNT_FACTOR));
+    nodes = [];
+    for(let i=0;i<count;i++){
+      nodes.push({
+        x: Math.random()*w, y: Math.random()*h,
+        vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5,
+        r: Math.random()*1.8+0.8
       });
     }
-
-    // Back to top and navbar effect
-    const backBtn = document.getElementById('backToTop');
-    const nav = document.querySelector('.nav');
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backBtn.classList.add('show');
-      } else {
-        backBtn.classList.remove('show');
+  }
+  function animate(){
+    ctx.clearRect(0,0,w,h);
+    for(let n of nodes){
+      n.x += n.vx; n.y += n.vy;
+      if(n.x<0||n.x>w) n.vx*=-1;
+      if(n.y<0||n.y>h) n.vy*=-1;
+      const dx = n.x - mouse.x, dy = n.y - mouse.y;
+      const dist = Math.sqrt(dx*dx+dy*dy);
+      if(dist < 120){
+        const force = (120-dist)/120;
+        n.x += (dx/dist)*force*1.5;
+        n.y += (dy/dist)*force*1.5;
       }
-
-      if (window.scrollY > 50) {
-        nav.style.background = 'rgba(2, 6, 23, 0.92)';
-      } else {
-        nav.style.background = 'rgba(2, 6, 23, 0.76)';
-      }
-    });
-
-    backBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Reveal on scroll
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.15
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-    // Counter animation
-    const counters = document.querySelectorAll('.counter');
-    let countersStarted = false;
-
-    function animateCounter(counter) {
-      const target = Number(counter.getAttribute('data-target'));
-      const duration = 1500;
-      const startTime = performance.now();
-
-      function update(currentTime) {
-        const progress = Math.min((currentTime - startTime) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        counter.textContent = Math.floor(eased * target);
-
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        } else {
-          counter.textContent = target;
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(96,165,250,0.85)';
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = 'rgba(59,130,246,0.6)';
+      ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const d = Math.sqrt(dx*dx+dy*dy);
+        if(d < MAX_DIST){
+          const opacity = (1 - d/MAX_DIST) * 0.35;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.strokeStyle = `rgba(99,102,241,${opacity})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
         }
       }
-
-      requestAnimationFrame(update);
     }
-
-    const statsSection = document.querySelector('.stats-grid');
-
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !countersStarted) {
-          countersStarted = true;
-          counters.forEach(counter => animateCounter(counter));
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.4
-    });
-
-    if (statsSection) {
-      counterObserver.observe(statsSection);
+    for(let n of nodes){
+      const dx = n.x - mouse.x, dy = n.y - mouse.y;
+      const d = Math.sqrt(dx*dx+dy*dy);
+      if(d < 150){
+        const opacity = (1 - d/150) * 0.6;
+        ctx.beginPath();
+        ctx.moveTo(n.x, n.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.strokeStyle = `rgba(6,182,212,${opacity})`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      }
     }
-  </script>
+    requestAnimationFrame(animate);
+  }
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('touchmove', e => { if(e.touches[0]){ mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; } });
+  resize();
+  animate();
+})();
+
+/* ═══════ NAV SCROLL ═══════ */
+const nav = document.getElementById('mainNav');
+const back = document.getElementById('backToTop');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+  back.classList.toggle('show', window.scrollY > 500);
+});
+back.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ═══════ MOBILE MENU ═══════ */
+const menuBtn = document.getElementById('mobileMenu');
+const links = document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>{
+  links.classList.toggle('active');
+  const icon = menuBtn.querySelector('i');
+  icon.className = links.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+});
+links.querySelectorAll('a').forEach(a => a.addEventListener('click',()=>{
+  links.classList.remove('active');
+  menuBtn.querySelector('i').className = 'fas fa-bars';
+}));
+
+/* ═══════ REVEAL ANIMATIONS ═══════ */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'), (parseInt(getComputedStyle(e.target).getPropertyValue('--i')||0) * 100));
+      observer.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.12, rootMargin: '0px 0px -50px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>observer.observe(el));
+
+/* ═══════ COUNTER ANIMATION ═══════ */
+const counterObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const step = target / 50;
+      const update = ()=>{
+        current += step;
+        if(current >= target){ el.textContent = target; return; }
+        el.textContent = Math.floor(current);
+        requestAnimationFrame(update);
+      };
+      update();
+      counterObs.unobserve(el);
+    }
+  });
+}, {threshold: 0.5});
+document.querySelectorAll('.counter').forEach(el=>counterObs.observe(el));
+</script>
 </body>
 </html>
