@@ -1,438 +1,673 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ZTrust · Nexus of Next-Gen Engineering & Security</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ZTrust Tech | Complete IT Solutions Provider - Home</title>
 
-        body {
-            background: #020b25;
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
-            color: #eef5ff;
-            line-height: 1.4;
-            overflow-x: hidden;
-        }
+  <link rel="icon" type="image/png" href="ICON Final 1 (1).png" />
+  <link rel="shortcut icon" href="ICON Final 1 (1).png" />
 
-        /* dynamic glassmorphic background canvas */
-        .bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: radial-gradient(circle at 20% 30%, #0a1a3a, #010614);
-        }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.4;
-            pointer-events: none;
-        }
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#03040a;
+      --bg2:#07111f;
+      --bg3:#0b1528;
+      --card:#0b1220;
+      --card2:#0f182b;
+      --line:rgba(96,165,250,.12);
 
-        /* main layout */
-        .main-container {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 2rem 2rem 4rem;
-            position: relative;
-            z-index: 2;
-        }
+      --text:#edf3fc;
+      --muted:#a0b2ca;
+      --muted2:#70829a;
 
-        /* header / hero section with futuristic floating elements */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 3rem 1rem 5rem 1rem;
-            border-radius: 3rem;
-            backdrop-filter: blur(2px);
-        }
+      --blue:#3b82f6;
+      --blue2:#60a5fa;
+      --blue3:#1d4ed8;
+      --indigo:#6366f1;
+      --purple:#8b5cf6;
+      --cyan:#06b6d4;
+      --emerald:#10b981;
+      --amber:#f59e0b;
+      --rose:#f43f5e;
 
-        .logo-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(10, 30, 60, 0.5);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 255, 255, 0.25);
-            border-radius: 100px;
-            padding: 0.6rem 1.8rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
+      --glass:rgba(10,14,24,.72);
+      --glass2:rgba(13,18,31,.86);
+      --shadow-xl:0 30px 100px rgba(0,0,0,.52);
+      --shadow-lg:0 22px 70px rgba(0,0,0,.34);
+      --shadow-md:0 14px 42px rgba(0,0,0,.24);
+      --radius:28px;
+    }
 
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.8rem;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #FFFFFF, #8ec9ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(59,130,246,.08), transparent 22%),
+        radial-gradient(circle at 92% 8%, rgba(139,92,246,.08), transparent 22%),
+        radial-gradient(circle at 50% 100%, rgba(6,182,212,.05), transparent 26%),
+        linear-gradient(180deg,#020308 0%,#040712 35%,#03040a 100%);
+      overflow-x:hidden;
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
 
-        .shield-icon {
-            font-size: 2rem;
-            filter: drop-shadow(0 0 6px cyan);
-        }
+    img{display:block;max-width:100%}
+    .container{max-width:1420px;margin:0 auto;padding:0 22px;position:relative;z-index:2}
+    .section{padding:96px 0;position:relative}
 
-        .hero h1 {
-            font-size: clamp(2.8rem, 8vw, 5rem);
-            font-weight: 800;
-            background: linear-gradient(120deg, #fff, #7bc5ff, #3c8aff);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
+    .section-header{
+      text-align:center;
+      margin-bottom:56px;
+    }
+    .section-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 16px;border-radius:999px;
+      background:rgba(59,130,246,.08);
+      border:1px solid rgba(96,165,250,.12);
+      color:var(--blue2);
+      font-size:.72rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:1.8px;
+      margin-bottom:16px;
+    }
+    .section-title{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(2rem,3.5vw,3.25rem);
+      line-height:1.08;
+      font-weight:900;
+      margin-bottom:14px;
+      letter-spacing:-0.8px;
+    }
+    .section-sub{
+      max-width:760px;
+      margin:0 auto;
+      color:var(--muted2);
+      font-size:1rem;
+      line-height:1.8;
+    }
 
-        .hero-glow {
-            font-size: 1.2rem;
-            max-width: 700px;
-            color: #b9d9ff;
-            background: rgba(2, 11, 37, 0.5);
-            backdrop-filter: blur(4px);
-            padding: 0.8rem 1.5rem;
-            border-radius: 40px;
-            border: 1px solid rgba(100, 180, 255, 0.3);
-        }
+    /* BACKGROUND */
+    .grid-bg{
+      position:fixed;inset:0;z-index:-4;pointer-events:none;
+      background-image:
+        linear-gradient(rgba(59,130,246,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,.018) 1px, transparent 1px);
+      background-size:68px 68px;
+      mask-image:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.9) 18%, rgba(0,0,0,.9) 84%, transparent 100%);
+    }
+    .noise{
+      position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:.035;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='white' fill-opacity='1'%3E%3Ccircle cx='6' cy='10' r='1'/%3E%3Ccircle cx='42' cy='27' r='1'/%3E%3Ccircle cx='87' cy='52' r='1'/%3E%3Ccircle cx='132' cy='21' r='1'/%3E%3Ccircle cx='159' cy='95' r='1'/%3E%3Ccircle cx='120' cy='130' r='1'/%3E%3Ccircle cx='54' cy='118' r='1'/%3E%3Ccircle cx='18' cy='148' r='1'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .orb{
+      position:fixed;border-radius:50%;filter:blur(140px);opacity:.08;pointer-events:none;z-index:-2
+    }
+    .orb.o1{width:650px;height:650px;background:var(--blue);top:-200px;right:-150px;animation:orb 30s ease-in-out infinite}
+    .orb.o2{width:520px;height:520px;background:var(--purple);bottom:-150px;left:-100px;animation:orb 34s ease-in-out infinite reverse}
+    .orb.o3{width:380px;height:380px;background:var(--cyan);top:42%;left:40%;animation:orb 24s ease-in-out infinite 5s}
+    @keyframes orb{
+      0%,100%{transform:translate(0,0)}
+      33%{transform:translate(54px,-56px)}
+      66%{transform:translate(-42px,46px)}
+    }
 
-        /* ----- exceptional engineering & security module (creativity section) ----- */
-        .nexus-core {
-            margin: 2rem 0 4rem 0;
-            position: relative;
-        }
+    /* LOADER */
+    .loader{
+      position:fixed;inset:0;background:#020207;z-index:99999;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      transition:opacity .8s ease,visibility .8s ease;
+    }
+    .loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+    .loader-wrap{position:relative;width:180px;height:180px;margin-bottom:24px}
+    .loader-ring{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      border-radius:50%;border:2px solid transparent;
+    }
+    .loader-ring:nth-child(1){width:168px;height:168px;border-top-color:var(--blue);border-right-color:rgba(59,130,246,.24);animation:spin 1.65s linear infinite}
+    .loader-ring:nth-child(2){width:138px;height:138px;border-top-color:var(--purple);border-left-color:rgba(139,92,246,.24);animation:spin 1.18s linear infinite reverse}
+    .loader-ring:nth-child(3){width:110px;height:110px;border-bottom-color:var(--cyan);border-right-color:rgba(6,182,212,.22);animation:spin .92s linear infinite}
+    @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+    .loader-logo{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:124px;height:124px;object-fit:contain;
+      filter:
+        brightness(1.2)
+        contrast(1.18)
+        saturate(1.18)
+        drop-shadow(0 0 18px rgba(255,255,255,.10))
+        drop-shadow(0 0 38px rgba(59,130,246,.9))
+        drop-shadow(0 0 76px rgba(99,102,241,.32));
+      animation:loaderPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes loaderPulse{
+      0%,100%{transform:translate(-50%,-50%) scale(1)}
+      50%{transform:translate(-50%,-50%) scale(1.08)}
+    }
+    .loader-text{
+      font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--blue2);
+      letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;text-align:center
+    }
+    .loader-bar{width:220px;height:3px;background:rgba(59,130,246,.1);border-radius:999px;overflow:hidden}
+    .loader-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan));animation:loadFill 2.5s ease-in-out forwards}
+    @keyframes loadFill{0%{width:0}60%{width:70%}100%{width:100%}}
+    .loader-sub{margin-top:10px;color:#3b4a61;font-size:.66rem;font-family:'JetBrains Mono',monospace;text-align:center}
 
-        .core-card {
-            background: rgba(5, 18, 40, 0.65);
-            backdrop-filter: blur(16px);
-            border-radius: 3rem;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(0, 230, 250, 0.1) inset;
-            padding: 3rem 2rem;
-            transition: all 0.4s ease;
-        }
+    /* NAV - with only logoword, links moved to right before support button */
+    .nav{
+      position:fixed;top:0;left:0;width:100%;z-index:1000;
+      background:rgba(3,4,10,.32);
+      backdrop-filter:blur(24px);
+      border-bottom:1px solid rgba(96,165,250,.06);
+      transition:.35s ease;
+    }
+    .nav.scrolled{
+      background:rgba(3,4,10,.9);
+      border-bottom-color:rgba(96,165,250,.12);
+      box-shadow:0 14px 40px rgba(0,0,0,.34);
+    }
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      padding:12px 0;
+    }
+    .logo-word-img{
+      height:48px;
+      width:auto;
+      object-fit:contain;
+      filter:drop-shadow(0 0 12px rgba(59,130,246,.5));
+      transition:0.2s;
+    }
+    .nav-right-group{
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+    .links{
+      display:flex;
+      gap:1.8rem;
+      align-items:center;
+    }
+    .links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:600;
+      font-size:.88rem;
+      position:relative;
+      padding:6px 0;
+      transition:0.2s;
+    }
+    .links a::after{
+      content:"";position:absolute;left:0;bottom:0;width:0;height:2px;
+      background:linear-gradient(90deg,var(--blue),var(--purple));
+      transition:.3s;
+      border-radius:2px;
+    }
+    .links a:hover,.links a.active{color:#fff}
+    .links a:hover::after,.links a.active::after{width:100%}
+    .nav-cta{
+      text-decoration:none;
+      color:#fff;
+      font-weight:800;
+      font-size:.85rem;
+      padding:8px 20px;
+      border-radius:40px;
+      background:linear-gradient(135deg,var(--blue),var(--indigo));
+      box-shadow:0 8px 20px rgba(59,130,246,.3);
+      white-space:nowrap;
+      transition:0.2s;
+    }
+    .nav-cta:hover{transform:translateY(-2px);}
+    .menu-toggle{
+      display:none;
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:1.6rem;
+      cursor:pointer;
+      margin-left:8px;
+    }
 
-        .core-tag {
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 4px;
-            font-weight: 600;
-            color: #4efff5;
-            margin-bottom: 1rem;
-            display: inline-block;
-            border-left: 3px solid cyan;
-            padding-left: 1rem;
-        }
+    /* HERO - Minimalist with side catchphrases */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+      background:
+        linear-gradient(120deg, rgba(3,5,15,.70) 0%, rgba(4,8,20,.40) 34%, rgba(3,4,10,.70) 100%),
+        url("Ztrust Color 2.png") center/cover no-repeat;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(59,130,246,.12), transparent 25%),
+        radial-gradient(circle at 86% 16%, rgba(139,92,246,.1), transparent 24%);
+    }
+    .hero::after{
+      content:"";position:absolute;left:0;right:0;bottom:0;height:160px;z-index:1;
+      background:linear-gradient(180deg,transparent 0%,rgba(3,4,10,.8) 60%,rgba(3,4,10,1) 100%);
+    }
+    .hero-tech-grid{
+      position:absolute;inset:0;z-index:1;pointer-events:none;
+      background-image:
+        linear-gradient(rgba(96,165,250,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96,165,250,.03) 1px, transparent 1px);
+      background-size:100px 100px;
+    }
+    .hero-ripple-stack{
+      position:absolute;inset:auto 0 8%;z-index:1;pointer-events:none;
+      display:flex;flex-direction:column;gap:8px;opacity:.35;
+    }
+    .hero-ripple-stack img{
+      width:100%;height:70px;object-fit:cover;mix-blend-mode:screen;
+    }
+    .hero-beams{
+      position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden
+    }
+    .beam{
+      position:absolute;height:1px;
+      background:linear-gradient(90deg,transparent,rgba(96,165,250,.46),transparent);
+      filter:blur(.2px);animation:beamMove linear infinite;opacity:.45
+    }
+    .beam.b1{width:36vw;top:20%;left:-12%;animation-duration:10s}
+    .beam.b2{width:28vw;top:34%;left:28%;animation-duration:12s;animation-delay:2s}
+    .beam.b3{width:42vw;top:62%;left:-8%;animation-duration:14s;animation-delay:1.2s}
+    .beam.b4{width:20vw;top:76%;left:45%;animation-duration:11s;animation-delay:3s}
+    @keyframes beamMove{
+      0%{transform:translateX(-4vw);opacity:0}
+      15%{opacity:.45}
+      100%{transform:translateX(18vw);opacity:0}
+    }
+    .hero-particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+    .hp{
+      position:absolute;border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.9), rgba(96,165,250,.35) 45%, transparent 72%);
+      animation:heroFloat linear infinite;opacity:.4
+    }
+    .hp1{width:7px;height:7px;left:8%;top:88%;animation-duration:18s}
+    .hp2{width:10px;height:10px;left:20%;top:84%;animation-duration:20s}
+    .hp3{width:6px;height:6px;left:36%;top:90%;animation-duration:14s}
+    .hp4{width:9px;height:9px;left:52%;top:87%;animation-duration:22s}
+    .hp5{width:7px;height:7px;left:66%;top:90%;animation-duration:16s}
+    @keyframes heroFloat{
+      0%{transform:translateY(0) translateX(0);opacity:0}
+      10%{opacity:.4}
+      60%{transform:translateY(-42vh) translateX(16px)}
+      100%{transform:translateY(-82vh) translateX(-10px);opacity:0}
+    }
+    .hero-catch-left, .hero-catch-right{
+      position:absolute;
+      z-index:20;
+      font-family:'JetBrains Mono',monospace;
+      font-weight:500;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      background:rgba(3,5,18,.5);
+      backdrop-filter:blur(10px);
+      padding:8px 16px;
+      border-radius:40px;
+      border:1px solid rgba(96,165,250,.3);
+      font-size:0.7rem;
+      white-space:nowrap;
+      pointer-events:none;
+      color:#cbdffa;
+    }
+    .hero-catch-left{left:20px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:left top;writing-mode:vertical-rl;padding:12px 6px;}
+    .hero-catch-right{right:20px;top:50%;transform:translateY(-50%) rotate(90deg);transform-origin:right top;writing-mode:vertical-rl;padding:12px 6px;background:rgba(99,102,241,.4);border-color:rgba(139,92,246,.5);}
+    .hero-bottom-tag{
+      position:absolute;bottom:20%;left:50%;transform:translateX(-50%);z-index:20;
+      font-family:'JetBrains Mono',monospace;font-size:0.65rem;
+      background:rgba(0,0,0,.55);backdrop-filter:blur(12px);padding:6px 16px;border-radius:40px;
+      letter-spacing:1.5px;color:var(--blue2);border:1px solid rgba(96,165,250,.4);
+      white-space:nowrap;
+    }
+    .hero-scroll{
+      position:absolute;bottom:25px;left:50%;transform:translateX(-50%);z-index:20;
+    }
+    .scroll-mouse{width:26px;height:40px;border:2px solid rgba(99,102,241,.4);border-radius:14px;display:flex;justify-content:center;padding-top:6px}
+    .scroll-dot{width:3px;height:8px;background:var(--blue);border-radius:2px;animation:scrollAnim 2s infinite}
+    @keyframes scrollAnim{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(12px)}}
 
-        .headline-statement {
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, #ffffff, #a0d0ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+    /* RIPPLE, INTRO, SERVICES (responsive) */
+    .ripple-art{position:relative;padding:0;background:linear-gradient(180deg,rgba(3,4,10,1),rgba(6,9,18,.98));overflow:hidden;}
+    .ripple-layer{position:relative;height:160px;overflow:hidden;}
+    .ripple-layer img{position:absolute;left:0;width:100%;object-fit:cover;mix-blend-mode:screen;}
+    .ripple-layer img.r1{top:10px;height:140px;animation:rippleShift1 14s infinite}
+    .ripple-layer img.r2{top:25px;height:140px;opacity:.55;animation:rippleShift2 18s infinite}
+    .ripple-layer img.r3{top:40px;height:140px;opacity:.32;animation:rippleShift3 22s infinite}
+    @keyframes rippleShift1{0%,100%{transform:scale(1.03) translateX(0)}50%{transform:scale(1.08) translateX(-12px)}}
+    @keyframes rippleShift2{0%,100%{transform:scale(1.02) translateX(0)}50%{transform:scale(1.06) translateX(12px)}}
+    @keyframes rippleShift3{0%,100%{transform:scale(1.01) translateX(0)}50%{transform:scale(1.05) translateX(-8px)}}
+    .ripple-copy{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+    .ripple-copy span{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:2.5px;background:rgba(7,11,20,.5);padding:6px 14px;border-radius:40px;border:1px solid rgba(96,165,250,.2);}
 
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 2rem;
-            margin: 2.5rem 0 2rem;
-        }
+    .intro-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .intro-main,.intro-side{background:linear-gradient(180deg,rgba(12,16,28,.86),rgba(8,11,19,.82));border-radius:28px;padding:30px;}
+    .intro-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px;}
+    .intro-card{padding:16px;border-radius:18px;background:rgba(255,255,255,.02);border:1px solid rgba(96,165,250,.08);}
+    .service-grid-exceptional{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:20px;}
+    .service-card-ex{background:linear-gradient(145deg, rgba(12,18,30,.92), rgba(5,8,17,.96));border-radius:28px;overflow:hidden;transition:0.3s;}
+    .service-card-ex:hover{transform:translateY(-8px);}
+    .service-img-ex{height:210px;overflow:hidden;position:relative;}
+    .service-img-ex img{width:100%;height:100%;object-fit:cover;transition:0.5s;}
+    .service-card-ex:hover .service-img-ex img{transform:scale(1.08);}
+    .service-chip-ex{position:absolute;top:16px;left:16px;width:44px;height:44px;border-radius:20px;background:linear-gradient(135deg,var(--blue),var(--indigo));display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+    .service-body-ex{padding:20px;}
+    .service-body-ex h3{font-size:1.1rem;margin-bottom:8px;}
+    .service-tags-ex{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+    .service-tags-ex span{font-size:.65rem;padding:4px 10px;border-radius:30px;background:rgba(59,130,246,.12);}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(59,130,246,.07);border-radius:28px;overflow:hidden;}
+    .stat-card{padding:32px 16px;text-align:center;}
+    .infra-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .infra-card{padding:28px 20px;border-radius:26px;background:linear-gradient(180deg,rgba(12,16,28,.88),rgba(8,11,19,.84));}
+    .cta-shell{border-radius:32px;padding:60px 24px;text-align:center;background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(99,102,241,.1));}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:40px;font-weight:800;text-decoration:none;}
+    .btn.primary{background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;}
+    .btn.secondary{background:rgba(12,16,28,.7);border:1px solid rgba(99,102,241,.4);color:#fff;}
 
-        .pillar {
-            background: rgba(0, 20, 45, 0.6);
-            padding: 1.8rem 1.2rem;
-            border-radius: 2rem;
-            transition: transform 0.25s ease, background 0.3s;
-            border-bottom: 2px solid rgba(0, 200, 255, 0.4);
-            backdrop-filter: blur(4px);
-        }
+    /* CREATIVE FOOTER */
+    .creative-footer{
+      position:relative;
+      background:linear-gradient(160deg, #03050c 0%, #070b17 100%);
+      border-top:1px solid rgba(59,130,246,.2);
+      overflow:hidden;
+      margin-top:40px;
+    }
+    .creative-footer::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:1px;
+      background:linear-gradient(90deg,transparent,var(--blue),var(--purple),var(--cyan),transparent);
+    }
+    .footer-glow{
+      position:absolute;inset:0;background:radial-gradient(circle at 20% 30%, rgba(59,130,246,.08), transparent 60%);
+      pointer-events:none;
+    }
+    .footer-main{
+      position:relative;z-index:3;
+      padding:70px 0 50px;
+    }
+    .footer-flex{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:40px;
+    }
+    .footer-brand-col{
+      flex:1.2;
+      min-width:220px;
+    }
+    .footer-logo-creative{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:20px;
+    }
+    .footer-logo-creative .footer-word-img{
+      height:42px;
+      width:auto;
+      opacity:0.95;
+    }
+    .footer-desc{
+      color:#8da0bc;
+      font-size:.85rem;
+      line-height:1.7;
+      margin-bottom:20px;
+      max-width:320px;
+    }
+    .social-links-creative{
+      display:flex;
+      gap:14px;
+    }
+    .social-links-creative a{
+      width:44px;height:44px;border-radius:30px;
+      background:rgba(59,130,246,.1);
+      border:1px solid rgba(96,165,250,.2);
+      display:flex;align-items:center;justify-content:center;
+      color:#cbd5f0;
+      font-size:1.2rem;
+      transition:0.25s;
+    }
+    .social-links-creative a:hover{
+      background:linear-gradient(135deg,var(--blue),var(--indigo));
+      color:white;
+      transform:translateY(-3px);
+    }
+    .footer-links-col{
+      flex:1;
+      min-width:150px;
+    }
+    .footer-links-col h4{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:1rem;
+      margin-bottom:22px;
+      position:relative;
+      display:inline-block;
+    }
+    .footer-links-col h4::after{
+      content:'';position:absolute;bottom:-6px;left:0;width:30px;height:2px;
+      background:linear-gradient(90deg,var(--blue),var(--cyan));
+      border-radius:2px;
+    }
+    .footer-links-col a{
+      display:block;
+      color:#8da0bc;
+      text-decoration:none;
+      margin-bottom:12px;
+      font-size:.85rem;
+      transition:0.2s;
+    }
+    .footer-links-col a i{
+      margin-right:8px;
+      font-size:.7rem;
+      color:var(--blue2);
+    }
+    .footer-links-col a:hover{
+      color:white;
+      transform:translateX(6px);
+    }
+    .contact-info-footer p{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#8da0bc;
+      font-size:.85rem;
+      margin-bottom:12px;
+    }
+    .contact-info-footer i{
+      width:26px;
+      color:var(--blue2);
+    }
+    .footer-bottom{
+      border-top:1px solid rgba(96,165,250,.12);
+      padding:24px 0;
+      text-align:center;
+      font-size:.75rem;
+      color:#62748e;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .footer-bottom .heart{color:#f43f5e;}
+    .footer-bottom a{color:var(--blue2);text-decoration:none;}
+    .footer-stats{display:flex;gap:24px;font-size:.7rem;}
+    .footer-stats span{color:var(--blue2);font-weight:700;}
+    .back-to-top{
+      position:fixed;bottom:20px;right:20px;width:48px;height:48px;border-radius:30px;
+      background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;
+      display:flex;align-items:center;justify-content:center;cursor:pointer;
+      opacity:0;visibility:hidden;transition:.3s;z-index:999;
+    }
+    .back-to-top.show{opacity:1;visibility:visible;}
+    .reveal{opacity:0;transform:translateY(40px);transition:0.85s;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .floating-btns{position:fixed;bottom:20px;left:20px;display:flex;flex-direction:column;gap:10px;z-index:999;}
+    .float-btn{width:48px;height:48px;border-radius:30px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;text-decoration:none;font-size:1.3rem;}
+    .float-btn.tg{background:linear-gradient(135deg,#0088cc,#005f8c);}
 
-        .pillar:hover {
-            transform: translateY(-6px);
-            background: rgba(0, 40, 70, 0.7);
-            border-bottom-color: #0ff;
-        }
-
-        .pillar-icon {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .pillar h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.3px;
-        }
-
-        .pillar p {
-            color: #bed6ff;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .vision-quote {
-            margin-top: 2rem;
-            text-align: center;
-            font-size: 1.2rem;
-            border-top: 1px dashed rgba(0, 255, 255, 0.3);
-            padding-top: 2rem;
-            font-weight: 500;
-            background: linear-gradient(90deg, transparent, rgba(0,255,255,0.1), transparent);
-            border-radius: 60px;
-        }
-
-        /* metrics / stats section */
-        .stats-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 1.5rem;
-            margin: 5rem 0 3rem;
-        }
-
-        .stat-item {
-            flex: 1;
-            background: rgba(0, 15, 35, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 2rem;
-            padding: 1.8rem 1rem;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(145deg, #fff, #4ad4ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -1px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #88b8ff;
-        }
-
-        /* footer / cta */
-        .footer-cta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(100, 180, 255, 0.2);
-        }
-
-        .cta-button {
-            background: linear-gradient(95deg, #0055ff, #00c3ff);
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 1rem;
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 0 12px rgba(0, 180, 255, 0.5);
-            letter-spacing: 0.5px;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 22px rgba(0, 200, 255, 0.8);
-            background: linear-gradient(95deg, #1a66ff, #2ad4ff);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            font-size: 0.85rem;
-            color: #8bb0dd;
-        }
-
-        .footer-links span {
-            cursor: default;
-            transition: color 0.2s;
-        }
-
-        .footer-links span:hover {
-            color: white;
-        }
-
-        /* responsive */
-        @media (max-width: 700px) {
-            .main-container {
-                padding: 1.5rem;
-            }
-            .pillars-grid {
-                gap: 1rem;
-            }
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-            .stats-row {
-                flex-direction: column;
-            }
-        }
-
-        /* floating orbs / abstract cyber decor */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(65px);
-            z-index: -1;
-            opacity: 0.3;
-            pointer-events: none;
-        }
-        .orb1 { width: 50vw; height: 50vw; background: radial-gradient(circle, #0044ff, transparent); top: -20vh; left: -20vw; }
-        .orb2 { width: 60vh; height: 60vh; background: radial-gradient(circle, #00a6ff, transparent); bottom: -20vh; right: -10vw; }
-        .orb3 { width: 40vw; height: 40vw; background: #0ff0; filter: blur(90px); top: 40%; left: 50%; transform: translate(-50%, -50%); }
-    </style>
+    @media(max-width:980px){
+      .service-grid-exceptional{grid-template-columns:repeat(2,1fr);}
+      .intro-wrap{grid-template-columns:1fr;}
+      .infra-cards{grid-template-columns:1fr;}
+      .stats-grid{grid-template-columns:repeat(2,1fr);}
+      .footer-flex{flex-direction:column;gap:32px;}
+      .footer-brand-col{text-align:center;align-items:center;}
+      .footer-logo-creative{justify-content:center;}
+      .footer-desc{margin:0 auto 20px;text-align:center;}
+      .social-links-creative{justify-content:center;}
+      .footer-links-col{text-align:center;}
+      .footer-links-col h4::after{left:50%;transform:translateX(-50%);}
+      .contact-info-footer p{justify-content:center;}
+      .footer-bottom{flex-direction:column;text-align:center;}
+      .hero-catch-left,.hero-catch-right{display:none;}
+      .hero-bottom-tag{white-space:normal; width:80%; font-size:0.55rem; text-align:center;}
+    }
+    @media(max-width:780px){
+      .nav-right-group{gap:16px;}
+      .links{gap:1rem;}
+      .links a{font-size:0.8rem;}
+    }
+    @media(max-width:680px){
+      .service-grid-exceptional{grid-template-columns:1fr;}
+      .section{padding:60px 0;}
+      .nav-right-group{position:relative;}
+      .links{
+        position:fixed;top:72px;left:-100%;width:75%;max-width:280px;height:calc(100vh - 72px);
+        background:rgba(4,5,11,.98);backdrop-filter:blur(30px);
+        flex-direction:column;gap:1.8rem;padding:2rem;transition:left .4s;z-index:1001;
+        border-right:1px solid rgba(59,130,246,.2);
+      }
+      .links.active{left:0;}
+      .menu-toggle{display:block;}
+      .nav-cta{display:inline-flex;}
+      .hero-catch-left,.hero-catch-right{display:none;}
+      .logo-word-img{height:38px;}
+    }
+  </style>
 </head>
 <body>
-
-<div class="bg-canvas"></div>
-<div class="animated-bg">
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-    <div class="orb orb3"></div>
-</div>
-
-<main class="main-container">
-    <!-- hero dynamic header (original bg contextualized) -->
-    <div class="hero">
-        <div class="logo-badge">
-            <span class="shield-icon">⚡⎋</span>
-            <span class="logo-text">ZTRUST DYNAMIC</span>
-            <span class="shield-icon">🔷</span>
+  <div class="loader" id="loader"><div class="loader-wrap"><div class="loader-ring"></div><div class="loader-ring"></div><div class="loader-ring"></div><img src="Ztrust Logo 1 (2).png" class="loader-logo" onerror="this.src='https://placehold.co/134x134/0f172a/3b82f6?text=ZT'"></div><div class="loader-text">Initializing Secure Systems</div><div class="loader-bar"><div class="loader-fill"></div></div><div class="loader-sub">ZTrust Tech • Complete IT Solutions</div></div>
+  <div class="grid-bg"></div><div class="noise"></div><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+  <div class="floating-btns"><a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-btn wa" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/ZTrustTech" class="float-btn tg" target="_blank"><i class="fab fa-telegram-plane"></i></a></div>
+  
+  <nav class="nav" id="mainNav">
+    <div class="container nav-inner">
+      <!-- Only logoword, main logo removed -->
+      <img src="logoword.JPG" class="logo-word-img" alt="ZTrust Word" onerror="this.src='https://placehold.co/180x50/0f172a/3b82f6?text=ZTRUST+TECH'">
+      
+      <div class="nav-right-group">
+        <div class="links" id="navLinks">
+          <a href="index.html" class="active">Home</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
         </div>
-        <h1>infrastructure without<br>boundaries</h1>
-        <div class="hero-glow">
-            unified · sovereign · quantum-ready
-        </div>
+        <a href="contact.html" class="nav-cta"><i class="fas fa-headset"></i> Get Support</a>
+        <button class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></button>
+      </div>
     </div>
+  </nav>
 
-    <!-- 🚀 exceptional engineering & security section (creativity injection) -->
-    <div class="nexus-core">
-        <div class="core-card">
-            <div class="core-tag">✦ nexus manifesto ✦</div>
-            <div class="headline-statement">
-                Exceptional engineering & security for the next decade.
+  <section class="hero">
+    <div class="hero-tech-grid"></div>
+    <div class="hero-ripple-stack"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"><img src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt="Ripple"></div>
+    <div class="hero-beams"><span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span><span class="beam b4"></span></div>
+    <div class="hero-particles"><span class="hp hp1"></span><span class="hp hp2"></span><span class="hp hp3"></span><span class="hp hp4"></span><span class="hp hp5"></span></div>
+    <div class="hero-catch-left">◉ TRUST · SECURITY</div>
+    <div class="hero-catch-right">⚡ AI-DRIVEN · ZERO-TRUST</div>
+    <div class="hero-bottom-tag">✦ COMPLETE IT SOLUTIONS PROVIDER ✦</div>
+    <div class="hero-scroll"><div class="scroll-mouse"><div class="scroll-dot"></div></div></div>
+  </section>
+
+  <section class="ripple-art"><div class="ripple-layer"><img class="r1" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt=""><img class="r2" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt=""><img class="r3" src="Curve Ripple Line@1x-4.0s-1536px-738px.gif" alt=""><div class="ripple-copy"><span>Flow • Connectivity • Trust • Performance</span></div></div></section>
+
+  <div class="net-zone" id="netZone"><canvas id="networkCanvas"></canvas><canvas id="particleCanvas"></canvas><div class="moving-bg" id="movingBg"></div>
+    <section class="section"><div class="container"><div class="section-header reveal"><div class="section-badge"><i class="fas fa-cubes"></i> Core IT Services</div><h2 class="section-title">Exceptional <span style="background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;">engineering & security</span> for the next decade.</h2><p class="section-sub">Cutting-edge infrastructure, storage, development, networking, and cybersecurity — unified under one visionary ecosystem.</p></div>
+      <div class="service-grid-exceptional"><div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-server"></i></span><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Infrastructure"></div><div class="service-body-ex"><h3>IT Infrastructure</h3><p>Resilient servers & virtualization for zero downtime.</p><div class="service-tags-ex"><span>Servers</span><span>Virtualization</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-hard-drive"></i></span><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Storage"></div><div class="service-body-ex"><h3>Storage Solutions</h3><p>SAN/NAS, automated backups & disaster recovery.</p><div class="service-tags-ex"><span>SAN/NAS</span><span>Backup</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-code"></i></span><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=80" alt="Dev"></div><div class="service-body-ex"><h3>App Development</h3><p>Custom web & mobile solutions for digital transformation.</p><div class="service-tags-ex"><span>Web</span><span>Mobile</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-database"></i></span><img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=800&q=80" alt="DB"></div><div class="service-body-ex"><h3>Database Mgmt</h3><p>High-performance SQL/NoSQL, tuning, high-availability.</p><div class="service-tags-ex"><span>SQL</span><span>NoSQL</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-plug"></i></span><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="API"></div><div class="service-body-ex"><h3>API Integration</h3><p>Seamless REST, microservices & workflow automation.</p><div class="service-tags-ex"><span>REST</span><span>Automation</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-network-wired"></i></span><img src="https://images.unsplash.com/photo-1520869562399-e772f042f422?auto=format&fit=crop&w=800&q=80" alt="Net"></div><div class="service-body-ex"><h3>Network Connectivity</h3><p>SD-WAN, LAN/WAN, wireless secure architectures.</p><div class="service-tags-ex"><span>SD-WAN</span><span>LAN/WAN</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-user-shield"></i></span><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" alt="Cyber"></div><div class="service-body-ex"><h3>Cybersecurity</h3><p>Next-gen firewalls, EDR, threat hunting & compliance.</p><div class="service-tags-ex"><span>Firewall</span><span>EDR</span></div></div></div>
+        <div class="service-card-ex"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-chalkboard-user"></i></span><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Training"></div><div class="service-body-ex"><h3>Awareness Training</h3><p>Phishing simulations & security culture programs.</p><div class="service-tags-ex"><span>Training</span><span>Phishing</span></div></div></div>
+      </div>
+    </div></section>
+    <section class="section"><div class="container"><div class="stats-grid"><div class="stat-card"><i class="fas fa-calendar-check" style="color:var(--blue)"></i><div class="num" data-target="10">0<span>+</span></div><div class="label">Years Experience</div></div><div class="stat-card"><i class="fas fa-project-diagram" style="color:var(--purple)"></i><div class="num" data-target="99">0<span>%</span></div><div class="label">Client Retention</div></div><div class="stat-card"><i class="fas fa-face-smile" style="color:var(--cyan)"></i><div class="num" data-target="99">0<span>%</span></div><div class="label">Client Satisfaction</div></div><div class="stat-card"><i class="fas fa-headset" style="color:var(--emerald)"></i><div class="num">24<span>/7</span></div><div class="label">Support Active</div></div></div></div></section>
+    <section class="section"><div class="container"><div class="cta-shell"><h2>Ready to build an exceptional IT environment?</h2><p>Let ZTrust Tech transform your technology into a secure, beautiful, and business-ready foundation.</p><div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;"><a href="contact.html" class="btn primary"><i class="fas fa-headset"></i> Get Free Consultation</a><a href="https://wa.me/251911563698" class="btn secondary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div></div></div></section>
+
+    <!-- CREATIVE FOOTER SECTION -->
+    <footer class="creative-footer">
+      <div class="footer-glow"></div>
+      <div class="container footer-main">
+        <div class="footer-flex">
+          <div class="footer-brand-col">
+            <div class="footer-logo-creative">
+              <img src="logoword.JPG" class="footer-word-img" alt="ZTrust Word" onerror="this.src='https://placehold.co/160x45/0f172a/3b82f6?text=ZTRUST+TECH'">
             </div>
-            <div class="pillars-grid">
-                <div class="pillar">
-                    <div class="pillar-icon">⚙️</div>
-                    <h3>Cutting-edge infrastructure</h3>
-                    <p>Hyperconverged architecture with zero-trust edge fabric, latency-optimized global mesh, and AI-driven resource orchestration.</p>
-                </div>
-                <div class="pillar">
-                    <div class="pillar-icon">💾</div>
-                    <h3>Storage · infinite scale</h3>
-                    <p>Immutable object storage, decentralized data anchoring, and real-time sync across hybrid-cloud & sovereign zones.</p>
-                </div>
-                <div class="pillar">
-                    <div class="pillar-icon">🌐</div>
-                    <h3>Development · velocity</h3>
-                    <p>Unified developer experience with integrated CI/CD pipelines, ephemeral environments, and cross-plane automation.</p>
-                </div>
-                <div class="pillar">
-                    <div class="pillar-icon">🔒</div>
-                    <h3>Networking · cybersecurity</h3>
-                    <p>Quantum-safe encryption, AI-native threat detection, zero-trust segmentation, and real-time posture validation.</p>
-                </div>
+            <p class="footer-desc">Complete IT Solutions Provider — Infrastructure, Storage, Apps, Database, API, Networks & Security under one visionary ecosystem.</p>
+            <div class="social-links-creative">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
+              <a href="https://t.me/ZTrustTech" target="_blank"><i class="fab fa-telegram"></i></a>
+              <a href="https://wa.me/251911563698" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
-            <div class="vision-quote">
-                “unified under one visionary ecosystem — where resilience meets intelligence.”
+          </div>
+          <div class="footer-links-col">
+            <h4>Quick Links</h4>
+            <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+            <a href="about.html"><i class="fas fa-chevron-right"></i> About</a>
+            <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a>
+          </div>
+          <div class="footer-links-col">
+            <h4>Our Services</h4>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> Infrastructure</a>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> Storage</a>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> App Development</a>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> Database</a>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> API Integration</a>
+            <a href="services.html"><i class="fas fa-chevron-right"></i> Networking</a>
+          </div>
+          <div class="footer-links-col">
+            <h4>Contact</h4>
+            <div class="contact-info-footer">
+              <p><i class="fas fa-user-circle"></i> GM: Ssasebih Nega</p>
+              <p><i class="fas fa-phone-alt"></i> +251 911 563 698</p>
+              <p><i class="fas fa-envelope"></i> sales2@ztrust.et</p>
+              <p><i class="fas fa-map-marker-alt"></i> Bole TK Building, Addis Ababa</p>
             </div>
+          </div>
         </div>
-    </div>
-
-    <!-- futuristic stats / reliability indicators (extra engineering vibe) -->
-    <div class="stats-row">
-        <div class="stat-item">
-            <div class="stat-number">99.9999%</div>
-            <div class="stat-label">uptime SLA · multi-region</div>
+        <div class="footer-bottom">
+          <span>© 2026 <a href="index.html">ZTrust Tech</a>. All IT Solutions Under One Roof</span>
+          <span class="footer-stats"><span>10+</span> Years | <span>24/7</span> Support | <span>99%</span> Retention</span>
+          <span>Made with <i class="fas fa-heart heart"></i> in Ethiopia</span>
         </div>
-        <div class="stat-item">
-            <div class="stat-number">&lt;10ms</div>
-            <div class="stat-label">global edge latency (P95)</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">∞ scale</div>
-            <div class="stat-label">petabyte · elastic throughput</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">zero-trust</div>
-            <div class="stat-label">NIST CSF · FedRAMP high</div>
-        </div>
-    </div>
-
-    <!-- footer / cta with brand persistence -->
-    <div class="footer-cta">
-        <div style="font-weight: 500; font-size: 0.9rem;">© ZTrust Dynamic — engineering the next era</div>
-        <div class="footer-links">
-            <span>ecosystem</span>
-            <span>security posture</span>
-            <span>developer portal</span>
-        </div>
-        <button class="cta-button" id="engageBtn">↗ explore unified core</button>
-    </div>
-</main>
-
-<script>
-    // small creative dynamic: pulse effect on cta + interactive console greeting
-    const btn = document.getElementById('engageBtn');
-    if(btn) {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Subtle alert to showcase ecosystem vision — enhances the creative experience
-            alert("🌌 ZTrust Unified Ecosystem: infrastructure, security, and innovation — harmonized for the next decade.");
-            // Optional: ripple mental note, no page change
-        });
-    }
-    // floating parallax subtlety (mouse effect on orbs? just a micro interaction)
-    document.addEventListener('mousemove', (e) => {
-        const orbs = document.querySelectorAll('.orb');
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-        orbs.forEach((orb, idx) => {
-            if(orb) {
-                const moveX = (x - 0.5) * 20;
-                const moveY = (y - 0.5) * 20;
-                orb.style.transform = `translate(${moveX * (idx+1) * 0.5}px, ${moveY * (idx+1) * 0.5}px)`;
-            }
-        });
-    });
-    // additional polish — dynamic timestamp greeting in console
-    console.log("%cZTrust · unified engineering & zero-trust ecosystem", "color: #0af; font-size: 14px; font-weight: bold;");
-</script>
+      </div>
+    </footer>
+  </div>
+  <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+  <script>
+    window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),2000));
+    const nav=document.getElementById('mainNav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+    const mt=document.getElementById('mobileMenu'),nl=document.getElementById('navLinks');mt.addEventListener('click',()=>nl.classList.toggle('active'));
+    const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('[data-target]').forEach(el=>{let t=parseInt(el.dataset.target);let span=el.querySelector('span')?.outerHTML||'';let start=performance.now();let dur=1600;function update(now){let p=Math.min((now-start)/dur,1);let eased=1-Math.pow(1-p,3);el.innerHTML=Math.floor(eased*t)+span;if(p<1)requestAnimationFrame(update);}requestAnimationFrame(update);});counterObs.disconnect();}});},{threshold:.3});document.querySelector('.stats-grid')&&counterObs.observe(document.querySelector('.stats-grid'));
+    const btt=document.getElementById('backToTop');window.addEventListener('scroll',()=>btt.classList.toggle('show',window.scrollY>400));btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    const netCanvas=document.getElementById('networkCanvas');if(netCanvas){let ctx=netCanvas.getContext('2d');let w,h;function resize(){const r=document.getElementById('netZone').getBoundingClientRect();w=netCanvas.width=r.width;h=netCanvas.height=r.height;}resize();window.addEventListener('resize',resize);let dots=[];for(let i=0;i<60;i++)dots.push({x:Math.random()*w,y:Math.random()*h,dx:(Math.random()-0.5)*0.4,dy:(Math.random()-0.5)*0.4});function draw(){ctx.clearRect(0,0,w,h);dots.forEach(d=>{d.x+=d.dx;d.y+=d.dy;if(d.x<0||d.x>w)d.dx*=-1;if(d.y<0||d.y>h)d.dy*=-1;ctx.beginPath();ctx.arc(d.x,d.y,1.4,0,Math.PI*2);ctx.fillStyle='rgba(59,130,246,0.25)';ctx.fill();});for(let i=0;i<dots.length;i++)for(let j=i+1;j<dots.length;j++){let dx=dots[i].x-dots[j].x,dy=dots[i].y-dots[j].y,dist=Math.hypot(dx,dy);if(dist<150){ctx.beginPath();ctx.moveTo(dots[i].x,dots[i].y);ctx.lineTo(dots[j].x,dots[j].y);ctx.strokeStyle=`rgba(96,165,250,${0.07*(1-dist/150)})`;ctx.stroke();}}requestAnimationFrame(draw);}draw();}
+    const reveals=document.querySelectorAll('.reveal');new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');})},{threshold:.1}).observe(reveals[0]);
+  </script>
 </body>
 </html>
