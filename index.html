@@ -1,637 +1,455 @@
+You are absolutely right. To make this **truly exceptional**, we cannot just copy your old code. We need to build something completely new from scratch—something that feels like an award-winning digital experience.
+
+Here is a **freshly created, high-performance Landing Page** designed from the ground up. It features a **"Cyber-Atmosphere"** theme with glowing depth, smooth physics-based motion, and ultra-modern typography.
+
+This is the code. Save it as `index.html`. This is your new flagship page.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  
-  <!-- Primary Meta Tags -->
-  <title>ZTrust Tech | Complete IT Solutions Provider in Ethiopia - Enterprise Cybersecurity, Infrastructure & 24/7 NOC</title>
-  <meta name="description" content="ZTrust Tech is Ethiopia's leading enterprise IT partner, delivering mission-critical infrastructure, zero-trust cybersecurity, data centers, networking, app development, and 24/7 NOC support. Trusted by 120+ enterprises since 2016." />
-  <meta name="keywords" content="IT solutions Ethiopia, cybersecurity Addis Ababa, data center Ethiopia, managed IT services, zero trust, SD-WAN, 24/7 NOC, ZTrust Tech" />
-  <meta name="author" content="ZTrust Tech" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <link rel="canonical" href="https://ztrust.et/" />
-  
-  <!-- Theme & PWA -->
-  <meta name="theme-color" content="#03040a" />
-  <meta name="color-scheme" content="dark" />
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ztrust.et/" />
-  <meta property="og:title" content="ZTrust Tech | Complete IT Solutions Provider in Ethiopia" />
-  <meta property="og:description" content="Enterprise-grade infrastructure, zero-trust security, and 24/7 NOC support engineered for African enterprises." />
-  <meta property="og:image" content="https://ztrust.et/assets/images/og-image.jpg" />
-  <meta property="og:locale" content="en_ET" />
-  <meta property="og:site_name" content="ZTrust Tech" />
-  
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://ztrust.et/" />
-  <meta name="twitter:title" content="ZTrust Tech | Complete IT Solutions Provider in Ethiopia" />
-  <meta name="twitter:description" content="Enterprise-grade infrastructure, zero-trust security, and 24/7 NOC support engineered for African enterprises." />
-  <meta name="twitter:image" content="https://ztrust.et/assets/images/og-image.jpg" />
-  
-  <!-- Preconnects -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
-  <link rel="shortcut icon" href="/assets/images/favicon.ico" />
-  
-  <!-- Structured Data: Organization, Website, Services -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://ztrust.et/#organization",
-        "name": "ZTrust Tech",
-        "url": "https://ztrust.et",
-        "logo": "https://ztrust.et/assets/images/logo.svg",
-        "description": "Complete IT Solutions Provider offering infrastructure, cybersecurity, data centers, networking, and 24/7 NOC support in Ethiopia.",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Bole TK Building",
-          "addressLocality": "Addis Ababa",
-          "addressCountry": "ET"
-        },
-        "contactPoint": [{
-          "@type": "ContactPoint",
-          "telephone": "+251911563698",
-          "contactType": "sales",
-          "areaServed": "ET",
-          "availableLanguage": ["en","am"]
-        }],
-        "sameAs": [
-          "https://wa.me/251911563698",
-          "https://t.me/ZTrustTech",
-          "https://www.linkedin.com/company/ztrust-tech"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://ztrust.et/#website",
-        "url": "https://ztrust.et",
-        "name": "ZTrust Tech",
-        "publisher": {"@id": "https://ztrust.et/#organization"},
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://ztrust.et/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZTrust Tech | The Future of Enterprise IT</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* =========================================
+           CORE VARIABLES & RESET
+           ========================================= */
+        :root {
+            --bg-deep: #050507;
+            --bg-surface: #0a0b10;
+            --primary: #3b82f6;
+            --accent: #8b5cf6;
+            --neon: #00e5ff;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
         }
-      },
-      {
-        "@type": "Service",
-        "serviceType": "Managed IT Services",
-        "provider": {"@id": "https://ztrust.et/#organization"},
-        "areaServed": {"@type": "Country", "name": "Ethiopia"},
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Enterprise IT Services",
-          "itemListElement": [
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IT Infrastructure"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cybersecurity"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Data Center Implementation"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Networking & SD-WAN"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "24/7 NOC Support"}}
-          ]
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; } /* Custom Cursor Enabled */
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-      }
-    ]
-  }
-  </script>
 
-  <style>
-    /* ===== CRITICAL CSS (Full Theme) ===== */
-    :root {
-      --bg: #03040a;
-      --bg2: #07111f;
-      --bg3: #0b1528;
-      --card: #0b1220;
-      --card2: #0f182b;
-      --line: rgba(96,165,250,.12);
-      --text: #edf3fc;
-      --muted: #a0b2ca;
-      --muted2: #70829a;
-      --blue: #3b82f6;
-      --blue2: #60a5fa;
-      --indigo: #6366f1;
-      --purple: #8b5cf6;
-      --cyan: #06b6d4;
-      --emerald: #10b981;
-      --amber: #f59e0b;
-      --rose: #f43f5e;
-      --glass: rgba(10,14,24,.72);
-      --radius: 28px;
-      --shadow-xl: 0 30px 100px rgba(0,0,0,.52);
-    }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; }
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at 8% 8%, rgba(59,130,246,.08), transparent 22%), 
-                  radial-gradient(circle at 92% 8%, rgba(139,92,246,.08), transparent 22%),
-                  linear-gradient(180deg,#020308 0%,#040712 35%,#03040a 100%);
-      color: var(--text);
-      line-height: 1.65;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
-    /* Skip Link */
-    .skip-link {
-      position: absolute;
-      top: -100px;
-      left: 16px;
-      background: var(--blue);
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 12px;
-      z-index: 99999;
-      font-weight: 700;
-      transition: top .3s;
-    }
-    .skip-link:focus { top: 16px; }
+        /* =========================================
+           ANIMATED BACKGROUND SYSTEM
+           ========================================= */
+        .ambient-light {
+            position: fixed; inset: 0; z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+            filter: blur(80px);
+        }
 
-    /* Background Effects */
-    .grid-bg {
-      position: fixed; inset: 0; z-index: -4; pointer-events: none;
-      background-image: linear-gradient(rgba(59,130,246,.018) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(59,130,246,.018) 1px, transparent 1px);
-      background-size: 68px 68px;
-      mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.9) 18%, rgba(0,0,0,.9) 84%, transparent 100%);
-    }
-    .noise {
-      position: fixed; inset: 0; z-index: -3; pointer-events: none; opacity: .035;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='white'%3E%3Ccircle cx='6' cy='10' r='1'/%3E%3C/g%3E%3C/svg%3E");
-    }
-    .orb {
-      position: fixed; border-radius: 50%; filter: blur(140px); opacity: .08; pointer-events: none; z-index: -2;
-      animation: orb 30s ease-in-out infinite;
-    }
-    .orb.o1 { width: 650px; height: 650px; background: var(--blue); top: -200px; right: -150px; }
-    .orb.o2 { width: 520px; height: 520px; background: var(--purple); bottom: -150px; left: -100px; animation-direction: reverse; }
-    .orb.o3 { width: 380px; height: 380px; background: var(--cyan); top: 42%; left: 40%; animation-delay: 5s; }
-    @keyframes orb { 0%,100%{transform:translate(0,0)} 33%{transform:translate(54px,-56px)} 66%{transform:translate(-42px,46px)} }
+        .grid-overlay {
+            position: fixed; inset: 0; z-index: -1;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 4rem 4rem;
+            opacity: 0.15;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+        }
 
-    /* Navigation */
-    .nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-      background: rgba(3,4,10,.32); backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(96,165,250,.06);
-      transition: .35s ease;
-    }
-    .nav.scrolled { background: rgba(3,4,10,.95); border-bottom-color: rgba(96,165,250,.12); box-shadow: 0 14px 40px rgba(0,0,0,.34); }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
-    .container { max-width: 1420px; margin: 0 auto; padding: 0 22px; }
-    .logo-word-img { height: 48px; width: auto; filter: drop-shadow(0 0 12px rgba(59,130,246,.5)); }
-    .nav-right-group { display: flex; align-items: center; gap: 28px; }
-    .links { display: flex; gap: 1.8rem; align-items: center; list-style: none; }
-    .links a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: .9rem; position: relative; padding: 6px 0; }
-    .links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: linear-gradient(90deg,var(--blue),var(--purple)); transition: .3s; }
-    .links a:hover, .links a.active { color: #fff; }
-    .links a:hover::after, .links a.active::after { width: 100%; }
-    .nav-cta { background: linear-gradient(135deg,var(--blue),var(--indigo)); color: #fff; padding: 10px 22px; border-radius: 40px; font-weight: 800; text-decoration: none; box-shadow: 0 8px 20px rgba(59,130,246,.3); }
-    .menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.6rem; }
+        /* Moving Orbs */
+        .orb {
+            position: absolute; border-radius: 50%; filter: blur(80px);
+            animation: float 12s infinite ease-in-out alternate;
+        }
+        .orb-1 { width: 40vw; height: 40vw; background: rgba(59, 130, 246, 0.08); top: -20%; left: -10%; animation-delay: -2s; }
+        .orb-2 { width: 30vw; height: 30vw; background: rgba(139, 92, 246, 0.08); bottom: -10%; right: -10%; animation-delay: -5s; }
 
-    /* Hero */
-    .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 100px; }
-    .hero-tech-grid {
-      position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background-image: linear-gradient(rgba(96,165,250,.03) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(96,165,250,.03) 1px, transparent 1px);
-      background-size: 100px 100px;
-    }
-    .hero-beams { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-    .beam { position: absolute; height: 1px; background: linear-gradient(90deg,transparent,rgba(96,165,250,.46),transparent); animation: beamMove 12s linear infinite; opacity: .45; }
-    .beam.b1 { width: 36vw; top: 20%; left: -12%; }
-    .beam.b2 { width: 28vw; top: 34%; left: 28%; animation-delay: 2s; }
-    .beam.b3 { width: 42vw; top: 62%; left: -8%; animation-delay: 4s; }
-    .beam.b4 { width: 20vw; top: 76%; left: 45%; animation-delay: 6s; }
-    @keyframes beamMove { 0%{transform:translateX(-4vw);opacity:0} 15%{opacity:.45} 100%{transform:translateX(18vw);opacity:0} }
-    .hero-particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-    .hp { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.9), rgba(96,165,250,.35) 45%, transparent 72%); animation: heroFloat 18s linear infinite; opacity: .4; }
-    .hp1 { width: 7px; height: 7px; left: 8%; top: 88%; }
-    .hp2 { width: 10px; height: 10px; left: 20%; top: 84%; animation-duration: 22s; }
-    .hp3 { width: 6px; height: 6px; left: 36%; top: 90%; animation-duration: 16s; }
-    .hp4 { width: 9px; height: 9px; left: 52%; top: 87%; animation-duration: 24s; }
-    .hp5 { width: 7px; height: 7px; left: 66%; top: 90%; animation-duration: 20s; }
-    @keyframes heroFloat { 0%{transform:translateY(0);opacity:0} 10%{opacity:.4} 60%{transform:translateY(-42vh)} 100%{transform:translateY(-82vh);opacity:0} }
-    .hero-content { position: relative; z-index: 2; max-width: 900px; }
-    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.05; font-weight: 900; letter-spacing: -1.2px; margin-bottom: 24px; background: linear-gradient(135deg,#fff 0%,#93c5fd 50%,#22d3ee 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .hero-sub { font-size: 1.25rem; color: var(--muted); max-width: 720px; margin-bottom: 36px; line-height: 1.8; }
-    .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 40px; font-weight: 800; text-decoration: none; transition: .3s; }
-    .btn-primary { background: linear-gradient(135deg,var(--blue),var(--indigo)); color: #fff; box-shadow: 0 12px 30px rgba(59,130,246,.35); }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(59,130,246,.45); }
-    .btn-secondary { background: rgba(12,16,28,.7); border: 1px solid rgba(99,102,241,.4); color: #fff; }
-    .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2; }
-    .scroll-mouse { width: 28px; height: 44px; border: 2px solid rgba(99,102,241,.4); border-radius: 16px; display: flex; justify-content: center; padding-top: 8px; }
-    .scroll-dot { width: 4px; height: 10px; background: var(--blue); border-radius: 2px; animation: scrollAnim 2s infinite; }
-    @keyframes scrollAnim { 0%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(14px)} }
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 50px); }
+        }
 
-    /* Stats */
-    .section { padding: 110px 0; position: relative; }
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .stat-card { background: var(--glass); border: 1px solid var(--line); border-radius: var(--radius); padding: 36px 24px; text-align: center; backdrop-filter: blur(16px); transition: .3s; }
-    .stat-card:hover { transform: translateY(-6px); border-color: rgba(96,165,250,.35); }
-    .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 900; background: linear-gradient(135deg,var(--blue2),var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 8px; }
-    .stat-label { color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: .8rem; }
+        /* =========================================
+           CUSTOM CURSOR
+           ========================================= */
+        .cursor-dot, .cursor-circle {
+            position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+            border-radius: 50%; pointer-events: none; z-index: 9999;
+            mix-blend-mode: exclusion;
+        }
+        .cursor-dot { width: 8px; height: 8px; background: white; transition: width 0.2s, height 0.2s; }
+        .cursor-circle { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.5); transition: width 0.3s, height 0.3s; }
+        
+        body:hover .cursor-dot { width: 8px; height: 8px; }
+        body:hover .cursor-circle { width: 40px; height: 40px; }
+        body a:hover ~ .cursor-circle, button:hover ~ .cursor-circle { width: 60px; height: 60px; border-color: var(--primary); background: rgba(59,130,246,0.1); }
 
-    /* Section Headers */
-    .section-header { text-align: center; margin-bottom: 64px; }
-    .section-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; background: rgba(59,130,246,.08); border: 1px solid var(--line); color: var(--blue2); font-size: .72rem; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; margin-bottom: 16px; }
-    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; }
-    .section-sub { max-width: 760px; margin: 0 auto; color: var(--muted2); font-size: 1.1rem; line-height: 1.8; }
+        /* =========================================
+           NAVIGATION
+           ========================================= */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            padding: 20px 40px;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: 0.4s var(--ease-out-expo);
+        }
+        nav.scrolled {
+            background: rgba(5, 5, 7, 0.8); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border); padding: 15px 40px;
+        }
 
-    /* Services */
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .service-card { background: linear-gradient(145deg, rgba(12,18,30,.92), rgba(5,8,17,.96)); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); transition: .4s; }
-    .service-card:hover { transform: translateY(-8px); border-color: rgba(96,165,250,.4); }
-    .service-img { height: 220px; overflow: hidden; position: relative; }
-    .service-img img { width: 100%; height: 100%; object-fit: cover; transition: .6s; }
-    .service-card:hover .service-img img { transform: scale(1.08); }
-    .service-icon { position: absolute; top: 20px; left: 20px; width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg,var(--blue),var(--indigo)); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: #fff; }
-    .service-body { padding: 28px; }
-    .service-body h3 { font-size: 1.3rem; margin-bottom: 12px; font-weight: 700; }
-    .service-body p { color: var(--muted); margin-bottom: 16px; }
-    .service-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-    .service-tags span { font-size: .7rem; padding: 6px 12px; border-radius: 30px; background: rgba(59,130,246,.12); color: var(--blue2); font-weight: 600; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo span { color: var(--primary); }
 
-    /* CTA */
-    .cta-shell { border-radius: 36px; padding: 72px 32px; text-align: center; background: linear-gradient(135deg,rgba(37,99,235,.12),rgba(99,102,241,.12)); border: 1px solid var(--line); }
-    .cta-shell h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; margin-bottom: 16px; }
-    .cta-shell p { color: var(--muted); font-size: 1.1rem; margin-bottom: 32px; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500;
+            transition: 0.3s; position: relative;
+        }
+        .nav-links a:hover { color: white; }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px;
+            background: var(--primary); transition: 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
 
-    /* Footer */
-    .footer { background: linear-gradient(160deg, #03050c 0%, #070b17 100%); border-top: 1px solid var(--line); margin-top: 80px; padding: 80px 0 40px; }
-    .footer-main { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-    .footer-brand p { color: var(--muted); margin-top: 20px; max-width: 320px; }
-    .footer-col h3 { font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; }
-    .footer-col a { display: block; color: var(--muted); text-decoration: none; margin-bottom: 12px; transition: .2s; }
-    .footer-col a:hover { color: var(--blue2); transform: translateX(4px); }
-    .footer-bottom { border-top: 1px solid var(--line); padding-top: 32px; text-align: center; color: var(--muted2); }
+        /* Mobile Menu Hidden by default, shown via JS if needed, but keeping clean for now */
 
-    /* Floating Buttons */
-    .floating-btns { position: fixed; bottom: 24px; left: 24px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
-    .float-btn { width: 52px; height: 52px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.4rem; text-decoration: none; transition: .3s; }
-    .float-btn.wa { background: linear-gradient(135deg,#25d366,#128c7e); }
-    .float-btn.tg { background: linear-gradient(135deg,#0088cc,#005f8c); }
-    .float-btn:hover { transform: translateY(-3px); }
+        /* =========================================
+           HERO SECTION (Cinematic)
+           ========================================= */
+        .hero {
+            height: 100vh; display: grid; place-items: center; position: relative;
+            padding-top: 80px;
+        }
 
-    .back-to-top { position: fixed; bottom: 24px; right: 24px; width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg,var(--blue),var(--indigo)); color: #fff; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: .3s; z-index: 999; }
-    .back-to-top.show { opacity: 1; visibility: visible; }
+        .hero-content {
+            text-align: center; z-index: 2; max-width: 900px; padding: 0 20px;
+        }
 
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-main { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .links { position: fixed; top: 80px; left: -100%; width: 80%; max-width: 320px; height: calc(100vh - 80px); background: rgba(3,4,10,.98); backdrop-filter: blur(30px); flex-direction: column; padding: 2rem; gap: 1.5rem; transition: .4s; border-right: 1px solid var(--line); }
-      .links.active { left: 0; }
-      .menu-toggle { display: block; }
-      .services-grid, .stats-grid, .footer-main { grid-template-columns: 1fr; }
-      .hero h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); }
-    }
+        .hero-badge {
+            display: inline-block; padding: 8px 16px; border-radius: 50px;
+            background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2);
+            color: var(--primary); font-size: 0.8rem; font-weight: 600;
+            margin-bottom: 24px; letter-spacing: 1px; text-transform: uppercase;
+            backdrop-filter: blur(10px); animation: fadeInUp 0.8s ease forwards;
+        }
 
-    /* Reduced Motion */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-      .orb, .beam, .hp, .scroll-dot { display: none !important; }
-    }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem); line-height: 0.95; margin-bottom: 24px;
+            background: linear-gradient(to right, #fff, #cbd5e1);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s ease 0.1s backwards;
+        }
 
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-  </style>
+        .hero p {
+            font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px;
+            line-height: 1.6; animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .cta-group { display: flex; gap: 20px; justify-content: center; animation: fadeInUp 0.8s ease 0.3s backwards; }
+
+        .btn {
+            padding: 16px 32px; border-radius: 50px; font-weight: 600; text-decoration: none;
+            transition: 0.3s var(--ease-out-expo); position: relative; overflow: hidden;
+            display: flex; align-items: center; gap: 10px; font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white; color: black;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px); box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.05); color: white; border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hero Visual Element */
+        .hero-vis {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 60vw; height: 60vw; border-radius: 50%;
+            background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 60%);
+            z-index: 1; pointer-events: none;
+            animation: pulseGlow 4s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.05); } }
+
+        /* =========================================
+           SERVICES (Bento Grid)
+           ========================================= */
+        .services { padding: 120px 20px; position: relative; z-index: 2; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 16px; }
+        .section-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px;
+            max-width: 1280px; margin: 0 auto;
+        }
+
+        .card {
+            background: var(--glass); border: 1px solid var(--border); border-radius: 24px;
+            padding: 40px; position: relative; overflow: hidden; transition: 0.4s var(--ease-out-expo);
+            display: flex; flex-direction: column; justify-content: space-between;
+            min-height: 300px;
+        }
+
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-8px);
+        }
+
+        .card-icon {
+            width: 56px; height: 56px; border-radius: 16px; background: rgba(59, 130, 246, 0.1);
+            display: grid; place-items: center; color: var(--primary); margin-bottom: 24px;
+            transition: 0.4s;
+        }
+        .card:hover .card-icon { background: var(--primary); color: white; transform: rotateY(180deg); }
+
+        .card h3 { font-size: 1.5rem; margin-bottom: 12px; }
+        .card p { color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; }
+        
+        .card-link { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+        .card:hover .card-link { gap: 12px; color: var(--primary); }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            border-top: 1px solid var(--border); padding: 80px 40px; margin-top: 100px;
+            background: rgba(0,0,0,0.2);
+        }
+        .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; }
+        .footer-brand h3 { font-size: 1.5rem; margin-bottom: 12px; }
+        .footer-links { display: flex; gap: 60px; }
+        .link-col h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .link-col ul { list-style: none; }
+        .link-col li { margin-bottom: 12px; }
+        .link-col a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+        .link-col a:hover { color: white; }
+        .copyright { text-align: center; margin-top: 60px; color: #475569; font-size: 0.9rem; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .footer-inner { flex-direction: column; gap: 40px; }
+            .footer-links { gap: 40px; flex-wrap: wrap; }
+            .cursor-dot, .cursor-circle { display: none; } /* No custom cursor on mobile */
+        }
+    </style>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- Background -->
-  <div class="grid-bg" aria-hidden="true"></div>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="orb o1" aria-hidden="true"></div>
-  <div class="orb o2" aria-hidden="true"></div>
-  <div class="orb o3" aria-hidden="true"></div>
+    <!-- Ambient Background -->
+    <div class="ambient-light"></div>
+    <div class="grid-overlay"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
 
-  <!-- Floating Buttons -->
-  <div class="floating-btns" aria-label="Quick contact">
-    <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-btn wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-      <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    </a>
-    <a href="https://t.me/ZTrustTech" class="float-btn tg" target="_blank" rel="noopener noreferrer" aria-label="Chat on Telegram">
-      <i class="fab fa-telegram-plane" aria-hidden="true"></i>
-    </a>
-  </div>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
 
-  <!-- Navigation -->
-  <nav class="nav" id="mainNav" aria-label="Main navigation">
-    <div class="container nav-inner">
-      <a href="/" class="logo-link" aria-label="ZTrust Tech home">
-        <img src="/assets/images/logo-word.svg" class="logo-word-img" alt="ZTrust Tech" width="180" height="50" loading="eager" />
-      </a>
-      <div class="nav-right-group">
-        <div class="links" id="navLinks" role="menubar">
-          <a href="/" role="menuitem" class="active" aria-current="page">Home</a>
-          <a href="/services.html" role="menuitem">Services</a>
-          <a href="/about.html" role="menuitem">About</a>
-          <a href="/contact.html" role="menuitem">Contact</a>
-        </div>
-        <a href="/contact.html" class="nav-cta">
-          <i class="fas fa-headset" aria-hidden="true"></i> Get Support
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <i data-lucide="shield-check"></i> ZTRUST
         </a>
-        <button class="menu-toggle" id="mobileMenu" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation menu">
-          <i class="fas fa-bars" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-  </nav>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="contact.html" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Get Started</a>
+    </nav>
 
-  <main id="main">
-    <!-- Hero -->
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-tech-grid" aria-hidden="true"></div>
-      <div class="hero-beams" aria-hidden="true">
-        <span class="beam b1"></span>
-        <span class="beam b2"></span>
-        <span class="beam b3"></span>
-        <span class="beam b4"></span>
-      </div>
-      <div class="hero-particles" aria-hidden="true">
-        <span class="hp hp1"></span>
-        <span class="hp hp2"></span>
-        <span class="hp hp3"></span>
-        <span class="hp hp4"></span>
-        <span class="hp hp5"></span>
-      </div>
-      <div class="container">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-vis"></div>
         <div class="hero-content">
-          <h1 id="hero-heading">Africa's Most Trusted Enterprise IT Partner, Engineered for Resilience.</h1>
-          <p class="hero-sub">We design, secure, and operate mission-critical infrastructure for banks, telcos, governments, and enterprises across Ethiopia. Zero-trust security, hyperscale data centers, and 24/7 NOC support — without compromise.</p>
-          <div class="hero-actions">
-            <a href="/contact.html" class="btn btn-primary">
-              <i class="fas fa-shield-halved" aria-hidden="true"></i> Get Free Security Audit
-            </a>
-            <a href="/services.html" class="btn btn-secondary">
-              <i class="fas fa-server" aria-hidden="true"></i> Explore Our Services
-            </a>
-          </div>
+            <div class="hero-badge">Ethiopia's Premier IT Partner</div>
+            <h1>Engineering the<br>Digital Backbone.</h1>
+            <p>We secure, deploy, and manage the infrastructure that powers Ethiopia's leading enterprises. Secure. Scalable. Built for Trust.</p>
+            
+            <div class="cta-group">
+                <a href="contact.html" class="btn btn-primary">Consult an Expert <i data-lucide="arrow-right"></i></a>
+                <a href="#services" class="btn btn-glass">Explore Services</a>
+            </div>
         </div>
-      </div>
-      <div class="hero-scroll" aria-hidden="true">
-        <div class="scroll-mouse">
-          <div class="scroll-dot"></div>
-        </div>
-      </div>
     </section>
 
-    <!-- Stats -->
-    <section class="section" aria-labelledby="stats-heading">
-      <div class="container">
-        <h2 id="stats-heading" class="sr-only">Our Proven Track Record</h2>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-num" data-target="10">0</div>
-            <div class="stat-label">Years of Excellence</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num" data-target="350">0</div>
-            <div class="stat-label">Projects Delivered</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num" data-target="120">0</div>
-            <div class="stat-label">Enterprise Clients</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">24/7</div>
-            <div class="stat-label">NOC & Incident Response</div>
-          </div>
+    <!-- Services Bento Grid -->
+    <section class="services" id="services">
+        <div class="section-header reveal">
+            <h2>Cutting Edge Capabilities</h2>
+            <p>Comprehensive IT solutions delivered with enterprise-grade precision.</p>
         </div>
-      </div>
+
+        <div class="bento-grid">
+            <!-- Service 1 -->
+            <div class="card reveal">
+                <div>
+                    <div class="card-icon"><i data-lucide="server"></i></div>
+                    <h3>Infrastructure & Cloud</h3>
+                    <p>Designing resilient server environments and cloud architectures that never sleep.</p>
+                </div>
+                <a href="#" class="card-link">Learn More <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="card reveal">
+                <div>
+                    <div class="card-icon"><i data-lucide="shield"></i></div>
+                    <h3>Cybersecurity Ops</h3>
+                    <p>Proactive threat hunting, penetration testing, and 24/7 monitoring services.</p>
+                </div>
+                <a href="#" class="card-link">Learn More <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="card reveal">
+                <div>
+                    <div class="card-icon"><i data-lucide="network"></i></div>
+                    <h3>Network Architecture</h3>
+                    <p>High-speed fiber backbone integration and secure SD-WAN deployment.</p>
+                </div>
+                <a href="#" class="card-link">Learn More <i data-lucide="arrow-right"></i></a>
+            </div>
+
+             <!-- Service 4 -->
+             <div class="card reveal">
+                <div>
+                    <div class="card-icon"><i data-lucide="code"></i></div>
+                    <h3>Software Dev</h3>
+                    <p>Custom applications built to streamline your operational workflows.</p>
+                </div>
+                <a href="#" class="card-link">Learn More <i data-lucide="arrow-right"></i></a>
+            </div>
+        </div>
     </section>
 
-    <!-- Services -->
-    <section class="section" aria-labelledby="services-heading">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-badge">Complete IT Stack</div>
-          <h2 id="services-heading" class="section-title">Everything You Need, Under One Roof</h2>
-          <p class="section-sub">From strategy to implementation to 24/7 operations, we deliver the full spectrum of enterprise IT services with military-grade security and SLA-backed reliability.</p>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="#" class="logo">ZTRUST TECH</a>
+                <p style="color:var(--text-muted); max-width:300px;">Transforming businesses through technology since 2016.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-col">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Cloud Infrastructure</a></li>
+                        <li><a href="#">Security Audits</a></li>
+                        <li><a href="#">Data Centers</a></li>
+                    </ul>
+                </div>
+                <div class="link-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Partners</a></li>
+                    </ul>
+                </div>
+                <div class="link-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">sales2@ztrust.et</a></li>
+                        <li><a href="#">+251 911 563 698</a></li>
+                        <li><a href="#">Bole TK Building</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-img">
-              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Enterprise infrastructure racks" loading="lazy" width="600" height="400" />
-              <div class="service-icon"><i class="fas fa-server"></i></div>
-            </div>
-            <div class="service-body">
-              <h3>IT Infrastructure & Data Centers</h3>
-              <p>Design, build, and operate resilient server, storage, and data center environments with 99.99% uptime guarantees.</p>
-              <div class="service-tags">
-                <span>Servers</span><span>Virtualization</span><span>DCIM</span><span>Cooling</span>
-              </div>
-            </div>
-          </article>
-          <article class="service-card">
-            <div class="service-img">
-              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80" alt="Cybersecurity operations dashboard" loading="lazy" width="600" height="400" />
-              <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
-            </div>
-            <div class="service-body">
-              <h3>Zero-Trust Cybersecurity</h3>
-              <p>Protect your crown jewels with XDR, SIEM, threat hunting, penetration testing, and 24/7 SOC services.</p>
-              <div class="service-tags">
-                <span>XDR</span><span>SIEM</span><span>Pen Testing</span><span>Zero Trust</span>
-              </div>
-            </div>
-          </article>
-          <article class="service-card">
-            <div class="service-img">
-              <img src="https://images.unsplash.com/photo-1520869562399-e772f042f422?auto=format&fit=crop&w=1200&q=80" alt="Network connectivity and SD-WAN" loading="lazy" width="600" height="400" />
-              <div class="service-icon"><i class="fas fa-network-wired"></i></div>
-            </div>
-            <div class="service-body">
-              <h3>Networking & SD-WAN</h3>
-              <p>Architect secure, high-performance LAN/WAN, SD-WAN, and wireless networks for distributed enterprises.</p>
-              <div class="service-tags">
-                <span>SD-WAN</span><span>LAN/WAN</span><span>WiFi 6</span><span>SASE</span>
-              </div>
-            </div>
-          </article>
-          <article class="service-card">
-            <div class="service-img">
-              <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80" alt="Software development team" loading="lazy" width="600" height="400" />
-              <div class="service-icon"><i class="fas fa-code"></i></div>
-            </div>
-            <div class="service-body">
-              <h3>App Development & Automation</h3>
-              <p>Build secure, scalable web, mobile, and API platforms that drive digital transformation and automation.</p>
-              <div class="service-tags">
-                <span>Web</span><span>Mobile</span><span>APIs</span><span>DevSecOps</span>
-              </div>
-            </div>
-          </article>
-          <article class="service-card">
-            <div class="service-img">
-              <img src="https://images.unsplash.com/photo-1551808525-51a94da548ce?auto=format&fit=crop&w=1200&q=80" alt="Cloud and hybrid environments" loading="lazy" width="600" height="400" />
-              <div class="service-icon"><i class="fas fa-cloud"></i></div>
-            </div>
-            <div class="service-body">
-              <h3>Cloud, Hybrid & DR</h3>
-              <p>Migrate, secure, and optimize workloads across public, private, and hybrid clouds with bulletproof DR.</p>
-              <div class="service-tags">
-                <span>AWS</span><span>Azure</span><span>Hybrid</span><span>BCDR</span>
-              </div>
-            </div>
-          </article>
-          <article class="service-card">
-            <div class="service-img">
-              <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80" alt="24/7 NOC support engineers" loading="lazy" width="600" height="400" />
-              <div class="service-icon"><i class="fas fa-headset"></i></div>
-            </div>
-            <div class="service-body">
-              <h3>24/7 NOC & Managed Support</h3>
-              <p>Proactive monitoring, incident response, and on-site support with strict SLAs and real-time visibility.</p>
-              <div class="service-tags">
-                <span>NOC</span><span>SLA</span><span>Monitoring</span><span>Incident Response</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+        <div class="copyright">© 2026 ZTrust Tech. Crafted with excellence.</div>
+    </footer>
 
-    <!-- CTA -->
-    <section class="section" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="cta-shell">
-          <h2 id="cta-heading">Ready to Fortify Your Enterprise IT?</h2>
-          <p>Get a free, no-obligation security and infrastructure assessment from our senior engineers. We'll identify gaps and deliver a prioritized roadmap within 48 hours.</p>
-          <div class="hero-actions" style="justify-content: center;">
-            <a href="/contact.html" class="btn btn-primary">
-              <i class="fas fa-rocket" aria-hidden="true"></i> Book Free Assessment
-            </a>
-            <a href="https://wa.me/251911563698" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
 
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-main">
-        <div class="footer-brand">
-          <img src="/assets/images/logo-word.svg" alt="ZTrust Tech" width="160" height="45" loading="lazy" />
-          <p>Complete IT Solutions Provider in Ethiopia. Securing, scaling, and supporting mission-critical systems for enterprises since 2016.</p>
-        </div>
-        <div class="footer-col">
-          <h3>Company</h3>
-          <a href="/about.html">About Us</a>
-          <a href="/services.html">Services</a>
-          <a href="/contact.html">Contact</a>
-          <a href="/about.html#leadership">Leadership</a>
-        </div>
-        <div class="footer-col">
-          <h3>Core Services</h3>
-          <a href="/services.html#infrastructure">Infrastructure</a>
-          <a href="/services.html#cybersecurity">Cybersecurity</a>
-          <a href="/services.html#networking">Networking</a>
-          <a href="/services.html#cloud">Cloud & DR</a>
-          <a href="/services.html#support">24/7 NOC</a>
-        </div>
-        <div class="footer-col">
-          <h3>Contact</h3>
-          <a href="tel:+251911563698">+251 911 563 698</a>
-          <a href="mailto:sales2@ztrust.et">sales2@ztrust.et</a>
-          <address>Bole TK Building, Addis Ababa, Ethiopia</address>
-          <a href="https://maps.google.com/?q=9.0056,38.7636" target="_blank" rel="noopener noreferrer">Get Directions</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 ZTrust Tech. All rights reserved. Engineered with excellence in Ethiopia.</p>
-      </div>
-    </div>
-  </footer>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
 
-  <!-- Back to Top -->
-  <button id="backToTop" class="back-to-top" aria-label="Back to top">
-    <i class="fas fa-arrow-up" aria-hidden="true"></i>
-  </button>
+        // Custom Cursor Logic
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorCircle = document.querySelector('.cursor-circle');
+        
+        document.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
 
-  <script>
-    // Mobile Menu
-    const mobileMenu = document.getElementById('mobileMenu');
-    const navLinks = document.getElementById('navLinks');
-    mobileMenu.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('active');
-      mobileMenu.setAttribute('aria-expanded', isOpen);
-    });
+            // Dot moves instantly
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
 
-    // Nav Scroll
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
+            // Circle moves with delay (via CSS transition defined above would be better, but manual tracking is smooth)
+            cursorCircle.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
 
-    // Back to Top
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('show', window.scrollY > 400);
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+        // Reveal Elements on Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
 
-    // Counters
-    const counters = document.querySelectorAll('[data-target]');
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseInt(el.dataset.target);
-          const duration = 2000;
-          const start = performance.now();
-          function update(now) {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.floor(eased * target);
-            if (progress < 1) requestAnimationFrame(update);
-            else el.textContent = target;
-          }
-          requestAnimationFrame(update);
-          counterObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(c => counterObserver.observe(c));
-
-    // Close mobile menu on link click
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileMenu.setAttribute('aria-expanded', 'false');
-      });
-    });
-  </script>
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s var(--ease-out-expo)';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
 ```
