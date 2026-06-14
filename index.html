@@ -53,23 +53,22 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* MAIN BACKGROUND IMAGE (Background.JPG) */
+    /* MAIN BACKGROUND IMAGE - FULLY VISIBLE */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       background: url('Background.JPG') center/cover no-repeat fixed;
-      filter: brightness(0.6) contrast(1.05);
+      filter: brightness(0.55) contrast(1.1);
       z-index: -3;
       pointer-events: none;
     }
 
-    /* dark overlay for readability */
-    body::after {
-      content: "";
+    /* Light overlay for text readability - NOT covering background image */
+    .hero-overlay {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.55), rgba(1, 2, 10, 0.88));
+      background: radial-gradient(circle at 30% 40%, rgba(0, 0, 0, 0.4), rgba(1, 2, 10, 0.7));
       z-index: -2;
       pointer-events: none;
     }
@@ -79,8 +78,8 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      background-image: linear-gradient(rgba(59, 130, 246, 0.02) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(59, 130, 246, 0.02) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
       background-size: 68px 68px;
     }
 
@@ -229,9 +228,9 @@
       cursor: pointer;
     }
 
-    /* HERO SECTION - FIXED: text not covered, network graphics on sides */
+    /* HERO SECTION - Glass panel so background is visible through text */
     .hero {
-      min-height: 90vh;
+      min-height: 95vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -240,106 +239,123 @@
       overflow: hidden;
     }
 
-    /* Network Graphics - Left Side */
-    .hero-network-left {
+    /* Animated Background Elements - Networks, Nodes, Data Streams */
+    .animated-bg {
       position: absolute;
-      left: 2%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 280px;
-      height: 400px;
+      inset: 0;
+      z-index: 0;
       pointer-events: none;
-      z-index: 1;
+      overflow: hidden;
     }
 
-    /* Network Graphics - Right Side */
-    .hero-network-right {
+    /* Floating Nodes */
+    .bg-node {
       position: absolute;
-      right: 2%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 280px;
-      height: 400px;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .node {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: var(--blue);
       border-radius: 50%;
-      box-shadow: 0 0 15px var(--blue);
-      animation: pulseNode 2.5s infinite alternate;
+      background: radial-gradient(circle, var(--blue), transparent);
+      opacity: 0.4;
+      animation: floatNode linear infinite;
     }
 
-    .node-purple {
-      background: var(--purple);
-      box-shadow: 0 0 15px var(--purple);
+    .bg-node-1 { width: 4px; height: 4px; top: 15%; left: 8%; animation-duration: 12s; }
+    .bg-node-2 { width: 8px; height: 8px; top: 25%; right: 12%; animation-duration: 15s; background: radial-gradient(circle, var(--purple), transparent); }
+    .bg-node-3 { width: 6px; height: 6px; bottom: 30%; left: 20%; animation-duration: 18s; background: radial-gradient(circle, var(--cyan), transparent); }
+    .bg-node-4 { width: 10px; height: 10px; top: 60%; right: 25%; animation-duration: 20s; background: radial-gradient(circle, var(--emerald), transparent); }
+    .bg-node-5 { width: 5px; height: 5px; bottom: 15%; right: 40%; animation-duration: 14s; }
+    .bg-node-6 { width: 7px; height: 7px; top: 40%; left: 35%; animation-duration: 22s; background: radial-gradient(circle, var(--indigo), transparent); }
+    .bg-node-7 { width: 12px; height: 12px; bottom: 50%; left: 55%; animation-duration: 17s; background: radial-gradient(circle, var(--blue2), transparent); }
+    .bg-node-8 { width: 4px; height: 4px; top: 75%; right: 8%; animation-duration: 13s; }
+
+    @keyframes floatNode {
+      0% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
+      50% { transform: translateY(-30px) translateX(20px); opacity: 0.6; }
+      100% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
     }
 
-    .node-cyan {
-      background: var(--cyan);
-      box-shadow: 0 0 15px var(--cyan);
-    }
-
-    .node-lg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .node-sm {
-      width: 6px;
-      height: 6px;
-    }
-
-    .connection-line {
+    /* Connection Lines */
+    .bg-line {
       position: absolute;
-      background: linear-gradient(90deg, var(--blue), var(--purple));
-      height: 2px;
-      opacity: 0.5;
-      border-radius: 2px;
-      animation: flickerLine 3s infinite;
+      background: linear-gradient(90deg, transparent, var(--blue), var(--purple), transparent);
+      height: 1px;
+      opacity: 0.3;
+      animation: pulseLine 3s infinite;
+    }
+    .bg-line-1 { width: 180px; top: 20%; left: 5%; transform: rotate(25deg); }
+    .bg-line-2 { width: 250px; bottom: 35%; right: 3%; transform: rotate(-15deg); animation-delay: 1s; }
+    .bg-line-3 { width: 140px; top: 55%; left: 70%; transform: rotate(45deg); animation-delay: 0.5s; }
+    .bg-line-4 { width: 200px; bottom: 20%; left: 15%; transform: rotate(-30deg); animation-delay: 1.5s; }
+    .bg-line-5 { width: 120px; top: 35%; right: 20%; transform: rotate(60deg); animation-delay: 0.8s; }
+
+    @keyframes pulseLine {
+      0%, 100% { opacity: 0.1; width: 80px; }
+      50% { opacity: 0.5; width: 100%; }
     }
 
-    .connection-line-vertical {
-      background: linear-gradient(180deg, var(--cyan), var(--blue));
+    /* Data Stream Particles */
+    .data-stream {
+      position: absolute;
       width: 2px;
       height: 60px;
+      background: linear-gradient(180deg, var(--cyan), transparent);
+      animation: streamFall linear infinite;
+      opacity: 0.4;
+    }
+    .stream-1 { left: 12%; top: -60px; animation-duration: 3s; animation-delay: 0s; }
+    .stream-2 { left: 25%; top: -60px; animation-duration: 4s; animation-delay: 1s; width: 1px; }
+    .stream-3 { left: 68%; top: -60px; animation-duration: 3.5s; animation-delay: 0.5s; }
+    .stream-4 { left: 82%; top: -60px; animation-duration: 5s; animation-delay: 2s; width: 1px; background: linear-gradient(180deg, var(--purple), transparent); }
+    .stream-5 { left: 45%; top: -60px; animation-duration: 4.2s; animation-delay: 1.5s; }
+    .stream-6 { left: 55%; top: -60px; animation-duration: 3.8s; animation-delay: 0.8s; width: 1px; }
+
+    @keyframes streamFall {
+      0% { top: -60px; opacity: 0; }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.5; }
+      100% { top: 110%; opacity: 0; }
     }
 
-    @keyframes pulseNode {
-      0% { opacity: 0.3; transform: scale(0.7); }
-      100% { opacity: 1; transform: scale(1.3); }
+    /* Server Rack Icons (abstract) */
+    .server-rack {
+      position: absolute;
+      width: 30px;
+      height: 50px;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 4px;
+      opacity: 0.3;
+      animation: rackPulse 4s infinite;
+    }
+    .server-rack::before, .server-rack::after {
+      content: "";
+      position: absolute;
+      left: 20%;
+      width: 60%;
+      height: 3px;
+      background: rgba(59, 130, 246, 0.5);
+      border-radius: 2px;
+    }
+    .server-rack::before { top: 12px; }
+    .server-rack::after { bottom: 12px; }
+    .rack-1 { bottom: 15%; left: 5%; animation-delay: 0s; }
+    .rack-2 { top: 20%; right: 8%; animation-delay: 1s; transform: scale(0.8); }
+    .rack-3 { bottom: 40%; right: 15%; animation-delay: 2s; transform: scale(0.6); }
+
+    @keyframes rackPulse {
+      0%, 100% { opacity: 0.15; border-color: rgba(59, 130, 246, 0.2); }
+      50% { opacity: 0.4; border-color: rgba(59, 130, 246, 0.6); }
     }
 
-    @keyframes flickerLine {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 0.7; }
-    }
-
-    /* Hide network graphics on mobile for better text readability */
-    @media (max-width: 900px) {
-      .hero-network-left, .hero-network-right {
-        opacity: 0.3;
-        transform: translateY(-50%) scale(0.7);
-      }
-    }
-
-    @media (max-width: 680px) {
-      .hero-network-left, .hero-network-right {
-        display: none;
-      }
-    }
-
-    /* Hero Content - perfectly centered and readable */
+    /* Hero Content - Glass card that doesn't hide background */
     .hero-content {
       position: relative;
       z-index: 10;
-      max-width: 900px;
+      max-width: 850px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 50px 40px;
+      background: rgba(1, 3, 15, 0.55);
+      backdrop-filter: blur(12px);
+      border-radius: 60px;
+      border: 1px solid rgba(96, 165, 250, 0.25);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
 
     .hero-badge {
@@ -348,11 +364,11 @@
       gap: 8px;
       padding: 6px 18px;
       border-radius: 999px;
-      background: rgba(59, 130, 246, 0.15);
-      border: 1px solid rgba(96, 165, 250, 0.3);
-      backdrop-filter: blur(8px);
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      backdrop-filter: blur(4px);
       color: var(--blue2);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -361,7 +377,7 @@
 
     .hero-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-size: clamp(2.2rem, 5.5vw, 4.5rem);
       font-weight: 900;
       line-height: 1.1;
       background: linear-gradient(135deg, #FFFFFF, #60a5fa, #c084fc);
@@ -372,12 +388,12 @@
     }
 
     .hero-tagline {
-      max-width: 680px;
+      max-width: 620px;
       margin: 0 auto 28px;
-      color: #bfd6ff;
-      font-size: clamp(0.95rem, 3vw, 1.1rem);
+      color: #d0e2ff;
+      font-size: clamp(0.9rem, 2.8vw, 1.05rem);
       font-weight: 500;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.5px;
     }
 
     .hero-buttons {
@@ -690,6 +706,7 @@
       .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
       .section { padding: 60px 0; }
       .service-grid-exceptional { grid-template-columns: 1fr; max-width: 540px; margin-left: auto; margin-right: auto; }
+      .hero-content { margin: 0 20px; padding: 35px 25px; }
       .links {
         position: fixed;
         top: 70px;
@@ -720,8 +737,42 @@
   </style>
 </head>
 <body>
+  <div class="hero-overlay"></div>
   <div class="grid-bg"></div>
   <div class="noise"></div>
+
+  <!-- Animated Background Elements -->
+  <div class="animated-bg">
+    <!-- Floating Nodes -->
+    <div class="bg-node bg-node-1"></div>
+    <div class="bg-node bg-node-2"></div>
+    <div class="bg-node bg-node-3"></div>
+    <div class="bg-node bg-node-4"></div>
+    <div class="bg-node bg-node-5"></div>
+    <div class="bg-node bg-node-6"></div>
+    <div class="bg-node bg-node-7"></div>
+    <div class="bg-node bg-node-8"></div>
+    
+    <!-- Connection Lines -->
+    <div class="bg-line bg-line-1"></div>
+    <div class="bg-line bg-line-2"></div>
+    <div class="bg-line bg-line-3"></div>
+    <div class="bg-line bg-line-4"></div>
+    <div class="bg-line bg-line-5"></div>
+    
+    <!-- Data Streams -->
+    <div class="data-stream stream-1"></div>
+    <div class="data-stream stream-2"></div>
+    <div class="data-stream stream-3"></div>
+    <div class="data-stream stream-4"></div>
+    <div class="data-stream stream-5"></div>
+    <div class="data-stream stream-6"></div>
+    
+    <!-- Server Rack Icons -->
+    <div class="server-rack rack-1"></div>
+    <div class="server-rack rack-2"></div>
+    <div class="server-rack rack-3"></div>
+  </div>
 
   <!-- Floating WhatsApp + Telegram -->
   <div class="floating-btns">
@@ -745,35 +796,8 @@
     </div>
   </nav>
 
-  <!-- Hero Section with Network Graphics on Left & Right -->
+  <!-- Hero Section - Glass Panel, Background Fully Visible -->
   <section class="hero">
-    <!-- Left Network Graphics -->
-    <div class="hero-network-left">
-      <div class="node node-lg" style="top: 15%; left: 20%;"></div>
-      <div class="node node-purple" style="top: 35%; left: 60%;"></div>
-      <div class="node node-cyan node-sm" style="top: 55%; left: 30%;"></div>
-      <div class="node" style="top: 75%; left: 70%;"></div>
-      <div class="node node-purple node-sm" style="top: 85%; left: 15%;"></div>
-      <div class="connection-line" style="top: 18%; left: 28%; width: 80px; transform: rotate(25deg);"></div>
-      <div class="connection-line" style="top: 38%; left: 68%; width: 55px; transform: rotate(-20deg);"></div>
-      <div class="connection-line" style="top: 58%; left: 38%; width: 65px; transform: rotate(40deg);"></div>
-      <div class="connection-line" style="top: 78%; left: 78%; width: 45px; transform: rotate(-35deg);"></div>
-    </div>
-
-    <!-- Right Network Graphics -->
-    <div class="hero-network-right">
-      <div class="node node-purple node-lg" style="top: 20%; right: 25%;"></div>
-      <div class="node node-cyan" style="top: 40%; right: 55%;"></div>
-      <div class="node node-lg" style="top: 60%; right: 20%;"></div>
-      <div class="node node-purple node-sm" style="top: 80%; right: 65%;"></div>
-      <div class="node" style="top: 90%; right: 35%;"></div>
-      <div class="connection-line" style="top: 23%; right: 32%; width: 70px; transform: rotate(-30deg);"></div>
-      <div class="connection-line" style="top: 43%; right: 62%; width: 50px; transform: rotate(25deg);"></div>
-      <div class="connection-line" style="top: 63%; right: 28%; width: 80px; transform: rotate(-15deg);"></div>
-      <div class="connection-line" style="top: 83%; right: 72%; width: 55px; transform: rotate(35deg);"></div>
-    </div>
-
-    <!-- Hero Content - Perfectly Centered, Not Covered -->
     <div class="hero-content">
       <div class="hero-badge">
         <i class="fas fa-shield-haltered"></i> Zero-Trust Ecosystem
@@ -789,7 +813,6 @@
         <a href="services.html" class="btn btn-secondary"><i class="fas fa-cogs"></i> Explore Services</a>
       </div>
     </div>
-
     <div style="position: absolute; bottom: 28px; left: 0; right: 0; text-align: center; font-size: 0.7rem; opacity: 0.5; font-family: monospace; z-index: 5;">✦ IT Excellence Since 2016 ✦</div>
   </section>
 
@@ -861,15 +884,12 @@
   <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
   <script>
-    // Navbar scroll effect
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
     
-    // Mobile menu toggle
     const mt = document.getElementById('mobileMenu'), nl = document.getElementById('navLinks');
     if(mt) mt.addEventListener('click', () => nl.classList.toggle('active'));
     
-    // Counter animation for stats
     const statGrid = document.querySelector('.stats-grid');
     if(statGrid) {
       const observer = new IntersectionObserver((entries) => {
@@ -895,12 +915,10 @@
       observer.observe(statGrid);
     }
     
-    // Back to top button
     const btt = document.getElementById('backToTop');
     window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 400));
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     
-    // Reveal animations
     const reveals = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')), { threshold: 0.1 });
     reveals.forEach(r => revealObserver.observe(r));
