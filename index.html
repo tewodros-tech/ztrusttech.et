@@ -21,8 +21,6 @@
     :root {
       --bg: #03040a;
       --bg2: #07111f;
-      --bg3: #0b1528;
-      --card: rgba(8, 12, 25, 0.65);
       --text: #edf3fc;
       --muted: #a0b2ca;
       --blue: #3b82f6;
@@ -55,7 +53,6 @@
       pointer-events: none;
     }
 
-    /* DYNAMIC GRADIENT OVERLAY */
     body::after {
       content: "";
       position: fixed;
@@ -117,12 +114,6 @@
       background-clip: text;
       color: transparent;
     }
-    .section-sub {
-      max-width: 720px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 1rem;
-    }
 
     /* NAVIGATION */
     .nav {
@@ -153,7 +144,6 @@
       filter: drop-shadow(0 0 12px rgba(59,130,246,0.6));
       transition: 0.3s;
     }
-    .logo-word-img:hover { filter: drop-shadow(0 0 20px rgba(59,130,246,0.9)); transform: scale(1.02); }
     .links {
       display: flex;
       gap: 1.8rem;
@@ -190,7 +180,6 @@
       box-shadow: 0 8px 18px rgba(59,130,246,0.3);
       transition: 0.2s;
     }
-    .nav-cta:hover { transform: translateY(-2px); filter: brightness(1.05); }
     .menu-toggle {
       display: none;
       background: none;
@@ -200,55 +189,46 @@
       cursor: pointer;
     }
 
-    /* SPECTACULAR HERO ANIMATIONS */
+    /* SPECTACULAR HERO - LEFT/RIGHT SPLIT LAYOUT */
     .hero {
       min-height: 95vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
       position: relative;
       overflow: hidden;
     }
 
+    /* Animated Background */
     .hero-canvas {
       position: absolute;
       inset: 0;
       z-index: 0;
       pointer-events: none;
     }
-
-    /* Rotating Network Orbs */
     .orb {
       position: absolute;
       border-radius: 50%;
       border: 1px solid rgba(59,130,246,0.3);
       animation: rotateOrb linear infinite;
     }
-    .orb-1 { width: 300px; height: 300px; top: 20%; left: -100px; animation-duration: 20s; border-color: rgba(59,130,246,0.2); }
-    .orb-2 { width: 500px; height: 500px; bottom: -150px; right: -150px; animation-duration: 25s; border-color: rgba(139,92,246,0.15); }
-    .orb-3 { width: 200px; height: 200px; top: 50%; right: 10%; animation-duration: 15s; border-color: rgba(6,182,212,0.2); }
-    .orb-core { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; position: absolute; box-shadow: 0 0 20px var(--blue); animation: pulseCore 2s infinite; }
-
+    .orb-1 { width: 400px; height: 400px; top: 10%; left: -150px; animation-duration: 25s; }
+    .orb-2 { width: 600px; height: 600px; bottom: -200px; right: -200px; animation-duration: 30s; border-color: rgba(139,92,246,0.15); }
+    .orb-3 { width: 250px; height: 250px; top: 50%; right: 5%; animation-duration: 18s; border-color: rgba(6,182,212,0.2); }
     @keyframes rotateOrb { 100% { transform: rotate(360deg); } }
-    @keyframes pulseCore { 0%,100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.5); } }
 
-    /* Floating Particles */
     .particle {
       position: absolute;
       background: radial-gradient(circle, var(--blue), transparent);
       border-radius: 50%;
       animation: floatParticle linear infinite;
     }
-    .p1 { width: 3px; height: 3px; top: 15%; left: 10%; animation-duration: 8s; }
-    .p2 { width: 5px; height: 5px; top: 30%; right: 15%; animation-duration: 11s; background: radial-gradient(circle, var(--purple), transparent); }
-    .p3 { width: 4px; height: 4px; bottom: 25%; left: 20%; animation-duration: 9s; background: radial-gradient(circle, var(--cyan), transparent); }
-    .p4 { width: 6px; height: 6px; top: 60%; right: 25%; animation-duration: 13s; background: radial-gradient(circle, var(--pink), transparent); }
-    .p5 { width: 3px; height: 3px; bottom: 40%; right: 40%; animation-duration: 7s; }
-    .p6 { width: 4px; height: 4px; top: 45%; left: 30%; animation-duration: 10s; background: radial-gradient(circle, var(--orange), transparent); }
-    .p7 { width: 7px; height: 7px; bottom: 15%; right: 8%; animation-duration: 14s; background: radial-gradient(circle, var(--emerald), transparent); }
-    .p8 { width: 3px; height: 3px; top: 75%; left: 60%; animation-duration: 12s; }
-
+    .p1 { width: 3px; height: 3px; top: 20%; left: 15%; animation-duration: 8s; }
+    .p2 { width: 5px; height: 5px; top: 30%; right: 20%; animation-duration: 11s; background: radial-gradient(circle, var(--purple), transparent); }
+    .p3 { width: 4px; height: 4px; bottom: 30%; left: 25%; animation-duration: 9s; background: radial-gradient(circle, var(--cyan), transparent); }
+    .p4 { width: 6px; height: 6px; top: 60%; right: 30%; animation-duration: 13s; background: radial-gradient(circle, var(--pink), transparent); }
+    .p5 { width: 3px; height: 3px; bottom: 45%; right: 45%; animation-duration: 7s; }
+    .p6 { width: 4px; height: 4px; top: 45%; left: 35%; animation-duration: 10s; background: radial-gradient(circle, var(--orange), transparent); }
     @keyframes floatParticle {
       0% { transform: translateY(0) translateX(0); opacity: 0; }
       20% { opacity: 0.8; }
@@ -256,20 +236,17 @@
       100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
     }
 
-    /* Data Streams */
     .data-stream {
       position: absolute;
       width: 2px;
       background: linear-gradient(180deg, var(--cyan), transparent);
       animation: streamFlow linear infinite;
     }
-    .ds1 { left: 15%; height: 120px; animation-duration: 2.5s; animation-delay: 0s; }
-    .ds2 { left: 35%; height: 80px; animation-duration: 3s; animation-delay: 1s; background: linear-gradient(180deg, var(--purple), transparent); }
-    .ds3 { left: 55%; height: 100px; animation-duration: 2.8s; animation-delay: 0.5s; }
-    .ds4 { left: 75%; height: 90px; animation-duration: 3.2s; animation-delay: 1.5s; background: linear-gradient(180deg, var(--blue2), transparent); }
-    .ds5 { left: 85%; height: 70px; animation-duration: 2.2s; animation-delay: 2s; }
-    .ds6 { left: 5%; height: 110px; animation-duration: 3.5s; animation-delay: 0.8s; background: linear-gradient(180deg, var(--pink), transparent); }
-
+    .ds1 { left: 10%; height: 120px; animation-duration: 2.5s; }
+    .ds2 { left: 30%; height: 80px; animation-duration: 3s; animation-delay: 1s; background: linear-gradient(180deg, var(--purple), transparent); }
+    .ds3 { left: 50%; height: 100px; animation-duration: 2.8s; animation-delay: 0.5s; }
+    .ds4 { left: 70%; height: 90px; animation-duration: 3.2s; animation-delay: 1.5s; background: linear-gradient(180deg, var(--blue2), transparent); }
+    .ds5 { left: 90%; height: 70px; animation-duration: 2.2s; animation-delay: 2s; }
     @keyframes streamFlow {
       0% { top: -120px; opacity: 0; }
       10% { opacity: 0.6; }
@@ -277,13 +254,25 @@
       100% { top: 100%; opacity: 0; }
     }
 
-    /* Hero Content */
-    .hero-content {
+    /* LEFT/RIGHT SPLIT HERO CONTENT */
+    .hero-wrapper {
       position: relative;
       z-index: 10;
-      max-width: 900px;
+      width: 100%;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* LEFT SIDE - Main Title */
+    .hero-left {
+      flex: 1;
+      text-align: left;
+      padding-right: 30px;
     }
     .hero-badge {
       display: inline-flex;
@@ -303,7 +292,7 @@
     }
     .hero-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
       font-weight: 900;
       line-height: 1.1;
       background: linear-gradient(135deg, #FFFFFF, #60a5fa, #c084fc, #ec4899);
@@ -313,19 +302,53 @@
       margin-bottom: 20px;
       text-shadow: 0 0 30px rgba(59,130,246,0.3);
     }
-    .hero-tagline {
-      max-width: 680px;
-      margin: 0 auto 32px;
-      color: #d0e2ff;
-      font-size: clamp(0.95rem, 3vw, 1.1rem);
+    .hero-sub {
+      color: #b0c6f0;
+      font-size: 1rem;
+      max-width: 450px;
+      line-height: 1.6;
+    }
+
+    /* RIGHT SIDE - Tagline Chips & Buttons */
+    .hero-right {
+      flex: 1;
+      text-align: right;
+      padding-left: 30px;
+    }
+    .service-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-bottom: 40px;
+    }
+    .service-chip {
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(96,165,250,0.25);
+      backdrop-filter: blur(8px);
+      padding: 10px 20px;
+      border-radius: 60px;
+      font-size: 0.85rem;
       font-weight: 500;
-      letter-spacing: 0.5px;
-      text-shadow: 0 0 15px rgba(0,0,0,0.5);
+      color: #d0e2ff;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .service-chip i {
+      font-size: 0.8rem;
+      color: var(--blue2);
+    }
+    .service-chip:hover {
+      background: rgba(59,130,246,0.25);
+      border-color: var(--blue);
+      transform: translateY(-3px) scale(1.05);
     }
     .hero-buttons {
       display: flex;
       gap: 18px;
-      justify-content: center;
+      justify-content: flex-end;
       flex-wrap: wrap;
     }
     .btn {
@@ -342,7 +365,7 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--blue), var(--indigo));
       color: #fff;
-      box-shadow: 0 8px 25px rgba(59,130,246,0.5);
+      box-shadow: 0 8px 25px rgba(59,130,246,0.4);
     }
     .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(59,130,246,0.6); }
     .btn-secondary {
@@ -353,7 +376,7 @@
     }
     .btn-secondary:hover { transform: translateY(-3px); background: rgba(12,22,38,0.9); border-color: var(--blue); }
 
-    /* SERVICE CARDS - ENHANCED */
+    /* SERVICE CARDS */
     .service-grid-exceptional {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -440,7 +463,7 @@
       color: #cbdfff;
     }
 
-    /* STATS SECTION - ANIMATED */
+    /* STATS */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -456,27 +479,12 @@
       text-align: center;
       background: rgba(4,8,18,0.5);
       transition: 0.3s;
-      position: relative;
-      overflow: hidden;
     }
-    .stat-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--blue), var(--purple), var(--cyan));
-      transform: scaleX(0);
-      transition: 0.3s;
-    }
-    .stat-card:hover::after { transform: scaleX(1); }
-    .stat-card i { font-size: 2rem; margin-bottom: 14px; transition: 0.3s; }
-    .stat-card:hover i { transform: scale(1.1); text-shadow: 0 0 15px currentColor; }
+    .stat-card i { font-size: 2rem; margin-bottom: 14px; }
     .num { font-size: 2.5rem; font-weight: 800; font-family: 'Space Grotesk', monospace; }
     .label { font-size: 0.85rem; color: #a4b9dd; text-transform: uppercase; font-weight: 600; margin-top: 8px; }
 
-    /* CTA SECTION */
+    /* CTA */
     .cta-shell {
       border-radius: 48px;
       padding: 64px 32px;
@@ -498,9 +506,8 @@
       animation: shimmer 3s infinite;
     }
     @keyframes shimmer { 100% { left: 100%; } }
-    .cta-shell h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; }
 
-    /* SPECTACULAR FOOTER */
+    /* FOOTER */
     .creative-footer {
       position: relative;
       background: linear-gradient(180deg, #030610, #01020a);
@@ -517,7 +524,6 @@
       height: 200%;
       background: radial-gradient(circle at 30% 40%, rgba(59,130,246,0.05), transparent);
       animation: rotateGlow 20s linear infinite;
-      pointer-events: none;
     }
     @keyframes rotateGlow { 100% { transform: rotate(360deg); } }
     .footer-flex {
@@ -529,12 +535,7 @@
       z-index: 2;
     }
     .footer-brand-col { flex: 1.2; }
-    .footer-word-img {
-      height: 44px;
-      filter: drop-shadow(0 0 10px rgba(59,130,246,0.5));
-      transition: 0.3s;
-    }
-    .footer-word-img:hover { filter: drop-shadow(0 0 20px rgba(59,130,246,0.8)); transform: scale(1.02); }
+    .footer-word-img { height: 44px; filter: drop-shadow(0 0 10px rgba(59,130,246,0.5)); }
     .footer-desc { color: #90a3cc; font-size: 0.85rem; margin: 18px 0 20px; max-width: 320px; }
     .social-links-creative { display: flex; gap: 14px; }
     .social-links-creative a {
@@ -553,7 +554,6 @@
       background: linear-gradient(135deg, var(--blue), var(--purple));
       color: white;
       transform: translateY(-5px) rotate(360deg);
-      border-color: transparent;
     }
     .footer-links-col h4 {
       font-family: 'Space Grotesk', sans-serif;
@@ -579,7 +579,6 @@
       margin-bottom: 12px;
       transition: 0.2s;
     }
-    .footer-links-col a i { margin-right: 8px; font-size: 0.7rem; }
     .footer-links-col a:hover { color: white; transform: translateX(8px); }
     .contact-info-footer p {
       display: flex;
@@ -588,9 +587,7 @@
       color: #90a3cc;
       font-size: 0.85rem;
       margin-bottom: 12px;
-      transition: 0.2s;
     }
-    .contact-info-footer p:hover { color: white; transform: translateX(5px); }
     .footer-bottom {
       border-top: 1px solid rgba(96,165,250,0.1);
       margin-top: 42px;
@@ -620,7 +617,6 @@
       z-index: 999;
     }
     .back-to-top.show { opacity: 1; visibility: visible; }
-    .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(59,130,246,0.5); }
     .floating-btns {
       position: fixed;
       bottom: 22px;
@@ -641,14 +637,21 @@
       color: white;
       text-decoration: none;
       font-size: 1.3rem;
-      box-shadow: 0 6px 14px black;
       transition: 0.3s;
     }
-    .float-btn:hover { transform: scale(1.1); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
     .float-btn.tg { background: linear-gradient(135deg, #0088cc, #005f8c); }
+    .float-btn:hover { transform: scale(1.1); }
     .reveal { opacity: 0; transform: translateY(32px); transition: 0.8s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    @media (max-width: 1024px) {
+      .hero-wrapper { flex-direction: column; text-align: center; gap: 50px; }
+      .hero-left { text-align: center; padding-right: 0; }
+      .hero-right { text-align: center; padding-left: 0; }
+      .service-chips { justify-content: center; }
+      .hero-buttons { justify-content: center; }
+      .hero-sub { margin: 0 auto; }
+    }
     @media (max-width: 1100px) { .service-grid-exceptional { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 780px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -668,30 +671,24 @@
         padding: 2rem;
         transition: left 0.4s;
         z-index: 1001;
-        border-right: 1px solid rgba(59,130,246,0.3);
       }
       .links.active { left: 0; }
       .menu-toggle { display: block; }
       .footer-flex { flex-direction: column; text-align: center; }
       .footer-brand-col { text-align: center; }
-      .footer-desc { margin-left: auto; margin-right: auto; text-align: center; }
+      .footer-desc { margin: 18px auto; }
       .social-links-creative { justify-content: center; }
-      .contact-info-footer p { justify-content: center; }
-      .footer-links-col h4::after { left: 50%; transform: translateX(-50%); width: 40%; }
     }
-    @media (max-width: 520px) { .nav-cta { padding: 6px 14px; font-size: 0.7rem; } }
   </style>
 </head>
 <body>
   <div class="noise"></div>
 
-  <!-- Floating Buttons -->
   <div class="floating-btns">
     <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <a href="https://t.me/ZTrustTech" class="float-btn tg" target="_blank"><i class="fab fa-telegram-plane"></i></a>
   </div>
 
-  <!-- Navigation -->
   <nav class="nav" id="mainNav">
     <div class="container nav-inner">
       <img src="logoword.JPG" class="logo-word-img" alt="ZTrust" onerror="this.src='https://placehold.co/180x50/0f172a/3b82f6?text=ZTRUST+TECH'">
@@ -708,43 +705,54 @@
     </div>
   </nav>
 
-  <!-- Hero Section with Spectacular Animations -->
+  <!-- HERO SECTION - LEFT/RIGHT SPLIT -->
   <section class="hero">
     <div class="hero-canvas">
-      <!-- Rotating Orbs -->
-      <div class="orb orb-1"><div class="orb-core" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div></div>
-      <div class="orb orb-2"><div class="orb-core" style="top: 30%; left: 40%;"></div></div>
-      <div class="orb orb-3"><div class="orb-core" style="top: 70%; left: 60%;"></div></div>
-      
-      <!-- Floating Particles -->
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
       <div class="particle p1"></div><div class="particle p2"></div><div class="particle p3"></div>
       <div class="particle p4"></div><div class="particle p5"></div><div class="particle p6"></div>
-      <div class="particle p7"></div><div class="particle p8"></div>
-      
-      <!-- Data Streams -->
       <div class="data-stream ds1"></div><div class="data-stream ds2"></div><div class="data-stream ds3"></div>
-      <div class="data-stream ds4"></div><div class="data-stream ds5"></div><div class="data-stream ds6"></div>
+      <div class="data-stream ds4"></div><div class="data-stream ds5"></div>
     </div>
 
-    <div class="hero-content">
-      <div class="hero-badge"><i class="fas fa-shield-haltered"></i> Zero-Trust Ecosystem</div>
-      <h1 class="hero-title">Complete IT Solutions<br>Provider</h1>
-      <p class="hero-tagline">Infrastructure · Storage · Apps · Database · API · Networks · Cybersecurity</p>
-      <div class="hero-buttons">
-        <a href="contact.html" class="btn btn-primary"><i class="fas fa-chalkboard-user"></i> Free Consultation</a>
-        <a href="services.html" class="btn btn-secondary"><i class="fas fa-cogs"></i> Explore Services</a>
+    <div class="hero-wrapper">
+      <!-- LEFT SIDE -->
+      <div class="hero-left">
+        <div class="hero-badge"><i class="fas fa-shield-haltered"></i> Zero-Trust Ecosystem</div>
+        <h1 class="hero-title">Complete IT Solutions<br>Provider</h1>
+        <p class="hero-sub">Next-generation IT infrastructure, security, and innovation — engineered for enterprises that demand excellence.</p>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="hero-right">
+        <div class="service-chips">
+          <span class="service-chip"><i class="fas fa-server"></i> Infrastructure</span>
+          <span class="service-chip"><i class="fas fa-hard-drive"></i> Storage</span>
+          <span class="service-chip"><i class="fas fa-code"></i> Apps</span>
+          <span class="service-chip"><i class="fas fa-database"></i> Database</span>
+          <span class="service-chip"><i class="fas fa-plug"></i> API</span>
+          <span class="service-chip"><i class="fas fa-network-wired"></i> Networks</span>
+          <span class="service-chip"><i class="fas fa-shield-haltered"></i> Cybersecurity</span>
+        </div>
+        <div class="hero-buttons">
+          <a href="contact.html" class="btn btn-primary"><i class="fas fa-chalkboard-user"></i> Free Consultation</a>
+          <a href="services.html" class="btn btn-secondary"><i class="fas fa-cogs"></i> Explore Services</a>
+        </div>
       </div>
     </div>
+
     <div style="position: absolute; bottom: 28px; left: 0; right: 0; text-align: center; font-size: 0.7rem; opacity: 0.5; z-index: 5;">✦ IT Excellence Since 2016 ✦</div>
   </section>
 
-  <!-- Services Section -->
+  <!-- SERVICES SECTION -->
   <section class="section">
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-cubes"></i> Core IT Services</div>
         <h2 class="section-title">Exceptional engineering & security<br>for the next decade.</h2>
-        <p class="section-sub">Cutting-edge infrastructure, storage, development, networking, and cybersecurity — unified under one visionary ecosystem.</p>
+        <p class="section-sub" style="color: var(--muted);">Cutting-edge infrastructure, storage, development, networking, and cybersecurity — unified under one visionary ecosystem.</p>
       </div>
       <div class="service-grid-exceptional">
         <div class="service-card-ex reveal"><div class="service-img-ex"><span class="service-chip-ex"><i class="fas fa-server"></i></span><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Infrastructure"></div><div class="service-body-ex"><h3>IT Infrastructure</h3><p>Resilient servers & virtualization for zero downtime, high-availability clusters.</p><div class="service-tags-ex"><span>Servers</span><span>Virtualization</span></div></div></div>
@@ -759,7 +767,7 @@
     </div>
   </section>
 
-  <!-- Stats Section -->
+  <!-- STATS SECTION -->
   <section class="section" style="padding-top: 0;">
     <div class="container">
       <div class="stats-grid reveal">
@@ -771,7 +779,7 @@
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- CTA SECTION -->
   <section class="section" style="padding-top: 0;">
     <div class="container">
       <div class="cta-shell reveal">
@@ -785,7 +793,7 @@
     </div>
   </section>
 
-  <!-- Spectacular Footer -->
+  <!-- FOOTER -->
   <footer class="creative-footer">
     <div class="footer-glow"></div>
     <div class="container">
@@ -817,7 +825,6 @@
     const mt = document.getElementById('mobileMenu'), nl = document.getElementById('navLinks');
     if(mt) mt.addEventListener('click', () => nl.classList.toggle('active'));
     
-    // Counter animation
     const statGrid = document.querySelector('.stats-grid');
     if(statGrid) {
       const observer = new IntersectionObserver((entries) => {
