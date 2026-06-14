@@ -59,22 +59,21 @@
       position: fixed;
       inset: 0;
       background: url('Background.JPG') center/cover no-repeat fixed;
-      filter: brightness(0.65) contrast(1.05);
+      filter: brightness(0.6) contrast(1.05);
       z-index: -3;
       pointer-events: none;
     }
 
-    /* enhanced dark overlay for readability & depth */
+    /* dark overlay for readability */
     body::after {
       content: "";
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.5), rgba(1, 2, 10, 0.88));
+      background: radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.55), rgba(1, 2, 10, 0.88));
       z-index: -2;
       pointer-events: none;
     }
 
-    /* refined grid + noise */
     .grid-bg {
       position: fixed;
       inset: 0;
@@ -94,74 +93,6 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='white' fill-opacity='1'%3E%3Ccircle cx='6' cy='10' r='1'/%3E%3Ccircle cx='42' cy='27' r='1'/%3E%3Ccircle cx='87' cy='52' r='1'/%3E%3Ccircle cx='132' cy='21' r='1'/%3E%3Ccircle cx='159' cy='95' r='1'/%3E%3Ccircle cx='120' cy='130' r='1'/%3E%3Ccircle cx='54' cy='118' r='1'/%3E%3Ccircle cx='18' cy='148' r='1'/%3E%3C/g%3E%3C/svg%3E");
     }
 
-    /* ATTRACTIVE ANIMATED NETWORK NODES (Left + Right) */
-    .hero-ornament-left, .hero-ornament-right {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 240px;
-      height: 340px;
-      pointer-events: none;
-      z-index: 3;
-      opacity: 0.65;
-      transition: opacity 0.3s ease;
-    }
-    .hero-ornament-left {
-      left: 2%;
-      background: radial-gradient(circle at 30% 40%, rgba(59,130,246,0.2) 0%, rgba(99,102,241,0) 70%);
-      filter: blur(2px);
-    }
-    .hero-ornament-right {
-      right: 2%;
-      background: radial-gradient(circle at 70% 60%, rgba(139,92,246,0.2) 0%, rgba(6,182,212,0) 70%);
-      filter: blur(2px);
-    }
-    /* dynamic nodes + connecting lines */
-    .network-nodes {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-    .node {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: #60a5fa;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #3b82f6;
-      animation: pulseNode 3s infinite alternate;
-    }
-    .node-lg {
-      width: 14px;
-      height: 14px;
-      background: #a78bfa;
-      box-shadow: 0 0 16px #8b5cf6;
-    }
-    .line-dash {
-      position: absolute;
-      background: linear-gradient(90deg, transparent, #3b82f6, #8b5cf6, transparent);
-      height: 1.5px;
-      opacity: 0.5;
-      transform-origin: left center;
-      animation: flickerLine 4s infinite;
-    }
-    @keyframes pulseNode {
-      0% { opacity: 0.3; transform: scale(0.8); }
-      100% { opacity: 1; transform: scale(1.4); }
-    }
-    @keyframes flickerLine {
-      0% { opacity: 0.2; }
-      50% { opacity: 0.8; }
-      100% { opacity: 0.2; }
-    }
-    @media (max-width: 960px) {
-      .hero-ornament-left, .hero-ornament-right { width: 150px; height: 280px; opacity: 0.5; }
-      .node { width: 5px; height: 5px; }
-    }
-    @media (max-width: 680px) {
-      .hero-ornament-left, .hero-ornament-right { display: none; } /* clean on tiny devices, keep focus on hero text */
-    }
-
     .container {
       max-width: 1420px;
       margin: 0 auto;
@@ -175,7 +106,6 @@
       position: relative;
     }
 
-    /* SECTION HEADER modern badge */
     .section-header {
       text-align: center;
       margin-bottom: 56px;
@@ -216,7 +146,7 @@
       line-height: 1.75;
     }
 
-    /* NAVIGATION (preserved + mobile) */
+    /* NAVIGATION */
     .nav {
       position: fixed;
       top: 0;
@@ -299,18 +229,195 @@
       cursor: pointer;
     }
 
-    /* HERO SECTION - ATTRACTIVE LEFT/RIGHT WITH NETWORK CONNECTIONS (mobile adjusted) */
+    /* HERO SECTION - FIXED: text not covered, network graphics on sides */
     .hero {
-      min-height: 85vh;
+      min-height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       position: relative;
-      overflow-x: clip;
+      overflow: hidden;
     }
 
-    /* SERVICE GRID (exceptional responsive) */
+    /* Network Graphics - Left Side */
+    .hero-network-left {
+      position: absolute;
+      left: 2%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 280px;
+      height: 400px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Network Graphics - Right Side */
+    .hero-network-right {
+      position: absolute;
+      right: 2%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 280px;
+      height: 400px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .node {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--blue);
+      border-radius: 50%;
+      box-shadow: 0 0 15px var(--blue);
+      animation: pulseNode 2.5s infinite alternate;
+    }
+
+    .node-purple {
+      background: var(--purple);
+      box-shadow: 0 0 15px var(--purple);
+    }
+
+    .node-cyan {
+      background: var(--cyan);
+      box-shadow: 0 0 15px var(--cyan);
+    }
+
+    .node-lg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .node-sm {
+      width: 6px;
+      height: 6px;
+    }
+
+    .connection-line {
+      position: absolute;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      height: 2px;
+      opacity: 0.5;
+      border-radius: 2px;
+      animation: flickerLine 3s infinite;
+    }
+
+    .connection-line-vertical {
+      background: linear-gradient(180deg, var(--cyan), var(--blue));
+      width: 2px;
+      height: 60px;
+    }
+
+    @keyframes pulseNode {
+      0% { opacity: 0.3; transform: scale(0.7); }
+      100% { opacity: 1; transform: scale(1.3); }
+    }
+
+    @keyframes flickerLine {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.7; }
+    }
+
+    /* Hide network graphics on mobile for better text readability */
+    @media (max-width: 900px) {
+      .hero-network-left, .hero-network-right {
+        opacity: 0.3;
+        transform: translateY(-50%) scale(0.7);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero-network-left, .hero-network-right {
+        display: none;
+      }
+    }
+
+    /* Hero Content - perfectly centered and readable */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      backdrop-filter: blur(8px);
+      color: var(--blue2);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #FFFFFF, #60a5fa, #c084fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .hero-tagline {
+      max-width: 680px;
+      margin: 0 auto 28px;
+      color: #bfd6ff;
+      font-size: clamp(0.95rem, 3vw, 1.1rem);
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 32px;
+      border-radius: 60px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--indigo));
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(12, 22, 38, 0.8);
+      border: 1px solid rgba(99, 102, 241, 0.6);
+      color: #fff;
+      backdrop-filter: blur(6px);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.05);
+    }
+
+    /* SERVICE GRID */
     .service-grid-exceptional {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -445,28 +552,6 @@
       font-size: clamp(1.8rem, 3vw, 2.4rem);
       font-weight: 800;
     }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
-      border-radius: 60px;
-      font-weight: 800;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .btn.primary {
-      background: linear-gradient(135deg, var(--blue), var(--indigo));
-      color: #fff;
-      box-shadow: 0 8px 18px rgba(59, 130, 246, 0.4);
-    }
-    .btn.secondary {
-      background: rgba(12, 22, 38, 0.8);
-      border: 1px solid rgba(99, 102, 241, 0.6);
-      color: #fff;
-      backdrop-filter: blur(6px);
-    }
-    .btn:hover { transform: translateY(-3px); filter: brightness(1.05); }
 
     /* footer */
     .creative-footer {
@@ -631,7 +716,6 @@
     }
     @media (max-width: 520px) {
       .nav-cta { padding: 6px 14px; font-size: 0.7rem; }
-      .hero { min-height: 70vh; }
     }
   </style>
 </head>
@@ -639,6 +723,7 @@
   <div class="grid-bg"></div>
   <div class="noise"></div>
 
+  <!-- Floating WhatsApp + Telegram -->
   <div class="floating-btns">
     <a href="https://wa.me/251911563698?text=Hello%20ZTrust%20Tech" class="float-btn wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <a href="https://t.me/ZTrustTech" class="float-btn tg" target="_blank"><i class="fab fa-telegram-plane"></i></a>
@@ -660,44 +745,55 @@
     </div>
   </nav>
 
-  <!-- Hero Section with Attractive Network Ornaments (Left & Right) -->
+  <!-- Hero Section with Network Graphics on Left & Right -->
   <section class="hero">
-    <!-- Left network ornament -->
-    <div class="hero-ornament-left">
-      <div class="network-nodes">
-        <div class="node" style="top: 20%; left: 30%;"></div>
-        <div class="node node-lg" style="top: 55%; left: 15%;"></div>
-        <div class="node" style="top: 75%; left: 45%;"></div>
-        <div class="line-dash" style="top: 22%; left: 34%; width: 70px; transform: rotate(25deg);"></div>
-        <div class="line-dash" style="top: 57%; left: 20%; width: 55px; transform: rotate(-15deg);"></div>
-        <div class="line-dash" style="top: 78%; left: 48%; width: 48px; transform: rotate(45deg);"></div>
-      </div>
+    <!-- Left Network Graphics -->
+    <div class="hero-network-left">
+      <div class="node node-lg" style="top: 15%; left: 20%;"></div>
+      <div class="node node-purple" style="top: 35%; left: 60%;"></div>
+      <div class="node node-cyan node-sm" style="top: 55%; left: 30%;"></div>
+      <div class="node" style="top: 75%; left: 70%;"></div>
+      <div class="node node-purple node-sm" style="top: 85%; left: 15%;"></div>
+      <div class="connection-line" style="top: 18%; left: 28%; width: 80px; transform: rotate(25deg);"></div>
+      <div class="connection-line" style="top: 38%; left: 68%; width: 55px; transform: rotate(-20deg);"></div>
+      <div class="connection-line" style="top: 58%; left: 38%; width: 65px; transform: rotate(40deg);"></div>
+      <div class="connection-line" style="top: 78%; left: 78%; width: 45px; transform: rotate(-35deg);"></div>
     </div>
-    <!-- Right network ornament -->
-    <div class="hero-ornament-right">
-      <div class="network-nodes">
-        <div class="node node-lg" style="top: 30%; right: 25%;"></div>
-        <div class="node" style="top: 60%; right: 40%;"></div>
-        <div class="node" style="top: 80%; right: 15%;"></div>
-        <div class="line-dash" style="top: 32%; right: 30%; width: 85px; transform: rotate(-20deg);"></div>
-        <div class="line-dash" style="top: 63%; right: 44%; width: 60px; transform: rotate(30deg);"></div>
-        <div class="line-dash" style="top: 82%; right: 20%; width: 52px; transform: rotate(-10deg);"></div>
+
+    <!-- Right Network Graphics -->
+    <div class="hero-network-right">
+      <div class="node node-purple node-lg" style="top: 20%; right: 25%;"></div>
+      <div class="node node-cyan" style="top: 40%; right: 55%;"></div>
+      <div class="node node-lg" style="top: 60%; right: 20%;"></div>
+      <div class="node node-purple node-sm" style="top: 80%; right: 65%;"></div>
+      <div class="node" style="top: 90%; right: 35%;"></div>
+      <div class="connection-line" style="top: 23%; right: 32%; width: 70px; transform: rotate(-30deg);"></div>
+      <div class="connection-line" style="top: 43%; right: 62%; width: 50px; transform: rotate(25deg);"></div>
+      <div class="connection-line" style="top: 63%; right: 28%; width: 80px; transform: rotate(-15deg);"></div>
+      <div class="connection-line" style="top: 83%; right: 72%; width: 55px; transform: rotate(35deg);"></div>
+    </div>
+
+    <!-- Hero Content - Perfectly Centered, Not Covered -->
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-shield-haltered"></i> Zero-Trust Ecosystem
+      </div>
+      <h1 class="hero-title">
+        Complete IT Solutions<br>Provider
+      </h1>
+      <p class="hero-tagline">
+        Infrastructure · Storage · Apps · Database · API · Networks · Cybersecurity
+      </p>
+      <div class="hero-buttons">
+        <a href="contact.html" class="btn btn-primary"><i class="fas fa-chalkboard-user"></i> Free Consultation</a>
+        <a href="services.html" class="btn btn-secondary"><i class="fas fa-cogs"></i> Explore Services</a>
       </div>
     </div>
 
-    <div class="container" style="z-index: 4;">
-      <div class="section-badge" style="margin: 0 auto 20px; width: fit-content;"><i class="fas fa-shield-haltered"></i> Zero-Trust Ecosystem</div>
-      <h1 style="font-family: 'Space Grotesk'; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; line-height: 1.1; background: linear-gradient(135deg, #FFFFFF, #60a5fa, #c084fc); -webkit-background-clip: text; background-clip: text; color: transparent;">Complete IT Solutions<br>Provider</h1>
-      <p style="max-width: 680px; margin: 24px auto; color: #bfd6ff; font-size: 1.05rem; font-weight: 500;">Infrastructure · Storage · Apps · Database · API · Networks · Cybersecurity</p>
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-        <a href="contact.html" class="btn primary"><i class="fas fa-chalkboard-user"></i> Free Consultation</a>
-        <a href="services.html" class="btn secondary"><i class="fas fa-cogs"></i> Explore Services</a>
-      </div>
-    </div>
-    <div style="position: absolute; bottom: 28px; left: 0; right: 0; text-align: center; font-size: 0.7rem; opacity: 0.6; font-family: monospace;">✦ IT Excellence Since 2016 ✦</div>
+    <div style="position: absolute; bottom: 28px; left: 0; right: 0; text-align: center; font-size: 0.7rem; opacity: 0.5; font-family: monospace; z-index: 5;">✦ IT Excellence Since 2016 ✦</div>
   </section>
 
-  <!-- CORE SECTION: CARDS + STATS + CTA (intact) -->
+  <!-- Service Cards Section -->
   <section class="section">
     <div class="container">
       <div class="section-header reveal">
@@ -719,6 +815,7 @@
     </div>
   </section>
 
+  <!-- Stats Section -->
   <section class="section" style="padding-top: 0;">
     <div class="container">
       <div class="stats-grid reveal">
@@ -730,19 +827,21 @@
     </div>
   </section>
 
+  <!-- CTA Section -->
   <section class="section" style="padding-top: 0;">
     <div class="container">
       <div class="cta-shell reveal">
         <h2>Ready to build an exceptional IT environment?</h2>
         <p style="margin: 16px 0 28px; opacity: 0.9;">Let ZTrust Tech transform your technology into a secure, business-ready foundation.</p>
         <div style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;">
-          <a href="contact.html" class="btn primary"><i class="fas fa-headset"></i> Get Free Consultation</a>
-          <a href="https://wa.me/251911563698" class="btn secondary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+          <a href="contact.html" class="btn btn-primary"><i class="fas fa-headset"></i> Get Free Consultation</a>
+          <a href="https://wa.me/251911563698" class="btn btn-secondary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="creative-footer">
     <div class="container">
       <div class="footer-flex">
@@ -758,13 +857,19 @@
       <div class="footer-bottom"><span>© 2026 <a href="index.html">ZTrust Tech</a>. All IT Solutions Under One Roof</span><span class="footer-stats"><span>10+</span> Years | <span>24/7</span> Support | <span>99%</span> Retention</span><span>Made with <i class="fas fa-heart" style="color:#f43f5e;"></i> in Ethiopia</span></div>
     </div>
   </footer>
+
   <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
   <script>
+    // Navbar scroll effect
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+    
+    // Mobile menu toggle
     const mt = document.getElementById('mobileMenu'), nl = document.getElementById('navLinks');
     if(mt) mt.addEventListener('click', () => nl.classList.toggle('active'));
+    
+    // Counter animation for stats
     const statGrid = document.querySelector('.stats-grid');
     if(statGrid) {
       const observer = new IntersectionObserver((entries) => {
@@ -789,9 +894,13 @@
       }, { threshold: 0.3 });
       observer.observe(statGrid);
     }
+    
+    // Back to top button
     const btt = document.getElementById('backToTop');
     window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 400));
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    
+    // Reveal animations
     const reveals = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')), { threshold: 0.1 });
     reveals.forEach(r => revealObserver.observe(r));
