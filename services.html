@@ -368,26 +368,59 @@ a{text-decoration:none;}
 }
 
 /* ═══════════════════════════════════════
-   TERMINAL
+   SERVICE SHOWCASE - ATTRACTIVE REPLACEMENT FOR TERMINAL
    ═══════════════════════════════════════ */
-.terminal-wrap{padding:20px 0 30px;}
-.terminal{
-  background:rgba(3,3,10,0.85);border:1px solid rgba(59,130,246,0.12);
-  border-radius:14px;overflow:hidden;max-width:780px;margin:0 auto;
-  backdrop-filter:blur(10px);box-shadow:0 20px 60px rgba(0,0,0,0.4);
+.showcase-wrap{padding:20px 0 30px;}
+.showcase-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
 }
-.terminal-bar{
-  display:flex;align-items:center;gap:8px;padding:12px 16px;
-  background:rgba(15,17,26,0.7);border-bottom:1px solid rgba(59,130,246,0.08);
+.showcase-item{
+  position:relative;border-radius:20px;padding:30px 24px;
+  background:var(--glass);border:1px solid var(--glass-border);
+  backdrop-filter:blur(16px);transition:all 0.5s cubic-bezier(0.4,0,0.2,1);
+  text-align:center;overflow:hidden;
 }
-.terminal-dot{width:11px;height:11px;border-radius:50%;}
-.terminal-dot.r{background:#f43f5e;}.terminal-dot.y{background:#f59e0b;}.terminal-dot.g{background:#10b981;}
-.terminal-title{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#475569;margin-left:10px;}
-.terminal-body{padding:22px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#94a3b8;line-height:1.9;}
-.t-prompt{color:var(--emerald);font-weight:600;}
-.t-cmd{color:var(--blue-light);}
-.t-out{color:var(--text-dim);}
-.t-highlight{color:var(--purple);font-weight:600;}
+.showcase-item::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan));
+  transform:scaleX(0);transform-origin:left;transition:transform 0.5s;z-index:5;
+}
+.showcase-item:hover::before{transform:scaleX(1);}
+.showcase-item:hover{
+  transform:translateY(-8px);border-color:rgba(59,130,246,0.35);
+  box-shadow:0 30px 70px rgba(0,0,0,0.4),0 0 50px rgba(59,130,246,0.1);
+}
+.showcase-icon{
+  width:68px;height:68px;border-radius:18px;margin:0 auto 18px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;color:#fff;position:relative;
+}
+.showcase-icon::after{
+  content:'';position:absolute;inset:-4px;border-radius:22px;
+  background:inherit;opacity:0.3;filter:blur(12px);z-index:-1;
+}
+.sc-blue{background:linear-gradient(135deg,#2563eb,#3b82f6);}
+.sc-purple{background:linear-gradient(135deg,#7c3aed,#8b5cf6);}
+.sc-cyan{background:linear-gradient(135deg,#0891b2,#06b6d4);}
+.sc-green{background:linear-gradient(135deg,#059669,#10b981);}
+.sc-amber{background:linear-gradient(135deg,#d97706,#f59e0b);}
+.sc-rose{background:linear-gradient(135deg,#e11d48,#f43f5e);}
+
+.showcase-item h3{
+  font-size:1.1rem;font-weight:700;margin-bottom:8px;
+  color:var(--text-bright);font-family:'Space Grotesk',sans-serif;
+}
+.showcase-item p{
+  color:var(--text-dim);font-size:0.85rem;line-height:1.6;
+}
+.showcase-item .badge{
+  display:inline-block;margin-top:12px;padding:4px 14px;
+  border-radius:20px;font-size:0.65rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:1px;
+  background:rgba(16,185,129,0.1);color:var(--emerald);
+  border:1px solid rgba(16,185,129,0.2);
+}
+.showcase-item .badge.active{background:rgba(59,130,246,0.1);color:var(--blue-light);border-color:rgba(59,130,246,0.2);}
 
 /* ═══════════════════════════════════════
    SECTION COMMON
@@ -668,6 +701,7 @@ a{text-decoration:none;}
   .services-grid{grid-template-columns:repeat(2,1fr);}
   .process-grid{grid-template-columns:repeat(2,1fr);}
   .process-grid::before{display:none;}
+  .showcase-grid{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:768px){
   .services-grid{grid-template-columns:1fr;}
@@ -680,6 +714,7 @@ a{text-decoration:none;}
   .section{padding:60px 0;}
   .floating-btns{bottom:20px;left:20px;}
   .back-to-top{bottom:20px;right:20px;width:44px;height:44px;}
+  .showcase-grid{grid-template-columns:1fr;}
 }
 @media(max-width:480px){
   .process-grid{grid-template-columns:1fr;}
@@ -687,7 +722,6 @@ a{text-decoration:none;}
   .stats-bar{grid-template-columns:1fr 1fr;}
   .stats-wrap{margin-bottom:60px;}
   .btn{padding:12px 24px;font-size:0.85rem;}
-  .terminal-body{padding:16px;font-size:0.72rem;}
   .container{padding:0 16px;}
   .floating-btns .float-btn{width:46px;height:46px;font-size:1.3rem;}
 }
@@ -765,29 +799,50 @@ a{text-decoration:none;}
   <div class="hero-scroll"><div class="scroll-mouse"><div class="scroll-dot"></div></div></div>
 </section>
 
-<!-- TERMINAL -->
-<section class="terminal-wrap">
+<!-- SHOWCASE - ATTRACTIVE REPLACEMENT FOR TERMINAL -->
+<section class="showcase-wrap">
   <div class="container">
-    <div class="terminal reveal">
-      <div class="terminal-bar">
-        <div class="terminal-dot r"></div>
-        <div class="terminal-dot y"></div>
-        <div class="terminal-dot g"></div>
-        <div class="terminal-title">ztrust@services ~ %</div>
+    <div class="section-header reveal" style="margin-bottom:40px;">
+      <div class="section-badge"><i class="fas fa-crown"></i> Service Excellence</div>
+      <h2 class="section-title">What <span class="gradient-text">We Deliver</span></h2>
+      <p class="section-sub">Six pillars of enterprise IT excellence, engineered for your success.</p>
+    </div>
+    <div class="showcase-grid">
+      <div class="showcase-item reveal" style="--i:0">
+        <div class="showcase-icon sc-blue"><i class="fas fa-server"></i></div>
+        <h3>Infrastructure</h3>
+        <p>Enterprise-grade server, network, and storage deployment with 99.99% uptime guarantee.</p>
+        <span class="badge active">Core Service</span>
       </div>
-      <div class="terminal-body">
-        <div><span class="t-prompt">ztrust@services:~$</span> <span class="t-cmd">scan --services ethiopia</span></div>
-        <div class="t-out">Scanning 6 enterprise-grade service modules...</div>
-        <div class="t-out">████████████████████████████ <span class="t-highlight">100%</span></div>
-        <div><span class="t-prompt">ztrust@services:~$</span> <span class="t-cmd">cat services.list</span></div>
-        <div class="t-out">✓ Infrastructure Installation & Configuration</div>
-        <div class="t-out">✓ Data Center Implementation</div>
-        <div class="t-out">✓ High Level Software Testing</div>
-        <div class="t-out">✓ Consultancy, Planning & Procurement</div>
-        <div class="t-out">✓ Training & Managerial Support</div>
-        <div class="t-out">✓ 24/7 Support & Emergency Response</div>
-        <div><span class="t-prompt">ztrust@services:~$</span> <span class="t-cmd">echo "All systems operational"</span></div>
-        <div class="t-highlight">All systems operational ✓</div>
+      <div class="showcase-item reveal" style="--i:1">
+        <div class="showcase-icon sc-purple"><i class="fas fa-database"></i></div>
+        <h3>Data Centers</h3>
+        <p>Tier-III ready facilities with redundant power, cooling, and enterprise-grade security.</p>
+        <span class="badge active">Core Service</span>
+      </div>
+      <div class="showcase-item reveal" style="--i:2">
+        <div class="showcase-icon sc-cyan"><i class="fas fa-vial"></i></div>
+        <h3>Software Testing</h3>
+        <p>Comprehensive QA, penetration testing, and automated regression suites.</p>
+        <span class="badge active">Core Service</span>
+      </div>
+      <div class="showcase-item reveal" style="--i:3">
+        <div class="showcase-icon sc-green"><i class="fas fa-chart-line"></i></div>
+        <h3>Consultancy</h3>
+        <p>Strategic IT planning, vendor selection, and ROI-driven technology roadmaps.</p>
+        <span class="badge">Premium</span>
+      </div>
+      <div class="showcase-item reveal" style="--i:4">
+        <div class="showcase-icon sc-amber"><i class="fas fa-chalkboard-user"></i></div>
+        <h3>Training</h3>
+        <p>Customized IT training, cybersecurity awareness, and executive coaching programs.</p>
+        <span class="badge">Premium</span>
+      </div>
+      <div class="showcase-item reveal" style="--i:5">
+        <div class="showcase-icon sc-rose"><i class="fas fa-headset"></i></div>
+        <h3>24/7 Support</h3>
+        <p>Round-the-clock NOC monitoring with guaranteed SLA and rapid incident response.</p>
+        <span class="badge active">Always On</span>
       </div>
     </div>
   </div>
@@ -827,8 +882,8 @@ a{text-decoration:none;}
 <section class="section" id="services">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-badge"><i class="fas fa-shield-halved"></i> Core Services</div>
-      <h2 class="section-title">What <span class="gradient-text">We Deliver</span></h2>
+      <div class="section-badge"><i class="fas fa-shield-halved"></i> Detailed Services</div>
+      <h2 class="section-title">Explore Our <span class="gradient-text">Solutions</span></h2>
       <p class="section-sub">Complete IT solutions engineered with precision, secured with expertise, and supported around the clock.</p>
     </div>
     <div class="services-grid">
