@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
+    /* ===== YOUR EXISTING STYLES (unchanged) ===== */
     * {
       margin: 0;
       padding: 0;
@@ -43,7 +44,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* BACKGROUND IMAGE WITH ANIMATIONS */
     body::before {
       content: "";
       position: fixed;
@@ -884,7 +884,7 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ===== MOBILE FIRST BREAKPOINTS ===== */
+    /* ===== MOBILE FIRST BREAKPOINTS (unchanged) ===== */
     @media (max-width: 820px) {
       .links {
         position: fixed;
@@ -938,7 +938,7 @@
   </style>
 </head>
 <body>
-  <!-- TECH BACKGROUND -->
+  <!-- ===== TECH BACKGROUND (unchanged) ===== -->
   <div class="tech-bg">
     <div class="grid-line grid-line-1"></div>
     <div class="grid-line grid-line-2"></div>
@@ -969,13 +969,13 @@
   </div>
   <div class="noise"></div>
 
-  <!-- Floating Buttons -->
+  <!-- ===== FLOATING BUTTONS (unchanged) ===== -->
   <div class="floating-btns">
     <a href="https://wa.me/251911563698" class="float-btn" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     <a href="https://t.me/ZTrustTech" class="float-btn tg" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
   </div>
 
-  <!-- Navigation -->
+  <!-- ===== NAVIGATION (hamburger added, rest unchanged) ===== -->
   <nav class="nav" id="mainNav">
     <div class="container nav-inner">
       <img src="logoword.JPG" class="logo-word-img" alt="ZTrust" onerror="this.src='https://placehold.co/160x44/0f172a/3b82f6?text=ZTRUST'">
@@ -987,12 +987,13 @@
           <a href="contact.html">Contact</a>
         </div>
         <a href="contact.html" class="nav-cta"><i class="fas fa-headset"></i> Support</a>
+        <!-- HAMBURGER BUTTON (only new element) -->
         <button class="menu-toggle" id="mobileMenu" aria-label="Menu"><i class="fas fa-bars"></i></button>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ===== HERO (unchanged) ===== -->
   <section class="hero">
     <div class="container">
       <div class="hero-content reveal">
@@ -1007,7 +1008,7 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- ===== SERVICES (unchanged) ===== -->
   <section class="section">
     <div class="container">
       <div class="section-header reveal">
@@ -1026,7 +1027,7 @@
     </div>
   </section>
 
-  <!-- STATS -->
+  <!-- ===== STATS (unchanged) ===== -->
   <section class="section section-dark">
     <div class="container">
       <div class="stats-grid reveal">
@@ -1038,7 +1039,7 @@
     </div>
   </section>
 
-  <!-- FEATURES -->
+  <!-- ===== FEATURES (unchanged) ===== -->
   <section class="section">
     <div class="container">
       <div class="section-header reveal">
@@ -1057,7 +1058,7 @@
     </div>
   </section>
 
-  <!-- PROCESS -->
+  <!-- ===== PROCESS (unchanged) ===== -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header reveal">
@@ -1074,7 +1075,7 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- ===== TESTIMONIALS (unchanged) ===== -->
   <section class="section">
     <div class="container">
       <div class="section-header reveal">
@@ -1090,7 +1091,7 @@
     </div>
   </section>
 
-  <!-- TECH STACK -->
+  <!-- ===== TECH STACK (unchanged) ===== -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header reveal">
@@ -1111,7 +1112,7 @@
     </div>
   </section>
 
-  <!-- BLOG -->
+  <!-- ===== BLOG (unchanged) ===== -->
   <section class="section">
     <div class="container">
       <div class="section-header reveal">
@@ -1127,7 +1128,7 @@
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- ===== CTA (unchanged) ===== -->
   <section class="section">
     <div class="container">
       <div class="cta-section reveal">
@@ -1141,7 +1142,7 @@
     </div>
   </section>
 
-  <!-- NEWSLETTER -->
+  <!-- ===== NEWSLETTER (unchanged) ===== -->
   <section class="section" style="padding-top: 0;">
     <div class="container">
       <div class="newsletter reveal">
@@ -1155,7 +1156,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ===== FOOTER (unchanged) ===== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -1213,26 +1214,48 @@
     </div>
   </footer>
 
+  <!-- ===== BACK TO TOP (unchanged) ===== -->
   <button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
+  <!-- ===== SCRIPT (only hamburger logic added, rest unchanged) ===== -->
   <script>
     (function() {
       // Nav scroll
       const nav = document.getElementById('mainNav');
       window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
       
-      // Mobile menu
+      // Mobile menu (hamburger)
       const mt = document.getElementById('mobileMenu'), nl = document.getElementById('navLinks');
       if(mt && nl) {
         mt.addEventListener('click', (e) => {
           e.stopPropagation();
           nl.classList.toggle('active');
+          // change icon (optional)
+          const icon = mt.querySelector('i');
+          if(icon) {
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+          }
         });
         // close on link click
-        nl.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nl.classList.remove('active')));
+        nl.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+          nl.classList.remove('active');
+          const icon = mt.querySelector('i');
+          if(icon) {
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+          }
+        }));
         // close on outside click
         document.addEventListener('click', (e) => {
-          if (!e.target.closest('.nav-inner')) nl.classList.remove('active');
+          if (!e.target.closest('.nav-inner')) {
+            nl.classList.remove('active');
+            const icon = mt.querySelector('i');
+            if(icon) {
+              icon.classList.add('fa-bars');
+              icon.classList.remove('fa-times');
+            }
+          }
         });
       }
       
