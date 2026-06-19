@@ -62,8 +62,8 @@
       pointer-events: none;
     }
 
-    /* NEW TECH BACKGROUND: Animated grid + floating orbs + data particles */
-    .tech-bg {
+    /* Animated Network Particles Layer */
+    .network-particles {
       position: fixed;
       inset: 0;
       z-index: -1;
@@ -71,107 +71,86 @@
       overflow: hidden;
     }
 
-    /* glowing grid lines */
-    .grid-line {
+    .particle {
       position: absolute;
-      background: rgba(59, 130, 246, 0.08);
+      background: radial-gradient(circle, var(--blue), transparent);
       border-radius: 50%;
-      animation: gridPulse 6s infinite alternate ease-in-out;
-    }
-    .grid-line-1 { width: 1px; height: 100%; left: 15%; top: 0; }
-    .grid-line-2 { width: 1px; height: 100%; left: 45%; top: 0; animation-delay: 1.2s; }
-    .grid-line-3 { width: 1px; height: 100%; left: 75%; top: 0; animation-delay: 2.4s; }
-    .grid-line-4 { width: 100%; height: 1px; top: 25%; left: 0; }
-    .grid-line-5 { width: 100%; height: 1px; top: 55%; left: 0; animation-delay: 1.8s; }
-    .grid-line-6 { width: 100%; height: 1px; top: 80%; left: 0; animation-delay: 3s; }
-
-    @keyframes gridPulse {
-      0% { opacity: 0.1; }
-      100% { opacity: 0.5; }
+      animation: floatParticle linear infinite;
     }
 
-    /* floating tech orbs with glow */
-    .tech-orb {
+    .particle-1 { width: 3px; height: 3px; top: 15%; left: 10%; animation-duration: 12s; }
+    .particle-2 { width: 5px; height: 5px; top: 25%; right: 15%; animation-duration: 15s; background: radial-gradient(circle, var(--purple), transparent); }
+    .particle-3 { width: 4px; height: 4px; bottom: 30%; left: 20%; animation-duration: 10s; background: radial-gradient(circle, var(--cyan), transparent); }
+    .particle-4 { width: 6px; height: 6px; top: 60%; right: 25%; animation-duration: 18s; background: radial-gradient(circle, var(--pink), transparent); }
+    .particle-5 { width: 3px; height: 3px; bottom: 20%; right: 40%; animation-duration: 14s; }
+    .particle-6 { width: 4px; height: 4px; top: 45%; left: 35%; animation-duration: 11s; background: radial-gradient(circle, var(--orange), transparent); }
+    .particle-7 { width: 7px; height: 7px; bottom: 50%; left: 55%; animation-duration: 20s; background: radial-gradient(circle, var(--emerald), transparent); }
+    .particle-8 { width: 3px; height: 3px; top: 75%; right: 10%; animation-duration: 9s; }
+    .particle-9 { width: 5px; height: 5px; top: 10%; left: 45%; animation-duration: 16s; background: radial-gradient(circle, var(--blue2), transparent); }
+    .particle-10 { width: 4px; height: 4px; bottom: 65%; right: 55%; animation-duration: 13s; background: radial-gradient(circle, var(--purple), transparent); }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      20% { opacity: 0.7; }
+      80% { opacity: 0.7; }
+      100% { transform: translateY(-150px) translateX(60px); opacity: 0; }
+    }
+
+    /* Connection Lines Animation */
+    .connection-line {
       position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.2;
-      animation: orbFloat 14s infinite alternate ease-in-out;
-    }
-    .tech-orb-1 { width: 400px; height: 400px; top: -5%; left: -5%; background: radial-gradient(circle, var(--blue), transparent); }
-    .tech-orb-2 { width: 500px; height: 500px; bottom: -10%; right: -5%; background: radial-gradient(circle, var(--purple), transparent); animation-duration: 18s; }
-    .tech-orb-3 { width: 300px; height: 300px; top: 40%; left: 55%; background: radial-gradient(circle, var(--cyan), transparent); animation-duration: 12s; }
-
-    @keyframes orbFloat {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(40px, -30px) scale(1.1); }
+      background: linear-gradient(90deg, transparent, var(--blue), var(--purple), transparent);
+      height: 1px;
+      opacity: 0.3;
+      animation: pulseLine 4s infinite;
     }
 
-    /* data stream lines (techy) */
-    .data-line {
+    .line-1 { width: 200px; top: 20%; left: 5%; transform: rotate(25deg); animation-delay: 0s; }
+    .line-2 { width: 300px; bottom: 35%; right: 3%; transform: rotate(-15deg); animation-delay: 1s; }
+    .line-3 { width: 180px; top: 55%; left: 70%; transform: rotate(45deg); animation-delay: 0.5s; }
+    .line-4 { width: 250px; bottom: 20%; left: 15%; transform: rotate(-30deg); animation-delay: 1.5s; }
+    .line-5 { width: 150px; top: 35%; right: 20%; transform: rotate(60deg); animation-delay: 0.8s; }
+    .line-6 { width: 220px; bottom: 60%; right: 35%; transform: rotate(-45deg); animation-delay: 2s; }
+
+    @keyframes pulseLine {
+      0%, 100% { opacity: 0.1; width: 80px; }
+      50% { opacity: 0.5; width: 100%; }
+    }
+
+    /* Data Streams */
+    .data-stream {
       position: absolute;
-      background: linear-gradient(90deg, transparent, var(--blue), var(--cyan), transparent);
-      height: 2px;
-      opacity: 0.2;
-      animation: dataFlow 8s infinite linear;
-      border-radius: 4px;
-      filter: drop-shadow(0 0 6px var(--blue));
+      width: 2px;
+      background: linear-gradient(180deg, var(--cyan), transparent);
+      animation: streamFall linear infinite;
+      opacity: 0.4;
     }
-    .data-line-1 { width: 300px; top: 12%; left: 5%; animation-delay: 0s; }
-    .data-line-2 { width: 450px; bottom: 20%; right: 2%; animation-delay: 2.5s; background: linear-gradient(90deg, transparent, var(--purple), var(--pink), transparent); }
-    .data-line-3 { width: 200px; top: 50%; left: 70%; animation-delay: 1.2s; background: linear-gradient(90deg, transparent, var(--emerald), var(--cyan), transparent); }
-    .data-line-4 { width: 350px; bottom: 45%; left: 8%; animation-delay: 3.8s; background: linear-gradient(90deg, transparent, var(--orange), var(--yellow), transparent); }
-    .data-line-5 { width: 280px; top: 28%; right: 10%; animation-delay: 0.7s; background: linear-gradient(90deg, transparent, var(--blue2), var(--indigo), transparent); }
-    .data-line-6 { width: 400px; bottom: 10%; left: 25%; animation-delay: 5s; background: linear-gradient(90deg, transparent, var(--pink), var(--purple), transparent); }
+    .stream-1 { left: 12%; top: -100px; height: 120px; animation-duration: 2.5s; }
+    .stream-2 { left: 28%; top: -100px; height: 80px; animation-duration: 3s; animation-delay: 1s; background: linear-gradient(180deg, var(--purple), transparent); }
+    .stream-3 { left: 55%; top: -100px; height: 100px; animation-duration: 2.8s; animation-delay: 0.5s; }
+    .stream-4 { left: 75%; top: -100px; height: 90px; animation-duration: 3.2s; animation-delay: 1.5s; background: linear-gradient(180deg, var(--blue2), transparent); }
+    .stream-5 { left: 88%; top: -100px; height: 70px; animation-duration: 2.2s; animation-delay: 2s; }
+    .stream-6 { left: 40%; top: -100px; height: 110px; animation-duration: 3.5s; animation-delay: 0.8s; background: linear-gradient(180deg, var(--pink), transparent); }
 
-    @keyframes dataFlow {
-      0% { transform: translateX(-100%) scaleX(0.5); opacity: 0; }
+    @keyframes streamFall {
+      0% { top: -120px; opacity: 0; }
       10% { opacity: 0.6; }
       90% { opacity: 0.6; }
-      100% { transform: translateX(100vw) scaleX(0.8); opacity: 0; }
+      100% { top: 100%; opacity: 0; }
     }
 
-    /* digital rain particles (tiny dots) */
-    .digital-dots {
+    /* Rotating Orbs */
+    .rotating-orb {
       position: absolute;
-      width: 4px;
-      height: 4px;
-      background: var(--blue);
       border-radius: 50%;
-      box-shadow: 0 0 8px var(--blue);
-      animation: dotFall linear infinite;
-      opacity: 0.3;
+      border: 1px solid rgba(59,130,246,0.2);
+      animation: rotateOrb linear infinite;
     }
-    .dot-1 { left: 8%; animation-duration: 6s; animation-delay: 0s; }
-    .dot-2 { left: 22%; animation-duration: 8s; animation-delay: 1.2s; background: var(--purple); box-shadow: 0 0 8px var(--purple); }
-    .dot-3 { left: 38%; animation-duration: 7s; animation-delay: 0.5s; background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
-    .dot-4 { left: 55%; animation-duration: 9s; animation-delay: 2s; background: var(--pink); box-shadow: 0 0 8px var(--pink); }
-    .dot-5 { left: 70%; animation-duration: 5.5s; animation-delay: 0.8s; }
-    .dot-6 { left: 85%; animation-duration: 7.5s; animation-delay: 1.8s; background: var(--emerald); box-shadow: 0 0 8px var(--emerald); }
-    .dot-7 { left: 48%; animation-duration: 10s; animation-delay: 0.3s; background: var(--orange); box-shadow: 0 0 8px var(--orange); }
-    .dot-8 { left: 62%; animation-duration: 6.8s; animation-delay: 2.5s; background: var(--blue2); box-shadow: 0 0 8px var(--blue2); }
+    .orb-1 { width: 350px; height: 350px; top: 15%; left: -100px; animation-duration: 25s; }
+    .orb-2 { width: 550px; height: 550px; bottom: -150px; right: -150px; animation-duration: 30s; border-color: rgba(139,92,246,0.12); }
+    .orb-3 { width: 200px; height: 200px; top: 50%; right: 10%; animation-duration: 18s; border-color: rgba(6,182,212,0.15); }
 
-    @keyframes dotFall {
-      0% { transform: translateY(-20px) scale(0); opacity: 0; }
-      10% { opacity: 0.8; transform: translateY(10px) scale(1); }
-      90% { opacity: 0.6; }
-      100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-    }
-
-    /* rotating tech ring */
-    .tech-ring {
-      position: absolute;
-      border: 1px solid rgba(59, 130, 246, 0.08);
-      border-radius: 50%;
-      animation: ringSpin 30s infinite linear;
-    }
-    .ring-1 { width: 600px; height: 600px; top: 10%; left: -10%; }
-    .ring-2 { width: 800px; height: 800px; bottom: -20%; right: -15%; border-color: rgba(139, 92, 246, 0.06); animation-duration: 45s; }
-    .ring-3 { width: 300px; height: 300px; top: 45%; left: 60%; border-color: rgba(6, 182, 212, 0.08); animation-duration: 20s; }
-
-    @keyframes ringSpin {
-      100% { transform: rotate(360deg); }
-    }
+    @keyframes rotateOrb { 100% { transform: rotate(360deg); } }
 
     .noise {
       position: fixed;
@@ -190,7 +169,7 @@
       z-index: 2;
     }
 
-    /* NAVIGATION */
+    /* NAVIGATION - FIXED HAMBURGER */
     .nav {
       position: fixed;
       top: 0;
@@ -227,7 +206,7 @@
     }
     .links a {
       text-decoration: none;
-      color: var(--muted);
+      color: #94a3b8;
       font-weight: 500;
       font-size: 0.9rem;
       transition: 0.2s;
@@ -264,6 +243,12 @@
       color: #fff;
       font-size: 1.6rem;
       cursor: pointer;
+      padding: 8px;
+    }
+    .nav-right-group {
+      display: flex;
+      align-items: center;
+      gap: 18px;
     }
 
     /* HERO SECTION */
@@ -662,6 +647,7 @@
       justify-content: center;
       color: white;
       transition: 0.3s;
+      text-decoration: none;
     }
     .social-links a:hover { background: var(--blue); transform: translateY(-3px) rotate(360deg); }
     .footer-bottom {
@@ -717,6 +703,7 @@
       transition: 0.25s;
       z-index: 999;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: none;
     }
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { transform: translateY(-3px); }
@@ -724,66 +711,160 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 768px) {
+    /* ========== MOBILE RESPONSIVE ========== */
+    @media (max-width: 820px) {
       .container { padding: 0 20px; }
+      .nav-right-group {
+        gap: 12px;
+      }
       .links {
         position: fixed;
         top: 70px;
         left: -100%;
-        width: 70%;
-        max-width: 260px;
+        width: 75%;
+        max-width: 300px;
         height: calc(100vh - 70px);
         background: rgba(2,5,18,0.98);
         backdrop-filter: blur(28px);
         flex-direction: column;
-        gap: 2rem;
-        padding: 2rem;
-        transition: left 0.4s;
+        gap: 0.5rem;
+        padding: 2rem 1.5rem;
+        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1001;
+        border-right: 1px solid rgba(96,165,250,0.15);
+        overflow-y: auto;
+        align-items: stretch;
       }
       .links.active { left: 0; }
       .menu-toggle { display: block; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-      .hero { min-height: 80vh; padding: 100px 0 60px; }
-      .section { padding: 60px 0; }
-      .cta-section { padding: 40px 24px; }
+      .links a {
+        font-size: 1rem;
+        padding: 14px 16px;
+        width: 100%;
+        border-bottom: 1px solid rgba(96,165,250,0.06);
+        color: #cbd5e1;
+        border-radius: 8px;
+        transition: 0.2s;
+      }
+      .links a::after { display: none; }
+      .links a:hover, .links a.active { 
+        color: white; 
+        background: rgba(59,130,246,0.08); 
+        padding-left: 20px;
+      }
+      .nav-cta {
+        display: none;
+      }
+      .mobile-cta {
+        display: block !important;
+        margin-top: 20px;
+        text-align: center;
+        padding: 16px !important;
+        width: 100% !important;
+        border-radius: 12px !important;
+      }
+      
+      .hero { min-height: auto; padding: 100px 0 60px; }
+      .hero-title { font-size: clamp(2rem, 8vw, 3.2rem); }
+      .hero-desc { font-size: 1rem; }
+      .hero-buttons .btn { padding: 12px 24px; font-size: 0.85rem; width: 100%; justify-content: center; }
+      .hero-buttons { flex-direction: column; align-items: center; width: 100%; }
+      
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; border-radius: 24px; }
+      .stat-card { padding: 24px 16px; }
+      .stat-number { font-size: 2rem; }
+      
+      .services-grid { grid-template-columns: 1fr; gap: 20px; }
+      .service-card { padding: 24px; }
+      
+      .features-grid { grid-template-columns: 1fr; gap: 16px; }
+      .feature-item { padding: 24px; }
+      
+      .process-timeline { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .process-step { padding: 16px; }
+      .step-number { width: 50px; height: 50px; font-size: 1.2rem; }
+      
+      .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+      .testimonial-card { padding: 24px; }
+      
+      .cta-section { padding: 40px 24px; border-radius: 24px; }
+      .cta-section h2 { font-size: 1.5rem; }
+      
+      .newsletter { padding: 32px 20px; }
+      .newsletter-form input { width: 100%; }
+      .newsletter-form .btn { width: 100%; justify-content: center; }
+      
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+      .footer { padding: 40px 0 20px; }
+      
+      .section { padding: 50px 0; }
+      .section-header { margin-bottom: 36px; }
+      .section-title { font-size: 1.8rem; }
+      
+      .blog-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .floating-btns { bottom: 20px; left: 20px; gap: 10px; }
+      .float-btn { width: 44px; height: 44px; font-size: 1.1rem; }
+      .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; font-size: 0.9rem; }
+      
+      .tech-stack { gap: 30px; }
+      .tech-item i { font-size: 36px; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .hero { padding: 90px 0 40px; }
+      .hero-title { font-size: 1.8rem; }
+      .hero-badge { font-size: 0.6rem; padding: 4px 14px; }
+      
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+      .stat-card { padding: 16px 12px; }
+      .stat-number { font-size: 1.6rem; }
+      .stat-label { font-size: 0.65rem; }
+      
+      .process-timeline { grid-template-columns: 1fr; gap: 16px; }
+      
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+      .footer-bottom { font-size: 0.65rem; }
+      
+      .section { padding: 40px 0; }
+      .section-title { font-size: 1.5rem; }
+      
+      .service-card { padding: 20px; }
+      .service-card h3 { font-size: 1.1rem; }
+      
+      .cta-section { padding: 30px 16px; }
+      .cta-section h2 { font-size: 1.3rem; }
+      
+      .btn { padding: 10px 20px; font-size: 0.8rem; }
+      
+      .links {
+        width: 85%;
+        max-width: 280px;
+        padding: 1.5rem 1.2rem;
+      }
+      .links a { font-size: 0.9rem; padding: 12px 14px; }
+    }
+
+    @media (min-width: 821px) {
+      .mobile-cta {
+        display: none !important;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- NEW TECH BACKGROUND -->
-  <div class="tech-bg">
-    <!-- grid lines -->
-    <div class="grid-line grid-line-1"></div>
-    <div class="grid-line grid-line-2"></div>
-    <div class="grid-line grid-line-3"></div>
-    <div class="grid-line grid-line-4"></div>
-    <div class="grid-line grid-line-5"></div>
-    <div class="grid-line grid-line-6"></div>
-    <!-- floating orbs -->
-    <div class="tech-orb tech-orb-1"></div>
-    <div class="tech-orb tech-orb-2"></div>
-    <div class="tech-orb tech-orb-3"></div>
-    <!-- data lines -->
-    <div class="data-line data-line-1"></div>
-    <div class="data-line data-line-2"></div>
-    <div class="data-line data-line-3"></div>
-    <div class="data-line data-line-4"></div>
-    <div class="data-line data-line-5"></div>
-    <div class="data-line data-line-6"></div>
-    <!-- digital dots -->
-    <div class="digital-dots dot-1"></div>
-    <div class="digital-dots dot-2"></div>
-    <div class="digital-dots dot-3"></div>
-    <div class="digital-dots dot-4"></div>
-    <div class="digital-dots dot-5"></div>
-    <div class="digital-dots dot-6"></div>
-    <div class="digital-dots dot-7"></div>
-    <div class="digital-dots dot-8"></div>
-    <!-- rotating rings -->
-    <div class="tech-ring ring-1"></div>
-    <div class="tech-ring ring-2"></div>
-    <div class="tech-ring ring-3"></div>
+  <!-- Animated Background Elements -->
+  <div class="network-particles">
+    <div class="particle particle-1"></div><div class="particle particle-2"></div><div class="particle particle-3"></div>
+    <div class="particle particle-4"></div><div class="particle particle-5"></div><div class="particle particle-6"></div>
+    <div class="particle particle-7"></div><div class="particle particle-8"></div><div class="particle particle-9"></div>
+    <div class="particle particle-10"></div>
+    <div class="connection-line line-1"></div><div class="connection-line line-2"></div><div class="connection-line line-3"></div>
+    <div class="connection-line line-4"></div><div class="connection-line line-5"></div><div class="connection-line line-6"></div>
+    <div class="data-stream stream-1"></div><div class="data-stream stream-2"></div><div class="data-stream stream-3"></div>
+    <div class="data-stream stream-4"></div><div class="data-stream stream-5"></div><div class="data-stream stream-6"></div>
+    <div class="rotating-orb orb-1"></div><div class="rotating-orb orb-2"></div><div class="rotating-orb orb-3"></div>
   </div>
   <div class="noise"></div>
 
@@ -803,6 +884,7 @@
           <a href="services.html">Services</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
+          <a href="contact.html" class="nav-cta mobile-cta"><i class="fas fa-headset"></i> Get Support</a>
         </div>
         <a href="contact.html" class="nav-cta"><i class="fas fa-headset"></i> Get Support</a>
         <button class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></button>
@@ -1004,8 +1086,30 @@
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
     
-    const mt = document.getElementById('mobileMenu'), nl = document.getElementById('navLinks');
-    if(mt) mt.addEventListener('click', () => nl.classList.toggle('active'));
+    const mt = document.getElementById('mobileMenu');
+    const nl = document.getElementById('navLinks');
+    
+    mt.addEventListener('click', () => {
+      nl.classList.toggle('active');
+      const icon = mt.querySelector('i');
+      icon.className = nl.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+    });
+
+    // Close menu when clicking a link
+    nl.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nl.classList.remove('active');
+        mt.querySelector('i').className = 'fas fa-bars';
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!document.querySelector('.nav').contains(e.target) && nl.classList.contains('active')) {
+        nl.classList.remove('active');
+        mt.querySelector('i').className = 'fas fa-bars';
+      }
+    });
     
     // Counter animation
     const statGrid = document.querySelector('.stats-grid');
